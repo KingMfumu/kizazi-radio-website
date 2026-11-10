@@ -128,27 +128,20 @@ border:1px solid var(--line);background:var(--panel)
 .live-copy h3{font-size:34px;line-height:1.05;letter-spacing:-.05em;margin:27px 0 12px}
 .live-copy p{font-size:13px;line-height:1.8;color:var(--muted);max-width:370px}
 .player{
-padding:38px;background:var(--panel2);
-display:flex;flex-direction:column;justify-content:center
+padding:28px;background:var(--panel2);
+display:flex;flex-direction:column;justify-content:center;
+min-width:0
 }
-.wave{
-height:60px;display:flex;align-items:center;gap:5px;
-border-bottom:1px solid #38383f;margin-bottom:23px;padding-bottom:16px
+.caster-player-wrap{
+width:100%;min-height:150px;
+display:flex;align-items:center;justify-content:center
 }
-.wave i{display:block;width:4px;height:20px;border-radius:4px;background:var(--red);opacity:.85}
-.wave i:nth-child(3n){height:39px}
-.wave i:nth-child(4n){height:30px}
-.wave i:nth-child(5n){height:47px}
-.controls{display:flex;align-items:center;gap:14px}
-.play{
-width:48px;height:48px;border:0;border-radius:50%;
-background:var(--red);color:white;font-size:17px;
-cursor:not-allowed;opacity:.65
+.cstrEmbed{width:100%;max-width:100%}
+.cstrEmbed iframe{max-width:100%}
+.player-note{
+font-size:10px;color:#92929a;
+line-height:1.6;margin:14px 0 0
 }
-.controls strong,.controls small{display:block}
-.controls strong{font-size:11px;letter-spacing:1px}
-.controls small{font-size:10px;color:#92929a;margin-top:5px}
-.music-icon{margin-left:auto;color:var(--red);font-size:23px}
 
 /* SHOWS */
 .shows{padding-top:10px}
@@ -192,40 +185,25 @@ border-radius:50%;display:grid;place-items:center;
 color:var(--red);flex-shrink:0
 }
 
-/* NEWS UPDATES */
-.news-section{padding:82px 0;background:#101014;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+/* NEWS */
+.news-section{
+padding:82px 0;background:#101014;
+border-top:1px solid var(--line);
+border-bottom:1px solid var(--line)
+}
 .news-top{
-display:flex;justify-content:space-between;align-items:flex-end;
-gap:20px;margin-bottom:30px
+display:flex;justify-content:space-between;
+align-items:flex-end;gap:20px;margin-bottom:30px
 }
 .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.news-card{
-min-height:250px;background:#18181d;
-border:1px solid #303037;padding:25px;
-display:flex;flex-direction:column;justify-content:space-between;
-transition:transform .25s,border-color .25s
-}
-.news-card:hover{transform:translateY(-4px);border-color:#733033}
-.news-category{
-color:var(--red);font-size:9px;font-weight:850;
-letter-spacing:1.5px;text-transform:uppercase
-}
-.news-card h3{
-font-size:23px;line-height:1.15;letter-spacing:-.045em;
-margin:20px 0 12px
-}
-.news-card p{color:var(--muted);font-size:12px;line-height:1.8;margin:0}
-.news-read{
-margin-top:24px;font-size:10px;font-weight:850;
-letter-spacing:1px;color:#fff
-}
-.news-read span{color:var(--red);margin-left:7px}
 .news-coming{
 grid-column:1/-1;text-align:center;
 padding:35px 20px;border:1px dashed #45454d;
 color:var(--muted);font-size:13px;line-height:1.8
 }
-.news-coming strong{display:block;color:#fff;font-size:17px;margin-bottom:8px}
+.news-coming strong{
+display:block;color:#fff;font-size:17px;margin-bottom:8px
+}
 
 /* PODCASTS */
 .podcast-band{
@@ -326,7 +304,6 @@ flex-direction:column;align-items:flex-start;gap:21px
 .about{gap:18px}
 .news-top{display:block}
 .news-grid{grid-template-columns:1fr}
-.news-card{min-height:220px}
 .footer-inner{flex-wrap:wrap}
 .footer-logo{width:110px;height:55px}
 }
@@ -334,16 +311,12 @@ flex-direction:column;align-items:flex-start;gap:21px
 </head>
 
 <body>
-
 <header class="header" id="top">
 <div class="header-inner">
-
 <a class="brand" href="#top" aria-label="KIZAZI RADIO home">
 <img class="brand-logo" data-official-logo alt="Official KiZaZi Radio logo">
 </a>
-
 <button class="menu" aria-label="Open navigation" aria-expanded="false">☰</button>
-
 <nav class="nav" aria-label="Main navigation">
 <a href="#listen">Listen Live</a>
 <a href="#shows">Shows</a>
@@ -351,44 +324,35 @@ flex-direction:column;align-items:flex-start;gap:21px
 <a href="#news">News</a>
 <a href="#about">About</a>
 </nav>
-
 <a class="listen-link" href="#listen">
 <span class="dot"></span> LISTEN LIVE <span class="arrow">↗</span>
 </a>
-
 </div>
 </header>
 
 <main>
-
 <!-- HERO -->
 <section class="hero">
 <div class="wrap hero-grid">
-
 <div class="hero-copy">
 <p class="eyebrow">Radio&nbsp; • &nbsp;Music&nbsp; • &nbsp;Culture</p>
-
 <h1>THE SOUND<br>OF <em>WHAT'S<br>NEXT.</em></h1>
-
 <div class="actions">
 <a class="primary" href="#listen">▶ &nbsp; LISTEN LIVE</a>
 <a class="under-link" href="#shows">EXPLORE KIZAZI <span>↘</span></a>
 </div>
 </div>
-
 <div class="hero-art">
 <div class="hero-photo-frame">
 <img class="hero-photo" src="/assets/kizazi-radio-hero.webp" alt="KIZAZI RADIO music and culture">
 </div>
 </div>
-
 </div>
 </section>
 
 <!-- LIVE RADIO -->
 <section class="section" id="listen">
 <div class="wrap">
-
 <div class="section-head">
 <span class="num">01</span>
 <div>
@@ -398,7 +362,6 @@ flex-direction:column;align-items:flex-start;gap:21px
 </div>
 
 <div class="live-card">
-
 <div class="live-copy">
 <span class="onair"><i class="dot"></i> KIZAZI RADIO <span class="arrow">•</span> ON AIR</span>
 <h3>Your station.<br>Your soundtrack.</h3>
@@ -406,22 +369,15 @@ flex-direction:column;align-items:flex-start;gap:21px
 </div>
 
 <div class="player">
-<div class="wave" aria-hidden="true">
-<i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-<i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-<i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-</div>
-
-<div class="controls">
-<button class="play" type="button" disabled aria-label="Live stream player not connected">▶</button>
-<div>
-<strong>LIVE RADIO</strong>
-<small>Radio stream connection will be added next</small>
-</div>
-<span class="music-icon">♫</span>
+<div class="caster-player-wrap">
+<div class="cstrEmbed" data-type="newStreamPlayer" data-publicToken="2c2de7f0-f72e-4a5b-a7e7-35d9713b63d3" data-theme="dark" data-color="FF0000" data-channelId="">
+<a href="https://www.caster.fm">Shoutcast Hosting</a>
+<a href="https://www.caster.fm">Stream Hosting</a>
+<a href="https://www.caster.fm">Radio Server Hosting</a>
 </div>
 </div>
-
+<p class="player-note">If the player shows that the broadcast is offline, check that Mixxx is connected and broadcasting through Caster.fm.</p>
+</div>
 </div>
 </div>
 </section>
@@ -429,7 +385,6 @@ flex-direction:column;align-items:flex-start;gap:21px
 <!-- SHOWS -->
 <section class="section shows" id="shows">
 <div class="wrap">
-
 <div class="section-head">
 <span class="num">02</span>
 <div>
@@ -439,7 +394,6 @@ flex-direction:column;align-items:flex-start;gap:21px
 </div>
 
 <div class="show-grid">
-
 <article class="show-card">
 <div class="show-art maybe">
 <span class="art-label">KIZAZI ORIGINAL / PODCAST</span>
@@ -469,7 +423,6 @@ flex-direction:column;align-items:flex-start;gap:21px
 <span class="round-arrow">↗</span>
 </div>
 </article>
-
 </div>
 </div>
 </section>
@@ -477,7 +430,6 @@ flex-direction:column;align-items:flex-start;gap:21px
 <!-- NEWS UPDATES -->
 <section class="news-section" id="news">
 <div class="wrap">
-
 <div class="news-top">
 <div class="section-head">
 <span class="num">03</span>
@@ -486,21 +438,18 @@ flex-direction:column;align-items:flex-start;gap:21px
 <h2 class="section-title">NEWS <em>UPDATES.</em></h2>
 </div>
 </div>
-
-<a class="under-link" href="mailto:hello@kizaziradio.com?subject=KIZAZI%20RADIO%20News">
+<a class="under-link" href="mailto:editor@kizaziradio.com?subject=News%20Submission%20-%20KIZAZI%20RADIO">
 SUBMIT NEWS <span>↗</span>
 </a>
 </div>
 
 <div class="news-grid">
-
 <div class="news-coming">
 <strong>THE LATEST FROM KIZAZI RADIO</strong>
 News, music updates, entertainment stories and the latest happenings will appear here.
 <br>
 New updates coming soon.
 </div>
-
 </div>
 </div>
 </section>
@@ -508,7 +457,6 @@ New updates coming soon.
 <!-- PODCASTS -->
 <section class="podcast-band" id="podcasts">
 <div class="wrap podcast-grid">
-
 <div class="podcast-art">
 <div class="disc">
 <b>KR</b>
@@ -523,40 +471,33 @@ New updates coming soon.
 <p>Catch up on KIZAZI RADIO podcasts and take the voices, ideas and stories you love wherever you go.</p>
 <a class="under-link" href="#shows">DISCOVER OUR PODCASTS <span>↗</span></a>
 </div>
-
 </div>
 </section>
 
 <!-- ABOUT -->
 <section class="wrap about" id="about">
-
 <div>
 <p class="eyebrow">Music. Culture. Conversation.</p>
 <h2 class="about-title">THIS IS<br><em>KIZAZI RADIO.</em></h2>
 </div>
-
 <div class="about-copy">
 <p>KIZAZI RADIO is a home for music, culture and conversation. We bring together fresh sounds and real voices that connect, inspire and entertain.</p>
 <a class="secondary" href="mailto:hello@kizaziradio.com">GET IN TOUCH ↗</a>
 </div>
-
 </section>
-
 </main>
 
 <!-- FOOTER -->
 <footer class="footer">
 <div class="wrap footer-inner">
-
 <a href="#top" aria-label="KIZAZI RADIO home">
 <img class="footer-logo" data-official-logo alt="Official KiZaZi Radio logo">
 </a>
-
 <span class="copyright">© <span id="year"></span> KIZAZI RADIO</span>
-
 </div>
 </footer>
 
+<script src="//cdn.cloud.caster.fm//widgets/embed.js"></script>
 <script>
 /* OFFICIAL LOGO */
 document.querySelectorAll('[data-official-logo]').forEach(img=>{
@@ -584,6 +525,5 @@ menu.textContent='☰';
 /* CURRENT YEAR */
 document.getElementById('year').textContent=new Date().getFullYear();
 </script>
-
 </body>
 </html>
