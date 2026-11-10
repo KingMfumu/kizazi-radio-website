@@ -1,0 +1,1 @@
+document.getElementById('year').textContent=new Date().getFullYear();document.getElementById('play').addEventListener('click',()=>{document.getElementById('status').textContent='Stream URL not connected yet';});
