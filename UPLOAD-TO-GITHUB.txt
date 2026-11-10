@@ -1,0 +1,15 @@
+KIZAZI RADIO — CLOUDFLARE WORKERS & PAGES
+
+This package is prepared for the existing Cloudflare Worker project connected to GitHub.
+
+IMPORTANT: Upload/replace the CONTENTS of this package in the root of the existing GitHub repository (KingMfumu/kizazi-radio-website), keeping these paths:
+- wrangler.toml
+- package.json
+- src/index.js
+- public/index.html
+- public/styles.css
+- public/app.js
+- public/assets/kizazi-radio-official-logo.png
+- public/assets/kizazi-radio-hero.webp
+
+Then commit to the main branch. Cloudflare should automatically redeploy.
