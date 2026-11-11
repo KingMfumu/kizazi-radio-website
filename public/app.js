@@ -67,6 +67,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  const safeYouTubeURL = value => {
+    if (!value) return "";
+
+    try {
+      const url = new URL(value);
+
+      const allowedHosts = [
+        "youtube.com",
+        "www.youtube.com",
+        "youtu.be",
+        "m.youtube.com"
+      ];
+
+      if (
+        allowedHosts.includes(url.hostname) &&
+        ["https:", "http:"].includes(url.protocol)
+      ) {
+        return url.href;
+      }
+
+      return "";
+    } catch {
+      return "";
+    }
+  };
+
   const formatDate = value => {
     if (!value) return "LATEST NEWS";
 
@@ -83,9 +109,182 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // 5. FIND AND REUSE THE EXISTING HOMEPAGE NEWS SECTION
-  // This prevents the old "New updates coming soon" section
-  // from remaining on the homepage.
+  // ==========================================
+  // 5. TOP 15 MUSIC CHART SECTION
+  // ==========================================
+
+  const chartSection = document.createElement("section");
+
+  chartSection.className = "section kizazi-chart";
+  chartSection.id = "top15";
+
+  chartSection.innerHTML = `
+    <div class="wrap">
+
+      <div class="section-head">
+        <span class="num">02</span>
+
+        <div>
+          <p class="eyebrow">The official music countdown</p>
+          <h2 class="section-title">
+            TOP 15 <em>MUSIC CHART.</em>
+          </h2>
+        </div>
+      </div>
+
+      <p class="chart-intro">
+        Discover the songs making waves on KIZAZI RADIO.
+        One chart. All genres. Fifteen positions.
+      </p>
+
+      <div class="chart-grid" id="homepageChart">
+        <p class="chart-loading">Loading TOP 15 Music Chart...</p>
+      </div>
+
+      <div class="chart-footer">
+        <span>THE OFFICIAL KIZAZI RADIO TOP 15</span>
+      </div>
+
+    </div>
+  `;
+
+  const main = document.querySelector("main");
+
+  if (main) {
+    const existingChart = document.getElementById("top15");
+
+    if (!existingChart) {
+      const existingNews = document.getElementById("news");
+
+      if (existingNews) {
+        existingNews.before(chartSection);
+      } else {
+        const aboutSection = document.querySelector("#about");
+
+        if (aboutSection) {
+          aboutSection.after(chartSection);
+        } else {
+          main.appendChild(chartSection);
+        }
+      }
+    }
+  }
+
+  // 6. LOAD TOP 15 SONGS
+  const chartGrid = document.getElementById("homepageChart");
+
+  const displayChart = songs => {
+    if (!chartGrid) return;
+
+    if (!Array.isArray(songs) || songs.length === 0) {
+      chartGrid.innerHTML = `
+        <p class="chart-message">
+          The TOP 15 Music Chart is coming soon.
+          Check back for the latest music countdown.
+        </p>
+      `;
+      return;
+    }
+
+    const sortedSongs = [...songs]
+      .sort((a, b) => Number(a.position) - Number(b.position))
+      .slice(0, 15);
+
+    chartGrid.innerHTML = sortedSongs.map(song => {
+      const artwork = safeImageURL(song.artwork_url);
+      const youtube = safeYouTubeURL(song.youtube_url);
+
+      return `
+        <article class="chart-card">
+
+          <div class="chart-artwork">
+
+            ${
+              artwork
+                ? `<img
+                     src="${escapeHTML(artwork)}"
+                     alt="${escapeHTML(song.song_title)} by ${escapeHTML(song.artist_name)}"
+                     loading="lazy">`
+                : `<div class="chart-placeholder">
+                     <span>KIZAZI</span>
+                     <strong>MUSIC</strong>
+                   </div>`
+            }
+
+            <span class="chart-position">
+              #${escapeHTML(song.position)}
+            </span>
+
+          </div>
+
+          <div class="chart-song-info">
+
+            <h3>${escapeHTML(song.song_title)}</h3>
+
+            <p>${escapeHTML(song.artist_name)}</p>
+
+            ${
+              youtube
+                ? `<a
+                     href="${escapeHTML(youtube)}"
+                     class="chart-listen"
+                     target="_blank"
+                     rel="noopener noreferrer">
+                     WATCH ON YOUTUBE ↗
+                   </a>`
+                : `<span class="chart-unavailable">
+                     VIDEO UNAVAILABLE
+                   </span>`
+            }
+
+          </div>
+
+        </article>
+      `;
+    }).join("");
+  };
+
+  const loadMusicChart = async () => {
+    if (!chartGrid) return;
+
+    try {
+      const response = await fetch("/api/music-chart", {
+        method: "GET",
+        headers: {
+          "Accept": "application/json"
+        },
+        cache: "no-store"
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to load music chart.");
+      }
+
+      const data = await response.json();
+
+      if (!data.success || !Array.isArray(data.chart)) {
+        throw new Error("Invalid Music Chart API response.");
+      }
+
+      displayChart(data.chart);
+
+    } catch (error) {
+      console.error("KIZAZI RADIO Music Chart Error:", error);
+
+      chartGrid.innerHTML = `
+        <p class="chart-message">
+          We're unable to load the music chart right now.
+          Please check again later.
+        </p>
+      `;
+    }
+  };
+
+  loadMusicChart();
+
+  // ==========================================
+  // 7. FIND AND REUSE HOMEPAGE NEWS SECTION
+  // ==========================================
 
   const existingNewsSection =
     document.querySelector("main #news") ||
@@ -139,7 +338,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 6. ARTICLE MODAL
+  // 8. ARTICLE MODAL
   const articleModal = document.createElement("div");
 
   articleModal.className = "news-modal";
@@ -238,7 +437,7 @@ document.addEventListener("DOMContentLoaded", () => {
     articleModal.querySelector(".news-modal-close").focus();
   };
 
-  // 7. DISPLAY ARTICLES
+  // 9. DISPLAY ARTICLES
   const newsGrid = document.getElementById("newsGrid");
 
   const displayArticles = articles => {
@@ -318,7 +517,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // 8. FETCH LATEST FIVE PUBLISHED ARTICLES FROM D1
+  // 10. FETCH LATEST FIVE PUBLISHED ARTICLES
   const loadNews = async () => {
     if (!newsGrid) return;
 
@@ -357,10 +556,165 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadNews();
 
-  // 9. NEWS AND ARTICLE STYLING
-  const newsStyles = document.createElement("style");
+  // ==========================================
+  // 11. HOMEPAGE STYLING
+  // ==========================================
 
-  newsStyles.textContent = `
+  const websiteStyles = document.createElement("style");
+
+  websiteStyles.textContent = `
+
+    /* TOP 15 MUSIC CHART */
+
+    .kizazi-chart {
+      background: #090909;
+      border-top: 1px solid #29292f;
+      border-bottom: 1px solid #29292f;
+    }
+
+    .chart-intro {
+      color: #999;
+      font-size: 13px;
+      line-height: 1.8;
+      margin: -5px 0 28px;
+    }
+
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .chart-card {
+      min-width: 0;
+      background: #151515;
+      border: 1px solid #292929;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .chart-card:hover {
+      transform: translateY(-5px);
+      border-color: #e50909;
+    }
+
+    .chart-artwork {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #202026;
+    }
+
+    .chart-artwork img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform .4s;
+    }
+
+    .chart-card:hover .chart-artwork img {
+      transform: scale(1.05);
+    }
+
+    .chart-position {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      min-width: 38px;
+      padding: 7px 10px;
+      background: #e50909;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .chart-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #24242a, #111114);
+      color: #fff;
+    }
+
+    .chart-placeholder span {
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: #aaa;
+    }
+
+    .chart-placeholder strong {
+      font-size: 30px;
+      font-weight: 900;
+      color: #e50909;
+    }
+
+    .chart-song-info {
+      padding: 16px;
+    }
+
+    .chart-song-info h3 {
+      color: #fff;
+      font-size: 15px;
+      line-height: 1.4;
+      margin: 0 0 7px;
+      overflow-wrap: anywhere;
+    }
+
+    .chart-song-info p {
+      color: #999;
+      font-size: 12px;
+      line-height: 1.5;
+      margin: 0 0 15px;
+      overflow-wrap: anywhere;
+    }
+
+    .chart-listen {
+      display: inline-block;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 850;
+      letter-spacing: 1px;
+      text-decoration: none;
+      border-bottom: 1px solid #e50909;
+      padding-bottom: 7px;
+      transition: color .2s;
+    }
+
+    .chart-listen:hover {
+      color: #ff3030;
+    }
+
+    .chart-unavailable {
+      color: #777;
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+
+    .chart-footer {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid #292929;
+      color: #777;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+    }
+
+    .chart-loading,
+    .chart-message {
+      color: #aaa;
+      font-size: 13px;
+      line-height: 1.8;
+      grid-column: 1 / -1;
+    }
+
+    /* NEWS */
+
     .kizazi-news {
       background: #101014;
       border-top: 1px solid #29292f;
@@ -618,6 +972,12 @@ document.addEventListener("DOMContentLoaded", () => {
       letter-spacing: 1.2px;
     }
 
+    @media(max-width: 1000px) {
+      .chart-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
     @media(max-width: 850px) {
       .news-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -625,6 +985,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     @media(max-width: 600px) {
+      .chart-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .chart-song-info {
+        padding: 12px;
+      }
+
+      .chart-song-info h3 {
+        font-size: 13px;
+      }
+
+      .chart-song-info p {
+        font-size: 11px;
+      }
+
       .news-grid {
         grid-template-columns: 1fr;
       }
@@ -647,9 +1024,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   `;
 
-  document.head.appendChild(newsStyles);
+  document.head.appendChild(websiteStyles);
 
-  // 10. ADD NEWS TO NAVIGATION
+  // ==========================================
+  // 12. ADD NEWS AND TOP 15 TO NAVIGATION
+  // ==========================================
+
+  if (nav && !nav.querySelector('a[href="#top15"]')) {
+    const chartLink = document.createElement("a");
+
+    chartLink.href = "#top15";
+    chartLink.textContent = "TOP 15";
+
+    const aboutLink = nav.querySelector('a[href="#about"]');
+
+    if (aboutLink) {
+      nav.insertBefore(chartLink, aboutLink);
+    } else {
+      nav.appendChild(chartLink);
+    }
+  }
+
   if (nav && !nav.querySelector('a[href="#news"]')) {
     const newsLink = document.createElement("a");
 
@@ -663,18 +1058,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       nav.appendChild(newsLink);
     }
-
-    newsLink.addEventListener("click", () => {
-      nav.classList.remove("open");
-      menu?.setAttribute("aria-expanded", "false");
-
-      if (menu) {
-        menu.textContent = "☰";
-      }
-    });
   }
 
-  // 11. LIVE RADIO PLAYER STATUS
+  // 13. LIVE RADIO PLAYER STATUS
   const playButton = document.getElementById("play");
   const status = document.getElementById("status");
 
