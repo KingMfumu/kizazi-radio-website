@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -583,6 +591,13 @@ img{max-width:100%}
 
 .now-details{min-width:0}
 
+.now-details small{
+  color:var(--red);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.5px;
+}
+
 .now-details strong{
   display:block;
   font-size:14px;
@@ -593,13 +608,6 @@ img{max-width:100%}
   color:var(--muted);
   font-size:11px;
   margin:5px 0 0;
-}
-
-.now-details small{
-  color:var(--red);
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:1.5px;
 }
 
 /* SCHEDULE */
@@ -782,8 +790,9 @@ img{max-width:100%}
   flex-shrink:0;
 }
 
-/* SHOW HOST PORTRAITS */
 
+
+/* SHOW HOST PORTRAITS */
 .show-art{
   isolation:isolate;
 }
@@ -1044,38 +1053,66 @@ img{max-width:100%}
   border-color:var(--red);
 }
 
-/* CONTACT / COMMUNITY */
+/* MUSIC & EDITORIAL SUBMISSIONS */
 
 .community-section{
   padding:75px 0;
   border-bottom:1px solid var(--line);
 }
 
-.community-box{
-  padding:40px;
-  border:1px solid var(--line);
-  background:
-    radial-gradient(circle at 90% 50%,#e509091a,transparent 35%),
-    #121216;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:30px;
+.community-heading{
+  margin-bottom:28px;
 }
 
-.community-box h2{
+.community-heading h2{
   font-size:clamp(28px,4vw,43px);
   line-height:1;
   letter-spacing:-.06em;
   margin:0;
 }
 
-.community-box p{
+.submission-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.submission-card{
+  min-height:245px;
+  padding:32px;
+  border:1px solid var(--line);
+  background:
+    radial-gradient(circle at 90% 10%,#e509091a,transparent 38%),
+    #121216;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+
+.submission-card h3{
+  font-size:clamp(21px,2.5vw,29px);
+  line-height:1.08;
+  letter-spacing:-.045em;
+  margin:0;
+}
+
+.submission-card p{
   color:var(--muted);
   font-size:12px;
   line-height:1.8;
   max-width:470px;
-  margin:14px 0 0;
+  margin:14px 0 24px;
+}
+
+.submission-card .primary-button{
+  margin-top:auto;
+}
+
+.submission-email{
+  color:#a5a5ae;
+  font-size:11px;
+  margin-top:13px;
+  overflow-wrap:anywhere;
 }
 
 /* FOOTER */
@@ -1189,6 +1226,7 @@ img{max-width:100%}
   .sound-bars{right:24px;top:25px}
   .player-panel{padding:25px 15px}
   .caster-player{min-height:250px}
+
   .now-playing{padding:16px}
   .now-art{width:55px;height:55px}
 
@@ -1209,8 +1247,8 @@ img{max-width:100%}
   .news-card{min-height:220px}
 
   .about-grid{gap:20px}
-  .community-box{padding:27px;display:block}
-  .community-box .primary-button{margin-top:22px}
+  .submission-grid{grid-template-columns:1fr}
+  .submission-card{padding:25px;min-height:220px}
 
   .footer-top{display:block}
   .footer-links{margin-top:20px;gap:17px}
@@ -1295,7 +1333,7 @@ img{max-width:100%}
     <h1>THE SOUND<br>OF <em>WHAT'S<br>NEXT.</em></h1>
 
     <p class="hero-description">
-      Welcome to <strong>KiZaZi Radio</strong> — Your Home for the Sounds, Stories, and Voices of a New Generation.
+      Music, culture, entertainment and conversations that move with the next generation.
     </p>
 
     <div class="hero-actions">
@@ -1653,27 +1691,43 @@ img{max-width:100%}
   </div>
 </section>
 
-<!-- COMMUNITY -->
+<!-- MUSIC & EDITORIAL SUBMISSIONS -->
 
-<section class="community-section">
+<section class="community-section" id="submissions">
   <div class="wrap">
 
-    <div class="community-box">
+    <div class="community-heading">
+      <p class="eyebrow">Be part of the conversation</p>
+      <h2>YOUR VOICE.<br><span style="color:#e50909">YOUR KIZAZI.</span></h2>
+    </div>
 
-      <div>
-        <p class="eyebrow">Be part of the conversation</p>
+    <div class="submission-grid">
 
-        <h2>YOUR VOICE.<br><span style="color:#e50909">YOUR KIZAZI.</span></h2>
-
+      <article class="submission-card">
+        <p class="eyebrow">For artists & music creators</p>
+        <h3>SUBMIT YOUR MUSIC.</h3>
         <p>
-          Have a story, music release, event or idea to share? Connect with the KIZAZI RADIO team.
+          Got a new single, EP or album? Send your music to KIZAZI RADIO for consideration and music coverage.
         </p>
-      </div>
+        <a class="primary-button"
+           href="mailto:hello@kizaziradio.com?subject=Music%20Submission%20-%20KIZAZI%20RADIO">
+          SUBMIT YOUR TRACK ↗
+        </a>
+        <span class="submission-email">hello@kizaziradio.com</span>
+      </article>
 
-      <a class="primary-button"
-         href="mailto:hello@kizaziradio.com?subject=Connect%20with%20KIZAZI%20RADIO">
-        CONNECT WITH US ↗
-      </a>
+      <article class="submission-card">
+        <p class="eyebrow">For writers, journalists & contributors</p>
+        <h3>SUBMIT YOUR STORY, NEWS, ARTICLE.</h3>
+        <p>
+          Have a news update, feature, interview, article or story to share? Send it to our editorial team.
+        </p>
+        <a class="primary-button"
+           href="mailto:editor@kizaziradio.com?subject=Story%20or%20News%20Submission%20-%20KIZAZI%20RADIO">
+          SUBMIT YOUR STORY ↗
+        </a>
+        <span class="submission-email">editor@kizaziradio.com</span>
+      </article>
 
     </div>
 
@@ -1772,3 +1826,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
 
 </body>
 </html>
+
+
+
+
