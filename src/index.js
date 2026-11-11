@@ -16,7 +16,6 @@ const COOKIE_NAME = "kizazi_admin_session";
 const SESSION_DURATION = 8 * 60 * 60;
 const MAX_IMAGE_SIZE = 8 * 1024 * 1024;
 const encoder = new TextEncoder();
-
 const COOKIE_OPTIONS = "Path=/; HttpOnly; Secure; SameSite=Strict";
 
 function base64urlEncode(bytes) {
@@ -99,7 +98,8 @@ async function verifySession(token, secret) {
       new TextDecoder().decode(base64urlDecode(payloadPart))
     );
 
-    if (!payload.sub || !payload.exp || payload.exp <= Math.floor(Date.now() / 1000)) {
+    if (!payload.sub || !payload.exp ||
+        payload.exp <= Math.floor(Date.now() / 1000)) {
       return null;
     }
 
@@ -158,7 +158,6 @@ function makeSlug(value) {
 
 async function uniqueSlug(db, title, currentId = null) {
   const base = makeSlug(title);
-
   if (!base) return null;
 
   let slug = base;
@@ -187,6 +186,37 @@ function cleanArticleInput(data) {
     category: String(data.category || "").trim().slice(0, 100),
     author: String(data.author || "KIZAZI RADIO").trim().slice(0, 150),
     status: data.status === "published" ? "published" : "draft",
+  };
+}
+
+function cleanMusicChartInput(data) {
+  const position = Number(data.position);
+  const songTitle = String(data.song_title || "").trim();
+  const artistName = String(data.artist_name || "").trim();
+  const artworkUrl = String(data.artwork_url || "").trim();
+  const youtubeUrl = String(data.youtube_url || "").trim();
+
+  let validYoutubeUrl = false;
+
+  try {
+    const parsed = new URL(youtubeUrl);
+    validYoutubeUrl =
+      parsed.protocol === "https:" &&
+      ["youtube.com", "www.youtube.com", "m.youtube.com",
+       "youtu.be", "www.youtu.be"].includes(parsed.hostname);
+  } catch {
+    validYoutubeUrl = false;
+  }
+
+  return {
+    position,
+    song_title: songTitle.slice(0, 250),
+    artist_name: artistName.slice(0, 200),
+    artwork_url: artworkUrl.slice(0, 2000),
+    youtube_url: youtubeUrl.slice(0, 2000),
+    status: data.status === "inactive" ? "inactive" : "active",
+    validPosition: Number.isInteger(position) && position >= 1 && position <= 15,
+    validYoutubeUrl,
   };
 }
 
@@ -311,7 +341,9 @@ export default {
     const isAdminApi =
       path === "/api/admin/articles" ||
       path.startsWith("/api/admin/articles/") ||
-      path === "/api/admin/upload";
+      path === "/api/admin/upload" ||
+      path === "/api/admin/music-chart" ||
+      path.startsWith("/api/admin/music-chart/");
 
     if (isAdminApi) {
       if (!["GET", "POST", "PUT", "DELETE"].includes(method)) {
@@ -334,7 +366,210 @@ export default {
         return json({ success: false, error: "Database unavailable" }, 503);
       }
 
-      // 6. LIST ALL ARTICLES FOR ADMIN
+      // 6. ADMIN MUSIC CHART - LIST
+
+      if (path === "/api/admin/music-chart" && method === "GET") {
+        try {
+          const result = await env.NEWS_DB.prepare(
+            `SELECT id, position, song_title, artist_name,
+                    artwork_url, youtube_url, status,
+                    created_at, updated_at
+             FROM music_chart
+             ORDER BY position ASC`
+          ).all();
+
+          return json({
+            success: true,
+            total: result.results.length,
+            songs: result.results,
+          });
+        } catch {
+          return json({
+            success: false,
+            error: "Unable to retrieve music chart",
+          }, 500);
+        }
+      }
+
+      // 7. ADMIN MUSIC CHART - CREATE
+
+      if (path === "/api/admin/music-chart" && method === "POST") {
+        const data = await readJson(request);
+
+        if (!data) {
+          return json({ success: false, error: "Invalid JSON data" }, 400);
+        }
+
+        const song = cleanMusicChartInput(data);
+
+        if (!song.validPosition) {
+          return json({
+            success: false,
+            error: "Ranking must be between 1 and 15",
+          }, 400);
+        }
+
+        if (!song.song_title || !song.artist_name) {
+          return json({
+            success: false,
+            error: "Song title and artist name are required",
+          }, 400);
+        }
+
+        if (!song.validYoutubeUrl) {
+          return json({
+            success: false,
+            error: "Please enter a valid YouTube URL",
+          }, 400);
+        }
+
+        try {
+          const occupied = await env.NEWS_DB.prepare(
+            "SELECT id FROM music_chart WHERE position = ? LIMIT 1"
+          ).bind(song.position).first();
+
+          if (occupied) {
+            return json({
+              success: false,
+              error: `Position ${song.position} is already occupied. Edit or move that song first.`,
+            }, 409);
+          }
+
+          const result = await env.NEWS_DB.prepare(
+            `INSERT INTO music_chart
+             (position, song_title, artist_name, artwork_url,
+              youtube_url, status, updated_at)
+             VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)`
+          ).bind(
+            song.position,
+            song.song_title,
+            song.artist_name,
+            song.artwork_url || null,
+            song.youtube_url,
+            song.status
+          ).run();
+
+          return json({
+            success: true,
+            message: "Music chart song created successfully",
+            id: result.meta.last_row_id,
+          }, 201);
+        } catch {
+          return json({
+            success: false,
+            error: "Unable to create music chart song",
+          }, 500);
+        }
+      }
+
+      // 8. ADMIN MUSIC CHART - UPDATE AND DELETE
+
+      if (path.startsWith("/api/admin/music-chart/")) {
+        const idText = path.slice("/api/admin/music-chart/".length);
+        const id = Number(idText);
+
+        if (!Number.isInteger(id) || id < 1 || idText.includes("/")) {
+          return json({ success: false, error: "Invalid song ID" }, 400);
+        }
+
+        const existing = await env.NEWS_DB.prepare(
+          "SELECT id FROM music_chart WHERE id = ? LIMIT 1"
+        ).bind(id).first();
+
+        if (!existing) {
+          return json({ success: false, error: "Song not found" }, 404);
+        }
+
+        if (method === "DELETE") {
+          try {
+            await env.NEWS_DB.prepare(
+              "DELETE FROM music_chart WHERE id = ?"
+            ).bind(id).run();
+
+            return json({
+              success: true,
+              message: "Music chart song deleted successfully",
+            });
+          } catch {
+            return json({
+              success: false,
+              error: "Unable to delete song",
+            }, 500);
+          }
+        }
+
+        if (method === "PUT") {
+          const data = await readJson(request);
+
+          if (!data) {
+            return json({ success: false, error: "Invalid JSON data" }, 400);
+          }
+
+          const song = cleanMusicChartInput(data);
+
+          if (!song.validPosition) {
+            return json({
+              success: false,
+              error: "Ranking must be between 1 and 15",
+            }, 400);
+          }
+
+          if (!song.song_title || !song.artist_name) {
+            return json({
+              success: false,
+              error: "Song title and artist name are required",
+            }, 400);
+          }
+
+          if (!song.validYoutubeUrl) {
+            return json({
+              success: false,
+              error: "Please enter a valid YouTube URL",
+            }, 400);
+          }
+
+          try {
+            const occupied = await env.NEWS_DB.prepare(
+              "SELECT id FROM music_chart WHERE position = ? AND id != ? LIMIT 1"
+            ).bind(song.position, id).first();
+
+            if (occupied) {
+              return json({
+                success: false,
+                error: `Position ${song.position} is already occupied. Edit or move that song first.`,
+              }, 409);
+            }
+
+            await env.NEWS_DB.prepare(
+              `UPDATE music_chart
+               SET position = ?, song_title = ?, artist_name = ?,
+                   artwork_url = ?, youtube_url = ?, status = ?,
+                   updated_at = CURRENT_TIMESTAMP
+               WHERE id = ?`
+            ).bind(
+              song.position,
+              song.song_title,
+              song.artist_name,
+              song.artwork_url || null,
+              song.youtube_url,
+              song.status,
+              id
+            ).run();
+
+            return json({
+              success: true,
+              message: "Music chart song updated successfully",
+            });
+          } catch {
+            return json({
+              success: false,
+              error: "Unable to update music chart song",
+            }, 500);
+          }
+        }
+      }
+
+      // 9. ADMIN ARTICLES - LIST
 
       if (path === "/api/admin/articles" && method === "GET") {
         try {
@@ -356,7 +591,7 @@ export default {
         }
       }
 
-      // 7. CREATE ARTICLE
+      // 10. ADMIN ARTICLES - CREATE
 
       if (path === "/api/admin/articles" && method === "POST") {
         const data = await readJson(request);
@@ -408,7 +643,7 @@ export default {
         }
       }
 
-      // 8. UPDATE OR DELETE ARTICLE
+      // 11. ADMIN ARTICLES - UPDATE AND DELETE
 
       if (path.startsWith("/api/admin/articles/")) {
         const idText = path.slice("/api/admin/articles/".length);
@@ -498,7 +733,7 @@ export default {
         }
       }
 
-      // 9. UPLOAD IMAGE TO R2
+      // 12. ADMIN IMAGE UPLOAD TO R2
 
       if (path === "/api/admin/upload" && method === "POST") {
         if (!env.MEDIA_BUCKET) {
@@ -512,6 +747,11 @@ export default {
         try {
           const formData = await request.formData();
           const file = formData.get("file");
+          const folderInput = String(formData.get("folder") || "news");
+
+          const folder = ["news", "music-chart"].includes(folderInput)
+            ? folderInput
+            : "news";
 
           if (!file || typeof file.arrayBuffer !== "function") {
             return json({ success: false, error: "Please select an image" }, 400);
@@ -530,7 +770,7 @@ export default {
             }, 400);
           }
 
-          const key = `news/${Date.now()}-${crypto.randomUUID()}.${extension}`;
+          const key = `${folder}/${Date.now()}-${crypto.randomUUID()}.${extension}`;
 
           await env.MEDIA_BUCKET.put(key, await file.arrayBuffer(), {
             httpMetadata: { contentType: file.type },
@@ -559,7 +799,33 @@ export default {
       return json({ success: false, error: "Admin endpoint not found" }, 404);
     }
 
-    // 10. PUBLIC PUBLISHED ARTICLES
+    // 13. PUBLIC MUSIC CHART TOP 15
+
+    if (path === "/api/music-chart" && method === "GET") {
+      try {
+        const result = await env.NEWS_DB.prepare(
+          `SELECT id, position, song_title, artist_name,
+                  artwork_url, youtube_url
+           FROM music_chart
+           WHERE status = 'active'
+           ORDER BY position ASC
+           LIMIT 15`
+        ).all();
+
+        return json({
+          success: true,
+          total: result.results.length,
+          chart: result.results,
+        });
+      } catch {
+        return json({
+          success: false,
+          error: "Unable to retrieve music chart",
+        }, 500);
+      }
+    }
+
+    // 14. PUBLIC PUBLISHED ARTICLES
 
     if (path === "/api/articles" && method === "GET") {
       try {
@@ -587,7 +853,7 @@ export default {
       }
     }
 
-    // 11. PUBLIC SINGLE ARTICLE
+    // 15. PUBLIC SINGLE ARTICLE
 
     if (path.startsWith("/api/articles/") && method === "GET") {
       try {
@@ -613,7 +879,7 @@ export default {
       }
     }
 
-    // 12. SERVE WEBSITE FILES
+    // 16. SERVE WEBSITE FILES
 
     return env.ASSETS.fetch(request);
   },
