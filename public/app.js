@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
 
       <div class="news-footer">
-        <a href="#news" class="secondary">MORE STORIES ↗</a>
+        <a href="/news/" class="secondary">VIEW ALL NEWS ↗</a>
       </div>
 
     </div>
@@ -303,12 +303,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // 8. FETCH PUBLISHED ARTICLES FROM CLOUDFLARE D1 API
+  // 8. FETCH LATEST 5 PUBLISHED ARTICLES FROM CLOUDFLARE D1 API
   const loadNews = async () => {
     if (!newsGrid) return;
 
     try {
-      const response = await fetch("/api/articles?limit=6", {
+      const response = await fetch("/api/articles?limit=5", {
         method: "GET",
         headers: {
           "Accept": "application/json"
