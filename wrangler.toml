@@ -11,3 +11,7 @@ binding = "ASSETS"
 binding = "NEWS_DB"
 database_name = "kizazi-news-db"
 database_id = "dc43689a-c865-426c-b0b1-65104daebf80"
+
+[[r2_buckets]]
+binding = "MEDIA_BUCKET"
+bucket_name = "kizazi-radio-media"
