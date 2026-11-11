@@ -55,8 +55,8 @@ th{color:#888;font-size:11px;letter-spacing:1px}
 td{color:#ddd}
 .article-title{font-weight:bold;color:white}
 .status{display:inline-block;padding:5px 9px;border-radius:20px;font-size:11px}
-.published{background:#12301e;color:#8de0a8}
-.draft{background:#332817;color:#f1c77d}
+.published,.active-status{background:#12301e;color:#8de0a8}
+.draft,.inactive-status{background:#332817;color:#f1c77d}
 .table-actions{display:flex;gap:7px}
 .table-actions button{padding:8px 10px;font-size:11px}
 .empty{text-align:center;color:#888;padding:35px}
@@ -69,9 +69,12 @@ td{color:#ddd}
 .login-brand img{width:190px;max-width:80%}
 .login-brand p{font-size:11px;letter-spacing:4px;color:#888}
 #app{display:none}
-#editor{display:none}
-#imagePreview{display:none;max-width:220px;max-height:140px;object-fit:cover;margin-top:12px;border-radius:6px}
+#editor,#chartEditor{display:none}
+#imagePreview,#chartImagePreview{display:none;max-width:220px;max-height:140px;object-fit:cover;margin-top:12px;border-radius:6px}
 .footer{text-align:center;color:#555;font-size:11px;padding:25px}
+.chart-art{width:48px;height:48px;object-fit:cover;border-radius:5px;background:#292929}
+.position{font-weight:bold;color:#fff;font-size:16px}
+.chart-note{color:#888;font-size:12px;line-height:1.6;margin-top:-8px;margin-bottom:18px}
 @media(max-width:800px){
 .layout{grid-template-columns:1fr}
 .sidebar{display:flex;gap:6px;overflow-x:auto;padding:12px}
@@ -129,9 +132,13 @@ main{padding:24px 16px}
   <aside class="sidebar">
     <p class="side-label">CONTENT MANAGEMENT</p>
     <button class="nav-btn active" id="newsNav">▣ &nbsp; News Management</button>
+    <button class="nav-btn" id="chartNav">♫ &nbsp; TOP 15 Music Chart</button>
   </aside>
 
   <main>
+
+    <!-- NEWS MANAGEMENT -->
+
     <section id="newsPage">
       <div class="page-heading">
         <div>
@@ -215,6 +222,93 @@ main{padding:24px 16px}
         </div>
       </div>
     </section>
+
+    <!-- TOP 15 MUSIC CHART -->
+
+    <section id="chartPage" style="display:none">
+      <div class="page-heading">
+        <div>
+          <h1>TOP 15 Music Chart</h1>
+          <p>Manage the official KIZAZI RADIO Top 15 music chart.</p>
+        </div>
+        <button class="btn red" id="newSongButton">+ ADD SONG</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><span>CHART CAPACITY</span><strong>15</strong></div>
+        <div class="stat"><span>ACTIVE SONGS</span><strong id="activeSongCount">0</strong></div>
+        <div class="stat"><span>AVAILABLE POSITIONS</span><strong id="availablePositions">15</strong></div>
+      </div>
+
+      <div class="panel" id="chartEditor">
+        <h2 id="chartEditorTitle">Add Song to TOP 15</h2>
+        <p class="chart-note">Add a song and assign its chart position. All music genres compete in one combined chart.</p>
+        <div id="chartEditorMessage" class="message"></div>
+
+        <form id="chartForm">
+          <input type="hidden" id="chartSongId">
+
+          <div class="form-grid">
+            <div>
+              <label for="songPosition">CHART POSITION *</label>
+              <select id="songPosition" required></select>
+            </div>
+            <div>
+              <label for="songStatus">STATUS</label>
+              <select id="songStatus">
+                <option value="active">Active – Show on website</option>
+                <option value="inactive">Inactive – Hide from website</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="songTitle">SONG TITLE *</label>
+          <input id="songTitle" maxlength="250" required placeholder="Enter song title">
+
+          <label for="artistName">ARTIST NAME *</label>
+          <input id="artistName" maxlength="250" required placeholder="Enter artist name">
+
+          <label for="songYoutube">YOUTUBE VIDEO URL *</label>
+          <input id="songYoutube" type="url" required placeholder="https://www.youtube.com/watch?v=...">
+
+          <label for="chartArtwork">SONG ARTWORK</label>
+          <input id="chartArtwork" type="file" accept="image/jpeg,image/png,image/webp,image/gif">
+          <img id="chartImagePreview" alt="Song artwork preview">
+          <input type="hidden" id="chartArtworkUrl">
+
+          <div class="form-actions">
+            <button type="submit" class="btn red" id="saveSongButton">SAVE SONG</button>
+            <button type="button" class="btn dark" id="cancelSongButton">CANCEL</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="toolbar">
+          <h2 style="margin:0">TOP 15 – All Songs</h2>
+          <input class="search" id="chartSearchInput" placeholder="Search songs or artists...">
+        </div>
+        <p class="chart-note">The chart is one combined ranking. Bongo Fleva, Amapiano, Afrobeats, R&B, Hip Hop and other genres all appear together.</p>
+        <div id="chartListMessage" class="message"></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>POSITION</th>
+                <th>ARTWORK</th>
+                <th>SONG / ARTIST</th>
+                <th>STATUS</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody id="chartTable">
+              <tr><td colspan="5" class="empty">Loading chart...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
   </main>
 </div>
 <div class="footer">© KIZAZI RADIO · CONTENT MANAGEMENT SYSTEM</div>
@@ -224,7 +318,9 @@ main{padding:24px 16px}
 const $ = id => document.getElementById(id);
 
 let articles = [];
+let chartSongs = [];
 let editingImageUrl = "";
+let editingArtworkUrl = "";
 
 function showMessage(element, text, type) {
   element.textContent = text;
@@ -261,6 +357,7 @@ function showApp() {
   $("loginScreen").style.display = "none";
   $("app").style.display = "block";
   loadArticles();
+  loadChart();
 }
 
 async function checkSession() {
@@ -309,6 +406,26 @@ $("logoutButton").addEventListener("click", async () => {
   }
   showLogin();
 });
+
+/* NAVIGATION */
+
+function showPage(page) {
+  const isNews = page === "news";
+
+  $("newsPage").style.display = isNews ? "block" : "none";
+  $("chartPage").style.display = isNews ? "none" : "block";
+
+  $("newsNav").classList.toggle("active", isNews);
+  $("chartNav").classList.toggle("active", !isNews);
+
+  if (isNews) loadArticles();
+  else loadChart();
+}
+
+$("newsNav").addEventListener("click", () => showPage("news"));
+$("chartNav").addEventListener("click", () => showPage("chart"));
+
+/* NEWS MANAGEMENT */
 
 async function loadArticles() {
   $("articlesTable").innerHTML =
@@ -448,12 +565,10 @@ $("articleImage").addEventListener("change", () => {
   $("imagePreview").style.display = "block";
 });
 
-async function uploadImage() {
-  const file = $("articleImage").files[0];
-  if (!file) return editingImageUrl;
-
+async function uploadImage(file, folder) {
   const formData = new FormData();
   formData.append("file", file);
+  formData.append("folder", folder);
 
   const result = await api("/api/admin/upload", {
     method:"POST",
@@ -461,6 +576,12 @@ async function uploadImage() {
   });
 
   return result.url;
+}
+
+async function uploadArticleImage() {
+  const file = $("articleImage").files[0];
+  if (!file) return editingImageUrl;
+  return uploadImage(file, "news");
 }
 
 $("articleForm").addEventListener("submit", async event => {
@@ -471,7 +592,7 @@ $("articleForm").addEventListener("submit", async event => {
   button.textContent = "SAVING...";
 
   try {
-    const imageUrl = await uploadImage();
+    const imageUrl = await uploadArticleImage();
     const id = $("articleId").value;
 
     const article = {
@@ -505,6 +626,212 @@ $("articleForm").addEventListener("submit", async event => {
 
 $("searchInput").addEventListener("input", renderArticles);
 
+/* TOP 15 MUSIC CHART */
+
+function setupPositionOptions(selected = "") {
+  const select = $("songPosition");
+  select.innerHTML = "";
+
+  for (let i = 1; i <= 15; i++) {
+    const option = document.createElement("option");
+    option.value = String(i);
+    option.textContent = `#${i}`;
+    if (String(selected) === String(i)) option.selected = true;
+    select.appendChild(option);
+  }
+}
+
+async function loadChart() {
+  $("chartTable").innerHTML =
+    '<tr><td colspan="5" class="empty">Loading chart...</td></tr>';
+
+  try {
+    const data = await api("/api/admin/music-chart");
+    chartSongs = data.chart || [];
+    renderChart();
+  } catch (error) {
+    showMessage($("chartListMessage"), error.message, "error");
+  }
+}
+
+function renderChart() {
+  const active = chartSongs.filter(song => song.status === "active").length;
+  $("activeSongCount").textContent = active;
+  $("availablePositions").textContent = 15 - chartSongs.length;
+
+  const search = $("chartSearchInput").value.toLowerCase().trim();
+
+  const filtered = chartSongs.filter(song =>
+    [song.song_title, song.artist_name].join(" ").toLowerCase().includes(search)
+  );
+
+  if (!filtered.length) {
+    $("chartTable").innerHTML =
+      '<tr><td colspan="5" class="empty">No chart songs found. Add your first song.</td></tr>';
+    return;
+  }
+
+  $("chartTable").innerHTML = filtered.map(song => {
+    const status = song.status === "active"
+      ? '<span class="status active-status">Active</span>'
+      : '<span class="status inactive-status">Inactive</span>';
+
+    const artwork = song.artwork_url
+      ? `<img class="chart-art" src="${escapeHTML(song.artwork_url)}" alt="">`
+      : '<span class="chart-art" style="display:inline-flex;align-items:center;justify-content:center">♫</span>';
+
+    return `
+      <tr>
+        <td><span class="position">#${escapeHTML(song.position)}</span></td>
+        <td>${artwork}</td>
+        <td>
+          <strong class="article-title">${escapeHTML(song.song_title)}</strong><br>
+          <span class="muted">${escapeHTML(song.artist_name)}</span>
+        </td>
+        <td>${status}</td>
+        <td>
+          <div class="table-actions">
+            <button class="btn dark" data-chart-edit="${song.id}">EDIT</button>
+            <button class="btn danger" data-chart-delete="${song.id}">DELETE</button>
+          </div>
+        </td>
+      </tr>`;
+  }).join("");
+}
+
+function openChartEditor(song = null) {
+  $("chartForm").reset();
+
+  $("chartSongId").value = song ? song.id : "";
+  $("chartEditorTitle").textContent = song
+    ? "Edit Chart Song"
+    : "Add Song to TOP 15";
+
+  $("songTitle").value = song?.song_title || "";
+  $("artistName").value = song?.artist_name || "";
+  $("songYoutube").value = song?.youtube_url || "";
+  $("songStatus").value = song?.status || "active";
+
+  editingArtworkUrl = song?.artwork_url || "";
+  $("chartArtworkUrl").value = editingArtworkUrl;
+
+  setupPositionOptions(song?.position || "");
+
+  if (editingArtworkUrl) {
+    $("chartImagePreview").src = editingArtworkUrl;
+    $("chartImagePreview").style.display = "block";
+  } else {
+    $("chartImagePreview").style.display = "none";
+  }
+
+  $("chartEditorMessage").className = "message";
+  $("chartEditor").style.display = "block";
+  $("chartEditor").scrollIntoView({behavior:"smooth"});
+}
+
+$("newSongButton").addEventListener("click", () => {
+  openChartEditor();
+});
+
+$("cancelSongButton").addEventListener("click", () => {
+  $("chartEditor").style.display = "none";
+});
+
+$("chartArtwork").addEventListener("change", () => {
+  const file = $("chartArtwork").files[0];
+  if (!file) return;
+
+  const allowed = ["image/jpeg","image/png","image/webp","image/gif"];
+
+  if (!allowed.includes(file.type)) {
+    showMessage($("chartEditorMessage"), "Please choose a JPG, PNG, WEBP or GIF image.", "error");
+    $("chartArtwork").value = "";
+    return;
+  }
+
+  if (file.size > 8 * 1024 * 1024) {
+    showMessage($("chartEditorMessage"), "Image must be smaller than 8 MB.", "error");
+    $("chartArtwork").value = "";
+    return;
+  }
+
+  $("chartImagePreview").src = URL.createObjectURL(file);
+  $("chartImagePreview").style.display = "block";
+});
+
+async function uploadChartArtwork() {
+  const file = $("chartArtwork").files[0];
+  if (!file) return editingArtworkUrl;
+  return uploadImage(file, "music-chart");
+}
+
+$("chartForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  const button = $("saveSongButton");
+  button.disabled = true;
+  button.textContent = "SAVING...";
+
+  try {
+    const artworkUrl = await uploadChartArtwork();
+    const id = $("chartSongId").value;
+
+    const song = {
+      position: Number($("songPosition").value),
+      song_title: $("songTitle").value.trim(),
+      artist_name: $("artistName").value.trim(),
+      youtube_url: $("songYoutube").value.trim(),
+      artwork_url: artworkUrl,
+      status: $("songStatus").value
+    };
+
+    await api(id ? `/api/admin/music-chart/${id}` : "/api/admin/music-chart", {
+      method: id ? "PUT" : "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify(song)
+    });
+
+    $("chartEditor").style.display = "none";
+    $("chartForm").reset();
+    await loadChart();
+
+    showMessage($("chartListMessage"), "Chart song saved successfully.", "success");
+  } catch (error) {
+    showMessage($("chartEditorMessage"), error.message, "error");
+  } finally {
+    button.disabled = false;
+    button.textContent = "SAVE SONG";
+  }
+});
+
+$("chartTable").addEventListener("click", async event => {
+  const editId = event.target.dataset.chartEdit;
+  const deleteId = event.target.dataset.chartDelete;
+
+  if (editId) {
+    const song = chartSongs.find(item => String(item.id) === editId);
+    if (song) openChartEditor(song);
+  }
+
+  if (deleteId) {
+    const song = chartSongs.find(item => String(item.id) === deleteId);
+    if (!song) return;
+
+    if (!confirm(`Remove "${song.song_title}" from the Top 15 chart?`)) return;
+
+    try {
+      await api(`/api/admin/music-chart/${deleteId}`, {method:"DELETE"});
+      await loadChart();
+      showMessage($("chartListMessage"), "Song removed from the chart.", "success");
+    } catch (error) {
+      showMessage($("chartListMessage"), error.message, "error");
+    }
+  }
+});
+
+$("chartSearchInput").addEventListener("input", renderChart);
+
+setupPositionOptions();
 checkSession();
 </script>
 </body>
