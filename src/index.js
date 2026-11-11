@@ -215,9 +215,7 @@ export default {
     const path = url.pathname;
     const method = request.method;
 
-    // =========================================
     // 1. API HEALTH
-    // =========================================
 
     if (path === "/api/health" && method === "GET") {
       return json({
@@ -233,9 +231,7 @@ export default {
       });
     }
 
-    // =========================================
     // 2. ADMIN LOGIN
-    // =========================================
 
     if (path === "/api/admin/login" && method === "POST") {
       if (!validOrigin(request)) {
@@ -281,9 +277,7 @@ export default {
       });
     }
 
-    // =========================================
     // 3. ADMIN SESSION
-    // =========================================
 
     if (path === "/api/admin/session" && method === "GET") {
       const session = await authenticateAdmin(request, env);
@@ -300,9 +294,7 @@ export default {
       });
     }
 
-    // =========================================
     // 4. ADMIN LOGOUT
-    // =========================================
 
     if (path === "/api/admin/logout" && method === "POST") {
       if (!validOrigin(request)) {
@@ -314,9 +306,7 @@ export default {
       });
     }
 
-    // =========================================
     // 5. ADMIN API SECURITY
-    // =========================================
 
     const isAdminApi =
       path === "/api/admin/articles" ||
@@ -344,9 +334,7 @@ export default {
         return json({ success: false, error: "Database unavailable" }, 503);
       }
 
-      // =======================================
       // 6. LIST ALL ARTICLES FOR ADMIN
-      // =======================================
 
       if (path === "/api/admin/articles" && method === "GET") {
         try {
@@ -368,9 +356,7 @@ export default {
         }
       }
 
-      // =======================================
       // 7. CREATE ARTICLE
-      // =======================================
 
       if (path === "/api/admin/articles" && method === "POST") {
         const data = await readJson(request);
@@ -422,9 +408,7 @@ export default {
         }
       }
 
-      // =======================================
       // 8. UPDATE OR DELETE ARTICLE
-      // =======================================
 
       if (path.startsWith("/api/admin/articles/")) {
         const idText = path.slice("/api/admin/articles/".length);
@@ -514,9 +498,7 @@ export default {
         }
       }
 
-      // =======================================
       // 9. UPLOAD IMAGE TO R2
-      // =======================================
 
       if (path === "/api/admin/upload" && method === "POST") {
         if (!env.MEDIA_BUCKET) {
@@ -577,9 +559,7 @@ export default {
       return json({ success: false, error: "Admin endpoint not found" }, 404);
     }
 
-    // =========================================
     // 10. PUBLIC PUBLISHED ARTICLES
-    // =========================================
 
     if (path === "/api/articles" && method === "GET") {
       try {
@@ -607,9 +587,7 @@ export default {
       }
     }
 
-    // =========================================
     // 11. PUBLIC SINGLE ARTICLE
-    // =========================================
 
     if (path.startsWith("/api/articles/") && method === "GET") {
       try {
@@ -635,9 +613,7 @@ export default {
       }
     }
 
-    // =========================================
     // 12. SERVE WEBSITE FILES
-    // =========================================
 
     return env.ASSETS.fetch(request);
   },
