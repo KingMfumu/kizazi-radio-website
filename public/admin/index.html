@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin Login | KIZAZI RADIO</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #090909;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .login-wrap {
+      width: 100%;
+      max-width: 430px;
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .brand img {
+      width: 190px;
+      max-width: 75%;
+      height: auto;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+
+    .brand p {
+      color: #888;
+      font-size: 11px;
+      letter-spacing: 4px;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .login-card {
+      background: #141414;
+      border: 1px solid #292929;
+      border-radius: 12px;
+      padding: 36px;
+      box-shadow: 0 20px 70px rgba(0,0,0,.45);
+    }
+
+    .login-card h1 {
+      font-size: 25px;
+      margin: 0 0 10px;
+      font-weight: 700;
+    }
+
+    .intro {
+      color: #888;
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0 0 30px;
+    }
+
+    label {
+      display: block;
+      color: #ccc;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 9px;
+      letter-spacing: .5px;
+    }
+
+    input {
+      width: 100%;
+      background: #090909;
+      border: 1px solid #333;
+      border-radius: 6px;
+      color: white;
+      padding: 15px;
+      font-size: 14px;
+      outline: none;
+      margin-bottom: 22px;
+    }
+
+    input:focus {
+      border-color: #e50914;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      border: 0;
+      border-radius: 6px;
+      background: #e50914;
+      color: white;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+
+    button:hover { background: #bd0710; }
+    button:disabled { opacity: .6; cursor: wait; }
+
+    .message {
+      display: none;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .error {
+      display: block;
+      background: #351416;
+      color: #ff9da2;
+      border: 1px solid #642126;
+    }
+
+    .success {
+      display: block;
+      background: #12301e;
+      color: #8de0a8;
+      border: 1px solid #245d39;
+    }
+
+    .footer {
+      color: #666;
+      text-align: center;
+      font-size: 11px;
+      margin-top: 26px;
+      letter-spacing: 1px;
+    }
+
+    .dashboard {
+      display: none;
+      text-align: center;
+    }
+
+    .dashboard h2 {
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .dashboard p {
+      color: #aaa;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .logout {
+      margin-top: 24px;
+      background: #292929;
+    }
+
+    .logout:hover { background: #444; }
+
+    @media (max-width: 480px) {
+      .login-card { padding: 26px 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="login-wrap">
+    <header class="brand">
+      <img src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
+      <p>Content Management System</p>
+    </header>
+
+    <section class="login-card" id="loginCard">
+      <h1>Admin Login</h1>
+      <p class="intro">Sign in to manage KIZAZI RADIO content and digital platforms.</p>
+
+      <div id="message" class="message" role="alert"></div>
+
+      <form id="loginForm">
+        <label for="username">ADMIN EMAIL</label>
+        <input
+          type="email"
+          id="username"
+          name="username"
+          placeholder="Enter your admin email"
+          autocomplete="username"
+          required
+        >
+
+        <label for="password">PASSWORD</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          autocomplete="current-password"
+          required
+        >
+
+        <button type="submit" id="loginButton">SIGN IN TO DASHBOARD</button>
+      </form>
+    </section>
+
+    <section class="login-card dashboard" id="dashboard">
+      <h2>Welcome to KIZAZI RADIO</h2>
+      <p>You are successfully authenticated.</p>
+      <p>The CMS dashboard modules will be connected in the next development stage.</p>
+      <button class="logout" id="logoutButton">LOG OUT</button>
+    </section>
+
+    <footer class="footer">
+      © KIZAZI RADIO · ADMINISTRATION
+    </footer>
+  </main>
+
+  <script>
+    const loginForm = document.getElementById("loginForm");
+    const loginCard = document.getElementById("loginCard");
+    const dashboard = document.getElementById("dashboard");
+    const message = document.getElementById("message");
+    const loginButton = document.getElementById("loginButton");
+
+    function showMessage(text, type) {
+      message.textContent = text;
+      message.className = "message " + type;
+    }
+
+    function showDashboard() {
+      loginCard.style.display = "none";
+      dashboard.style.display = "block";
+    }
+
+    async function checkSession() {
+      try {
+        const response = await fetch("/api/admin/session", {
+          method: "GET",
+          credentials: "same-origin"
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.authenticated === true) {
+          showDashboard();
+        }
+      } catch (error) {
+        console.error("Session check failed:", error);
+      }
+    }
+
+    loginForm.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      message.className = "message";
+      loginButton.disabled = true;
+      loginButton.textContent = "SIGNING IN...";
+
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+
+      try {
+        const response = await fetch("/api/admin/login", {
+          method: "POST",
+          credentials: "same-origin",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || data.success !== true) {
+          throw new Error(data.message || "Login failed. Check your details.");
+        }
+
+        showDashboard();
+      } catch (error) {
+        showMessage(error.message || "Unable to sign in. Please try again.", "error");
+      } finally {
+        loginButton.disabled = false;
+        loginButton.textContent = "SIGN IN TO DASHBOARD";
+      }
+    });
+
+    document.getElementById("logoutButton").addEventListener("click", async function() {
+      try {
+        await fetch("/api/admin/logout", {
+          method: "POST",
+          credentials: "same-origin"
+        });
+      } catch (error) {
+        console.error("Logout request failed:", error);
+      }
+
+      dashboard.style.display = "none";
+      loginCard.style.display = "block";
+      loginForm.reset();
+      showMessage("You have been logged out.", "success");
+    });
+
+    checkSession();
+  </script>
+</body>
+</html>
