@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // KIZAZI RADIO - MAIN WEBSITE JAVASCRIPT
   // ==========================================
 
-  // 1. UPDATE COPYRIGHT YEAR
+  // 1. COPYRIGHT YEAR
   const year = document.getElementById("year");
 
   if (year) {
@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (menu && nav) {
     menu.addEventListener("click", () => {
       const isOpen = nav.classList.toggle("open");
-
       menu.setAttribute("aria-expanded", String(isOpen));
       menu.textContent = isOpen ? "×" : "☰";
     });
@@ -58,10 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const url = new URL(value, window.location.origin);
 
-      if (
-        url.protocol === "https:" ||
-        url.protocol === "http:"
-      ) {
+      if (url.protocol === "https:" || url.protocol === "http:") {
         return url.href;
       }
 
@@ -87,10 +83,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // 5. CREATE NEWS SECTION
-  const newsSection = document.createElement("section");
+  // 5. FIND AND REUSE THE EXISTING HOMEPAGE NEWS SECTION
+  // This prevents the old "New updates coming soon" section
+  // from remaining on the homepage.
 
-  newsSection.className = "section kizazi-news";
+  const existingNewsSection =
+    document.querySelector("main #news") ||
+    Array.from(document.querySelectorAll("main section, main .section"))
+      .find(section => {
+        const text = section.textContent || "";
+
+        return (
+          /THE LATEST FROM KIZAZI RADIO/i.test(text) ||
+          /New updates coming soon/i.test(text)
+        );
+      });
+
+  const newsSection = existingNewsSection || document.createElement("section");
+
+  newsSection.classList.add("section", "kizazi-news");
   newsSection.id = "news";
 
   newsSection.innerHTML = `
@@ -118,16 +129,17 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
 
-  // Insert News before the About section
-  const aboutSection = document.querySelector("#about");
+  if (!existingNewsSection) {
+    const aboutSection = document.querySelector("#about");
 
-  if (aboutSection) {
-    aboutSection.before(newsSection);
-  } else {
-    document.querySelector("main")?.appendChild(newsSection);
+    if (aboutSection) {
+      aboutSection.before(newsSection);
+    } else {
+      document.querySelector("main")?.appendChild(newsSection);
+    }
   }
 
-  // 6. NEWS ARTICLE MODAL
+  // 6. ARTICLE MODAL
   const articleModal = document.createElement("div");
 
   articleModal.className = "news-modal";
@@ -136,10 +148,13 @@ document.addEventListener("DOMContentLoaded", () => {
   articleModal.innerHTML = `
     <div class="news-modal-backdrop"></div>
 
-    <div class="news-modal-panel" role="dialog" aria-modal="true"
+    <div class="news-modal-panel"
+         role="dialog"
+         aria-modal="true"
          aria-labelledby="modalArticleTitle">
 
-      <button class="news-modal-close" type="button"
+      <button class="news-modal-close"
+              type="button"
               aria-label="Close article">×</button>
 
       <div id="modalArticleContent"></div>
@@ -223,13 +238,13 @@ document.addEventListener("DOMContentLoaded", () => {
     articleModal.querySelector(".news-modal-close").focus();
   };
 
-  // 7. DISPLAY NEWS ARTICLES FROM DATABASE
+  // 7. DISPLAY ARTICLES
   const newsGrid = document.getElementById("newsGrid");
 
   const displayArticles = articles => {
     if (!newsGrid) return;
 
-    if (!articles || articles.length === 0) {
+    if (!Array.isArray(articles) || articles.length === 0) {
       newsGrid.innerHTML = `
         <p class="news-message">
           No published stories available at the moment.
@@ -246,7 +261,8 @@ document.addEventListener("DOMContentLoaded", () => {
         <article class="news-card">
 
           <button class="news-image news-open-article"
-                  type="button" data-article-index="${index}"
+                  type="button"
+                  data-article-index="${index}"
                   aria-label="Read ${escapeHTML(article.title)}">
 
             ${
@@ -291,7 +307,6 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
     }).join("");
 
-    // Open the selected article
     newsGrid.querySelectorAll(".news-open-article").forEach(button => {
       button.addEventListener("click", () => {
         const index = Number(button.dataset.articleIndex);
@@ -303,7 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // 8. FETCH LATEST 5 PUBLISHED ARTICLES FROM CLOUDFLARE D1 API
+  // 8. FETCH LATEST FIVE PUBLISHED ARTICLES FROM D1
   const loadNews = async () => {
     if (!newsGrid) return;
 
@@ -322,11 +337,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const data = await response.json();
 
-      if (!data.success) {
-        throw new Error("News API returned an error.");
+      if (!data.success || !Array.isArray(data.articles)) {
+        throw new Error("Invalid response from News API.");
       }
 
-      displayArticles(data.articles);
+      displayArticles(data.articles.slice(0, 5));
 
     } catch (error) {
       console.error("KIZAZI RADIO News Error:", error);
@@ -340,10 +355,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Load news from the database
   loadNews();
 
-  // 9. NEWS STYLING
+  // 9. NEWS AND ARTICLE STYLING
   const newsStyles = document.createElement("style");
 
   newsStyles.textContent = `
@@ -355,7 +369,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     .news-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 22px;
     }
 
@@ -606,7 +620,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     @media(max-width: 850px) {
       .news-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -669,5 +683,4 @@ document.addEventListener("DOMContentLoaded", () => {
       status.textContent = "Stream URL not connected yet";
     });
   }
-
 });
