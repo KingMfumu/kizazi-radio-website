@@ -68,9 +68,7 @@ img{max-width:100%}
   margin:0 10px 3px 0;
 }
 
-.section{
-  padding:90px 0;
-}
+.section{padding:90px 0}
 
 .section-heading{
   display:flex;
@@ -232,9 +230,7 @@ img{max-width:100%}
   height:17px;
 }
 
-.footer-socials{
-  margin-top:4px;
-}
+.footer-socials{margin-top:4px}
 
 @media(max-width:900px){
   .header-socials{gap:8px}
@@ -392,9 +388,7 @@ img{max-width:100%}
 
 /* LIVE RADIO */
 
-.live-section{
-  padding:90px 0;
-}
+.live-section{padding:90px 0}
 
 .live-card{
   display:grid;
@@ -522,9 +516,7 @@ img{max-width:100%}
   min-width:0;
 }
 
-.player-heading{
-  margin-bottom:18px;
-}
+.player-heading{margin-bottom:18px}
 
 .player-heading small{
   color:var(--red);
@@ -626,9 +618,7 @@ img{max-width:100%}
   margin:20px 0 0;
 }
 
-.schedule-board{
-  border-top:1px solid #38383f;
-}
+.schedule-board{border-top:1px solid #38383f}
 
 .schedule-row{
   display:grid;
@@ -646,9 +636,7 @@ img{max-width:100%}
   letter-spacing:1px;
 }
 
-.schedule-row strong{
-  font-size:14px;
-}
+.schedule-row strong{font-size:14px}
 
 .schedule-row small{
   display:block;
@@ -693,7 +681,7 @@ img{max-width:100%}
 }
 
 .show-art{
-  height:260px;
+  min-height:350px;
   padding:25px;
   display:flex;
   flex-direction:column;
@@ -724,7 +712,7 @@ img{max-width:100%}
 
 .show-label,.show-host{
   position:relative;
-  z-index:1;
+  z-index:2;
   color:#c2c2c8;
   font-size:9px;
   font-weight:800;
@@ -733,7 +721,7 @@ img{max-width:100%}
 
 .show-art h3{
   position:relative;
-  z-index:1;
+  z-index:2;
   font-size:clamp(38px,4.5vw,58px);
   line-height:.9;
   letter-spacing:-.075em;
@@ -744,6 +732,41 @@ img{max-width:100%}
 .show-art h3 em,.show-art h3 span{
   color:var(--red);
   font-style:normal;
+}
+
+.show-portraits{
+  position:absolute;
+  z-index:2;
+  right:25px;
+  bottom:22px;
+  display:flex;
+  align-items:flex-end;
+  gap:10px;
+}
+
+.show-portrait{
+  width:90px;
+  margin:0;
+  text-align:center;
+}
+
+.show-portrait img{
+  width:90px;
+  height:112px;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+  border:2px solid #f7f7f8;
+  box-shadow:0 8px 22px #0008;
+}
+
+.show-portrait figcaption{
+  color:#fff;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1px;
+  margin-top:7px;
+  text-transform:uppercase;
 }
 
 .show-description{
@@ -854,9 +877,7 @@ img{max-width:100%}
 
 /* NEWS */
 
-.news-section{
-  padding:90px 0;
-}
+.news-section{padding:90px 0}
 
 .news-grid{
   display:grid;
@@ -992,39 +1013,35 @@ img{max-width:100%}
 }
 
 .community-box p{
+  max-width:480px;
   color:var(--muted);
   font-size:12px;
   line-height:1.8;
-  max-width:470px;
-  margin:14px 0 0;
+  margin:17px 0 0;
 }
 
 /* FOOTER */
 
-.footer{
-  padding:35px 0 20px;
-  background:#08080a;
-}
+.footer{padding:45px 0 25px}
 
 .footer-top{
   display:flex;
   justify-content:space-between;
-  align-items:flex-start;
-  gap:35px;
-  padding-bottom:30px;
+  align-items:center;
+  gap:30px;
+  padding-bottom:35px;
 }
 
 .footer-logo{
-  width:135px;
+  width:130px;
   height:65px;
   object-fit:contain;
-  object-position:left center;
 }
 
 .footer-links{
   display:flex;
   flex-wrap:wrap;
-  gap:22px;
+  gap:20px;
 }
 
 .footer-links a{
@@ -1037,113 +1054,104 @@ img{max-width:100%}
 
 .footer-bottom{
   border-top:1px solid var(--line);
-  padding-top:20px;
+  padding-top:22px;
   display:flex;
   justify-content:space-between;
   gap:20px;
   color:#777780;
   font-size:9px;
-  letter-spacing:.5px;
+  letter-spacing:1px;
 }
 
 /* RESPONSIVE */
 
-@media(max-width:900px){
-  .nav{gap:17px}
-  .nav a{font-size:10px}
-  .live-visual,.player-panel{padding:28px}
-  .schedule-layout{gap:30px}
-  .podcast-layout{gap:35px}
+@media(max-width:1000px){
+  .header-inner{gap:15px}
+  .nav{gap:15px}
+  .header-live{padding:11px}
+  .schedule-layout{gap:35px}
 }
 
-@media(max-width:700px){
-  .header{height:70px}
-  .header-inner{width:90%;gap:12px}
-  .brand-logo{width:110px;height:55px}
-  .menu{display:block;margin-left:auto}
-  .header-live{padding:10px;font-size:8px;gap:8px}
+@media(max-width:800px){
+  .header{height:72px}
+  .brand-logo{width:125px;height:60px}
+  .menu{display:block}
+  .header-live{display:none}
 
   .nav{
     display:none;
     position:absolute;
-    top:69px;
+    top:72px;
     left:0;
     right:0;
-    padding:23px 6%;
-    background:#101014;
+    background:#09090b;
     border-bottom:1px solid var(--line);
+    padding:25px 6%;
     flex-direction:column;
     align-items:flex-start;
     gap:22px;
   }
 
   .nav.open{display:flex}
-  .nav a{font-size:12px}
+  .nav a{font-size:13px}
 
-  .hero{height:650px;min-height:650px}
-  .hero-image{object-position:63% center}
-  .hero-overlay{
-    background:linear-gradient(90deg,rgba(5,5,7,.48),rgba(5,5,7,.20)),
-    linear-gradient(0deg,rgba(5,5,7,.55),transparent 75%);
-  }
-  .hero-content{width:88%;margin-left:6%;padding:70px 0}
-  .hero h1{font-size:clamp(49px,11.5vw,70px)}
-  .hero-description{font-size:12px;max-width:330px}
-  .hero-actions{gap:18px}
+  .live-card{grid-template-columns:1fr}
+  .live-visual{min-height:330px}
+  .schedule-layout{grid-template-columns:1fr}
+  .podcast-layout{grid-template-columns:1fr;gap:35px}
+  .podcast-art{min-height:250px}
+  .about-grid{grid-template-columns:1fr;gap:25px}
+  .footer-top{flex-direction:column;align-items:flex-start}
+}
 
+@media(max-width:600px){
   .wrap{width:90%}
-  .section,.live-section,.shows-section,.news-section{padding:65px 0}
-  .section-heading{display:block}
-  .section-title{font-size:36px}
-  .section-heading .text-link{margin-top:20px}
-
-  .info-strip-inner{grid-template-columns:1fr}
-  .info-item{border-right:0;border-bottom:1px solid var(--line)}
-  .info-item:last-child{border-bottom:0}
-
-  .live-card,.schedule-layout,.podcast-layout,.about-grid{
-    grid-template-columns:1fr;
+  .section{padding:65px 0}
+  .hero{
+    min-height:560px;
+    height:75vh;
   }
-
-  .live-visual{min-height:350px;padding:28px 24px}
-  .live-visual h3{font-size:47px}
-  .sound-bars{right:24px;top:25px}
-  .player-panel{padding:25px 15px}
-  .caster-player{min-height:250px}
-
-  .now-playing{padding:16px}
-  .now-art{width:55px;height:55px}
-
-  .schedule-layout{gap:30px}
-  .schedule-row{grid-template-columns:85px 1fr;gap:12px}
-  .schedule-status{grid-column:2}
-
+  .hero-content{margin-left:5%;width:90%}
+  .hero h1{font-size:clamp(55px,13vw,78px)}
+  .hero-description{font-size:12px}
+  .info-strip-inner{grid-template-columns:1fr}
+  .info-item{
+    border-right:0;
+    border-bottom:1px solid var(--line);
+    padding:16px 5px;
+  }
+  .info-item:last-child{border-bottom:0}
+  .live-section{padding:65px 0}
+  .live-visual{padding:28px;min-height:320px}
+  .player-panel{padding:25px}
+  .schedule-section{padding:65px 0}
+  .schedule-row{
+    grid-template-columns:75px 1fr;
+    gap:12px;
+  }
+  .schedule-status{display:none}
   .show-grid{grid-template-columns:1fr}
-  .show-art{height:225px}
-  .show-art h3{font-size:49px}
-
-  .podcast-layout{gap:25px}
-  .podcast-art{min-height:230px;order:2}
-  .podcast-copy{order:1}
-
+  .show-art{min-height:340px;padding:22px}
+  .show-art h3{font-size:clamp(40px,11vw,55px)}
+  .show-portraits{right:18px;bottom:18px}
+  .show-portrait{width:76px}
+  .show-portrait img{width:76px;height:96px}
+  .show-description{padding:18px}
   .news-grid{grid-template-columns:1fr}
-  .news-placeholder{grid-column:auto}
-  .news-card{min-height:220px}
-
-  .about-grid{gap:20px}
-  .community-box{padding:27px;display:block}
-  .community-box .primary-button{margin-top:22px}
-
-  .footer-top{display:block}
-  .footer-links{margin-top:20px;gap:17px}
-  .footer-bottom{flex-direction:column;gap:10px}
+  .community-box{
+    padding:27px;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .footer-bottom{flex-direction:column}
 }
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
     scroll-behavior:auto!important;
-    animation:none!important;
-    transition:none!important;
+    transition-duration:.01ms!important;
   }
 }
 </style>
@@ -1151,14 +1159,14 @@ img{max-width:100%}
 
 <body>
 
+<!-- HEADER -->
+
 <header class="header" id="top">
   <div class="header-inner">
 
     <a href="#top" aria-label="KIZAZI RADIO home">
       <img class="brand-logo" data-official-logo alt="KIZAZI RADIO official logo">
     </a>
-
-    <button class="menu" aria-label="Open navigation" aria-expanded="false">☰</button>
 
     <nav class="nav" aria-label="Main navigation">
       <a href="#listen">Listen Live</a>
@@ -1168,7 +1176,7 @@ img{max-width:100%}
       <a href="#news">News</a>
       <a href="#about">About</a>
 
-      <div class="social-links header-socials" aria-label="KIZAZI RADIO social media">
+      <div class="social-links header-socials" aria-label="Follow KIZAZI RADIO">
 
         <a href="https://www.instagram.com/kizaziradio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -1192,9 +1200,10 @@ img{max-width:100%}
     </nav>
 
     <a class="header-live" href="#listen">
-      <span class="live-dot"></span>
-      LISTEN LIVE ↗
+      <span class="live-dot"></span> LISTEN LIVE
     </a>
+
+    <button class="menu" aria-label="Open menu" aria-expanded="false">☰</button>
 
   </div>
 </header>
@@ -1204,31 +1213,32 @@ img{max-width:100%}
 <!-- HERO -->
 
 <section class="hero">
-
-  <img class="hero-image"
-       src="/assets/kizazi-radio-hero.webp"
-       alt="KIZAZI RADIO">
-
+  <img class="hero-image" src="/assets/kizazi-radio-hero.webp" alt="KIZAZI RADIO">
   <div class="hero-overlay"></div>
 
   <div class="hero-content">
-    <p class="eyebrow">Radio • Music • Culture</p>
+    <p class="eyebrow">MUSIC • CULTURE • ENTERTAINMENT</p>
 
-    <h1>THE SOUND<br>OF <em>WHAT'S<br>NEXT.</em></h1>
+    <h1>
+      THE SOUND<br>
+      OF WHAT'S<br>
+      <em>NEXT.</em>
+    </h1>
 
     <p class="hero-description">
-      Music, culture, entertainment and conversations that move with the next generation.
+      Fresh sounds. Real voices. New perspectives.
+      Welcome to KIZAZI RADIO — where music, culture
+      and conversation come together.
     </p>
 
     <div class="hero-actions">
       <a class="primary-button" href="#listen">▶ LISTEN LIVE</a>
-      <a class="hero-secondary" href="#shows">EXPLORE KIZAZI ↘</a>
+      <a class="hero-secondary" href="#shows">EXPLORE OUR SHOWS ↗</a>
     </div>
   </div>
-
 </section>
 
-<!-- QUICK INFORMATION -->
+<!-- QUICK INFO -->
 
 <section class="info-strip">
   <div class="wrap info-strip-inner">
@@ -1237,7 +1247,7 @@ img{max-width:100%}
       <div class="info-icon">♫</div>
       <div>
         <strong>NON-STOP MUSIC</strong>
-        <small>Sounds worth discovering</small>
+        <small>The sounds you love</small>
       </div>
     </div>
 
@@ -1245,15 +1255,15 @@ img{max-width:100%}
       <div class="info-icon">◉</div>
       <div>
         <strong>LIVE RADIO</strong>
-        <small>Listen wherever you are</small>
+        <small>Always connected</small>
       </div>
     </div>
 
     <div class="info-item">
-      <div class="info-icon">▣</div>
+      <div class="info-icon">🎙</div>
       <div>
         <strong>ORIGINAL PODCASTS</strong>
-        <small>Stories and real conversations</small>
+        <small>Real voices. Real conversations.</small>
       </div>
     </div>
 
@@ -1267,10 +1277,11 @@ img{max-width:100%}
 
     <div class="section-heading">
       <div>
-        <div class="section-number">01 / LIVE RADIO</div>
-        <p class="eyebrow">Tune in, anytime</p>
-        <h2 class="section-title">WE'RE LIVE. <em>COME THROUGH.</em></h2>
+        <div class="section-number">01 / ON AIR</div>
+        <p class="eyebrow">Tune in. Turn it up.</p>
+        <h2 class="section-title">LISTEN <em>LIVE.</em></h2>
       </div>
+      <span class="header-live"><span class="live-dot"></span> ON AIR</span>
     </div>
 
     <div class="live-card">
@@ -1278,24 +1289,25 @@ img{max-width:100%}
       <div class="live-visual">
 
         <div class="sound-bars" aria-hidden="true">
-          <i></i><i></i><i></i><i></i><i></i><i></i>
-          <i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
         </div>
 
         <div class="live-label">
           <span class="live-dot"></span>
-          KIZAZI RADIO <span>• ON AIR</span>
+          <span>YOU'RE LISTENING TO</span>
+          <span>KIZAZI RADIO</span>
         </div>
 
-        <h3>FEEL THE<br>BEAT. LIVE THE<br><em>GENERATION.</em></h3>
+        <h3>TURN UP<br>THE <em>VOLUME.</em></h3>
 
         <p>
-          Your home for the freshest sounds, bold voices and the culture shaping tomorrow.
+          Your soundtrack for every moment. Stay connected
+          to the music, voices and energy of KIZAZI RADIO.
         </p>
 
         <div class="live-bottom">
-          <span>MUSIC • CULTURE • CONVERSATION</span>
-          <strong>KR.</strong>
+          <span>STREAMING ONLINE</span>
+          <strong>24/7</strong>
         </div>
 
       </div>
@@ -1303,48 +1315,39 @@ img{max-width:100%}
       <div class="player-panel">
 
         <div class="player-heading">
-          <small>NOW BROADCASTING</small>
+          <small>LIVE STREAM</small>
           <h3>Listen to KIZAZI RADIO</h3>
         </div>
 
         <div class="caster-player">
-
           <div class="cstrEmbed"
-               data-type="newStreamPlayer"
-               data-publicToken="2c2de7f0-f72e-4a5b-a7e7-35d9713b63d3"
-               data-theme="dark"
-               data-color="FF0000"
-               data-channelId=""
-               data-rendered="false">
-
+            data-type="newStreamPlayer"
+            data-publicToken="2c2de7f0-f72e-4a5b-a7e7-35d9713b63d3"
+            data-theme="dark"
+            data-color="FF0000"
+            data-channelId=""
+            data-rendered="false">
             <a href="https://www.caster.fm">Shoutcast Hosting</a>
             <a href="https://www.caster.fm">Stream Hosting</a>
             <a href="https://www.caster.fm">Radio Server Hosting</a>
-
           </div>
-
         </div>
 
         <p class="player-note">
-          Press play and enjoy the sound. KIZAZI RADIO is ready to keep you connected.
+          Press play and enjoy the sound of KIZAZI RADIO wherever you are.
         </p>
 
       </div>
 
     </div>
 
-    <!-- NOW PLAYING DISPLAY -->
-
     <div class="now-playing">
-
       <div class="now-art">♫</div>
-
       <div class="now-details">
         <small>ON AIR NOW</small>
         <strong>KIZAZI RADIO LIVE</strong>
         <p>Streaming music and entertainment around the clock.</p>
       </div>
-
     </div>
 
   </div>
@@ -1366,7 +1369,6 @@ img{max-width:100%}
     </div>
 
     <div>
-
       <div class="schedule-board">
 
         <div class="schedule-row">
@@ -1401,7 +1403,6 @@ img{max-width:100%}
       <p class="schedule-note">
         Programme broadcast days and times will be published here when the official schedule is confirmed.
       </p>
-
     </div>
 
   </div>
@@ -1422,14 +1423,34 @@ img{max-width:100%}
 
     <div class="show-grid">
 
-      <article class="show-card">
+      <!-- MAYBE I DON'T KNOW -->
 
+      <article class="show-card">
         <div class="show-art maybe">
+
           <span class="show-label">KIZAZI ORIGINAL / PODCAST</span>
 
           <h3>MAYBE<br><em>I DON'T</em><br>KNOW <span>?</span></h3>
 
           <span class="show-host">WITH TERRY &amp; LUCY</span>
+
+          <div class="show-portraits" aria-label="Podcast hosts Terry and Lucy">
+
+            <figure class="show-portrait">
+              <img src="/assets/terry-mfumu.jpg"
+                   alt="Terry, co-host of Maybe I Don't Know"
+                   loading="lazy">
+              <figcaption>Terry</figcaption>
+            </figure>
+
+            <figure class="show-portrait">
+              <img src="/assets/lucy-johnbosco.jpg"
+                   alt="Lucy, co-host of Maybe I Don't Know"
+                   loading="lazy">
+              <figcaption>Lucy</figcaption>
+            </figure>
+
+          </div>
         </div>
 
         <div class="show-description">
@@ -1441,17 +1462,28 @@ img{max-width:100%}
           </div>
           <span class="round-arrow">↗</span>
         </div>
-
       </article>
 
-      <article class="show-card">
+      <!-- SHUGANALUCY -->
 
+      <article class="show-card">
         <div class="show-art shuga">
+
           <span class="show-label">KIZAZI ORIGINAL / PODCAST</span>
 
           <h3>SHUGA <span>NA</span><br>LUCY.</h3>
 
           <span class="show-host">WITH LUCY</span>
+
+          <div class="show-portraits" aria-label="Podcast host Lucy">
+            <figure class="show-portrait">
+              <img src="/assets/lucy-johnbosco.jpg"
+                   alt="Lucy, host of ShugaNaLucy"
+                   loading="lazy">
+              <figcaption>Lucy</figcaption>
+            </figure>
+          </div>
+
         </div>
 
         <div class="show-description">
@@ -1463,7 +1495,6 @@ img{max-width:100%}
           </div>
           <span class="round-arrow">↗</span>
         </div>
-
       </article>
 
     </div>
@@ -1521,14 +1552,12 @@ img{max-width:100%}
     </div>
 
     <div class="news-grid">
-
       <div class="news-placeholder">
         <strong>THE LATEST FROM KIZAZI RADIO</strong>
         Music news, entertainment stories, culture and the latest happenings will appear here.
         <br>
         New updates coming soon.
       </div>
-
     </div>
 
   </div>
@@ -1563,7 +1592,6 @@ img{max-width:100%}
   <div class="wrap">
 
     <div class="community-box">
-
       <div>
         <p class="eyebrow">Be part of the conversation</p>
 
@@ -1578,7 +1606,6 @@ img{max-width:100%}
          href="mailto:hello@kizaziradio.com?subject=Connect%20with%20KIZAZI%20RADIO">
         CONNECT WITH US ↗
       </a>
-
     </div>
 
   </div>
