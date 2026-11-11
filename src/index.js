@@ -21,19 +21,13 @@ const COOKIE_OPTIONS = "Path=/; HttpOnly; Secure; SameSite=Strict";
 function base64urlEncode(bytes) {
   let binary = "";
   for (const byte of bytes) binary += String.fromCharCode(byte);
-
-  return btoa(binary)
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/g, "");
+  return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
 }
 
 function base64urlDecode(value) {
   const base64 = value.replace(/-/g, "+").replace(/_/g, "/");
   const padded = base64.padEnd(Math.ceil(base64.length / 4) * 4, "=");
-  const binary = atob(padded);
-
-  return Uint8Array.from(binary, c => c.charCodeAt(0));
+  return Uint8Array.from(atob(padded), c => c.charCodeAt(0));
 }
 
 function safeEqual(a, b) {
@@ -67,12 +61,7 @@ async function createSession(username, secret) {
 
   const encoded = base64urlEncode(encoder.encode(JSON.stringify(payload)));
   const key = await getSigningKey(secret);
-
-  const signature = await crypto.subtle.sign(
-    "HMAC",
-    key,
-    encoder.encode(encoded)
-  );
+  const signature = await crypto.subtle.sign("HMAC", key, encoder.encode(encoded));
 
   return encoded + "." + base64urlEncode(new Uint8Array(signature));
 }
@@ -98,8 +87,7 @@ async function verifySession(token, secret) {
       new TextDecoder().decode(base64urlDecode(payloadPart))
     );
 
-    if (!payload.sub || !payload.exp ||
-        payload.exp <= Math.floor(Date.now() / 1000)) {
+    if (!payload.sub || !payload.exp || payload.exp <= Math.floor(Date.now() / 1000)) {
       return null;
     }
 
@@ -126,16 +114,13 @@ function getCookie(request, name) {
 
 async function authenticateAdmin(request, env) {
   if (!env.SESSION_SECRET) return null;
-
   const token = getCookie(request, COOKIE_NAME);
   if (!token) return null;
-
   return verifySession(token, env.SESSION_SECRET);
 }
 
 function validOrigin(request) {
   const origin = request.headers.get("Origin");
-
   if (!origin) return true;
 
   try {
@@ -168,9 +153,7 @@ async function uniqueSlug(db, title, currentId = null) {
       "SELECT id FROM articles WHERE slug = ? LIMIT 1"
     ).bind(slug).first();
 
-    if (!existing || Number(existing.id) === Number(currentId)) {
-      return slug;
-    }
+    if (!existing || Number(existing.id) === Number(currentId)) return slug;
 
     slug = `${base}-${counter}`;
     counter++;
@@ -189,35 +172,27 @@ function cleanArticleInput(data) {
   };
 }
 
-function cleanMusicChartInput(data) {
-  const position = Number(data.position);
-  const songTitle = String(data.song_title || "").trim();
-  const artistName = String(data.artist_name || "").trim();
-  const artworkUrl = String(data.artwork_url || "").trim();
-  const youtubeUrl = String(data.youtube_url || "").trim();
-
-  let validYoutubeUrl = false;
-
-  try {
-    const parsed = new URL(youtubeUrl);
-    validYoutubeUrl =
-      parsed.protocol === "https:" &&
-      ["youtube.com", "www.youtube.com", "m.youtube.com",
-       "youtu.be", "www.youtu.be"].includes(parsed.hostname);
-  } catch {
-    validYoutubeUrl = false;
-  }
-
+function cleanChartInput(data) {
   return {
-    position,
-    song_title: songTitle.slice(0, 250),
-    artist_name: artistName.slice(0, 200),
-    artwork_url: artworkUrl.slice(0, 2000),
-    youtube_url: youtubeUrl.slice(0, 2000),
+    position: Number(data.position),
+    song_title: String(data.song_title || "").trim().slice(0, 250),
+    artist_name: String(data.artist_name || "").trim().slice(0, 250),
+    artwork_url: String(data.artwork_url || "").trim().slice(0, 2000),
+    youtube_url: String(data.youtube_url || "").trim().slice(0, 2000),
     status: data.status === "inactive" ? "inactive" : "active",
-    validPosition: Number.isInteger(position) && position >= 1 && position <= 15,
-    validYoutubeUrl,
   };
+}
+
+function validYoutubeUrl(value) {
+  try {
+    const url = new URL(value);
+    return (
+      ["youtube.com", "www.youtube.com", "youtu.be", "m.youtube.com"].includes(url.hostname) &&
+      (url.protocol === "https:" || url.protocol === "http:")
+    );
+  } catch {
+    return false;
+  }
 }
 
 async function readJson(request) {
@@ -245,7 +220,7 @@ export default {
     const path = url.pathname;
     const method = request.method;
 
-    // 1. API HEALTH
+    // API HEALTH
 
     if (path === "/api/health" && method === "GET") {
       return json({
@@ -253,15 +228,13 @@ export default {
         message: "KIZAZI RADIO API is running",
         database: Boolean(env.NEWS_DB),
         adminAuth: Boolean(
-          env.ADMIN_USERNAME &&
-          env.ADMIN_PASSWORD &&
-          env.SESSION_SECRET
+          env.ADMIN_USERNAME && env.ADMIN_PASSWORD && env.SESSION_SECRET
         ),
         mediaStorage: Boolean(env.MEDIA_BUCKET),
       });
     }
 
-    // 2. ADMIN LOGIN
+    // ADMIN LOGIN
 
     if (path === "/api/admin/login" && method === "POST") {
       if (!validOrigin(request)) {
@@ -274,10 +247,7 @@ export default {
         !env.SESSION_SECRET ||
         env.SESSION_SECRET.length < 32
       ) {
-        return json({
-          success: false,
-          error: "Admin authentication is not configured",
-        }, 503);
+        return json({ success: false, error: "Admin authentication is not configured" }, 503);
       }
 
       if (!request.headers.get("Content-Type")?.toLowerCase().includes("application/json")) {
@@ -285,10 +255,7 @@ export default {
       }
 
       const credentials = await readJson(request);
-
-      if (!credentials) {
-        return json({ success: false, error: "Invalid request" }, 400);
-      }
+      if (!credentials) return json({ success: false, error: "Invalid request" }, 400);
 
       const username = String(credentials.username || "");
       const password = String(credentials.password || "");
@@ -307,7 +274,7 @@ export default {
       });
     }
 
-    // 3. ADMIN SESSION
+    // ADMIN SESSION
 
     if (path === "/api/admin/session" && method === "GET") {
       const session = await authenticateAdmin(request, env);
@@ -324,7 +291,7 @@ export default {
       });
     }
 
-    // 4. ADMIN LOGOUT
+    // ADMIN LOGOUT
 
     if (path === "/api/admin/logout" && method === "POST") {
       if (!validOrigin(request)) {
@@ -336,7 +303,7 @@ export default {
       });
     }
 
-    // 5. ADMIN API SECURITY
+    // PROTECTED ADMIN API ROUTES
 
     const isAdminApi =
       path === "/api/admin/articles" ||
@@ -353,7 +320,6 @@ export default {
       }
 
       const session = await authenticateAdmin(request, env);
-
       if (!session) {
         return json({ success: false, error: "Authentication required" }, 401);
       }
@@ -366,14 +332,132 @@ export default {
         return json({ success: false, error: "Database unavailable" }, 503);
       }
 
-      // 6. ADMIN MUSIC CHART - LIST
+      // ADMIN NEWS: LIST
+
+      if (path === "/api/admin/articles" && method === "GET") {
+        try {
+          const result = await env.NEWS_DB.prepare(
+            `SELECT id, title, slug, excerpt, content, image_url,
+                    category, author, status, published_at,
+                    created_at, updated_at
+             FROM articles ORDER BY created_at DESC`
+          ).all();
+
+          return json({
+            success: true,
+            total: result.results.length,
+            articles: result.results,
+          });
+        } catch {
+          return json({ success: false, error: "Unable to retrieve articles" }, 500);
+        }
+      }
+
+      // ADMIN NEWS: CREATE
+
+      if (path === "/api/admin/articles" && method === "POST") {
+        const data = await readJson(request);
+        if (!data) return json({ success: false, error: "Invalid JSON data" }, 400);
+
+        const article = cleanArticleInput(data);
+        if (!article.title || !article.content) {
+          return json({ success: false, error: "Title and article content are required" }, 400);
+        }
+
+        try {
+          const slug = await uniqueSlug(env.NEWS_DB, article.title);
+          const publishedAt =
+            article.status === "published" ? new Date().toISOString() : null;
+
+          const result = await env.NEWS_DB.prepare(
+            `INSERT INTO articles
+             (title, slug, excerpt, content, image_url, category,
+              author, status, published_at, updated_at)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)`
+          ).bind(
+            article.title, slug, article.excerpt, article.content,
+            article.image_url || null, article.category || null,
+            article.author, article.status, publishedAt
+          ).run();
+
+          return json({
+            success: true,
+            message: "Article created successfully",
+            id: result.meta.last_row_id,
+            slug,
+          }, 201);
+        } catch {
+          return json({ success: false, error: "Unable to create article" }, 500);
+        }
+      }
+
+      // ADMIN NEWS: UPDATE / DELETE
+
+      if (path.startsWith("/api/admin/articles/")) {
+        const idText = path.slice("/api/admin/articles/".length);
+        const id = Number(idText);
+
+        if (!Number.isInteger(id) || id < 1 || idText.includes("/")) {
+          return json({ success: false, error: "Invalid article ID" }, 400);
+        }
+
+        const existing = await env.NEWS_DB.prepare(
+          "SELECT id, published_at FROM articles WHERE id = ? LIMIT 1"
+        ).bind(id).first();
+
+        if (!existing) return json({ success: false, error: "Article not found" }, 404);
+
+        if (method === "DELETE") {
+          try {
+            await env.NEWS_DB.prepare("DELETE FROM articles WHERE id = ?").bind(id).run();
+            return json({ success: true, message: "Article deleted successfully" });
+          } catch {
+            return json({ success: false, error: "Unable to delete article" }, 500);
+          }
+        }
+
+        if (method === "PUT") {
+          const data = await readJson(request);
+          if (!data) return json({ success: false, error: "Invalid JSON data" }, 400);
+
+          const article = cleanArticleInput(data);
+          if (!article.title || !article.content) {
+            return json({ success: false, error: "Title and article content are required" }, 400);
+          }
+
+          try {
+            const slug = await uniqueSlug(env.NEWS_DB, article.title, id);
+            let publishedAt = existing.published_at;
+
+            if (article.status === "draft") publishedAt = null;
+            else if (!publishedAt) publishedAt = new Date().toISOString();
+
+            await env.NEWS_DB.prepare(
+              `UPDATE articles
+               SET title = ?, slug = ?, excerpt = ?, content = ?,
+                   image_url = ?, category = ?, author = ?,
+                   status = ?, published_at = ?, updated_at = CURRENT_TIMESTAMP
+               WHERE id = ?`
+            ).bind(
+              article.title, slug, article.excerpt, article.content,
+              article.image_url || null, article.category || null,
+              article.author, article.status, publishedAt, id
+            ).run();
+
+            return json({ success: true, message: "Article updated successfully", slug });
+          } catch {
+            return json({ success: false, error: "Unable to update article" }, 500);
+          }
+        }
+      }
+
+      // MUSIC CHART: LIST ALL FOR ADMIN
 
       if (path === "/api/admin/music-chart" && method === "GET") {
         try {
           const result = await env.NEWS_DB.prepare(
-            `SELECT id, position, song_title, artist_name,
-                    artwork_url, youtube_url, status,
-                    created_at, updated_at
+            `SELECT id, position, song_title, artist_name, artwork_url,
+                    youtube_url, status, created_at, updated_at
              FROM music_chart
              ORDER BY position ASC`
           ).all();
@@ -381,64 +465,40 @@ export default {
           return json({
             success: true,
             total: result.results.length,
-            songs: result.results,
+            chart: result.results,
           });
         } catch {
-          return json({
-            success: false,
-            error: "Unable to retrieve music chart",
-          }, 500);
+          return json({ success: false, error: "Unable to retrieve music chart" }, 500);
         }
       }
 
-      // 7. ADMIN MUSIC CHART - CREATE
+      // MUSIC CHART: CREATE
 
       if (path === "/api/admin/music-chart" && method === "POST") {
         const data = await readJson(request);
+        if (!data) return json({ success: false, error: "Invalid JSON data" }, 400);
 
-        if (!data) {
-          return json({ success: false, error: "Invalid JSON data" }, 400);
-        }
+        const song = cleanChartInput(data);
 
-        const song = cleanMusicChartInput(data);
-
-        if (!song.validPosition) {
+        if (
+          !Number.isInteger(song.position) ||
+          song.position < 1 ||
+          song.position > 15 ||
+          !song.song_title ||
+          !song.artist_name ||
+          !song.youtube_url ||
+          !validYoutubeUrl(song.youtube_url)
+        ) {
           return json({
             success: false,
-            error: "Ranking must be between 1 and 15",
-          }, 400);
-        }
-
-        if (!song.song_title || !song.artist_name) {
-          return json({
-            success: false,
-            error: "Song title and artist name are required",
-          }, 400);
-        }
-
-        if (!song.validYoutubeUrl) {
-          return json({
-            success: false,
-            error: "Please enter a valid YouTube URL",
+            error: "Enter a valid position (1–15), song title, artist and YouTube URL",
           }, 400);
         }
 
         try {
-          const occupied = await env.NEWS_DB.prepare(
-            "SELECT id FROM music_chart WHERE position = ? LIMIT 1"
-          ).bind(song.position).first();
-
-          if (occupied) {
-            return json({
-              success: false,
-              error: `Position ${song.position} is already occupied. Edit or move that song first.`,
-            }, 409);
-          }
-
           const result = await env.NEWS_DB.prepare(
             `INSERT INTO music_chart
-             (position, song_title, artist_name, artwork_url,
-              youtube_url, status, updated_at)
+             (position, song_title, artist_name, artwork_url, youtube_url, status, updated_at)
              VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)`
           ).bind(
             song.position,
@@ -451,34 +511,32 @@ export default {
 
           return json({
             success: true,
-            message: "Music chart song created successfully",
+            message: "Music chart song added successfully",
             id: result.meta.last_row_id,
           }, 201);
         } catch {
           return json({
             success: false,
-            error: "Unable to create music chart song",
-          }, 500);
+            error: "Could not add song. This chart position may already be occupied.",
+          }, 409);
         }
       }
 
-      // 8. ADMIN MUSIC CHART - UPDATE AND DELETE
+      // MUSIC CHART: UPDATE / DELETE
 
       if (path.startsWith("/api/admin/music-chart/")) {
         const idText = path.slice("/api/admin/music-chart/".length);
         const id = Number(idText);
 
         if (!Number.isInteger(id) || id < 1 || idText.includes("/")) {
-          return json({ success: false, error: "Invalid song ID" }, 400);
+          return json({ success: false, error: "Invalid chart song ID" }, 400);
         }
 
         const existing = await env.NEWS_DB.prepare(
           "SELECT id FROM music_chart WHERE id = ? LIMIT 1"
         ).bind(id).first();
 
-        if (!existing) {
-          return json({ success: false, error: "Song not found" }, 404);
-        }
+        if (!existing) return json({ success: false, error: "Song not found" }, 404);
 
         if (method === "DELETE") {
           try {
@@ -486,60 +544,34 @@ export default {
               "DELETE FROM music_chart WHERE id = ?"
             ).bind(id).run();
 
-            return json({
-              success: true,
-              message: "Music chart song deleted successfully",
-            });
+            return json({ success: true, message: "Chart song deleted successfully" });
           } catch {
-            return json({
-              success: false,
-              error: "Unable to delete song",
-            }, 500);
+            return json({ success: false, error: "Unable to delete chart song" }, 500);
           }
         }
 
         if (method === "PUT") {
           const data = await readJson(request);
+          if (!data) return json({ success: false, error: "Invalid JSON data" }, 400);
 
-          if (!data) {
-            return json({ success: false, error: "Invalid JSON data" }, 400);
-          }
+          const song = cleanChartInput(data);
 
-          const song = cleanMusicChartInput(data);
-
-          if (!song.validPosition) {
+          if (
+            !Number.isInteger(song.position) ||
+            song.position < 1 ||
+            song.position > 15 ||
+            !song.song_title ||
+            !song.artist_name ||
+            !song.youtube_url ||
+            !validYoutubeUrl(song.youtube_url)
+          ) {
             return json({
               success: false,
-              error: "Ranking must be between 1 and 15",
-            }, 400);
-          }
-
-          if (!song.song_title || !song.artist_name) {
-            return json({
-              success: false,
-              error: "Song title and artist name are required",
-            }, 400);
-          }
-
-          if (!song.validYoutubeUrl) {
-            return json({
-              success: false,
-              error: "Please enter a valid YouTube URL",
+              error: "Enter a valid position (1–15), song title, artist and YouTube URL",
             }, 400);
           }
 
           try {
-            const occupied = await env.NEWS_DB.prepare(
-              "SELECT id FROM music_chart WHERE position = ? AND id != ? LIMIT 1"
-            ).bind(song.position, id).first();
-
-            if (occupied) {
-              return json({
-                success: false,
-                error: `Position ${song.position} is already occupied. Edit or move that song first.`,
-              }, 409);
-            }
-
             await env.NEWS_DB.prepare(
               `UPDATE music_chart
                SET position = ?, song_title = ?, artist_name = ?,
@@ -556,184 +588,17 @@ export default {
               id
             ).run();
 
-            return json({
-              success: true,
-              message: "Music chart song updated successfully",
-            });
+            return json({ success: true, message: "Chart song updated successfully" });
           } catch {
             return json({
               success: false,
-              error: "Unable to update music chart song",
-            }, 500);
+              error: "Could not update song. This chart position may already be occupied.",
+            }, 409);
           }
         }
       }
 
-      // 9. ADMIN ARTICLES - LIST
-
-      if (path === "/api/admin/articles" && method === "GET") {
-        try {
-          const result = await env.NEWS_DB.prepare(
-            `SELECT id, title, slug, excerpt, content, image_url,
-                    category, author, status, published_at,
-                    created_at, updated_at
-             FROM articles
-             ORDER BY created_at DESC`
-          ).all();
-
-          return json({
-            success: true,
-            total: result.results.length,
-            articles: result.results,
-          });
-        } catch {
-          return json({ success: false, error: "Unable to retrieve articles" }, 500);
-        }
-      }
-
-      // 10. ADMIN ARTICLES - CREATE
-
-      if (path === "/api/admin/articles" && method === "POST") {
-        const data = await readJson(request);
-
-        if (!data) {
-          return json({ success: false, error: "Invalid JSON data" }, 400);
-        }
-
-        const article = cleanArticleInput(data);
-
-        if (!article.title || !article.content) {
-          return json({
-            success: false,
-            error: "Title and article content are required",
-          }, 400);
-        }
-
-        try {
-          const slug = await uniqueSlug(env.NEWS_DB, article.title);
-
-          const publishedAt =
-            article.status === "published" ? new Date().toISOString() : null;
-
-          const result = await env.NEWS_DB.prepare(
-            `INSERT INTO articles
-             (title, slug, excerpt, content, image_url, category,
-              author, status, published_at, updated_at)
-             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)`
-          ).bind(
-            article.title,
-            slug,
-            article.excerpt,
-            article.content,
-            article.image_url || null,
-            article.category || null,
-            article.author || "KIZAZI RADIO",
-            article.status,
-            publishedAt
-          ).run();
-
-          return json({
-            success: true,
-            message: "Article created successfully",
-            id: result.meta.last_row_id,
-            slug,
-          }, 201);
-        } catch {
-          return json({ success: false, error: "Unable to create article" }, 500);
-        }
-      }
-
-      // 11. ADMIN ARTICLES - UPDATE AND DELETE
-
-      if (path.startsWith("/api/admin/articles/")) {
-        const idText = path.slice("/api/admin/articles/".length);
-        const id = Number(idText);
-
-        if (!Number.isInteger(id) || id < 1 || idText.includes("/")) {
-          return json({ success: false, error: "Invalid article ID" }, 400);
-        }
-
-        const existing = await env.NEWS_DB.prepare(
-          "SELECT id, published_at FROM articles WHERE id = ? LIMIT 1"
-        ).bind(id).first();
-
-        if (!existing) {
-          return json({ success: false, error: "Article not found" }, 404);
-        }
-
-        if (method === "DELETE") {
-          try {
-            await env.NEWS_DB.prepare(
-              "DELETE FROM articles WHERE id = ?"
-            ).bind(id).run();
-
-            return json({
-              success: true,
-              message: "Article deleted successfully",
-            });
-          } catch {
-            return json({ success: false, error: "Unable to delete article" }, 500);
-          }
-        }
-
-        if (method === "PUT") {
-          const data = await readJson(request);
-
-          if (!data) {
-            return json({ success: false, error: "Invalid JSON data" }, 400);
-          }
-
-          const article = cleanArticleInput(data);
-
-          if (!article.title || !article.content) {
-            return json({
-              success: false,
-              error: "Title and article content are required",
-            }, 400);
-          }
-
-          try {
-            const slug = await uniqueSlug(env.NEWS_DB, article.title, id);
-
-            let publishedAt = existing.published_at;
-
-            if (article.status === "draft") {
-              publishedAt = null;
-            } else if (!publishedAt) {
-              publishedAt = new Date().toISOString();
-            }
-
-            await env.NEWS_DB.prepare(
-              `UPDATE articles
-               SET title = ?, slug = ?, excerpt = ?, content = ?,
-                   image_url = ?, category = ?, author = ?,
-                   status = ?, published_at = ?, updated_at = CURRENT_TIMESTAMP
-               WHERE id = ?`
-            ).bind(
-              article.title,
-              slug,
-              article.excerpt,
-              article.content,
-              article.image_url || null,
-              article.category || null,
-              article.author || "KIZAZI RADIO",
-              article.status,
-              publishedAt,
-              id
-            ).run();
-
-            return json({
-              success: true,
-              message: "Article updated successfully",
-              slug,
-            });
-          } catch {
-            return json({ success: false, error: "Unable to update article" }, 500);
-          }
-        }
-      }
-
-      // 12. ADMIN IMAGE UPLOAD TO R2
+      // IMAGE UPLOAD TO R2
 
       if (path === "/api/admin/upload" && method === "POST") {
         if (!env.MEDIA_BUCKET) {
@@ -747,11 +612,7 @@ export default {
         try {
           const formData = await request.formData();
           const file = formData.get("file");
-          const folderInput = String(formData.get("folder") || "news");
-
-          const folder = ["news", "music-chart"].includes(folderInput)
-            ? folderInput
-            : "news";
+          const folder = formData.get("folder") === "music-chart" ? "music-chart" : "news";
 
           if (!file || typeof file.arrayBuffer !== "function") {
             return json({ success: false, error: "Please select an image" }, 400);
@@ -762,7 +623,6 @@ export default {
           }
 
           const extension = isValidImage(file);
-
           if (!extension) {
             return json({
               success: false,
@@ -777,12 +637,8 @@ export default {
           });
 
           const publicBase = String(env.R2_PUBLIC_URL || "").replace(/\/+$/, "");
-
           if (!publicBase) {
-            return json({
-              success: false,
-              error: "R2_PUBLIC_URL is not configured",
-            }, 503);
+            return json({ success: false, error: "R2_PUBLIC_URL is not configured" }, 503);
           }
 
           return json({
@@ -799,17 +655,15 @@ export default {
       return json({ success: false, error: "Admin endpoint not found" }, 404);
     }
 
-    // 13. PUBLIC MUSIC CHART TOP 15
+    // PUBLIC MUSIC CHART: ACTIVE SONGS ONLY
 
     if (path === "/api/music-chart" && method === "GET") {
       try {
         const result = await env.NEWS_DB.prepare(
-          `SELECT id, position, song_title, artist_name,
-                  artwork_url, youtube_url
+          `SELECT id, position, song_title, artist_name, artwork_url, youtube_url
            FROM music_chart
            WHERE status = 'active'
-           ORDER BY position ASC
-           LIMIT 15`
+           ORDER BY position ASC`
         ).all();
 
         return json({
@@ -818,14 +672,11 @@ export default {
           chart: result.results,
         });
       } catch {
-        return json({
-          success: false,
-          error: "Unable to retrieve music chart",
-        }, 500);
+        return json({ success: false, error: "Unable to retrieve music chart" }, 500);
       }
     }
 
-    // 14. PUBLIC PUBLISHED ARTICLES
+    // PUBLIC NEWS: LIST
 
     if (path === "/api/articles" && method === "GET") {
       try {
@@ -853,13 +704,11 @@ export default {
       }
     }
 
-    // 15. PUBLIC SINGLE ARTICLE
+    // PUBLIC NEWS: SINGLE ARTICLE
 
     if (path.startsWith("/api/articles/") && method === "GET") {
       try {
-        const slug = decodeURIComponent(
-          path.slice("/api/articles/".length)
-        );
+        const slug = decodeURIComponent(path.slice("/api/articles/".length));
 
         const article = await env.NEWS_DB.prepare(
           `SELECT id, title, slug, excerpt, content, image_url,
@@ -869,9 +718,7 @@ export default {
            LIMIT 1`
         ).bind(slug).first();
 
-        if (!article) {
-          return json({ success: false, error: "Article not found" }, 404);
-        }
+        if (!article) return json({ success: false, error: "Article not found" }, 404);
 
         return json({ success: true, article });
       } catch {
@@ -879,7 +726,7 @@ export default {
       }
     }
 
-    // 16. SERVE WEBSITE FILES
+    // SERVE WEBSITE FILES
 
     return env.ASSETS.fetch(request);
   },
