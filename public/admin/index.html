@@ -69,12 +69,15 @@ td{color:#ddd}
 .login-brand img{width:190px;max-width:80%}
 .login-brand p{font-size:11px;letter-spacing:4px;color:#888}
 #app{display:none}
-#editor,#chartEditor{display:none}
-#imagePreview,#chartImagePreview{display:none;max-width:220px;max-height:140px;object-fit:cover;margin-top:12px;border-radius:6px}
+.page{display:none}
+.page.active{display:block}
+.editor{display:none}
+#articleImagePreview,#chartImagePreview{display:none;max-width:220px;max-height:140px;object-fit:cover;margin-top:12px;border-radius:6px}
+.chart-artwork{width:55px;height:55px;object-fit:cover;border-radius:5px;background:#222}
+.chart-position{font-weight:bold;color:#fff;font-size:16px}
+.chart-description{color:#888;font-size:12px;margin-top:5px}
 .footer{text-align:center;color:#555;font-size:11px;padding:25px}
-.chart-art{width:48px;height:48px;object-fit:cover;border-radius:5px;background:#292929}
-.position{font-weight:bold;color:#fff;font-size:16px}
-.chart-note{color:#888;font-size:12px;line-height:1.6;margin-top:-8px;margin-bottom:18px}
+.note{color:#888;font-size:13px;line-height:1.6;margin:0 0 18px}
 @media(max-width:800px){
 .layout{grid-template-columns:1fr}
 .sidebar{display:flex;gap:6px;overflow-x:auto;padding:12px}
@@ -139,7 +142,7 @@ main{padding:24px 16px}
 
     <!-- NEWS MANAGEMENT -->
 
-    <section id="newsPage">
+    <section id="newsPage" class="page active">
       <div class="page-heading">
         <div>
           <h1>News Management</h1>
@@ -154,7 +157,7 @@ main{padding:24px 16px}
         <div class="stat"><span>DRAFTS</span><strong id="draftCount">0</strong></div>
       </div>
 
-      <div class="panel" id="editor">
+      <div class="panel editor" id="articleEditor">
         <h2 id="editorTitle">Create New Article</h2>
         <div id="editorMessage" class="message"></div>
         <form id="articleForm">
@@ -182,7 +185,7 @@ main{padding:24px 16px}
 
           <label for="articleImage">ARTICLE IMAGE</label>
           <input id="articleImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif">
-          <img id="imagePreview" alt="Article image preview">
+          <img id="articleImagePreview" alt="Article image preview">
           <input type="hidden" id="articleImageUrl">
 
           <label for="articleStatus">PUBLICATION STATUS</label>
@@ -192,8 +195,8 @@ main{padding:24px 16px}
           </select>
 
           <div class="form-actions">
-            <button type="submit" class="btn red" id="saveButton">SAVE ARTICLE</button>
-            <button type="button" class="btn dark" id="cancelButton">CANCEL</button>
+            <button type="submit" class="btn red" id="saveArticleButton">SAVE ARTICLE</button>
+            <button type="button" class="btn dark" id="cancelArticleButton">CANCEL</button>
           </div>
         </form>
       </div>
@@ -208,11 +211,7 @@ main{padding:24px 16px}
           <table>
             <thead>
               <tr>
-                <th>ARTICLE</th>
-                <th>CATEGORY</th>
-                <th>STATUS</th>
-                <th>DATE</th>
-                <th>ACTIONS</th>
+                <th>ARTICLE</th><th>CATEGORY</th><th>STATUS</th><th>DATE</th><th>ACTIONS</th>
               </tr>
             </thead>
             <tbody id="articlesTable">
@@ -225,7 +224,7 @@ main{padding:24px 16px}
 
     <!-- TOP 15 MUSIC CHART -->
 
-    <section id="chartPage" style="display:none">
+    <section id="chartPage" class="page">
       <div class="page-heading">
         <div>
           <h1>TOP 15 Music Chart</h1>
@@ -237,12 +236,12 @@ main{padding:24px 16px}
       <div class="stats">
         <div class="stat"><span>CHART CAPACITY</span><strong>15</strong></div>
         <div class="stat"><span>ACTIVE SONGS</span><strong id="activeSongCount">0</strong></div>
-        <div class="stat"><span>AVAILABLE POSITIONS</span><strong id="availablePositions">15</strong></div>
+        <div class="stat"><span>AVAILABLE POSITIONS</span><strong id="availablePositionCount">15</strong></div>
       </div>
 
-      <div class="panel" id="chartEditor">
+      <div class="panel editor" id="chartEditor">
         <h2 id="chartEditorTitle">Add Song to TOP 15</h2>
-        <p class="chart-note">Add a song and assign its chart position. All music genres compete in one combined chart.</p>
+        <p class="note">Add a song and assign its chart position. All music genres compete in one combined chart.</p>
         <div id="chartEditorMessage" class="message"></div>
 
         <form id="chartForm">
@@ -250,12 +249,28 @@ main{padding:24px 16px}
 
           <div class="form-grid">
             <div>
-              <label for="songPosition">CHART POSITION *</label>
-              <select id="songPosition" required></select>
+              <label for="chartPosition">CHART POSITION *</label>
+              <select id="chartPosition" required>
+                <option value="1">#1</option>
+                <option value="2">#2</option>
+                <option value="3">#3</option>
+                <option value="4">#4</option>
+                <option value="5">#5</option>
+                <option value="6">#6</option>
+                <option value="7">#7</option>
+                <option value="8">#8</option>
+                <option value="9">#9</option>
+                <option value="10">#10</option>
+                <option value="11">#11</option>
+                <option value="12">#12</option>
+                <option value="13">#13</option>
+                <option value="14">#14</option>
+                <option value="15">#15</option>
+              </select>
             </div>
             <div>
-              <label for="songStatus">STATUS</label>
-              <select id="songStatus">
+              <label for="chartStatus">STATUS</label>
+              <select id="chartStatus">
                 <option value="active">Active – Show on website</option>
                 <option value="inactive">Inactive – Hide from website</option>
               </select>
@@ -268,8 +283,8 @@ main{padding:24px 16px}
           <label for="artistName">ARTIST NAME *</label>
           <input id="artistName" maxlength="250" required placeholder="Enter artist name">
 
-          <label for="songYoutube">YOUTUBE VIDEO URL *</label>
-          <input id="songYoutube" type="url" required placeholder="https://www.youtube.com/watch?v=...">
+          <label for="youtubeUrl">YOUTUBE VIDEO URL *</label>
+          <input id="youtubeUrl" type="url" required placeholder="https://www.youtube.com/watch?v=...">
 
           <label for="chartArtwork">SONG ARTWORK</label>
           <input id="chartArtwork" type="file" accept="image/jpeg,image/png,image/webp,image/gif">
@@ -288,7 +303,9 @@ main{padding:24px 16px}
           <h2 style="margin:0">TOP 15 – All Songs</h2>
           <input class="search" id="chartSearchInput" placeholder="Search songs or artists...">
         </div>
-        <p class="chart-note">The chart is one combined ranking. Bongo Fleva, Amapiano, Afrobeats, R&B, Hip Hop and other genres all appear together.</p>
+
+        <p class="note">The chart is one combined ranking. Bongo Fleva, Amapiano, Afrobeats, R&B, Hip Hop and other genres all appear together.</p>
+
         <div id="chartListMessage" class="message"></div>
         <div class="table-wrap">
           <table>
@@ -319,8 +336,8 @@ const $ = id => document.getElementById(id);
 
 let articles = [];
 let chartSongs = [];
-let editingImageUrl = "";
-let editingArtworkUrl = "";
+let editingArticleImageUrl = "";
+let editingChartArtworkUrl = "";
 
 function showMessage(element, text, type) {
   element.textContent = text;
@@ -359,6 +376,16 @@ function showApp() {
   loadArticles();
   loadChart();
 }
+
+function switchPage(page) {
+  $("newsPage").classList.toggle("active", page === "news");
+  $("chartPage").classList.toggle("active", page === "chart");
+  $("newsNav").classList.toggle("active", page === "news");
+  $("chartNav").classList.toggle("active", page === "chart");
+}
+
+$("newsNav").addEventListener("click", () => switchPage("news"));
+$("chartNav").addEventListener("click", () => switchPage("chart"));
 
 async function checkSession() {
   try {
@@ -407,23 +434,17 @@ $("logoutButton").addEventListener("click", async () => {
   showLogin();
 });
 
-/* NAVIGATION */
-
-function showPage(page) {
-  const isNews = page === "news";
-
-  $("newsPage").style.display = isNews ? "block" : "none";
-  $("chartPage").style.display = isNews ? "none" : "block";
-
-  $("newsNav").classList.toggle("active", isNews);
-  $("chartNav").classList.toggle("active", !isNews);
-
-  if (isNews) loadArticles();
-  else loadChart();
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+  })[char]);
 }
 
-$("newsNav").addEventListener("click", () => showPage("news"));
-$("chartNav").addEventListener("click", () => showPage("chart"));
+function formatDate(value) {
+  if (!value) return "—";
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? "—" : date.toLocaleDateString();
+}
 
 /* NEWS MANAGEMENT */
 
@@ -458,10 +479,6 @@ function renderArticles() {
   }
 
   $("articlesTable").innerHTML = filtered.map(article => {
-    const date = article.created_at
-      ? new Date(article.created_at).toLocaleDateString()
-      : "—";
-
     const status = article.status === "published"
       ? '<span class="status published">Published</span>'
       : '<span class="status draft">Draft</span>';
@@ -471,24 +488,18 @@ function renderArticles() {
         <td><span class="article-title">${escapeHTML(article.title)}</span></td>
         <td>${escapeHTML(article.category || "Uncategorised")}</td>
         <td>${status}</td>
-        <td>${date}</td>
+        <td>${formatDate(article.created_at)}</td>
         <td>
           <div class="table-actions">
-            <button class="btn dark" data-edit="${article.id}">EDIT</button>
-            <button class="btn danger" data-delete="${article.id}">DELETE</button>
+            <button class="btn dark" data-edit-article="${article.id}">EDIT</button>
+            <button class="btn danger" data-delete-article="${article.id}">DELETE</button>
           </div>
         </td>
       </tr>`;
   }).join("");
 }
 
-function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, char => ({
-    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
-  })[char]);
-}
-
-function openEditor(article = null) {
+function openArticleEditor(article = null) {
   $("articleForm").reset();
   $("articleId").value = article ? article.id : "";
   $("editorTitle").textContent = article ? "Edit Article" : "Create New Article";
@@ -499,45 +510,45 @@ function openEditor(article = null) {
   $("articleContent").value = article?.content || "";
   $("articleStatus").value = article?.status || "draft";
 
-  editingImageUrl = article?.image_url || "";
-  $("articleImageUrl").value = editingImageUrl;
+  editingArticleImageUrl = article?.image_url || "";
+  $("articleImageUrl").value = editingArticleImageUrl;
 
-  if (editingImageUrl) {
-    $("imagePreview").src = editingImageUrl;
-    $("imagePreview").style.display = "block";
+  if (editingArticleImageUrl) {
+    $("articleImagePreview").src = editingArticleImageUrl;
+    $("articleImagePreview").style.display = "block";
   } else {
-    $("imagePreview").style.display = "none";
+    $("articleImagePreview").style.display = "none";
   }
 
   $("editorMessage").className = "message";
-  $("editor").style.display = "block";
-  $("editor").scrollIntoView({behavior:"smooth"});
+  $("articleEditor").style.display = "block";
+  $("articleEditor").scrollIntoView({behavior:"smooth"});
 }
 
-$("newArticleButton").addEventListener("click", () => openEditor());
+$("newArticleButton").addEventListener("click", () => openArticleEditor());
 
-$("cancelButton").addEventListener("click", () => {
-  $("editor").style.display = "none";
+$("cancelArticleButton").addEventListener("click", () => {
+  $("articleEditor").style.display = "none";
 });
 
 $("articlesTable").addEventListener("click", async event => {
-  const editId = event.target.dataset.edit;
-  const deleteId = event.target.dataset.delete;
+  const editId = event.target.dataset.editArticle;
+  const deleteId = event.target.dataset.deleteArticle;
 
   if (editId) {
     const article = articles.find(a => String(a.id) === editId);
-    if (article) openEditor(article);
+    if (article) openArticleEditor(article);
   }
 
   if (deleteId) {
     const article = articles.find(a => String(a.id) === deleteId);
     if (!article) return;
-
     if (!confirm(`Delete "${article.title}"? This cannot be undone.`)) return;
 
     try {
       await api(`/api/admin/articles/${deleteId}`, {method:"DELETE"});
       await loadArticles();
+      showMessage($("listMessage"), "Article deleted successfully.", "success");
     } catch (error) {
       showMessage($("listMessage"), error.message, "error");
     }
@@ -548,8 +559,7 @@ $("articleImage").addEventListener("change", () => {
   const file = $("articleImage").files[0];
   if (!file) return;
 
-  const allowed = ["image/jpeg","image/png","image/webp","image/gif"];
-  if (!allowed.includes(file.type)) {
+  if (!["image/jpeg","image/png","image/webp","image/gif"].includes(file.type)) {
     showMessage($("editorMessage"), "Please choose a JPG, PNG, WEBP or GIF image.", "error");
     $("articleImage").value = "";
     return;
@@ -561,11 +571,14 @@ $("articleImage").addEventListener("change", () => {
     return;
   }
 
-  $("imagePreview").src = URL.createObjectURL(file);
-  $("imagePreview").style.display = "block";
+  $("articleImagePreview").src = URL.createObjectURL(file);
+  $("articleImagePreview").style.display = "block";
 });
 
-async function uploadImage(file, folder) {
+async function uploadImage(fileInput, folder, oldUrl) {
+  const file = fileInput.files[0];
+  if (!file) return oldUrl || "";
+
   const formData = new FormData();
   formData.append("file", file);
   formData.append("folder", folder);
@@ -578,23 +591,19 @@ async function uploadImage(file, folder) {
   return result.url;
 }
 
-async function uploadArticleImage() {
-  const file = $("articleImage").files[0];
-  if (!file) return editingImageUrl;
-  return uploadImage(file, "news");
-}
-
 $("articleForm").addEventListener("submit", async event => {
   event.preventDefault();
 
-  const button = $("saveButton");
+  const button = $("saveArticleButton");
   button.disabled = true;
   button.textContent = "SAVING...";
 
   try {
-    const imageUrl = await uploadArticleImage();
-    const id = $("articleId").value;
+    const imageUrl = await uploadImage(
+      $("articleImage"), "news", editingArticleImageUrl
+    );
 
+    const id = $("articleId").value;
     const article = {
       title: $("articleTitle").value.trim(),
       category: $("articleCategory").value.trim(),
@@ -611,10 +620,9 @@ $("articleForm").addEventListener("submit", async event => {
       body: JSON.stringify(article)
     });
 
-    $("editor").style.display = "none";
+    $("articleEditor").style.display = "none";
     $("articleForm").reset();
     await loadArticles();
-
     showMessage($("listMessage"), "Article saved successfully.", "success");
   } catch (error) {
     showMessage($("editorMessage"), error.message, "error");
@@ -627,19 +635,6 @@ $("articleForm").addEventListener("submit", async event => {
 $("searchInput").addEventListener("input", renderArticles);
 
 /* TOP 15 MUSIC CHART */
-
-function setupPositionOptions(selected = "") {
-  const select = $("songPosition");
-  select.innerHTML = "";
-
-  for (let i = 1; i <= 15; i++) {
-    const option = document.createElement("option");
-    option.value = String(i);
-    option.textContent = `#${i}`;
-    if (String(selected) === String(i)) option.selected = true;
-    select.appendChild(option);
-  }
-}
 
 async function loadChart() {
   $("chartTable").innerHTML =
@@ -655,14 +650,15 @@ async function loadChart() {
 }
 
 function renderChart() {
-  const active = chartSongs.filter(song => song.status === "active").length;
-  $("activeSongCount").textContent = active;
-  $("availablePositions").textContent = 15 - chartSongs.length;
+  const activeSongs = chartSongs.filter(song => song.status === "active").length;
+  const occupiedPositions = new Set(chartSongs.map(song => Number(song.position)));
+  $("activeSongCount").textContent = activeSongs;
+  $("availablePositionCount").textContent = Math.max(0, 15 - occupiedPositions.size);
 
   const search = $("chartSearchInput").value.toLowerCase().trim();
-
   const filtered = chartSongs.filter(song =>
-    [song.song_title, song.artist_name].join(" ").toLowerCase().includes(search)
+    [song.song_title, song.artist_name, song.position]
+      .join(" ").toLowerCase().includes(search)
   );
 
   if (!filtered.length) {
@@ -671,54 +667,52 @@ function renderChart() {
     return;
   }
 
-  $("chartTable").innerHTML = filtered.map(song => {
-    const status = song.status === "active"
-      ? '<span class="status active-status">Active</span>'
-      : '<span class="status inactive-status">Inactive</span>';
+  $("chartTable").innerHTML = filtered
+    .sort((a,b) => Number(a.position) - Number(b.position))
+    .map(song => {
+      const status = song.status === "active"
+        ? '<span class="status active-status">Active</span>'
+        : '<span class="status inactive-status">Inactive</span>';
 
-    const artwork = song.artwork_url
-      ? `<img class="chart-art" src="${escapeHTML(song.artwork_url)}" alt="">`
-      : '<span class="chart-art" style="display:inline-flex;align-items:center;justify-content:center">♫</span>';
+      const artwork = song.artwork_url
+        ? `<img class="chart-artwork" src="${escapeHTML(song.artwork_url)}" alt="Song artwork">`
+        : '<span class="chart-artwork" style="display:inline-block"></span>';
 
-    return `
-      <tr>
-        <td><span class="position">#${escapeHTML(song.position)}</span></td>
-        <td>${artwork}</td>
-        <td>
-          <strong class="article-title">${escapeHTML(song.song_title)}</strong><br>
-          <span class="muted">${escapeHTML(song.artist_name)}</span>
-        </td>
-        <td>${status}</td>
-        <td>
-          <div class="table-actions">
-            <button class="btn dark" data-chart-edit="${song.id}">EDIT</button>
-            <button class="btn danger" data-chart-delete="${song.id}">DELETE</button>
-          </div>
-        </td>
-      </tr>`;
-  }).join("");
+      return `
+        <tr>
+          <td><span class="chart-position">#${Number(song.position)}</span></td>
+          <td>${artwork}</td>
+          <td>
+            <span class="article-title">${escapeHTML(song.song_title)}</span>
+            <div class="chart-description">${escapeHTML(song.artist_name)}</div>
+          </td>
+          <td>${status}</td>
+          <td>
+            <div class="table-actions">
+              <button class="btn dark" data-edit-song="${song.id}">EDIT</button>
+              <button class="btn danger" data-delete-song="${song.id}">DELETE</button>
+            </div>
+          </td>
+        </tr>`;
+    }).join("");
 }
 
-function openChartEditor(song = null) {
+function openSongEditor(song = null) {
   $("chartForm").reset();
-
   $("chartSongId").value = song ? song.id : "";
-  $("chartEditorTitle").textContent = song
-    ? "Edit Chart Song"
-    : "Add Song to TOP 15";
+  $("chartEditorTitle").textContent = song ? "Edit TOP 15 Song" : "Add Song to TOP 15";
 
+  $("chartPosition").value = song ? String(song.position) : "1";
   $("songTitle").value = song?.song_title || "";
   $("artistName").value = song?.artist_name || "";
-  $("songYoutube").value = song?.youtube_url || "";
-  $("songStatus").value = song?.status || "active";
+  $("youtubeUrl").value = song?.youtube_url || "";
+  $("chartStatus").value = song?.status || "active";
 
-  editingArtworkUrl = song?.artwork_url || "";
-  $("chartArtworkUrl").value = editingArtworkUrl;
+  editingChartArtworkUrl = song?.artwork_url || "";
+  $("chartArtworkUrl").value = editingChartArtworkUrl;
 
-  setupPositionOptions(song?.position || "");
-
-  if (editingArtworkUrl) {
-    $("chartImagePreview").src = editingArtworkUrl;
+  if (editingChartArtworkUrl) {
+    $("chartImagePreview").src = editingChartArtworkUrl;
     $("chartImagePreview").style.display = "block";
   } else {
     $("chartImagePreview").style.display = "none";
@@ -729,9 +723,7 @@ function openChartEditor(song = null) {
   $("chartEditor").scrollIntoView({behavior:"smooth"});
 }
 
-$("newSongButton").addEventListener("click", () => {
-  openChartEditor();
-});
+$("newSongButton").addEventListener("click", () => openSongEditor());
 
 $("cancelSongButton").addEventListener("click", () => {
   $("chartEditor").style.display = "none";
@@ -741,16 +733,14 @@ $("chartArtwork").addEventListener("change", () => {
   const file = $("chartArtwork").files[0];
   if (!file) return;
 
-  const allowed = ["image/jpeg","image/png","image/webp","image/gif"];
-
-  if (!allowed.includes(file.type)) {
+  if (!["image/jpeg","image/png","image/webp","image/gif"].includes(file.type)) {
     showMessage($("chartEditorMessage"), "Please choose a JPG, PNG, WEBP or GIF image.", "error");
     $("chartArtwork").value = "";
     return;
   }
 
   if (file.size > 8 * 1024 * 1024) {
-    showMessage($("chartEditorMessage"), "Image must be smaller than 8 MB.", "error");
+    showMessage($("chartEditorMessage"), "Artwork must be smaller than 8 MB.", "error");
     $("chartArtwork").value = "";
     return;
   }
@@ -759,65 +749,20 @@ $("chartArtwork").addEventListener("change", () => {
   $("chartImagePreview").style.display = "block";
 });
 
-async function uploadChartArtwork() {
-  const file = $("chartArtwork").files[0];
-  if (!file) return editingArtworkUrl;
-  return uploadImage(file, "music-chart");
-}
-
-$("chartForm").addEventListener("submit", async event => {
-  event.preventDefault();
-
-  const button = $("saveSongButton");
-  button.disabled = true;
-  button.textContent = "SAVING...";
-
-  try {
-    const artworkUrl = await uploadChartArtwork();
-    const id = $("chartSongId").value;
-
-    const song = {
-      position: Number($("songPosition").value),
-      song_title: $("songTitle").value.trim(),
-      artist_name: $("artistName").value.trim(),
-      youtube_url: $("songYoutube").value.trim(),
-      artwork_url: artworkUrl,
-      status: $("songStatus").value
-    };
-
-    await api(id ? `/api/admin/music-chart/${id}` : "/api/admin/music-chart", {
-      method: id ? "PUT" : "POST",
-      headers: {"Content-Type":"application/json"},
-      body: JSON.stringify(song)
-    });
-
-    $("chartEditor").style.display = "none";
-    $("chartForm").reset();
-    await loadChart();
-
-    showMessage($("chartListMessage"), "Chart song saved successfully.", "success");
-  } catch (error) {
-    showMessage($("chartEditorMessage"), error.message, "error");
-  } finally {
-    button.disabled = false;
-    button.textContent = "SAVE SONG";
-  }
-});
-
 $("chartTable").addEventListener("click", async event => {
-  const editId = event.target.dataset.chartEdit;
-  const deleteId = event.target.dataset.chartDelete;
+  const editId = event.target.dataset.editSong;
+  const deleteId = event.target.dataset.deleteSong;
 
   if (editId) {
-    const song = chartSongs.find(item => String(item.id) === editId);
-    if (song) openChartEditor(song);
+    const song = chartSongs.find(s => String(s.id) === editId);
+    if (song) openSongEditor(song);
   }
 
   if (deleteId) {
-    const song = chartSongs.find(item => String(item.id) === deleteId);
+    const song = chartSongs.find(s => String(s.id) === deleteId);
     if (!song) return;
 
-    if (!confirm(`Remove "${song.song_title}" from the Top 15 chart?`)) return;
+    if (!confirm(`Remove "${song.song_title}" by ${song.artist_name} from the chart?`)) return;
 
     try {
       await api(`/api/admin/music-chart/${deleteId}`, {method:"DELETE"});
@@ -829,9 +774,49 @@ $("chartTable").addEventListener("click", async event => {
   }
 });
 
+$("chartForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  const button = $("saveSongButton");
+  button.disabled = true;
+  button.textContent = "SAVING...";
+
+  try {
+    const artworkUrl = await uploadImage(
+      $("chartArtwork"), "music-chart", editingChartArtworkUrl
+    );
+
+    const id = $("chartSongId").value;
+
+    const song = {
+      position: Number($("chartPosition").value),
+      song_title: $("songTitle").value.trim(),
+      artist_name: $("artistName").value.trim(),
+      youtube_url: $("youtubeUrl").value.trim(),
+      artwork_url: artworkUrl,
+      status: $("chartStatus").value
+    };
+
+    await api(id ? `/api/admin/music-chart/${id}` : "/api/admin/music-chart", {
+      method: id ? "PUT" : "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify(song)
+    });
+
+    $("chartEditor").style.display = "none";
+    $("chartForm").reset();
+    await loadChart();
+    showMessage($("chartListMessage"), "Song saved to TOP 15 successfully.", "success");
+  } catch (error) {
+    showMessage($("chartEditorMessage"), error.message, "error");
+  } finally {
+    button.disabled = false;
+    button.textContent = "SAVE SONG";
+  }
+});
+
 $("chartSearchInput").addEventListener("input", renderChart);
 
-setupPositionOptions();
 checkSession();
 </script>
 </body>
