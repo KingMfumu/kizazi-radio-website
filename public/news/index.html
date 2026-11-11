@@ -1,0 +1,1134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Newsroom | KIZAZI RADIO</title>
+
+  <meta name="description" content="The latest music news, entertainment stories, culture and breaking updates from KIZAZI RADIO.">
+
+  <meta name="theme-color" content="#0b0b0e">
+
+  <link rel="icon" href="/assets/kizazi-radio-official-logo.png">
+  <link rel="stylesheet" href="/styles.css">
+
+  <style>
+    :root {
+      --news-bg: #0b0b0e;
+      --news-card: #17171c;
+      --news-border: #29292f;
+      --news-red: #e50909;
+      --news-white: #ffffff;
+      --news-muted: #a5a5ad;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--news-bg);
+      color: var(--news-white);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .news-header {
+      background: #101014;
+      border-bottom: 1px solid var(--news-border);
+      padding: 18px 5%;
+    }
+
+    .news-header-inner {
+      max-width: 1250px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .news-brand img {
+      width: 155px;
+      max-height: 65px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .news-navigation {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .news-navigation a {
+      color: #d0d0d5;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+
+    .news-navigation a:hover,
+    .news-navigation a.active {
+      color: #ff3030;
+    }
+
+    .news-hero {
+      padding: 85px 5% 65px;
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(229,9,9,.13), transparent 40%),
+        #101014;
+      border-bottom: 1px solid var(--news-border);
+    }
+
+    .news-container {
+      max-width: 1250px;
+      margin: auto;
+    }
+
+    .news-eyebrow {
+      color: #ff3030;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin: 0 0 18px;
+    }
+
+    .news-hero h1 {
+      font-size: clamp(42px, 7vw, 86px);
+      font-weight: 950;
+      letter-spacing: -4px;
+      line-height: .98;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .news-hero h1 em {
+      color: var(--news-red);
+      font-style: normal;
+    }
+
+    .news-hero-description {
+      max-width: 600px;
+      color: var(--news-muted);
+      font-size: 14px;
+      line-height: 1.9;
+      margin-top: 25px;
+    }
+
+    .news-main {
+      padding: 65px 5% 90px;
+    }
+
+    .news-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 35px;
+    }
+
+    .news-section-heading {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -.8px;
+      text-transform: uppercase;
+    }
+
+    .news-section-heading span {
+      color: var(--news-red);
+    }
+
+    .news-search {
+      width: min(100%, 340px);
+      position: relative;
+    }
+
+    .news-search input {
+      width: 100%;
+      padding: 15px 18px;
+      border: 1px solid #35353c;
+      background: #17171c;
+      color: #fff;
+      outline: none;
+      font-size: 12px;
+      border-radius: 2px;
+    }
+
+    .news-search input:focus {
+      border-color: var(--news-red);
+    }
+
+    .news-search input::placeholder {
+      color: #85858e;
+    }
+
+    .news-count {
+      color: #85858e;
+      font-size: 11px;
+      margin: 0 0 25px;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 25px;
+    }
+
+    .news-card {
+      background: var(--news-card);
+      border: 1px solid var(--news-border);
+      min-width: 0;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--news-red);
+    }
+
+    .news-card-image {
+      display: block;
+      width: 100%;
+      height: 220px;
+      border: 0;
+      padding: 0;
+      background: #222228;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .news-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s;
+    }
+
+    .news-card:hover .news-card-image img {
+      transform: scale(1.05);
+    }
+
+    .news-image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #292930, #101014);
+    }
+
+    .news-image-placeholder span {
+      color: #aaa;
+      font-size: 10px;
+      letter-spacing: 4px;
+    }
+
+    .news-image-placeholder strong {
+      color: var(--news-red);
+      font-size: 55px;
+      font-weight: 950;
+      letter-spacing: -4px;
+    }
+
+    .news-card-content {
+      padding: 22px;
+    }
+
+    .news-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 17px;
+    }
+
+    .news-category {
+      color: #ff3030;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .news-date {
+      color: #85858e;
+      font-size: 9px;
+      white-space: nowrap;
+    }
+
+    .news-card-title {
+      padding: 0;
+      border: 0;
+      background: none;
+      color: #fff;
+      text-align: left;
+      font-size: 20px;
+      font-weight: 850;
+      line-height: 1.3;
+      cursor: pointer;
+      margin: 0 0 13px;
+    }
+
+    .news-card-title:hover {
+      color: #ff3030;
+    }
+
+    .news-card-excerpt {
+      color: var(--news-muted);
+      font-size: 12px;
+      line-height: 1.8;
+      margin: 0 0 22px;
+    }
+
+    .news-read-button {
+      padding: 0 0 8px;
+      border: 0;
+      border-bottom: 1px solid #45454d;
+      background: none;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 1.3px;
+      cursor: pointer;
+    }
+
+    .news-read-button span {
+      color: var(--news-red);
+      margin-left: 7px;
+    }
+
+    .news-status {
+      grid-column: 1 / -1;
+      padding: 55px 20px;
+      text-align: center;
+      color: #aaa;
+      font-size: 13px;
+      line-height: 1.8;
+      border: 1px solid var(--news-border);
+      background: #141418;
+    }
+
+    .news-pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-top: 50px;
+    }
+
+    .page-button {
+      min-width: 42px;
+      height: 42px;
+      padding: 0 13px;
+      border: 1px solid #35353c;
+      background: #17171c;
+      color: #ddd;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .page-button:hover,
+    .page-button.active {
+      background: var(--news-red);
+      border-color: var(--news-red);
+      color: #fff;
+    }
+
+    .page-button:disabled {
+      opacity: .35;
+      cursor: not-allowed;
+    }
+
+    .news-footer {
+      background: #101014;
+      border-top: 1px solid var(--news-border);
+      padding: 35px 5%;
+    }
+
+    .news-footer-inner {
+      max-width: 1250px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .news-footer p {
+      color: #85858e;
+      font-size: 10px;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+
+    .news-footer a {
+      color: #ff3030;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    /* ARTICLE MODAL */
+
+    .article-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .article-modal.open {
+      display: flex;
+    }
+
+    .article-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.9);
+      backdrop-filter: blur(7px);
+    }
+
+    .article-modal-panel {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 850px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: #151519;
+      border: 1px solid #38383f;
+    }
+
+    .article-modal-close {
+      position: sticky;
+      top: 12px;
+      float: right;
+      z-index: 3;
+      width: 42px;
+      height: 42px;
+      margin: 12px 12px -54px 0;
+      border: 1px solid #555;
+      border-radius: 50%;
+      background: #18181d;
+      color: white;
+      font-size: 27px;
+      cursor: pointer;
+    }
+
+    .article-modal-image {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .article-modal-body {
+      padding: 35px;
+    }
+
+    .article-modal-body h2 {
+      font-size: clamp(27px, 5vw, 43px);
+      line-height: 1.15;
+      margin: 18px 0;
+      letter-spacing: -1px;
+    }
+
+    .article-modal-author {
+      color: #ff3030;
+      font-size: 11px;
+      margin-bottom: 25px;
+    }
+
+    .article-modal-excerpt {
+      color: #eee;
+      font-size: 16px;
+      line-height: 1.8;
+      border-left: 3px solid var(--news-red);
+      padding-left: 17px;
+      margin-bottom: 25px;
+    }
+
+    .article-modal-text {
+      color: #c3c3ca;
+      font-size: 14px;
+      line-height: 2;
+      white-space: pre-line;
+      overflow-wrap: anywhere;
+    }
+
+    .article-modal-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      border-top: 1px solid #35353c;
+      margin-top: 35px;
+      padding-top: 20px;
+      color: #ff3030;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    @media(max-width: 900px) {
+      .news-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media(max-width: 600px) {
+      .news-header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .news-navigation {
+        gap: 17px;
+      }
+
+      .news-hero {
+        padding: 65px 6% 50px;
+      }
+
+      .news-hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .news-main {
+        padding: 45px 6% 70px;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .news-card-image {
+        height: 230px;
+      }
+
+      .news-toolbar {
+        align-items: flex-start;
+      }
+
+      .news-search {
+        width: 100%;
+      }
+
+      .article-modal {
+        padding: 8px;
+      }
+
+      .article-modal-body {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="news-header">
+    <div class="news-header-inner">
+
+      <a href="/" class="news-brand" aria-label="KIZAZI RADIO Home">
+        <img
+          src="/assets/kizazi-radio-official-logo.png"
+          alt="KIZAZI RADIO">
+      </a>
+
+      <nav class="news-navigation">
+        <a href="/">Home</a>
+        <a href="/#radio">Radio</a>
+        <a href="/#podcasts">Podcasts</a>
+        <a href="/news/" class="active">Newsroom</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="news-hero">
+    <div class="news-container">
+
+      <p class="news-eyebrow">The latest from KIZAZI RADIO</p>
+
+      <h1>
+        THE NEWS<br>
+        <em>ROOM.</em>
+      </h1>
+
+      <p class="news-hero-description">
+        Music news, entertainment stories, culture and the latest
+        happenings. Discover the stories, voices and moments shaping
+        the world around us.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- NEWS CONTENT -->
+  <main class="news-main">
+    <div class="news-container">
+
+      <div class="news-toolbar">
+
+        <h2 class="news-section-heading">
+          ALL <span>STORIES.</span>
+        </h2>
+
+        <div class="news-search">
+          <input
+            type="search"
+            id="newsSearch"
+            placeholder="Search news and stories..."
+            aria-label="Search news articles">
+        </div>
+
+      </div>
+
+      <p class="news-count" id="newsCount">
+        Loading published stories...
+      </p>
+
+      <div class="news-grid" id="newsGrid">
+        <div class="news-status">
+          Loading the latest stories from KIZAZI RADIO...
+        </div>
+      </div>
+
+      <nav
+        class="news-pagination"
+        id="newsPagination"
+        aria-label="News pages">
+      </nav>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="news-footer">
+    <div class="news-footer-inner">
+
+      <p>
+        © <span id="copyrightYear"></span> KIZAZI RADIO.
+        ALL RIGHTS RESERVED.
+      </p>
+
+      <a href="/">BACK TO HOMEPAGE ↗</a>
+
+    </div>
+  </footer>
+
+  <!-- ARTICLE MODAL -->
+  <div class="article-modal" id="articleModal">
+
+    <div class="article-modal-backdrop"></div>
+
+    <div
+      class="article-modal-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="articleModalTitle">
+
+      <button
+        class="article-modal-close"
+        type="button"
+        aria-label="Close article">
+        ×
+      </button>
+
+      <div id="articleModalContent"></div>
+
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      // ==========================================
+      // KIZAZI RADIO NEWSROOM
+      // CLOUDFLARE D1 DATABASE CONNECTION
+      // ==========================================
+
+      const newsGrid = document.getElementById("newsGrid");
+      const newsSearch = document.getElementById("newsSearch");
+      const newsCount = document.getElementById("newsCount");
+      const pagination = document.getElementById("newsPagination");
+
+      const modal = document.getElementById("articleModal");
+      const modalContent = document.getElementById("articleModalContent");
+
+      const closeButton = modal.querySelector(".article-modal-close");
+      const backdrop = modal.querySelector(".article-modal-backdrop");
+
+      const ARTICLES_PER_PAGE = 9;
+
+      let allArticles = [];
+      let filteredArticles = [];
+      let currentPage = 1;
+
+      document.getElementById("copyrightYear").textContent =
+        new Date().getFullYear();
+
+      // ESCAPE HTML
+      const escapeHTML = value => {
+        return String(value ?? "").replace(/[&<>"']/g, character => {
+          const entities = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+          };
+
+          return entities[character];
+        });
+      };
+
+      // VALIDATE IMAGE URL
+      const safeImageURL = value => {
+        if (!value) return "";
+
+        try {
+          const url = new URL(value, window.location.origin);
+
+          if (
+            url.protocol === "https:" ||
+            url.protocol === "http:"
+          ) {
+            return url.href;
+          }
+
+          return "";
+        } catch {
+          return "";
+        }
+      };
+
+      // FORMAT DATE
+      const formatDate = value => {
+        if (!value) return "LATEST NEWS";
+
+        const date = new Date(value);
+
+        if (Number.isNaN(date.getTime())) {
+          return "LATEST NEWS";
+        }
+
+        return date.toLocaleDateString("en-GB", {
+          day: "numeric",
+          month: "long",
+          year: "numeric"
+        });
+      };
+
+      // OPEN ARTICLE
+      const openArticle = article => {
+
+        const image = safeImageURL(article.image_url);
+
+        modalContent.innerHTML = `
+          ${
+            image
+              ? `<img
+                   class="article-modal-image"
+                   src="${escapeHTML(image)}"
+                   alt="${escapeHTML(article.title)}">`
+              : ""
+          }
+
+          <div class="article-modal-body">
+
+            <div class="news-card-meta">
+              <span class="news-category">
+                ${escapeHTML(article.category || "NEWS")}
+              </span>
+
+              <span class="news-date">
+                ${escapeHTML(formatDate(article.published_at))}
+              </span>
+            </div>
+
+            <h2 id="articleModalTitle">
+              ${escapeHTML(article.title)}
+            </h2>
+
+            <p class="article-modal-author">
+              By ${escapeHTML(article.author || "KIZAZI RADIO")}
+            </p>
+
+            ${
+              article.excerpt
+                ? `<p class="article-modal-excerpt">
+                     ${escapeHTML(article.excerpt)}
+                   </p>`
+                : ""
+            }
+
+            <div class="article-modal-text"></div>
+
+            <div class="article-modal-footer">
+              <span>KIZAZI RADIO</span>
+              <span>THE SOUND OF WHAT'S NEXT.</span>
+            </div>
+
+          </div>
+        `;
+
+        // Insert article text safely
+        modalContent.querySelector(".article-modal-text").textContent =
+          article.content || "";
+
+        modal.classList.add("open");
+        document.body.style.overflow = "hidden";
+
+        closeButton.focus();
+      };
+
+      // CLOSE ARTICLE
+      const closeArticle = () => {
+        modal.classList.remove("open");
+        document.body.style.overflow = "";
+      };
+
+      closeButton.addEventListener("click", closeArticle);
+      backdrop.addEventListener("click", closeArticle);
+
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+          closeArticle();
+        }
+      });
+
+      // CREATE ARTICLE CARD
+      const createArticleCard = (article, index) => {
+
+        const image = safeImageURL(article.image_url);
+
+        return `
+          <article class="news-card">
+
+            <button
+              class="news-card-image"
+              type="button"
+              data-article-index="${index}"
+              aria-label="Read ${escapeHTML(article.title)}">
+
+              ${
+                image
+                  ? `<img
+                       src="${escapeHTML(image)}"
+                       alt="${escapeHTML(article.title)}"
+                       loading="lazy">`
+                  : `<div class="news-image-placeholder">
+                       <span>KIZAZI</span>
+                       <strong>NEWS</strong>
+                     </div>`
+              }
+
+            </button>
+
+            <div class="news-card-content">
+
+              <div class="news-card-meta">
+
+                <span class="news-category">
+                  ${escapeHTML(article.category || "NEWS")}
+                </span>
+
+                <span class="news-date">
+                  ${escapeHTML(formatDate(article.published_at))}
+                </span>
+
+              </div>
+
+              <h3>
+                <button
+                  class="news-card-title"
+                  type="button"
+                  data-article-index="${index}">
+                  ${escapeHTML(article.title)}
+                </button>
+              </h3>
+
+              <p class="news-card-excerpt">
+                ${escapeHTML(article.excerpt || "")}
+              </p>
+
+              <button
+                class="news-read-button"
+                type="button"
+                data-article-index="${index}">
+                READ FULL STORY <span>↗</span>
+              </button>
+
+            </div>
+
+          </article>
+        `;
+      };
+
+      // DISPLAY CURRENT PAGE
+      const displayArticles = () => {
+
+        const totalArticles = filteredArticles.length;
+
+        const totalPages = Math.ceil(
+          totalArticles / ARTICLES_PER_PAGE
+        );
+
+        if (totalArticles === 0) {
+
+          newsGrid.innerHTML = `
+            <div class="news-status">
+              No published stories found.
+              Please try another search.
+            </div>
+          `;
+
+          newsCount.textContent = "0 published stories";
+          pagination.innerHTML = "";
+
+          return;
+        }
+
+        if (currentPage > totalPages) {
+          currentPage = totalPages;
+        }
+
+        const startIndex =
+          (currentPage - 1) * ARTICLES_PER_PAGE;
+
+        const endIndex =
+          startIndex + ARTICLES_PER_PAGE;
+
+        const currentArticles =
+          filteredArticles.slice(startIndex, endIndex);
+
+        newsGrid.innerHTML = currentArticles
+          .map((article, index) =>
+            createArticleCard(article, startIndex + index)
+          )
+          .join("");
+
+        newsCount.textContent =
+          `Showing ${startIndex + 1}–${Math.min(endIndex, totalArticles)} of ${totalArticles} published stories`;
+
+        // ARTICLE CLICK EVENTS
+        newsGrid.querySelectorAll("[data-article-index]")
+          .forEach(button => {
+
+            button.addEventListener("click", () => {
+
+              const index = Number(button.dataset.articleIndex);
+
+              if (filteredArticles[index]) {
+                openArticle(filteredArticles[index]);
+              }
+
+            });
+
+          });
+
+        renderPagination(totalPages);
+      };
+
+      // PAGINATION
+      const renderPagination = totalPages => {
+
+        pagination.innerHTML = "";
+
+        if (totalPages <= 1) return;
+
+        const previousButton = document.createElement("button");
+
+        previousButton.className = "page-button";
+        previousButton.textContent = "← PREVIOUS";
+        previousButton.disabled = currentPage === 1;
+
+        previousButton.addEventListener("click", () => {
+          if (currentPage > 1) {
+            currentPage--;
+            displayArticles();
+
+            document.querySelector(".news-main").scrollIntoView({
+              behavior: "smooth"
+            });
+          }
+        });
+
+        pagination.appendChild(previousButton);
+
+        for (let page = 1; page <= totalPages; page++) {
+
+          const button = document.createElement("button");
+
+          button.className =
+            "page-button" + (page === currentPage ? " active" : "");
+
+          button.textContent = page;
+          button.setAttribute("aria-label", `Page ${page}`);
+
+          button.addEventListener("click", () => {
+            currentPage = page;
+            displayArticles();
+
+            document.querySelector(".news-main").scrollIntoView({
+              behavior: "smooth"
+            });
+          });
+
+          pagination.appendChild(button);
+        }
+
+        const nextButton = document.createElement("button");
+
+        nextButton.className = "page-button";
+        nextButton.textContent = "NEXT →";
+        nextButton.disabled = currentPage === totalPages;
+
+        nextButton.addEventListener("click", () => {
+          if (currentPage < totalPages) {
+            currentPage++;
+            displayArticles();
+
+            document.querySelector(".news-main").scrollIntoView({
+              behavior: "smooth"
+            });
+          }
+        });
+
+        pagination.appendChild(nextButton);
+      };
+
+      // SEARCH
+      newsSearch.addEventListener("input", () => {
+
+        const searchTerm = newsSearch.value
+          .trim()
+          .toLowerCase();
+
+        filteredArticles = allArticles.filter(article => {
+
+          const searchableText = [
+            article.title,
+            article.category,
+            article.excerpt,
+            article.content,
+            article.author
+          ].join(" ").toLowerCase();
+
+          return searchableText.includes(searchTerm);
+        });
+
+        currentPage = 1;
+        displayArticles();
+      });
+
+      // LOAD PUBLISHED ARTICLES
+      const loadNews = async () => {
+
+        try {
+
+          const response = await fetch(
+            "/api/articles?limit=100",
+            {
+              method: "GET",
+              headers: {
+                "Accept": "application/json"
+              },
+              cache: "no-store"
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error("Unable to retrieve news articles.");
+          }
+
+          const data = await response.json();
+
+          if (!data.success || !Array.isArray(data.articles)) {
+            throw new Error("Invalid news API response.");
+          }
+
+          allArticles = data.articles;
+
+          // Ensure newest articles appear first
+          allArticles.sort((a, b) => {
+            return new Date(b.published_at || 0) -
+                   new Date(a.published_at || 0);
+          });
+
+          filteredArticles = [...allArticles];
+
+          if (allArticles.length === 0) {
+
+            newsGrid.innerHTML = `
+              <div class="news-status">
+                No published stories are available yet.
+                Please check back soon.
+              </div>
+            `;
+
+            newsCount.textContent = "No published stories yet";
+            pagination.innerHTML = "";
+
+            return;
+          }
+
+          displayArticles();
+
+        } catch (error) {
+
+          console.error("KIZAZI RADIO Newsroom Error:", error);
+
+          newsGrid.innerHTML = `
+            <div class="news-status">
+              We're unable to load the latest stories right now.
+              Please try again later.
+            </div>
+          `;
+
+          newsCount.textContent = "Unable to load published stories";
+          pagination.innerHTML = "";
+        }
+      };
+
+      // START
+      loadNews();
+
+    });
+  </script>
+
+</body>
+</html>
