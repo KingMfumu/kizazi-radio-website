@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   // KIZAZI RADIO - MAIN WEBSITE JAVASCRIPT
@@ -138,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       <div class="chart-footer">
         <span>THE OFFICIAL KIZAZI RADIO TOP 15</span>
-        <a href="/chart/" class="chart-view-all">VIEW FULL CHART ↗</a>
+        <a href="/top15/" class="chart-view-all">VIEW FULL CHART ↗</a>
       </div>
 
     </div>
