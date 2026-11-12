@@ -7,6 +7,9 @@ compatibility_date = "2026-11-10"
 directory = "./public"
 binding = "ASSETS"
 
+[vars]
+R2_PUBLIC_URL = "https://pub-5758ef1ed5624e23a02029398d4458b8.r2.dev"
+
 [[d1_databases]]
 binding = "NEWS_DB"
 database_name = "kizazi-news-db"
