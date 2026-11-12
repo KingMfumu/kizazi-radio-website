@@ -142,7 +142,9 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
 
       <div class="chart-footer">
-        <span>THE OFFICIAL KIZAZI RADIO TOP 15</span>
+        <a href="/top15/" class="secondary">
+          VIEW FULL CHART ↗
+        </a>
       </div>
 
     </div>
@@ -170,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 6. LOAD TOP 15 SONGS
+  // 6. LOAD TOP 5 SONGS ON HOMEPAGE
   const chartGrid = document.getElementById("homepageChart");
 
   const displayChart = songs => {
@@ -188,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const sortedSongs = [...songs]
       .sort((a, b) => Number(a.position) - Number(b.position))
-      .slice(0, 15);
+      .slice(0, 5);
 
     chartGrid.innerHTML = sortedSongs.map(song => {
       const artwork = safeImageURL(song.artwork_url);
@@ -699,10 +701,22 @@ document.addEventListener("DOMContentLoaded", () => {
       margin-top: 28px;
       padding-top: 18px;
       border-top: 1px solid #292929;
-      color: #777;
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
+    }
+
+    .chart-footer a {
+      display: inline-block;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 1.2px;
+      text-decoration: none;
+      border-bottom: 1px solid #e50909;
+      padding-bottom: 8px;
+      transition: color .2s;
+    }
+
+    .chart-footer a:hover {
+      color: #ff3030;
     }
 
     .chart-loading,
