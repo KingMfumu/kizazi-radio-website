@@ -519,12 +519,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // 10. FETCH LATEST FIVE PUBLISHED ARTICLES
+  // 10. FETCH LATEST THREE PUBLISHED ARTICLES
   const loadNews = async () => {
     if (!newsGrid) return;
 
     try {
-      const response = await fetch("/api/articles?limit=5", {
+      const response = await fetch("/api/articles?limit=3", {
         method: "GET",
         headers: {
           "Accept": "application/json"
@@ -542,7 +542,7 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error("Invalid response from News API.");
       }
 
-      displayArticles(data.articles.slice(0, 5));
+      displayArticles(data.articles.slice(0, 3));
 
     } catch (error) {
       console.error("KIZAZI RADIO News Error:", error);
