@@ -132,20 +132,13 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </div>
 
-      <p class="chart-intro">
-        Discover the songs making waves on KIZAZI RADIO.
-        One chart. All genres. Fifteen positions.
-      </p>
-
       <div class="chart-grid" id="homepageChart">
         <p class="chart-loading">Loading TOP 15 Music Chart...</p>
       </div>
 
       <div class="chart-footer">
         <span>THE OFFICIAL KIZAZI RADIO TOP 15</span>
-        <a href="/top15/" class="chart-view-all">
-          VIEW FULL CHART <span>↗</span>
-        </a>
+        <a href="/chart/" class="chart-view-all">VIEW FULL CHART ↗</a>
       </div>
 
     </div>
@@ -173,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 6. LOAD TOP FIVE SONGS
+  // 6. LOAD TOP 15 SONGS
   const chartGrid = document.getElementById("homepageChart");
 
   const displayChart = songs => {
@@ -196,7 +189,6 @@ document.addEventListener("DOMContentLoaded", () => {
     chartGrid.innerHTML = sortedSongs.map(song => {
       const artwork = safeImageURL(song.artwork_url);
       const youtube = safeYouTubeURL(song.youtube_url);
-      const position = Number(song.position);
 
       return `
         <article class="chart-card">
@@ -217,29 +209,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
             <span class="chart-position">
               <small>NO.</small>
-              ${escapeHTML(position)}
+              <strong>${escapeHTML(song.position)}</strong>
             </span>
 
-            <div class="chart-artwork-overlay"></div>
-
-            <span class="chart-card-label">
-              KIZAZI TOP 15
-            </span>
+            <span class="chart-watermark">KIZAZI TOP 15</span>
 
           </div>
 
           <div class="chart-song-info">
 
-            <div class="chart-song-heading">
-              <h3>${escapeHTML(song.song_title)}</h3>
-              <p>${escapeHTML(song.artist_name)}</p>
-            </div>
+            <h3>${escapeHTML(song.song_title)}</h3>
 
-            <div class="chart-card-bottom">
+            <p>${escapeHTML(song.artist_name)}</p>
 
-              <span class="chart-rank-label">
-                POSITION #${escapeHTML(position)}
-              </span>
+            <div class="chart-card-footer">
+              <span>POSITION #${escapeHTML(song.position)}</span>
 
               ${
                 youtube
@@ -248,14 +232,12 @@ document.addEventListener("DOMContentLoaded", () => {
                        class="chart-listen"
                        target="_blank"
                        rel="noopener noreferrer">
-                       <span class="chart-play-icon">▶</span>
-                       WATCH
+                       <span>▶</span> WATCH
                      </a>`
                   : `<span class="chart-unavailable">
                        VIDEO UNAVAILABLE
                      </span>`
               }
-
             </div>
 
           </div>
@@ -585,54 +567,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   websiteStyles.textContent = `
 
-    /* ======================================
-       PREMIUM TOP 5 MUSIC CHART
-    ====================================== */
+    /* TOP 15 MUSIC CHART */
 
     .kizazi-chart {
-      position: relative;
-      overflow: hidden;
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(229,9,9,.09), transparent 55%),
+        radial-gradient(ellipse at 50% 0%, rgba(229, 9, 9, .09), transparent 55%),
         #090909;
-      border-top: 1px solid #292929;
-      border-bottom: 1px solid #292929;
-    }
-
-    .chart-intro {
-      color: #a1a1a1;
-      font-size: 14px;
-      line-height: 1.8;
-      margin: -5px 0 32px;
-      max-width: 620px;
+      border-top: 1px solid #29292f;
+      border-bottom: 1px solid #29292f;
     }
 
     .chart-grid {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 18px;
-      align-items: stretch;
+      gap: 20px;
     }
 
     .chart-card {
-      position: relative;
-      display: flex;
-      flex-direction: column;
       min-width: 0;
       overflow: hidden;
       background: #151515;
       border: 1px solid #303030;
-      border-radius: 5px;
-      transition:
-        transform .35s ease,
-        border-color .35s ease,
-        box-shadow .35s ease;
+      border-radius: 7px;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
     }
 
     .chart-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-6px);
       border-color: #e50909;
-      box-shadow: 0 18px 40px rgba(0,0,0,.45);
+      box-shadow: 0 12px 35px rgba(229, 9, 9, .12);
     }
 
     .chart-artwork {
@@ -643,70 +606,65 @@ document.addEventListener("DOMContentLoaded", () => {
       background: #202026;
     }
 
+    .chart-artwork::after {
+      content: "";
+      position: absolute;
+      inset: 55% 0 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.7));
+      pointer-events: none;
+    }
+
     .chart-artwork img {
       width: 100%;
       height: 100%;
       display: block;
       object-fit: cover;
-      transition: transform .65s cubic-bezier(.2,.7,.2,1);
+      transition: transform .5s;
     }
 
     .chart-card:hover .chart-artwork img {
-      transform: scale(1.09);
-    }
-
-    .chart-artwork-overlay {
-      position: absolute;
-      inset: 35% 0 0;
-      pointer-events: none;
-      background: linear-gradient(
-        to bottom,
-        transparent,
-        rgba(0,0,0,.48)
-      );
+      transform: scale(1.06);
     }
 
     .chart-position {
       position: absolute;
-      top: 13px;
-      left: 13px;
       z-index: 2;
-      min-width: 52px;
-      height: 52px;
+      top: 16px;
+      left: 16px;
+      width: 61px;
+      height: 61px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       background: #e50909;
       color: #fff;
-      font-size: 23px;
       line-height: 1;
-      font-weight: 950;
-      box-shadow: 0 5px 18px rgba(229,9,9,.28);
+      box-shadow: 0 4px 12px rgba(0,0,0,.3);
     }
 
     .chart-position small {
-      font-size: 8px;
-      letter-spacing: 1.5px;
-      margin-bottom: 3px;
-      font-weight: 800;
-    }
-
-    .chart-card:first-child .chart-position {
-      background: #fff;
-      color: #e50909;
-    }
-
-    .chart-card-label {
-      position: absolute;
-      z-index: 2;
-      left: 13px;
-      bottom: 12px;
-      color: #fff;
-      font-size: 8px;
+      font-size: 9px;
       font-weight: 900;
       letter-spacing: 2px;
-      text-shadow: 0 2px 8px #000;
+      margin-bottom: 4px;
+    }
+
+    .chart-position strong {
+      font-size: 28px;
+      font-weight: 950;
+    }
+
+    .chart-watermark {
+      position: absolute;
+      z-index: 2;
+      bottom: 13px;
+      left: 15px;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 5px #000;
     }
 
     .chart-placeholder {
@@ -716,7 +674,7 @@ document.addEventListener("DOMContentLoaded", () => {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #292929, #101010);
+      background: linear-gradient(135deg, #24242a, #111114);
       color: #fff;
     }
 
@@ -728,133 +686,109 @@ document.addEventListener("DOMContentLoaded", () => {
 
     .chart-placeholder strong {
       font-size: 30px;
-      font-weight: 950;
+      font-weight: 900;
       color: #e50909;
     }
 
     .chart-song-info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 17px 16px 15px;
+      padding: 20px 18px 17px;
     }
 
-    .chart-song-heading h3 {
+    .chart-song-info h3 {
       color: #fff;
-      font-size: 16px;
+      font-size: 17px;
       line-height: 1.35;
-      font-weight: 850;
-      margin: 0 0 7px;
+      margin: 0 0 9px;
       overflow-wrap: anywhere;
-      transition: color .25s ease;
     }
 
-    .chart-card:hover .chart-song-heading h3 {
-      color: #ff3434;
-    }
-
-    .chart-song-heading p {
+    .chart-song-info p {
       color: #999;
-      font-size: 12px;
-      line-height: 1.55;
-      margin: 0 0 22px;
+      font-size: 13px;
+      line-height: 1.5;
+      min-height: 20px;
+      margin: 0 0 25px;
       overflow-wrap: anywhere;
     }
 
-    .chart-card-bottom {
+    .chart-card-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding-top: 12px;
-      border-top: 1px solid #303030;
+      gap: 8px;
+      padding-top: 14px;
+      border-top: 1px solid #353535;
     }
 
-    .chart-rank-label {
+    .chart-card-footer > span:first-child {
       color: #777;
-      font-size: 8px;
-      font-weight: 850;
-      letter-spacing: 1px;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
     }
 
     .chart-listen {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      padding: 8px 10px;
+      justify-content: center;
+      gap: 8px;
+      min-width: 94px;
+      padding: 11px 13px;
       background: #e50909;
-      border: 1px solid #e50909;
       color: #fff;
-      font-size: 9px;
+      font-size: 10px;
       font-weight: 900;
       letter-spacing: 1px;
       text-decoration: none;
-      transition:
-        background .25s ease,
-        color .25s ease,
-        transform .25s ease;
+      transition: background .2s;
     }
 
     .chart-listen:hover {
-      background: #fff;
-      color: #111;
-      border-color: #fff;
-      transform: translateY(-2px);
+      background: #b90000;
     }
 
-    .chart-play-icon {
-      font-size: 9px;
+    .chart-listen span {
+      font-size: 10px;
     }
 
     .chart-unavailable {
       color: #777;
-      font-size: 8px;
-      letter-spacing: .7px;
+      font-size: 9px;
+      letter-spacing: 1px;
     }
 
     .chart-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       gap: 20px;
-      margin-top: 32px;
-      padding-top: 22px;
+      margin-top: 38px;
+      padding-top: 25px;
       border-top: 1px solid #303030;
     }
 
     .chart-footer > span {
       color: #777;
-      font-size: 9px;
-      font-weight: 850;
-      letter-spacing: 1.6px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 2px;
     }
 
     .chart-view-all {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 13px 19px;
+      display: inline-block;
+      padding: 17px 25px;
       background: #e50909;
-      border: 1px solid #e50909;
       color: #fff;
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 1.3px;
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 1.2px;
       text-decoration: none;
-      transition: all .25s ease;
+      transition: background .2s, transform .2s;
     }
 
     .chart-view-all:hover {
-      background: transparent;
-      color: #ff3030;
-      transform: translateY(-3px);
-    }
-
-    .chart-view-all span {
-      font-size: 15px;
+      background: #b90000;
+      transform: translateY(-2px);
     }
 
     .chart-loading,
@@ -865,9 +799,7 @@ document.addEventListener("DOMContentLoaded", () => {
       grid-column: 1 / -1;
     }
 
-    /* ======================================
-       NEWS
-    ====================================== */
+    /* NEWS */
 
     .kizazi-news {
       background: #101014;
@@ -1021,9 +953,7 @@ document.addEventListener("DOMContentLoaded", () => {
       grid-column: 1 / -1;
     }
 
-    /* ======================================
-       ARTICLE MODAL
-    ====================================== */
+    /* ARTICLE MODAL */
 
     .news-modal {
       display: none;
@@ -1128,10 +1058,6 @@ document.addEventListener("DOMContentLoaded", () => {
       letter-spacing: 1.2px;
     }
 
-    /* ======================================
-       RESPONSIVE DESIGN
-    ====================================== */
-
     @media(max-width: 1100px) {
       .chart-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1139,10 +1065,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     @media(max-width: 850px) {
-      .chart-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
       .news-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -1155,38 +1077,36 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       .chart-position {
-        min-width: 43px;
-        height: 43px;
         top: 9px;
         left: 9px;
-        font-size: 19px;
+        width: 45px;
+        height: 45px;
+      }
+
+      .chart-position strong {
+        font-size: 22px;
       }
 
       .chart-song-info {
-        padding: 12px 11px;
+        padding: 12px;
       }
 
-      .chart-song-heading h3 {
+      .chart-song-info h3 {
         font-size: 13px;
       }
 
-      .chart-song-heading p {
+      .chart-song-info p {
         font-size: 11px;
         margin-bottom: 15px;
       }
 
-      .chart-card-bottom {
+      .chart-card-footer {
         align-items: flex-start;
         flex-direction: column;
-        gap: 9px;
       }
 
       .chart-listen {
-        padding: 8px 9px;
-      }
-
-      .chart-rank-label {
-        font-size: 7px;
+        min-width: 100%;
       }
 
       .chart-footer {
@@ -1194,8 +1114,9 @@ document.addEventListener("DOMContentLoaded", () => {
         flex-direction: column;
       }
 
-      .chart-footer > span {
-        line-height: 1.7;
+      .chart-view-all {
+        width: 100%;
+        text-align: center;
       }
 
       .news-grid {
@@ -1218,13 +1139,6 @@ document.addEventListener("DOMContentLoaded", () => {
         font-size: 27px;
       }
     }
-
-    @media(max-width: 360px) {
-      .chart-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
   `;
 
   document.head.appendChild(websiteStyles);
