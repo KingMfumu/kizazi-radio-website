@@ -1,0 +1,549 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#09090b">
+<title>About Us | KIZAZI RADIO</title>
+<meta name="description" content="Discover KIZAZI RADIO and meet its founder, Telesphory Deogratius Mfumu.">
+<link rel="icon" href="/assets/kizazi-radio-official-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+ --bg:#09090b;
+ --panel:#111115;
+ --red:#e50909;
+ --white:#f7f7f8;
+ --muted:#a1a1aa;
+ --line:#29292f;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:90px; }
+body {
+ margin:0;
+ background:var(--bg);
+ color:var(--white);
+ font-family:Inter,Arial,sans-serif;
+}
+a { color:inherit; text-decoration:none; }
+.wrap { width:min(1160px,88%); margin:auto; }
+
+header {
+ height:80px;
+ position:sticky;
+ top:0;
+ z-index:5;
+ background:#09090bf5;
+ border-bottom:1px solid var(--line);
+}
+.head {
+ height:100%;
+ width:92%;
+ margin:auto;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:20px;
+}
+.logo {
+ width:140px;
+ height:65px;
+ object-fit:contain;
+ object-position:left;
+}
+.nav { display:flex; gap:24px; }
+.nav a {
+ font-size:11px;
+ font-weight:700;
+ color:#ccc;
+}
+.nav a:hover,.nav a.current { color:var(--red); }
+.live {
+ border:1px solid #45454d;
+ padding:13px 16px;
+ font-size:10px;
+ font-weight:900;
+ letter-spacing:1px;
+}
+.dot {
+ display:inline-block;
+ width:8px;
+ height:8px;
+ border-radius:50%;
+ background:var(--red);
+ margin-right:9px;
+}
+.menu {
+ display:none;
+ background:none;
+ color:white;
+ border:0;
+ font-size:26px;
+}
+
+.hero {
+ padding:105px 0 95px;
+ border-bottom:1px solid var(--line);
+ background:
+ radial-gradient(ellipse at 85% 35%,#e509091b,transparent 38%),
+ linear-gradient(135deg,#111115,#09090b);
+}
+.eyebrow {
+ color:#aaaab3;
+ font-size:10px;
+ font-weight:800;
+ letter-spacing:2px;
+ text-transform:uppercase;
+}
+.eyebrow:before {
+ content:"";
+ display:inline-block;
+ width:22px;
+ height:2px;
+ background:var(--red);
+ margin:0 10px 3px 0;
+}
+.hero h1 {
+ font-size:clamp(52px,8vw,96px);
+ line-height:.94;
+ letter-spacing:-.08em;
+ margin:18px 0;
+ font-weight:900;
+}
+.hero h1 em,.section-title em {
+ font-style:normal;
+ color:var(--red);
+}
+.intro {
+ max-width:680px;
+ color:#c5c5cc;
+ font-size:15px;
+ line-height:1.9;
+}
+
+section.content { padding:78px 0; }
+.two {
+ display:grid;
+ grid-template-columns:1.05fr .95fr;
+ gap:60px;
+ align-items:start;
+}
+.kicker {
+ color:var(--red);
+ font-size:10px;
+ font-weight:900;
+ letter-spacing:1.5px;
+ margin-bottom:14px;
+}
+.section-title {
+ font-size:clamp(34px,4.5vw,54px);
+ line-height:1;
+ letter-spacing:-.065em;
+ margin:0 0 24px;
+ font-weight:900;
+}
+.copy p {
+ color:var(--muted);
+ font-size:13px;
+ line-height:1.95;
+ margin:0 0 18px;
+}
+.panel {
+ background:var(--panel);
+ border:1px solid var(--line);
+ padding:30px;
+}
+.panel h3 { margin:0 0 12px; }
+.panel>p,.pillar span {
+ color:var(--muted);
+ font-size:12px;
+ line-height:1.8;
+}
+.pillars {
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:10px;
+}
+.pillar {
+ padding:15px;
+ background:#19191e;
+ border-left:2px solid var(--red);
+}
+.pillar strong {
+ display:block;
+ font-size:12px;
+ margin-bottom:6px;
+}
+.pillar span { font-size:10px; }
+
+.mission {
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:18px;
+ margin-top:25px;
+}
+.mission article {
+ background:#111115;
+ border:1px solid var(--line);
+ padding:26px;
+}
+.mission small {
+ color:var(--red);
+ font-weight:900;
+ letter-spacing:1px;
+}
+.mission h3 {
+ font-size:23px;
+ margin:12px 0;
+}
+.mission p {
+ color:var(--muted);
+ font-size:12px;
+ line-height:1.9;
+ margin:0;
+}
+
+.founder {
+ background:#101014;
+ border-top:1px solid var(--line);
+ border-bottom:1px solid var(--line);
+}
+.founder-grid {
+ display:grid;
+ grid-template-columns:.82fr 1.18fr;
+ gap:60px;
+ align-items:center;
+}
+.portrait {
+ padding:11px;
+ border:1px solid #333;
+ background:#19191e;
+}
+.portrait img {
+ display:block;
+ width:100%;
+ aspect-ratio:4/5;
+ object-fit:cover;
+ object-position:center top;
+ filter:grayscale(1);
+}
+.role {
+ color:var(--red);
+ font-size:10px;
+ font-weight:900;
+ letter-spacing:1.5px;
+}
+.name {
+ font-size:clamp(32px,4vw,48px);
+ line-height:1.03;
+ letter-spacing:-.06em;
+ margin:13px 0 8px;
+}
+.job {
+ font-size:12px;
+ color:#ddd;
+ font-weight:600;
+ margin:0 0 22px;
+}
+.founder-copy p {
+ color:var(--muted);
+ font-size:13px;
+ line-height:1.95;
+}
+.quote {
+ margin-top:25px;
+ padding:20px;
+ border-left:2px solid var(--red);
+ background:#19191e;
+ font-size:14px;
+ line-height:1.7;
+ font-weight:700;
+}
+
+.cta { padding:65px 0; }
+.cta-box {
+ padding:35px;
+ border:1px solid var(--line);
+ background:
+ radial-gradient(circle at 90% 10%,#e509091c,transparent 35%),
+ #111115;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:20px;
+}
+.cta h2 {
+ font-size:clamp(26px,3.5vw,40px);
+ margin:0;
+ letter-spacing:-.06em;
+}
+.cta p {
+ font-size:12px;
+ color:var(--muted);
+}
+.button {
+ background:var(--red);
+ padding:15px 19px;
+ font-size:10px;
+ font-weight:900;
+ letter-spacing:1px;
+ white-space:nowrap;
+}
+
+footer {
+ background:#08080a;
+ padding:32px 0 20px;
+}
+.foot {
+ display:flex;
+ justify-content:space-between;
+ gap:25px;
+ align-items:center;
+ padding-bottom:25px;
+}
+.foot img {
+ width:130px;
+ height:60px;
+ object-fit:contain;
+}
+.links {
+ display:flex;
+ gap:20px;
+ flex-wrap:wrap;
+}
+.links a {
+ font-size:10px;
+ color:#aaa;
+}
+.bottom {
+ border-top:1px solid var(--line);
+ padding-top:18px;
+ color:#777;
+ font-size:9px;
+ display:flex;
+ justify-content:space-between;
+}
+
+@media(max-width:700px) {
+ header { height:70px; }
+ .head { width:90%; }
+ .logo { width:108px; }
+ .menu { display:block; }
+ .live { font-size:8px; padding:10px; }
+ .nav {
+  display:none;
+  position:absolute;
+  top:69px;
+  left:0;
+  right:0;
+  background:#101014;
+  padding:22px 6%;
+  flex-direction:column;
+  border-bottom:1px solid var(--line);
+ }
+ .nav.open { display:flex; }
+ .nav a { font-size:12px; }
+ .wrap { width:90%; }
+ .hero { padding:75px 0; }
+ .two,.founder-grid,.mission {
+  grid-template-columns:1fr;
+  gap:25px;
+ }
+ .panel { padding:23px; }
+ .pillars { grid-template-columns:1fr 1fr; }
+ .portrait { max-width:440px; }
+ .cta-box,.foot,.bottom { display:block; }
+ .button { display:inline-block; margin-top:15px; }
+ .links { margin-top:20px; }
+ .bottom span { display:block; margin-top:8px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="head">
+
+<a href="/" aria-label="KIZAZI RADIO home">
+<img class="logo" src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
+</a>
+
+<button class="menu" aria-label="Open navigation" aria-expanded="false">☰</button>
+
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/#listen">Listen Live</a>
+<a href="/#schedule">Schedule</a>
+<a href="/#shows">Shows</a>
+<a href="/#podcasts">Podcasts</a>
+<a href="/news/">News</a>
+<a class="current" href="/about/">About Us</a>
+</nav>
+
+<a class="live" href="/#listen">
+<span class="dot"></span>LISTEN LIVE ↗
+</a>
+
+</div>
+</header>
+
+<main>
+
+<section class="hero">
+<div class="wrap">
+<p class="eyebrow">Who we are • What we stand for</p>
+<h1>A NEW GENERATION.<br><em>A NEW SOUND.</em></h1>
+<p class="intro">
+KIZAZI RADIO is an independent online radio station built for a generation that is constantly evolving, connecting, creating and shaping the future.
+</p>
+</div>
+</section>
+
+<section class="content">
+<div class="wrap two">
+
+<div>
+<div class="kicker">01 / ABOUT KIZAZI RADIO</div>
+<h2 class="section-title">RADIO THAT MOVES<br>WITH <em>THE GENERATION.</em></h2>
+
+<div class="copy">
+<p>We believe radio should move with the times and reflect the interests, conversations, culture and experiences of the generation it serves. KIZAZI RADIO brings together music, entertainment, information and meaningful conversations in one digital space.</p>
+
+<p>Our programming explores contemporary music, entertainment, social issues, current affairs, sports, relationships and lifestyle. We connect young people and audiences from different backgrounds through music, ideas and conversation, without being limited by geography.</p>
+
+<p>KIZAZI RADIO is also a platform for new voices, fresh ideas and the culture of a new generation.</p>
+</div>
+</div>
+
+<aside class="panel">
+<h3>What We Do</h3>
+<p>We entertain, inform and educate through relevant programming and digital media content.</p>
+
+<div class="pillars">
+<div class="pillar"><strong>Music</strong><span>Contemporary sounds and music discovery</span></div>
+<div class="pillar"><strong>Entertainment</strong><span>Culture, trends and stories</span></div>
+<div class="pillar"><strong>Information</strong><span>Conversations around current issues</span></div>
+<div class="pillar"><strong>Sports &amp; Lifestyle</strong><span>Interests and everyday experiences</span></div>
+<div class="pillar"><strong>Podcasts</strong><span>Original voices, ideas and discussions</span></div>
+</div>
+</aside>
+
+</div>
+</section>
+
+<section class="content" style="padding-top:0">
+<div class="wrap">
+<div class="kicker">02 / OUR DIRECTION</div>
+<h2 class="section-title">WHY WE'RE <em>HERE.</em></h2>
+
+<div class="mission">
+<article>
+<small>OUR MISSION</small>
+<h3>Entertain. Inform. Educate.</h3>
+<p>To entertain, inform and educate the new generation through relevant music, engaging programmes, meaningful conversations and digital media content.</p>
+</article>
+
+<article>
+<small>OUR VISION</small>
+<h3>A distinctive global platform.</h3>
+<p>To become a distinctive global digital radio platform reflecting the voice, creativity, culture and aspirations of a new generation.</p>
+</article>
+</div>
+
+<div class="copy" style="max-width:760px;margin-top:25px">
+<p>Our approach is independent, digitally driven and audience-focused. We value fresh perspectives, creative expression and the power of media to connect people across borders.</p>
+</div>
+</div>
+</section>
+
+<section class="content founder" id="founder">
+<div class="wrap founder-grid">
+
+<div class="portrait">
+<img src="/assets/telesphory-mfumu.jpg" alt="Telesphory Deogratius Mfumu, Founder of KIZAZI RADIO" loading="lazy">
+</div>
+
+<div class="founder-copy">
+<div class="kicker">03 / MEET THE FOUNDER</div>
+<div class="role">FOUNDER</div>
+<h2 class="name">Telesphory<br>Deogratius Mfumu</h2>
+<p class="job">Creative &amp; Digital Media Professional</p>
+
+<p>Telesphory Deogratius Mfumu is a creative and digital media professional with a background in graphic design, digital marketing, social media management and media content development.</p>
+
+<p>His professional experience spans creative design, broadcasting and digital media. He is interested in how media, technology and creativity can be used to tell stories, connect audiences and create meaningful experiences.</p>
+
+<p>He founded KIZAZI RADIO on the belief that the new generation deserves a digital radio platform that reflects its identity, interests, culture and changing world. As founder, he leads the station's creative direction and development, bringing together media, branding and digital communication experience to build an independent online radio platform with a global outlook.</p>
+
+<div class="quote">
+“KIZAZI RADIO is more than a broadcasting project; it is a platform for music, ideas, conversations and voices that deserve to be heard.”
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="cta">
+<div class="wrap cta-box">
+<div>
+<h2>NEW GENERATION.<br><em style="color:#e50909">NEW SOUND.</em></h2>
+<p>Be part of the music, ideas and conversations shaping what comes next.</p>
+</div>
+<a class="button" href="/#listen">LISTEN TO KIZAZI RADIO ↗</a>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="wrap">
+<div class="foot">
+<a href="/">
+<img src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
+</a>
+
+<nav class="links">
+<a href="/">Home</a>
+<a href="/#shows">Shows</a>
+<a href="/#podcasts">Podcasts</a>
+<a href="/news/">News</a>
+<a href="/about/">About Us</a>
+<a href="mailto:hello@kizaziradio.com">Contact</a>
+</nav>
+</div>
+
+<div class="bottom">
+<span>© <span id="year"></span> KIZAZI RADIO. ALL RIGHTS RESERVED.</span>
+<span>NEW GENERATION • NEW SOUND</span>
+</div>
+</div>
+</footer>
+
+<script>
+const menu = document.querySelector('.menu');
+const nav = document.querySelector('.nav');
+
+menu.addEventListener('click', () => {
+ const open = nav.classList.toggle('open');
+ menu.setAttribute('aria-expanded', String(open));
+ menu.textContent = open ? '×' : '☰';
+});
+
+nav.querySelectorAll('a').forEach(link => {
+ link.addEventListener('click', () => {
+  nav.classList.remove('open');
+  menu.setAttribute('aria-expanded', 'false');
+  menu.textContent = '☰';
+ });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
