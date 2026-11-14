@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,18 +23,30 @@
  --muted:#a1a1aa;
  --line:#29292f;
 }
+
 * { box-sizing:border-box; }
-html { scroll-behavior:smooth; scroll-padding-top:90px; }
+
+html {
+ scroll-behavior:smooth;
+ scroll-padding-top:90px;
+}
+
 body {
  margin:0;
  background:var(--bg);
  color:var(--white);
  font-family:Inter,Arial,sans-serif;
 }
+
 a { color:inherit; text-decoration:none; }
-.wrap { width:min(1160px,88%); margin:auto; }
+
+.wrap {
+ width:min(1160px,88%);
+ margin:auto;
+}
 
 /* HEADER */
+
 header {
  height:80px;
  position:sticky;
@@ -43,6 +55,7 @@ header {
  background:#09090bf5;
  border-bottom:1px solid var(--line);
 }
+
 .head {
  height:100%;
  width:92%;
@@ -52,19 +65,30 @@ header {
  justify-content:space-between;
  gap:20px;
 }
+
 .logo {
  width:140px;
  height:65px;
  object-fit:contain;
  object-position:left;
 }
-.nav { display:flex; gap:24px; }
+
+.nav {
+ display:flex;
+ gap:24px;
+}
+
 .nav a {
  font-size:11px;
  font-weight:700;
  color:#ccc;
 }
-.nav a:hover,.nav a.current { color:var(--red); }
+
+.nav a:hover,
+.nav a.current {
+ color:var(--red);
+}
+
 .live {
  border:1px solid #45454d;
  padding:13px 16px;
@@ -72,6 +96,7 @@ header {
  font-weight:900;
  letter-spacing:1px;
 }
+
 .dot {
  display:inline-block;
  width:8px;
@@ -80,6 +105,7 @@ header {
  background:var(--red);
  margin-right:9px;
 }
+
 .menu {
  display:none;
  background:none;
@@ -90,6 +116,7 @@ header {
 }
 
 /* HERO */
+
 .hero {
  padding:105px 0 95px;
  border-bottom:1px solid var(--line);
@@ -97,6 +124,7 @@ header {
  radial-gradient(ellipse at 85% 35%,#e509091b,transparent 38%),
  linear-gradient(135deg,#111115,#09090b);
 }
+
 .eyebrow {
  color:#aaaab3;
  font-size:10px;
@@ -104,6 +132,7 @@ header {
  letter-spacing:2px;
  text-transform:uppercase;
 }
+
 .eyebrow:before {
  content:"";
  display:inline-block;
@@ -112,6 +141,7 @@ header {
  background:var(--red);
  margin:0 10px 3px 0;
 }
+
 .hero h1 {
  font-size:clamp(52px,8vw,96px);
  line-height:.94;
@@ -119,22 +149,27 @@ header {
  margin:18px 0;
  font-weight:900;
 }
-.hero h1 em,.section-title em {
+
+.hero h1 em,
+.section-title em {
  font-style:normal;
  color:var(--red);
 }
+
 .intro {
  max-width:680px;
  color:#c5c5cc;
  font-size:15px;
  line-height:1.9;
 }
+
 .hero-meta {
  display:flex;
  flex-wrap:wrap;
  gap:12px;
  margin-top:30px;
 }
+
 .meta {
  border:1px solid #38383f;
  padding:12px 16px;
@@ -144,8 +179,12 @@ header {
  letter-spacing:1px;
 }
 
-/* GENERAL SECTIONS */
-section.content { padding:78px 0; }
+/* GENERAL CONTENT */
+
+section.content {
+ padding:78px 0;
+}
+
 .kicker {
  color:var(--red);
  font-size:10px;
@@ -153,6 +192,7 @@ section.content { padding:78px 0; }
  letter-spacing:1.5px;
  margin-bottom:14px;
 }
+
 .section-title {
  font-size:clamp(34px,4.5vw,54px);
  line-height:1;
@@ -160,6 +200,7 @@ section.content { padding:78px 0; }
  margin:0 0 22px;
  font-weight:900;
 }
+
 .section-intro {
  max-width:680px;
  color:var(--muted);
@@ -169,11 +210,13 @@ section.content { padding:78px 0; }
 }
 
 /* FEATURED SHOWS */
+
 .show-grid {
  display:grid;
  grid-template-columns:repeat(3,1fr);
  gap:18px;
 }
+
 .show-card {
  min-height:390px;
  display:flex;
@@ -185,6 +228,7 @@ section.content { padding:78px 0; }
  position:relative;
  overflow:hidden;
 }
+
 .show-card:after {
  content:"";
  position:absolute;
@@ -197,16 +241,35 @@ section.content { padding:78px 0; }
  opacity:.12;
  filter:blur(10px);
 }
-.morning { --accent:#e9a02b; --glow:#ffad28; }
-.nocap { --accent:#e50909; --glow:#ff2020; }
-.love { --accent:#b47ad9; --glow:#c879ff; }
-.show-top,.show-bottom { position:relative; z-index:1; }
+
+.morning {
+ --accent:#e9a02b;
+ --glow:#ffad28;
+}
+
+.nocap {
+ --accent:#e50909;
+ --glow:#ff2020;
+}
+
+.love {
+ --accent:#b47ad9;
+ --glow:#c879ff;
+}
+
+.show-top,
+.show-bottom {
+ position:relative;
+ z-index:1;
+}
+
 .show-number {
  font-size:10px;
  color:#777;
  font-weight:800;
  letter-spacing:2px;
 }
+
 .live-label {
  display:inline-flex;
  align-items:center;
@@ -217,6 +280,7 @@ section.content { padding:78px 0; }
  font-weight:900;
  letter-spacing:1.5px;
 }
+
 .live-label:before {
  content:"";
  width:7px;
@@ -225,6 +289,7 @@ section.content { padding:78px 0; }
  border-radius:50%;
  box-shadow:0 0 12px #e50909;
 }
+
 .show-card h3 {
  font-size:clamp(29px,3vw,39px);
  line-height:.98;
@@ -232,22 +297,26 @@ section.content { padding:78px 0; }
  margin:18px 0 12px;
  font-weight:900;
 }
+
 .show-card .tagline {
  color:var(--accent);
  font-size:11px;
  font-weight:800;
 }
+
 .show-card p {
  color:var(--muted);
  font-size:12px;
  line-height:1.85;
  margin:18px 0 0;
 }
+
 .presenter {
  border-top:1px solid #303036;
  padding-top:18px;
  margin-top:25px;
 }
+
 .presenter small {
  display:block;
  color:#777;
@@ -256,13 +325,18 @@ section.content { padding:78px 0; }
  letter-spacing:1.5px;
  margin-bottom:7px;
 }
-.presenter strong { font-size:14px; }
+
+.presenter strong {
+ font-size:14px;
+}
+
 .show-time {
  margin-top:8px;
  color:#aaa;
  font-size:10px;
  font-weight:700;
 }
+
 .show-link {
  display:inline-block;
  margin-top:18px;
@@ -272,12 +346,14 @@ section.content { padding:78px 0; }
  letter-spacing:1px;
 }
 
-/* SCHEDULE */
+/* PROGRAMME SCHEDULE */
+
 .schedule-section {
  background:#101014;
  border-top:1px solid var(--line);
  border-bottom:1px solid var(--line);
 }
+
 .schedule-head {
  display:flex;
  justify-content:space-between;
@@ -285,6 +361,7 @@ section.content { padding:78px 0; }
  gap:20px;
  margin-bottom:35px;
 }
+
 .weekday {
  border:1px solid #393940;
  padding:12px 16px;
@@ -294,7 +371,11 @@ section.content { padding:78px 0; }
  letter-spacing:1px;
  white-space:nowrap;
 }
-.schedule-list { border-top:1px solid var(--line); }
+
+.schedule-list {
+ border-top:1px solid var(--line);
+}
+
 .schedule-row {
  display:grid;
  grid-template-columns:180px 1fr 130px;
@@ -303,21 +384,25 @@ section.content { padding:78px 0; }
  padding:23px 20px;
  border-bottom:1px solid var(--line);
 }
+
 .schedule-time {
  color:#aaa;
  font-size:11px;
  font-weight:800;
 }
+
 .schedule-name {
  font-size:16px;
  font-weight:900;
  letter-spacing:-.4px;
 }
+
 .schedule-host {
  color:var(--muted);
  font-size:11px;
  margin-top:6px;
 }
+
 .schedule-status {
  justify-self:end;
  color:#999;
@@ -325,7 +410,11 @@ section.content { padding:78px 0; }
  font-weight:900;
  letter-spacing:1px;
 }
-.schedule-status.live-status { color:var(--red); }
+
+.schedule-status.live-status {
+ color:var(--red);
+}
+
 .schedule-status.live-status:before {
  content:"";
  display:inline-block;
@@ -336,257 +425,173 @@ section.content { padding:78px 0; }
  margin-right:7px;
  vertical-align:1px;
 }
-.playlist .schedule-name { color:#c4c4ca; }
 
-/* KING MFUMU CREATIVE PRESENTER FEATURE */
-.presenter-feature {
- position:relative;
- padding:95px 0;
- overflow:hidden;
- background:
- radial-gradient(ellipse at 15% 50%,#e5090918,transparent 45%),
- linear-gradient(120deg,#101014,#08080a 75%);
- border-top:1px solid #24242a;
- border-bottom:1px solid #24242a;
+.playlist .schedule-name {
+ color:#c4c4ca;
 }
-.presenter-feature:before {
- content:"KIZAZI";
- position:absolute;
- right:-30px;
- top:20px;
- font-size:clamp(100px,19vw,260px);
- font-weight:900;
- letter-spacing:-.1em;
- color:rgba(255,255,255,.018);
- pointer-events:none;
- white-space:nowrap;
-}
-.presenter-layout {
- position:relative;
- z-index:1;
+
+/* KING MFUMU PRESENTER FEATURE */
+
+.presenter-section {
  display:grid;
- grid-template-columns:1.05fr .95fr;
+ grid-template-columns:.8fr 1.2fr;
+ gap:60px;
  align-items:center;
- gap:65px;
 }
 
-/* IMAGE ARTWORK */
-.presenter-visual {
+/* Creative portrait card */
+
+.presenter-art {
  position:relative;
- min-height:590px;
+ width:100%;
+ min-height:620px;
+ height:620px;
+ overflow:hidden;
+ border:1px solid #38383f;
+ border-radius:12px;
+ background:#d77b19;
+ box-shadow:0 25px 70px #0008;
  isolation:isolate;
 }
-.presenter-visual:before {
- content:"";
- position:absolute;
- inset:22px -18px -18px 22px;
- border:1px solid #e5090966;
- z-index:-1;
-}
-.presenter-visual:after {
- content:"";
- position:absolute;
- width:180px;
- height:180px;
- border-radius:50%;
- background:#e50909;
- filter:blur(100px);
- opacity:.18;
- left:10%;
- bottom:5%;
- z-index:-1;
-}
-.presenter-photo {
+
+.presenter-art img {
  position:absolute;
  inset:0;
- overflow:hidden;
- background:#17171c;
- border:1px solid #38383f;
-}
-.presenter-photo img {
- display:block;
  width:100%;
  height:100%;
+ display:block;
  object-fit:cover;
- object-position:center 24%;
- filter:contrast(1.04) saturate(.92);
+ object-position:center 25%;
+ transition:transform .7s ease;
 }
-.photo-overlay {
+
+.presenter-art:hover img {
+ transform:scale(1.035);
+}
+
+.presenter-art:after {
+ content:"";
  position:absolute;
  inset:0;
+ z-index:1;
  background:
- linear-gradient(180deg,rgba(0,0,0,.04) 35%,rgba(0,0,0,.82) 100%),
- linear-gradient(90deg,rgba(0,0,0,.12),transparent 55%);
-}
-.photo-topline {
- position:absolute;
- top:24px;
- left:25px;
- right:25px;
- display:flex;
- justify-content:space-between;
- align-items:center;
-}
-.photo-topline span {
- font-size:9px;
- font-weight:900;
- letter-spacing:2px;
- color:white;
-}
-.photo-topline .live-tag {
- display:flex;
- align-items:center;
- gap:7px;
- color:#fff;
-}
-.live-tag i {
- width:7px;
- height:7px;
- display:inline-block;
- border-radius:50%;
- background:var(--red);
- box-shadow:0 0 12px var(--red);
-}
-.photo-caption {
- position:absolute;
- left:28px;
- right:25px;
- bottom:30px;
-}
-.photo-caption .overline {
- display:block;
- color:#f0b1b1;
- font-size:9px;
- font-weight:900;
- letter-spacing:3px;
- margin-bottom:10px;
-}
-.photo-caption strong {
- display:block;
- font-size:clamp(38px,5vw,66px);
- font-weight:900;
- letter-spacing:-.085em;
- line-height:.88;
- text-transform:uppercase;
-}
-.photo-caption strong span { color:var(--red); }
-.photo-caption .caption-line {
- width:55px;
- height:4px;
- background:var(--red);
- margin-top:18px;
+ linear-gradient(
+  to bottom,
+  transparent 42%,
+  #09090b18 58%,
+  #09090bd9 100%
+ );
+ pointer-events:none;
 }
 
-/* PRESENTER COPY */
-.presenter-copy { padding:15px 0; }
-.presenter-copy .kicker { margin-bottom:20px; }
-.presenter-role {
+.presenter-photo-top {
+ position:absolute;
+ top:22px;
+ left:22px;
+ z-index:2;
  display:flex;
  align-items:center;
- gap:10px;
- color:#ddd;
- font-size:10px;
- font-weight:900;
- letter-spacing:2px;
-}
-.presenter-role:before {
- content:"";
- width:24px;
- height:2px;
- background:var(--red);
-}
-.presenter-copy h2 {
- font-size:clamp(46px,6vw,76px);
- line-height:.9;
- letter-spacing:-.085em;
- margin:22px 0;
- font-weight:900;
-}
-.presenter-copy h2 span {
- display:block;
- color:var(--red);
-}
-.presenter-copy .lead {
- color:#eee;
- font-size:16px;
- font-weight:600;
- line-height:1.75;
- max-width:490px;
-}
-.presenter-copy p:not(.lead) {
- color:var(--muted);
- font-size:13px;
- line-height:1.95;
- max-width:500px;
-}
-.presenter-divider {
- width:100%;
- max-width:480px;
- height:1px;
- background:linear-gradient(90deg,#e50909,transparent);
- margin:25px 0;
-}
-.presenter-label {
- color:#777;
- font-size:9px;
- font-weight:900;
- letter-spacing:2px;
- margin-bottom:13px;
-}
-.presenter-shows {
- display:grid;
- grid-template-columns:1fr;
  gap:9px;
- max-width:480px;
-}
-.presenter-show {
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:15px;
- padding:13px 15px;
- border:1px solid #303036;
- background:rgba(255,255,255,.025);
- transition:border-color .2s,transform .2s;
-}
-.presenter-show:hover {
- border-color:#e50909;
- transform:translateX(4px);
-}
-.presenter-show strong {
- font-size:11px;
- font-weight:900;
- letter-spacing:.5px;
-}
-.presenter-show span {
- color:#999;
+ padding:10px 13px;
+ background:#09090bc9;
+ border:1px solid #ffffff35;
+ backdrop-filter:blur(10px);
  font-size:9px;
- font-weight:700;
-}
-.presenter-show.morning-show { border-left:3px solid #e9a02b; }
-.presenter-show.nocap-show { border-left:3px solid #e50909; }
-.presenter-show.love-show { border-left:3px solid #b47ad9; }
-
-.presenter-signature {
- display:flex;
- align-items:center;
- gap:12px;
- margin-top:28px;
-}
-.signature-line {
- width:35px;
- height:1px;
- background:var(--red);
-}
-.presenter-signature span {
- color:#aaa;
- font-size:10px;
- font-weight:800;
+ font-weight:900;
  letter-spacing:1.5px;
 }
 
-/* CTA */
-.cta { padding:65px 0; }
+.presenter-photo-top span {
+ width:7px;
+ height:7px;
+ border-radius:50%;
+ background:var(--red);
+ box-shadow:0 0 10px var(--red);
+}
+
+.presenter-photo-bottom {
+ position:absolute;
+ left:30px;
+ right:25px;
+ bottom:30px;
+ z-index:2;
+}
+
+.presenter-photo-bottom small {
+ display:block;
+ color:#f2f2f2;
+ font-size:10px;
+ font-weight:900;
+ letter-spacing:2.5px;
+ margin-bottom:10px;
+}
+
+.presenter-photo-bottom h3 {
+ margin:0;
+ color:#fff;
+ font-size:clamp(38px,5vw,62px);
+ font-weight:900;
+ line-height:.9;
+ letter-spacing:-.075em;
+ text-transform:uppercase;
+}
+
+.presenter-photo-bottom h3 span {
+ display:block;
+ color:var(--red);
+}
+
+.presenter-photo-bottom p {
+ color:#e4e4e7;
+ font-size:10px;
+ font-weight:800;
+ letter-spacing:2px;
+ margin:15px 0 0;
+}
+
+/* Presenter text */
+
+.presenter-copy h2 {
+ font-size:clamp(35px,5vw,58px);
+ line-height:.98;
+ letter-spacing:-.07em;
+ margin:12px 0 18px;
+}
+
+.presenter-copy p {
+ color:var(--muted);
+ font-size:13px;
+ line-height:1.95;
+}
+
+.presenter-role {
+ color:var(--red);
+ font-size:10px;
+ font-weight:900;
+ letter-spacing:2px;
+}
+
+.presenter-shows {
+ display:flex;
+ flex-wrap:wrap;
+ gap:10px;
+ margin-top:26px;
+}
+
+.presenter-shows span {
+ border:1px solid #38383f;
+ padding:12px 14px;
+ font-size:9px;
+ font-weight:900;
+ letter-spacing:.7px;
+}
+
+/* CTA AND FOOTER */
+
+.cta {
+ padding:65px 0;
+}
+
 .cta-box {
  padding:35px;
  border:1px solid var(--line);
@@ -598,16 +603,19 @@ section.content { padding:78px 0; }
  align-items:center;
  gap:20px;
 }
+
 .cta h2 {
  font-size:clamp(26px,3.5vw,40px);
  margin:0;
  letter-spacing:-.06em;
 }
+
 .cta p {
  font-size:12px;
  color:var(--muted);
  line-height:1.8;
 }
+
 .button {
  display:inline-block;
  background:var(--red);
@@ -616,15 +624,17 @@ section.content { padding:78px 0; }
  font-weight:900;
  letter-spacing:1px;
  white-space:nowrap;
- transition:background .2s;
 }
-.button:hover { background:#bd0000; }
 
-/* FOOTER */
+.button:hover {
+ background:#bb0000;
+}
+
 footer {
  background:#08080a;
  padding:32px 0 20px;
 }
+
 .foot {
  display:flex;
  justify-content:space-between;
@@ -632,21 +642,28 @@ footer {
  align-items:center;
  padding-bottom:25px;
 }
+
 .foot img {
  width:130px;
  height:60px;
  object-fit:contain;
 }
+
 .links {
  display:flex;
  gap:20px;
  flex-wrap:wrap;
 }
+
 .links a {
  font-size:10px;
  color:#aaa;
 }
-.links a:hover { color:var(--red); }
+
+.links a:hover {
+ color:#fff;
+}
+
 .bottom {
  border-top:1px solid var(--line);
  padding-top:18px;
@@ -657,19 +674,46 @@ footer {
 }
 
 /* TABLET */
+
 @media(max-width:850px) {
- .show-grid { grid-template-columns:1fr 1fr; }
- .presenter-layout { gap:35px; }
- .presenter-visual { min-height:510px; }
+ .show-grid {
+  grid-template-columns:1fr 1fr;
+ }
+
+ .presenter-section {
+  gap:30px;
+ }
+
+ .presenter-art {
+  height:540px;
+  min-height:540px;
+ }
 }
 
 /* MOBILE */
+
 @media(max-width:700px) {
- header { height:70px; }
- .head { width:90%; }
- .logo { width:108px; }
- .menu { display:block; }
- .live { font-size:8px; padding:10px; }
+ header {
+  height:70px;
+ }
+
+ .head {
+  width:90%;
+ }
+
+ .logo {
+  width:108px;
+ }
+
+ .menu {
+  display:block;
+ }
+
+ .live {
+  font-size:8px;
+  padding:10px;
+ }
+
  .nav {
   display:none;
   position:absolute;
@@ -681,52 +725,125 @@ footer {
   flex-direction:column;
   border-bottom:1px solid var(--line);
  }
- .nav.open { display:flex; }
- .nav a { font-size:12px; }
- .wrap { width:90%; }
- .hero { padding:75px 0; }
- .show-grid { grid-template-columns:1fr; }
- .show-card { min-height:340px; }
- .schedule-head { display:block; }
- .weekday { display:inline-block; margin-top:5px; }
+
+ .nav.open {
+  display:flex;
+ }
+
+ .nav a {
+  font-size:12px;
+ }
+
+ .wrap {
+  width:90%;
+ }
+
+ .hero {
+  padding:75px 0;
+ }
+
+ .show-grid {
+  grid-template-columns:1fr;
+ }
+
+ .show-card {
+  min-height:340px;
+ }
+
+ .schedule-head {
+  display:block;
+ }
+
+ .weekday {
+  display:inline-block;
+  margin-top:5px;
+ }
+
  .schedule-row {
   grid-template-columns:1fr auto;
   gap:9px 12px;
   padding:20px 10px;
  }
- .schedule-time { grid-column:1 / -1; }
- .schedule-name { font-size:14px; }
+
+ .schedule-time {
+  grid-column:1 / -1;
+ }
+
+ .schedule-name {
+  font-size:14px;
+ }
+
  .schedule-status {
   grid-column:2;
   grid-row:2 / span 2;
  }
- .presenter-feature { padding:65px 0; }
- .presenter-layout {
+
+ .presenter-section {
   grid-template-columns:1fr;
-  gap:45px;
+  gap:30px;
  }
- .presenter-visual {
-  min-height:490px;
-  margin-right:12px;
+
+ .presenter-art {
+  height:auto;
+  min-height:0;
+  aspect-ratio:4 / 5;
+  max-height:620px;
  }
- .presenter-copy { padding:0; }
- .presenter-copy h2 { font-size:58px; }
- .photo-caption strong { font-size:52px; }
- .cta-box,.foot,.bottom { display:block; }
- .button { margin-top:15px; }
- .links { margin-top:20px; }
+
+ .presenter-art img {
+  object-position:center 23%;
+ }
+
+ .presenter-photo-bottom {
+  left:22px;
+  bottom:23px;
+ }
+
+ .presenter-photo-bottom h3 {
+  font-size:clamp(42px,12vw,58px);
+ }
+
+ .presenter-copy h2 {
+  font-size:42px;
+ }
+
+ .cta-box,
+ .foot,
+ .bottom {
+  display:block;
+ }
+
+ .button {
+  margin-top:15px;
+ }
+
+ .links {
+  margin-top:20px;
+ }
+
  .bottom span {
   display:block;
   margin-top:8px;
  }
 }
 
-@media(max-width:400px) {
- .presenter-visual { min-height:410px; }
- .photo-caption { left:19px; bottom:22px; }
- .photo-caption strong { font-size:43px; }
- .presenter-copy h2 { font-size:49px; }
+@media(max-width:380px) {
+ .presenter-photo-top {
+  top:14px;
+  left:14px;
+  font-size:8px;
+ }
+
+ .presenter-photo-bottom {
+  left:17px;
+  bottom:18px;
+ }
+
+ .presenter-photo-bottom h3 {
+  font-size:39px;
+ }
 }
+
 </style>
 </head>
 
@@ -734,6 +851,7 @@ footer {
 
 <header>
 <div class="head">
+
 <a href="/" aria-label="KIZAZI RADIO home">
 <img class="logo" src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
 </a>
@@ -750,31 +868,46 @@ footer {
 <a href="/about/">About Us</a>
 </nav>
 
-<a class="live" href="/#listen"><span class="dot"></span>LISTEN LIVE ↗</a>
+<a class="live" href="/#listen">
+<span class="dot"></span>LISTEN LIVE ↗
+</a>
+
 </div>
 </header>
 
 <main>
 
+<!-- HERO -->
+
 <section class="hero">
 <div class="wrap">
+
 <p class="eyebrow">KIZAZI RADIO PROGRAMMING</p>
+
 <h1>THE SHOWS.<br><em>THE SOUND.</em></h1>
+
 <p class="intro">
 From the first connection in the morning to conversations after dark, KIZAZI RADIO brings you music, fresh perspectives and experiences that move with a new generation.
 </p>
+
 <div class="hero-meta">
 <div class="meta">MONDAY – FRIDAY</div>
 <div class="meta">LIVE RADIO</div>
 <div class="meta">WITH KING MFUMU</div>
 </div>
+
 </div>
 </section>
 
+<!-- FEATURED SHOWS -->
+
 <section class="content" id="featured-shows">
 <div class="wrap">
+
 <div class="kicker">01 / ON AIR PROGRAMMES</div>
+
 <h2 class="section-title">MEET THE <em>SHOWS.</em></h2>
+
 <p class="section-intro">
 Three live shows. Three different moods. One connection to the new generation. Meet your weekday companion on KIZAZI RADIO.
 </p>
@@ -783,54 +916,84 @@ Three live shows. Three different moods. One connection to the new generation. M
 
 <article class="show-card morning">
 <div class="show-top">
+
 <div class="show-number">01 / YOUR MORNING CONNECTION</div>
+
 <div class="live-label">LIVE · MONDAY – FRIDAY</div>
+
 <h3>MORNING<br>LINKUP</h3>
+
 <div class="tagline">Start Your Day Connected.</div>
-<p>Start your day with social conversations, lifestyle, entertainment, trending topics and music. Join the connection and bring your voice to the morning.</p>
+
+<p>
+Start your day with social conversations, lifestyle, entertainment, trending topics and music. Join the connection and bring your voice to the morning.
+</p>
+
 </div>
+
 <div class="show-bottom">
 <div class="presenter">
 <small>YOUR HOST</small>
 <strong>King Mfumu</strong>
 <div class="show-time">10:00 AM – 12:00 PM</div>
 </div>
+
 <a class="show-link" href="#weekly-schedule">VIEW SCHEDULE ↗</a>
 </div>
 </article>
 
 <article class="show-card nocap">
 <div class="show-top">
+
 <div class="show-number">02 / REAL CONVERSATIONS</div>
+
 <div class="live-label">LIVE · MONDAY – FRIDAY</div>
+
 <h3>NO<br>CAP</h3>
+
 <div class="tagline">Real Talk. No Filter.</div>
-<p>A space for real talk, youth culture, opinions, viral trends, entertainment and conversations that challenge perspectives. No pretending. Just honest discussion.</p>
+
+<p>
+A space for real talk, youth culture, opinions, viral trends, entertainment and conversations that challenge perspectives. No pretending. Just honest discussion.
+</p>
+
 </div>
+
 <div class="show-bottom">
 <div class="presenter">
 <small>YOUR HOST</small>
 <strong>King Mfumu</strong>
 <div class="show-time">3:00 PM – 6:00 PM</div>
 </div>
+
 <a class="show-link" href="#weekly-schedule">VIEW SCHEDULE ↗</a>
 </div>
 </article>
 
 <article class="show-card love">
 <div class="show-top">
+
 <div class="show-number">03 / YOUR NIGHT COMPANION</div>
+
 <div class="live-label">LIVE · MONDAY – FRIDAY</div>
+
 <h3>THE LOVE<br>NIGHTS</h3>
+
 <div class="tagline">Where Love Meets Music.</div>
-<p>Love, relationships, romance, heartfelt conversations, dedications and music for every mood. Settle in and let the night tell its story.</p>
+
+<p>
+Love, relationships, romance, heartfelt conversations, dedications and music for every mood. Settle in and let the night tell its story.
+</p>
+
 </div>
+
 <div class="show-bottom">
 <div class="presenter">
 <small>YOUR HOST</small>
 <strong>King Mfumu</strong>
 <div class="show-time">8:00 PM – 11:00 PM</div>
 </div>
+
 <a class="show-link" href="#weekly-schedule">VIEW SCHEDULE ↗</a>
 </div>
 </article>
@@ -839,13 +1002,17 @@ Three live shows. Three different moods. One connection to the new generation. M
 </div>
 </section>
 
+<!-- WEEKDAY SCHEDULE -->
+
 <section class="content schedule-section" id="weekly-schedule">
 <div class="wrap">
+
 <div class="schedule-head">
 <div>
 <div class="kicker">02 / WEEKDAY PROGRAMMING</div>
 <h2 class="section-title">YOUR DAY.<br><em>YOUR RADIO.</em></h2>
 </div>
+
 <div class="weekday">MONDAY – FRIDAY</div>
 </div>
 
@@ -909,87 +1076,87 @@ Three live shows. Three different moods. One connection to the new generation. M
 </div>
 </section>
 
-<!-- CREATIVE PRESENTER PROFILE -->
+<!-- PRESENTER PROFILE -->
 
-<section class="presenter-feature">
-<div class="wrap presenter-layout">
+<section class="content">
+<div class="wrap presenter-section">
 
-<div class="presenter-visual">
-<div class="presenter-photo">
-<img src="/assets/telesphory-mfumu.jpg" alt="King Mfumu, KIZAZI RADIO presenter" loading="lazy">
+<div class="presenter-art">
 
-<div class="photo-overlay"></div>
+<img
+src="/assets/king-mfumu-presenter.png"
+alt="King Mfumu, KIZAZI RADIO presenter"
+loading="lazy"
+>
 
-<div class="photo-topline">
-<span>KIZAZI RADIO ORIGINAL</span>
-<span class="live-tag"><i></i> ON AIR</span>
+<div class="presenter-photo-top">
+<span></span>
+KIZAZI RADIO PRESENTER
 </div>
 
-<div class="photo-caption">
-<span class="overline">THE VOICE OF A NEW GENERATION</span>
-<strong>KING <span>MFUMU.</span></strong>
-<div class="caption-line"></div>
+<div class="presenter-photo-bottom">
+<small>THE VOICE OF KIZAZI RADIO</small>
+<h3>KING <span>MFUMU.</span></h3>
+<p>THREE SHOWS. ONE VOICE.</p>
 </div>
-</div>
+
 </div>
 
 <div class="presenter-copy">
+
 <div class="kicker">03 / THE VOICE BEHIND THE SHOWS</div>
+
 <div class="presenter-role">KIZAZI RADIO PRESENTER</div>
 
-<h2>ONE VOICE.<span>THREE VIBES.</span></h2>
+<h2>MEET<br>KING <em style="color:#e50909">MFUMU.</em></h2>
 
-<p class="lead">
-Meet King Mfumu — the voice connecting your day to music, ideas and conversations on KIZAZI RADIO.
+<p>
+Meet King Mfumu, the voice bringing MORNING LINKUP, NO CAP and THE LOVE NIGHTS to life on KIZAZI RADIO.
 </p>
 
 <p>
 From energetic morning connections to honest conversations and late-night moments around love and music, King Mfumu brings three different experiences to one generation.
 </p>
 
-<div class="presenter-divider"></div>
-
-<div class="presenter-label">CATCH KING MFUMU LIVE</div>
+<p>
+Three shows. Different moods. One voice connecting you to music, ideas and conversations.
+</p>
 
 <div class="presenter-shows">
-<div class="presenter-show morning-show">
-<strong>MORNING LINKUP</strong>
-<span>10 AM – 12 PM</span>
-</div>
-<div class="presenter-show nocap-show">
-<strong>NO CAP</strong>
-<span>3 PM – 6 PM</span>
-</div>
-<div class="presenter-show love-show">
-<strong>THE LOVE NIGHTS</strong>
-<span>8 PM – 11 PM</span>
-</div>
-</div>
-
-<div class="presenter-signature">
-<div class="signature-line"></div>
-<span>MONDAY – FRIDAY · ONLY ON KIZAZI RADIO</span>
+<span>MORNING LINKUP</span>
+<span>NO CAP</span>
+<span>THE LOVE NIGHTS</span>
 </div>
 
 </div>
+
 </div>
 </section>
 
+<!-- CALL TO ACTION -->
+
 <section class="cta">
 <div class="wrap cta-box">
+
 <div>
 <h2>YOUR RADIO.<br><em style="color:#e50909">YOUR GENERATION.</em></h2>
 <p>Join the conversation and stay connected to the sound of a new generation.</p>
 </div>
+
 <a class="button" href="/#listen">LISTEN LIVE ↗</a>
+
 </div>
 </section>
 
 </main>
 
+<!-- FOOTER -->
+
 <footer>
 <div class="wrap">
+
 <div class="foot">
+
 <a href="/">
 <img src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
 </a>
@@ -1002,12 +1169,14 @@ From energetic morning connections to honest conversations and late-night moment
 <a href="/about/">About Us</a>
 <a href="mailto:hello@kizaziradio.com">Contact</a>
 </nav>
+
 </div>
 
 <div class="bottom">
 <span>© <span id="year"></span> KIZAZI RADIO. ALL RIGHTS RESERVED.</span>
 <span>NEW GENERATION • NEW SOUND</span>
 </div>
+
 </div>
 </footer>
 
@@ -1029,8 +1198,10 @@ nav.querySelectorAll('a').forEach(link => {
  });
 });
 
-document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('year').textContent =
+ new Date().getFullYear();
 </script>
 
 </body>
 </html>
+```
