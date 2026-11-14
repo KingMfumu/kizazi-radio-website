@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,24 +36,26 @@ body {
  background:var(--bg);
  color:var(--white);
  font-family:Inter,Arial,sans-serif;
+ overflow-x:hidden;
 }
 
 a { color:inherit; text-decoration:none; }
 
 .wrap {
- width:min(1160px,88%);
+ width:min(1220px,88%);
  margin:auto;
 }
 
 /* HEADER */
 
 header {
- height:80px;
+ height:82px;
  position:sticky;
  top:0;
- z-index:10;
+ z-index:100;
  background:#09090bf5;
  border-bottom:1px solid var(--line);
+ backdrop-filter:blur(16px);
 }
 
 .head {
@@ -75,13 +77,15 @@ header {
 
 .nav {
  display:flex;
- gap:24px;
+ gap:25px;
+ align-items:center;
 }
 
 .nav a {
  font-size:11px;
- font-weight:700;
+ font-weight:800;
  color:#ccc;
+ transition:.25s;
 }
 
 .nav a:hover,
@@ -91,10 +95,16 @@ header {
 
 .live {
  border:1px solid #45454d;
- padding:13px 16px;
+ padding:14px 17px;
  font-size:10px;
  font-weight:900;
  letter-spacing:1px;
+ transition:.25s;
+}
+
+.live:hover {
+ background:var(--red);
+ border-color:var(--red);
 }
 
 .dot {
@@ -104,6 +114,7 @@ header {
  border-radius:50%;
  background:var(--red);
  margin-right:9px;
+ box-shadow:0 0 12px var(--red);
 }
 
 .menu {
@@ -111,53 +122,91 @@ header {
  background:none;
  color:white;
  border:0;
- font-size:26px;
+ font-size:27px;
  cursor:pointer;
 }
 
 /* HERO */
 
 .hero {
- padding:105px 0 95px;
+ min-height:650px;
+ position:relative;
+ display:flex;
+ align-items:center;
+ overflow:hidden;
  border-bottom:1px solid var(--line);
  background:
- radial-gradient(ellipse at 85% 35%,#e509091b,transparent 38%),
- linear-gradient(135deg,#111115,#09090b);
+ radial-gradient(ellipse at 80% 45%,#e5090930,transparent 35%),
+ radial-gradient(ellipse at 15% 90%,#25252c55,transparent 40%),
+ linear-gradient(120deg,#101014,#09090b 65%);
+}
+
+.hero:before {
+ content:"";
+ position:absolute;
+ width:650px;
+ height:650px;
+ border:1px solid #ffffff0a;
+ border-radius:50%;
+ right:-100px;
+ top:-80px;
+ box-shadow:0 0 0 55px #ffffff05,0 0 0 110px #ffffff04,0 0 0 165px #ffffff03;
+}
+
+.hero:after {
+ content:"KIZAZI";
+ position:absolute;
+ right:-20px;
+ bottom:-90px;
+ font-size:clamp(150px,25vw,360px);
+ font-weight:900;
+ letter-spacing:-.12em;
+ color:#ffffff04;
+ pointer-events:none;
+}
+
+.hero-inner {
+ position:relative;
+ z-index:2;
+ display:grid;
+ grid-template-columns:1.2fr .8fr;
+ align-items:center;
+ gap:45px;
+ padding:95px 0;
 }
 
 .eyebrow {
- color:#aaaab3;
+ color:#b8b8c0;
  font-size:10px;
- font-weight:800;
- letter-spacing:2px;
+ font-weight:900;
+ letter-spacing:2.5px;
  text-transform:uppercase;
 }
 
 .eyebrow:before {
  content:"";
  display:inline-block;
- width:22px;
+ width:25px;
  height:2px;
  background:var(--red);
- margin:0 10px 3px 0;
+ margin:0 11px 3px 0;
 }
 
 .hero h1 {
- font-size:clamp(52px,8vw,96px);
- line-height:.94;
- letter-spacing:-.08em;
- margin:18px 0;
+ font-size:clamp(58px,8vw,112px);
+ line-height:.86;
+ letter-spacing:-.09em;
+ margin:24px 0;
  font-weight:900;
 }
 
-.hero h1 em,
-.section-title em {
+.hero h1 em {
  font-style:normal;
  color:var(--red);
 }
 
 .intro {
- max-width:680px;
+ max-width:650px;
  color:#c5c5cc;
  font-size:15px;
  line-height:1.9;
@@ -166,107 +215,267 @@ header {
 .hero-meta {
  display:flex;
  flex-wrap:wrap;
- gap:12px;
- margin-top:30px;
+ gap:10px;
+ margin-top:32px;
 }
 
 .meta {
  border:1px solid #38383f;
- padding:12px 16px;
+ padding:13px 16px;
  color:#ddd;
- font-size:10px;
- font-weight:800;
+ font-size:9px;
+ font-weight:900;
  letter-spacing:1px;
 }
+
+.hero-visual {
+ min-height:390px;
+ position:relative;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+}
+
+.sound-disc {
+ width:min(340px,75vw);
+ aspect-ratio:1;
+ border-radius:50%;
+ position:relative;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:
+ radial-gradient(circle,#111115 0 28%,transparent 29%),
+ repeating-radial-gradient(circle,#ffffff12 0 1px,transparent 2px 15px),
+ linear-gradient(135deg,#26262c,#09090b);
+ border:1px solid #ffffff24;
+ box-shadow:0 0 70px #e5090920,0 30px 80px #000a;
+}
+
+.sound-disc:before,
+.sound-disc:after {
+ content:"";
+ position:absolute;
+ inset:18px;
+ border:1px solid #e5090955;
+ border-radius:50%;
+}
+
+.sound-disc:after {
+ inset:40px;
+ border-color:#ffffff20;
+}
+
+.disc-core {
+ width:115px;
+ height:115px;
+ border-radius:50%;
+ background:linear-gradient(145deg,#f01818,#930000);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ box-shadow:0 0 45px #e5090966;
+}
+
+.disc-core span {
+ font-size:43px;
+ color:white;
+}
+
+.sound-wave {
+ position:absolute;
+ bottom:30px;
+ left:50%;
+ transform:translateX(-50%);
+ display:flex;
+ align-items:center;
+ gap:5px;
+ height:48px;
+}
+
+.sound-wave i {
+ display:block;
+ width:4px;
+ border-radius:5px;
+ background:var(--red);
+ height:var(--h);
+ box-shadow:0 0 12px #e5090955;
+}
+
+.visual-label {
+ position:absolute;
+ bottom:0;
+ right:0;
+ border:1px solid #393940;
+ padding:13px 17px;
+ background:#111115;
+ font-size:9px;
+ font-weight:900;
+ letter-spacing:1.5px;
+}
+
+.visual-label span { color:var(--red); }
 
 /* GENERAL CONTENT */
 
 section.content {
- padding:78px 0;
+ padding:95px 0;
 }
 
 .kicker {
  color:var(--red);
  font-size:10px;
  font-weight:900;
- letter-spacing:1.5px;
- margin-bottom:14px;
+ letter-spacing:2px;
+ margin-bottom:15px;
+}
+
+.section-heading {
+ display:flex;
+ align-items:flex-end;
+ justify-content:space-between;
+ gap:25px;
+ margin-bottom:20px;
 }
 
 .section-title {
- font-size:clamp(34px,4.5vw,54px);
- line-height:1;
- letter-spacing:-.065em;
- margin:0 0 22px;
+ font-size:clamp(38px,5vw,62px);
+ line-height:.95;
+ letter-spacing:-.075em;
+ margin:0;
  font-weight:900;
 }
 
+.section-title em {
+ font-style:normal;
+ color:var(--red);
+}
+
 .section-intro {
- max-width:680px;
+ max-width:670px;
  color:var(--muted);
  font-size:13px;
  line-height:1.9;
- margin-bottom:35px;
+ margin:20px 0 40px;
 }
 
-/* FEATURED SHOWS */
+/* SHOW CARDS */
 
 .show-grid {
  display:grid;
  grid-template-columns:repeat(3,1fr);
- gap:18px;
+ gap:20px;
 }
 
 .show-card {
- min-height:390px;
+ --accent:#e9a02b;
+ position:relative;
+ min-height:520px;
  display:flex;
  flex-direction:column;
  justify-content:space-between;
- padding:27px;
- border:1px solid var(--line);
- background:#111115;
- position:relative;
  overflow:hidden;
+ border:1px solid #303037;
+ background:#111115;
+ isolation:isolate;
+ transition:transform .35s,border-color .35s;
 }
 
-.show-card:after {
+.show-card:hover {
+ transform:translateY(-8px);
+ border-color:var(--accent);
+}
+
+.morning { --accent:#f3a52c; }
+.nocap { --accent:#f01818; }
+.love { --accent:#bd83ed; }
+
+.card-art {
+ position:absolute;
+ inset:0 0 auto;
+ height:260px;
+ overflow:hidden;
+ background:var(--art-bg);
+}
+
+.morning .card-art {
+ --art-bg:
+ radial-gradient(circle at 75% 30%,#ffcf6c 0 5%,transparent 35%),
+ linear-gradient(140deg,#a94b13,#f4a42c 55%,#4b210e);
+}
+
+.nocap .card-art {
+ --art-bg:
+ radial-gradient(circle at 75% 30%,#ff3131 0 5%,transparent 35%),
+ linear-gradient(140deg,#23090b,#d10b0b 60%,#300707);
+}
+
+.love .card-art {
+ --art-bg:
+ radial-gradient(circle at 75% 30%,#e7a6ff 0 5%,transparent 35%),
+ linear-gradient(140deg,#281035,#9a4bb9 60%,#180c24);
+}
+
+.card-art:before {
  content:"";
  position:absolute;
  width:220px;
  height:220px;
+ border:1px solid #ffffff30;
  border-radius:50%;
- right:-90px;
- top:-85px;
- background:var(--glow);
- opacity:.12;
- filter:blur(10px);
+ right:-35px;
+ top:15px;
+ box-shadow:0 0 0 25px #ffffff0b,0 0 0 55px #ffffff08,0 0 0 85px #ffffff05;
 }
 
-.morning {
- --accent:#e9a02b;
- --glow:#ffad28;
+.card-art:after {
+ content:attr(data-number);
+ position:absolute;
+ left:20px;
+ top:-35px;
+ font-size:180px;
+ line-height:1;
+ font-weight:900;
+ letter-spacing:-.12em;
+ color:#ffffff12;
 }
 
-.nocap {
- --accent:#e50909;
- --glow:#ff2020;
-}
-
-.love {
- --accent:#b47ad9;
- --glow:#c879ff;
-}
-
-.show-top,
-.show-bottom {
- position:relative;
+.art-word {
+ position:absolute;
  z-index:1;
+ left:25px;
+ bottom:22px;
+ font-size:clamp(36px,4vw,55px);
+ line-height:.83;
+ font-weight:900;
+ letter-spacing:-.09em;
+ text-transform:uppercase;
+ text-shadow:0 5px 25px #0005;
+}
+
+.art-word span { display:block; }
+
+.art-icon {
+ position:absolute;
+ right:28px;
+ top:55px;
+ z-index:2;
+ font-size:75px;
+ opacity:.9;
+ filter:drop-shadow(0 8px 15px #0005);
+}
+
+.card-body {
+ position:relative;
+ z-index:2;
+ padding:285px 25px 25px;
+ background:linear-gradient(to bottom,transparent,#111115 0);
 }
 
 .show-number {
- font-size:10px;
  color:#777;
- font-weight:800;
+ font-size:9px;
+ font-weight:900;
  letter-spacing:2px;
 }
 
@@ -274,11 +483,11 @@ section.content {
  display:inline-flex;
  align-items:center;
  gap:7px;
- margin-top:22px;
+ margin:13px 0 0;
  color:var(--accent);
  font-size:9px;
  font-weight:900;
- letter-spacing:1.5px;
+ letter-spacing:1.4px;
 }
 
 .live-label:before {
@@ -292,46 +501,47 @@ section.content {
 
 .show-card h3 {
  font-size:clamp(29px,3vw,39px);
- line-height:.98;
- letter-spacing:-.065em;
- margin:18px 0 12px;
+ line-height:.94;
+ letter-spacing:-.075em;
+ margin:16px 0 10px;
  font-weight:900;
 }
 
-.show-card .tagline {
+.tagline {
  color:var(--accent);
  font-size:11px;
- font-weight:800;
+ font-weight:900;
 }
 
 .show-card p {
  color:var(--muted);
- font-size:12px;
- line-height:1.85;
- margin:18px 0 0;
+ font-size:11px;
+ line-height:1.9;
+ margin:16px 0 0;
 }
 
-.presenter {
+.card-footer {
  border-top:1px solid #303036;
- padding-top:18px;
- margin-top:25px;
+ padding:17px 25px 22px;
+ position:relative;
+ z-index:2;
 }
 
-.presenter small {
- display:block;
+.host-label {
  color:#777;
- font-size:9px;
- font-weight:800;
+ font-size:8px;
+ font-weight:900;
  letter-spacing:1.5px;
  margin-bottom:7px;
 }
 
-.presenter strong {
+.host-name {
  font-size:14px;
+ font-weight:900;
 }
 
 .show-time {
- margin-top:8px;
+ margin-top:7px;
  color:#aaa;
  font-size:10px;
  font-weight:700;
@@ -339,17 +549,19 @@ section.content {
 
 .show-link {
  display:inline-block;
- margin-top:18px;
+ margin-top:16px;
  color:var(--accent);
- font-size:10px;
+ font-size:9px;
  font-weight:900;
  letter-spacing:1px;
 }
 
-/* PROGRAMME SCHEDULE */
+/* SCHEDULE */
 
 .schedule-section {
- background:#101014;
+ background:
+ radial-gradient(ellipse at 100% 50%,#e509090c,transparent 45%),
+ #101014;
  border-top:1px solid var(--line);
  border-bottom:1px solid var(--line);
 }
@@ -359,16 +571,16 @@ section.content {
  justify-content:space-between;
  align-items:flex-end;
  gap:20px;
- margin-bottom:35px;
+ margin-bottom:40px;
 }
 
 .weekday {
  border:1px solid #393940;
- padding:12px 16px;
+ padding:13px 17px;
  color:#ccc;
- font-size:10px;
- font-weight:800;
- letter-spacing:1px;
+ font-size:9px;
+ font-weight:900;
+ letter-spacing:1.3px;
  white-space:nowrap;
 }
 
@@ -378,29 +590,35 @@ section.content {
 
 .schedule-row {
  display:grid;
- grid-template-columns:180px 1fr 130px;
+ grid-template-columns:190px 1fr 120px;
  align-items:center;
  gap:25px;
- padding:23px 20px;
+ padding:25px 22px;
  border-bottom:1px solid var(--line);
+ transition:background .25s;
+}
+
+.schedule-row:hover {
+ background:#ffffff05;
 }
 
 .schedule-time {
- color:#aaa;
- font-size:11px;
- font-weight:800;
+ color:#999;
+ font-size:10px;
+ font-weight:900;
+ letter-spacing:.5px;
 }
 
 .schedule-name {
- font-size:16px;
+ font-size:17px;
  font-weight:900;
- letter-spacing:-.4px;
+ letter-spacing:-.5px;
 }
 
 .schedule-host {
  color:var(--muted);
- font-size:11px;
- margin-top:6px;
+ font-size:10px;
+ margin-top:7px;
 }
 
 .schedule-status {
@@ -408,44 +626,38 @@ section.content {
  color:#999;
  font-size:9px;
  font-weight:900;
- letter-spacing:1px;
+ letter-spacing:1.5px;
 }
 
-.schedule-status.live-status {
- color:var(--red);
-}
+.schedule-status.live-status { color:var(--red); }
 
 .schedule-status.live-status:before {
  content:"";
  display:inline-block;
- width:6px;
- height:6px;
+ width:7px;
+ height:7px;
  border-radius:50%;
  background:var(--red);
- margin-right:7px;
- vertical-align:1px;
+ margin-right:8px;
+ box-shadow:0 0 10px var(--red);
 }
 
-.playlist .schedule-name {
- color:#c4c4ca;
-}
+.playlist .schedule-name { color:#c4c4ca; }
 
-/* KING MFUMU PRESENTER FEATURE */
+/* PRESENTER */
 
 .presenter-section {
  display:grid;
- grid-template-columns:.8fr 1.2fr;
- gap:60px;
+ grid-template-columns:.9fr 1.1fr;
+ gap:70px;
  align-items:center;
 }
-
-/* Creative portrait card */
 
 .presenter-art {
  position:relative;
  width:100%;
- min-height:620px;
- height:620px;
+ aspect-ratio:4 / 5;
+ max-height:680px;
  overflow:hidden;
  border:1px solid #38383f;
  border-radius:12px;
@@ -461,13 +673,11 @@ section.content {
  height:100%;
  display:block;
  object-fit:cover;
- object-position:center 25%;
+ object-position:center 22%;
  transition:transform .7s ease;
 }
 
-.presenter-art:hover img {
- transform:scale(1.035);
-}
+.presenter-art:hover img { transform:scale(1.035); }
 
 .presenter-art:after {
  content:"";
@@ -475,25 +685,28 @@ section.content {
  inset:0;
  z-index:1;
  background:
- linear-gradient(
-  to bottom,
-  transparent 42%,
-  #09090b18 58%,
-  #09090bd9 100%
- );
+ linear-gradient(to bottom,transparent 42%,#09090b18 58%,#09090be8 100%);
+ pointer-events:none;
+}
+
+.presenter-frame {
+ position:absolute;
+ inset:12px;
+ z-index:2;
+ border:1px solid #ffffff45;
  pointer-events:none;
 }
 
 .presenter-photo-top {
  position:absolute;
- top:22px;
- left:22px;
- z-index:2;
+ top:25px;
+ left:25px;
+ z-index:3;
  display:flex;
  align-items:center;
  gap:9px;
- padding:10px 13px;
- background:#09090bc9;
+ padding:12px 15px;
+ background:#09090bd9;
  border:1px solid #ffffff35;
  backdrop-filter:blur(10px);
  font-size:9px;
@@ -513,14 +726,14 @@ section.content {
  position:absolute;
  left:30px;
  right:25px;
- bottom:30px;
- z-index:2;
+ bottom:32px;
+ z-index:3;
 }
 
 .presenter-photo-bottom small {
  display:block;
  color:#f2f2f2;
- font-size:10px;
+ font-size:9px;
  font-weight:900;
  letter-spacing:2.5px;
  margin-bottom:10px;
@@ -529,10 +742,10 @@ section.content {
 .presenter-photo-bottom h3 {
  margin:0;
  color:#fff;
- font-size:clamp(38px,5vw,62px);
+ font-size:clamp(45px,5vw,70px);
  font-weight:900;
- line-height:.9;
- letter-spacing:-.075em;
+ line-height:.84;
+ letter-spacing:-.085em;
  text-transform:uppercase;
 }
 
@@ -543,19 +756,17 @@ section.content {
 
 .presenter-photo-bottom p {
  color:#e4e4e7;
- font-size:10px;
- font-weight:800;
+ font-size:9px;
+ font-weight:900;
  letter-spacing:2px;
- margin:15px 0 0;
+ margin:16px 0 0;
 }
 
-/* Presenter text */
-
 .presenter-copy h2 {
- font-size:clamp(35px,5vw,58px);
- line-height:.98;
- letter-spacing:-.07em;
- margin:12px 0 18px;
+ font-size:clamp(38px,5vw,64px);
+ line-height:.95;
+ letter-spacing:-.08em;
+ margin:15px 0 22px;
 }
 
 .presenter-copy p {
@@ -574,40 +785,67 @@ section.content {
 .presenter-shows {
  display:flex;
  flex-wrap:wrap;
- gap:10px;
- margin-top:26px;
+ gap:9px;
+ margin-top:28px;
 }
 
 .presenter-shows span {
  border:1px solid #38383f;
  padding:12px 14px;
- font-size:9px;
+ font-size:8px;
  font-weight:900;
- letter-spacing:.7px;
+ letter-spacing:.8px;
+ transition:.25s;
 }
 
-/* CTA AND FOOTER */
-
-.cta {
- padding:65px 0;
+.presenter-shows span:hover {
+ border-color:var(--red);
+ color:var(--red);
 }
+
+/* CTA */
+
+.cta { padding:70px 0; }
 
 .cta-box {
- padding:35px;
+ position:relative;
+ overflow:hidden;
+ padding:45px;
  border:1px solid var(--line);
  background:
- radial-gradient(circle at 90% 10%,#e509091c,transparent 35%),
+ radial-gradient(circle at 90% 10%,#e5090925,transparent 35%),
  #111115;
  display:flex;
  justify-content:space-between;
  align-items:center;
- gap:20px;
+ gap:25px;
 }
 
+.cta-box:after {
+ content:"";
+ position:absolute;
+ right:15%;
+ top:-100px;
+ width:260px;
+ height:260px;
+ border:1px solid #ffffff0b;
+ border-radius:50%;
+ box-shadow:0 0 0 30px #ffffff05,0 0 0 60px #ffffff04;
+ pointer-events:none;
+}
+
+.cta-content { position:relative; z-index:1; }
+
 .cta h2 {
- font-size:clamp(26px,3.5vw,40px);
+ font-size:clamp(30px,4vw,48px);
+ line-height:.95;
  margin:0;
- letter-spacing:-.06em;
+ letter-spacing:-.07em;
+}
+
+.cta h2 em {
+ font-style:normal;
+ color:var(--red);
 }
 
 .cta p {
@@ -617,22 +855,29 @@ section.content {
 }
 
 .button {
+ position:relative;
+ z-index:1;
  display:inline-block;
  background:var(--red);
- padding:15px 19px;
- font-size:10px;
+ padding:16px 20px;
+ font-size:9px;
  font-weight:900;
  letter-spacing:1px;
  white-space:nowrap;
+ transition:.25s;
 }
 
 .button:hover {
  background:#bb0000;
+ transform:translateY(-3px);
 }
+
+/* FOOTER */
 
 footer {
  background:#08080a;
- padding:32px 0 20px;
+ padding:35px 0 22px;
+ border-top:1px solid var(--line);
 }
 
 .foot {
@@ -640,7 +885,7 @@ footer {
  justify-content:space-between;
  gap:25px;
  align-items:center;
- padding-bottom:25px;
+ padding-bottom:27px;
 }
 
 .foot img {
@@ -651,7 +896,7 @@ footer {
 
 .links {
  display:flex;
- gap:20px;
+ gap:22px;
  flex-wrap:wrap;
 }
 
@@ -660,9 +905,7 @@ footer {
  color:#aaa;
 }
 
-.links a:hover {
- color:#fff;
-}
+.links a:hover { color:#fff; }
 
 .bottom {
  border-top:1px solid var(--line);
@@ -675,39 +918,25 @@ footer {
 
 /* TABLET */
 
-@media(max-width:850px) {
- .show-grid {
-  grid-template-columns:1fr 1fr;
- }
-
- .presenter-section {
-  gap:30px;
- }
-
- .presenter-art {
-  height:540px;
-  min-height:540px;
- }
+@media(max-width:950px) {
+ .hero-inner { grid-template-columns:1fr  .65fr; gap:15px; }
+ .hero-visual { min-height:300px; }
+ .sound-disc { width:260px; }
+ .show-grid { grid-template-columns:1fr 1fr; }
+ .show-card:last-child { grid-column:1 / -1; }
+ .presenter-section { gap:35px; }
 }
 
 /* MOBILE */
 
 @media(max-width:700px) {
- header {
-  height:70px;
- }
+ header { height:70px; }
 
- .head {
-  width:90%;
- }
+ .head { width:90%; }
 
- .logo {
-  width:108px;
- }
+ .logo { width:108px; }
 
- .menu {
-  display:block;
- }
+ .menu { display:block; }
 
  .live {
   font-size:8px;
@@ -723,55 +952,68 @@ footer {
   background:#101014;
   padding:22px 6%;
   flex-direction:column;
+  align-items:flex-start;
   border-bottom:1px solid var(--line);
  }
 
- .nav.open {
-  display:flex;
- }
+ .nav.open { display:flex; }
+ .nav a { font-size:12px; }
 
- .nav a {
-  font-size:12px;
- }
+ .wrap { width:90%; }
 
- .wrap {
-  width:90%;
- }
+ .hero { min-height:auto; }
 
- .hero {
-  padding:75px 0;
- }
-
- .show-grid {
+ .hero-inner {
   grid-template-columns:1fr;
+  padding:75px 0 55px;
+  gap:25px;
  }
 
- .show-card {
-  min-height:340px;
+ .hero h1 { font-size:clamp(58px,13vw,88px); }
+
+ .intro { font-size:13px; }
+
+ .hero-visual {
+  min-height:280px;
+  margin-top:10px;
  }
 
- .schedule-head {
-  display:block;
+ .sound-disc { width:240px; }
+
+ .visual-label { right:5px; bottom:-3px; }
+
+ section.content { padding:70px 0; }
+
+ .section-heading { display:block; }
+
+ .show-grid { grid-template-columns:1fr; }
+
+ .show-card,
+ .show-card:last-child {
+  grid-column:auto;
+  min-height:490px;
  }
+
+ .card-art { height:250px; }
+
+ .card-body { padding-top:275px; }
+
+ .schedule-head { display:block; }
 
  .weekday {
   display:inline-block;
-  margin-top:5px;
+  margin-top:18px;
  }
 
  .schedule-row {
   grid-template-columns:1fr auto;
-  gap:9px 12px;
-  padding:20px 10px;
+  gap:10px 12px;
+  padding:21px 10px;
  }
 
- .schedule-time {
-  grid-column:1 / -1;
- }
+ .schedule-time { grid-column:1 / -1; }
 
- .schedule-name {
-  font-size:14px;
- }
+ .schedule-name { font-size:14px; }
 
  .schedule-status {
   grid-column:2;
@@ -780,46 +1022,44 @@ footer {
 
  .presenter-section {
   grid-template-columns:1fr;
-  gap:30px;
+  gap:35px;
  }
 
  .presenter-art {
-  height:auto;
-  min-height:0;
   aspect-ratio:4 / 5;
   max-height:620px;
  }
 
- .presenter-art img {
-  object-position:center 23%;
+ .presenter-art img { object-position:center 22%; }
+
+ .presenter-photo-top {
+  top:19px;
+  left:19px;
+  font-size:8px;
  }
 
  .presenter-photo-bottom {
-  left:22px;
-  bottom:23px;
+  left:23px;
+  bottom:25px;
  }
 
  .presenter-photo-bottom h3 {
-  font-size:clamp(42px,12vw,58px);
+  font-size:clamp(45px,12vw,65px);
  }
 
- .presenter-copy h2 {
-  font-size:42px;
- }
+ .presenter-copy h2 { font-size:44px; }
 
- .cta-box,
- .foot,
- .bottom {
+ .cta-box {
   display:block;
+  padding:30px 24px;
  }
 
- .button {
-  margin-top:15px;
- }
+ .button { margin-top:15px; }
 
- .links {
-  margin-top:20px;
- }
+ .foot,
+ .bottom { display:block; }
+
+ .links { margin-top:20px; }
 
  .bottom span {
   display:block;
@@ -828,22 +1068,21 @@ footer {
 }
 
 @media(max-width:380px) {
+ .hero h1 { font-size:54px; }
+
  .presenter-photo-top {
   top:14px;
   left:14px;
-  font-size:8px;
+  font-size:7px;
  }
 
  .presenter-photo-bottom {
-  left:17px;
-  bottom:18px;
+  left:18px;
+  bottom:19px;
  }
 
- .presenter-photo-bottom h3 {
-  font-size:39px;
- }
+ .presenter-photo-bottom h3 { font-size:42px; }
 }
-
 </style>
 </head>
 
@@ -880,7 +1119,9 @@ footer {
 <!-- HERO -->
 
 <section class="hero">
-<div class="wrap">
+<div class="wrap hero-inner">
+
+<div class="hero-copy">
 
 <p class="eyebrow">KIZAZI RADIO PROGRAMMING</p>
 
@@ -897,6 +1138,27 @@ From the first connection in the morning to conversations after dark, KIZAZI RAD
 </div>
 
 </div>
+
+<div class="hero-visual">
+<div class="sound-disc">
+<div class="disc-core"><span>▶</span></div>
+<div class="sound-wave">
+<i style="--h:12px"></i>
+<i style="--h:24px"></i>
+<i style="--h:36px"></i>
+<i style="--h:20px"></i>
+<i style="--h:42px"></i>
+<i style="--h:27px"></i>
+<i style="--h:15px"></i>
+<i style="--h:35px"></i>
+<i style="--h:22px"></i>
+<i style="--h:12px"></i>
+</div>
+</div>
+<div class="visual-label"><span>●</span> THE SOUND OF A NEW GENERATION</div>
+</div>
+
+</div>
 </section>
 
 <!-- FEATURED SHOWS -->
@@ -906,7 +1168,9 @@ From the first connection in the morning to conversations after dark, KIZAZI RAD
 
 <div class="kicker">01 / ON AIR PROGRAMMES</div>
 
+<div class="section-heading">
 <h2 class="section-title">MEET THE <em>SHOWS.</em></h2>
+</div>
 
 <p class="section-intro">
 Three live shows. Three different moods. One connection to the new generation. Meet your weekday companion on KIZAZI RADIO.
@@ -915,87 +1179,81 @@ Three live shows. Three different moods. One connection to the new generation. M
 <div class="show-grid">
 
 <article class="show-card morning">
-<div class="show-top">
 
+<div class="card-art" data-number="01">
+<div class="art-icon">☀</div>
+<div class="art-word"><span>MORNING</span><span>LINKUP</span></div>
+</div>
+
+<div class="card-body">
 <div class="show-number">01 / YOUR MORNING CONNECTION</div>
-
 <div class="live-label">LIVE · MONDAY – FRIDAY</div>
-
-<h3>MORNING<br>LINKUP</h3>
-
+<h3>MORNING LINKUP</h3>
 <div class="tagline">Start Your Day Connected.</div>
-
 <p>
 Start your day with social conversations, lifestyle, entertainment, trending topics and music. Join the connection and bring your voice to the morning.
 </p>
-
 </div>
 
-<div class="show-bottom">
-<div class="presenter">
-<small>YOUR HOST</small>
-<strong>King Mfumu</strong>
+<div class="card-footer">
+<div class="host-label">YOUR HOST</div>
+<div class="host-name">King Mfumu</div>
 <div class="show-time">10:00 AM – 12:00 PM</div>
-</div>
-
 <a class="show-link" href="#weekly-schedule">VIEW SCHEDULE ↗</a>
 </div>
+
 </article>
 
 <article class="show-card nocap">
-<div class="show-top">
 
+<div class="card-art" data-number="02">
+<div class="art-icon">✦</div>
+<div class="art-word"><span>NO</span><span>CAP.</span></div>
+</div>
+
+<div class="card-body">
 <div class="show-number">02 / REAL CONVERSATIONS</div>
-
 <div class="live-label">LIVE · MONDAY – FRIDAY</div>
-
-<h3>NO<br>CAP</h3>
-
+<h3>NO CAP</h3>
 <div class="tagline">Real Talk. No Filter.</div>
-
 <p>
 A space for real talk, youth culture, opinions, viral trends, entertainment and conversations that challenge perspectives. No pretending. Just honest discussion.
 </p>
-
 </div>
 
-<div class="show-bottom">
-<div class="presenter">
-<small>YOUR HOST</small>
-<strong>King Mfumu</strong>
+<div class="card-footer">
+<div class="host-label">YOUR HOST</div>
+<div class="host-name">King Mfumu</div>
 <div class="show-time">3:00 PM – 6:00 PM</div>
-</div>
-
 <a class="show-link" href="#weekly-schedule">VIEW SCHEDULE ↗</a>
 </div>
+
 </article>
 
 <article class="show-card love">
-<div class="show-top">
 
+<div class="card-art" data-number="03">
+<div class="art-icon">♡</div>
+<div class="art-word"><span>THE LOVE</span><span>NIGHTS</span></div>
+</div>
+
+<div class="card-body">
 <div class="show-number">03 / YOUR NIGHT COMPANION</div>
-
 <div class="live-label">LIVE · MONDAY – FRIDAY</div>
-
-<h3>THE LOVE<br>NIGHTS</h3>
-
+<h3>THE LOVE NIGHTS</h3>
 <div class="tagline">Where Love Meets Music.</div>
-
 <p>
 Love, relationships, romance, heartfelt conversations, dedications and music for every mood. Settle in and let the night tell its story.
 </p>
-
 </div>
 
-<div class="show-bottom">
-<div class="presenter">
-<small>YOUR HOST</small>
-<strong>King Mfumu</strong>
+<div class="card-footer">
+<div class="host-label">YOUR HOST</div>
+<div class="host-name">King Mfumu</div>
 <div class="show-time">8:00 PM – 11:00 PM</div>
-</div>
-
 <a class="show-link" href="#weekly-schedule">VIEW SCHEDULE ↗</a>
 </div>
+
 </article>
 
 </div>
@@ -1089,6 +1347,8 @@ alt="King Mfumu, KIZAZI RADIO presenter"
 loading="lazy"
 >
 
+<div class="presenter-frame"></div>
+
 <div class="presenter-photo-top">
 <span></span>
 KIZAZI RADIO PRESENTER
@@ -1138,8 +1398,8 @@ Three shows. Different moods. One voice connecting you to music, ideas and conve
 <section class="cta">
 <div class="wrap cta-box">
 
-<div>
-<h2>YOUR RADIO.<br><em style="color:#e50909">YOUR GENERATION.</em></h2>
+<div class="cta-content">
+<h2>YOUR RADIO.<br><em>YOUR GENERATION.</em></h2>
 <p>Join the conversation and stay connected to the sound of a new generation.</p>
 </div>
 
@@ -1204,4 +1464,3 @@ document.getElementById('year').textContent =
 
 </body>
 </html>
-```
