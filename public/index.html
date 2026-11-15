@@ -610,73 +610,235 @@ img{max-width:100%}
   margin:5px 0 0;
 }
 
-/* SCHEDULE */
+/* KIZAZI PROGRAMMING — GEN Z CULTURE GRID */
 
 .schedule-section{
-  padding:85px 0;
-  background:#101014;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
+  position:relative;
+  overflow:hidden;
+  padding:104px 0 110px;
+  background:#09090b;
+  border-top:1px solid #29292e;
+  border-bottom:1px solid #29292e;
+}
+
+.schedule-section:before{
+  content:"KIZAZI";
+  position:absolute;
+  left:-18px;
+  bottom:-88px;
+  color:rgba(255,255,255,.018);
+  font-size:clamp(150px,25vw,360px);
+  line-height:.8;
+  font-weight:1000;
+  letter-spacing:-.09em;
+  pointer-events:none;
 }
 
 .schedule-layout{
+  position:relative;
+  z-index:1;
   display:grid;
-  grid-template-columns:.8fr 1.2fr;
-  gap:55px;
+  grid-template-columns:.78fr 1.22fr;
+  gap:64px;
   align-items:start;
 }
 
-.schedule-intro p{
-  max-width:360px;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.9;
-  margin:20px 0 0;
+.schedule-intro .section-number{
+  color:#ff252d;
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:1.8px;
+}
+
+.schedule-intro .eyebrow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:25px 0 13px;
+  color:#a7a7af;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:2.4px;
+  text-transform:uppercase;
+}
+
+.schedule-intro .eyebrow:before{
+  content:"";
+  display:block;
+  width:27px;
+  height:3px;
+  background:#ff252d;
+}
+
+.schedule-intro .section-title{
+  max-width:520px;
+  font-size:clamp(48px,6.2vw,82px);
+  line-height:.88;
+  letter-spacing:-.075em;
+  font-weight:1000;
+}
+
+.schedule-intro .section-title em{
+  color:#ff252d;
+  font-style:normal;
+}
+
+.schedule-intro > p:last-child{
+  max-width:365px;
+  color:#a2a2aa;
+  font-size:14px;
+  line-height:1.85;
+  margin:25px 0 0;
 }
 
 .schedule-board{
-  border-top:1px solid #38383f;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
 }
 
 .schedule-row{
-  display:grid;
-  grid-template-columns:110px 1fr auto;
-  align-items:center;
-  gap:20px;
-  padding:21px 0;
-  border-bottom:1px solid #38383f;
+  position:relative;
+  min-height:205px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:22px;
+  padding:23px 22px 21px;
+  overflow:hidden;
+  color:#fff;
+  background:#151519;
+  border:1px solid #303036;
+  transition:transform .25s ease,border-color .25s ease,background .25s ease;
+}
+
+.schedule-row:first-child{
+  grid-column:1 / -1;
+  min-height:172px;
+  padding:24px 27px;
+  background:#ed171f;
+  border-color:#ed171f;
+}
+
+.schedule-row:hover{
+  transform:translateY(-5px);
+  border-color:#ff252d;
+}
+
+.schedule-row:after{
+  content:attr(data-index);
+  position:absolute;
+  right:10px;
+  bottom:-28px;
+  color:rgba(255,255,255,.045);
+  font-size:150px;
+  line-height:1;
+  font-weight:1000;
+  letter-spacing:-.1em;
+  pointer-events:none;
+}
+
+.schedule-row:first-child:after{
+  color:rgba(0,0,0,.12);
+  font-size:170px;
 }
 
 .schedule-time{
-  color:var(--red);
+  position:relative;
+  z-index:1;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#ff343b;
   font-size:10px;
-  font-weight:900;
-  letter-spacing:1px;
+  font-weight:950;
+  letter-spacing:1.8px;
+}
+
+.schedule-row:first-child .schedule-time{
+  color:#fff;
+}
+
+.schedule-time:before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:currentColor;
+  box-shadow:0 0 0 4px rgba(255,37,45,.14);
+}
+
+.schedule-row > div:nth-child(2){
+  position:relative;
+  z-index:1;
 }
 
 .schedule-row strong{
-  font-size:14px;
+  display:block;
+  max-width:340px;
+  font-size:clamp(21px,2.4vw,30px);
+  line-height:.98;
+  font-weight:950;
+  letter-spacing:-.045em;
 }
 
 .schedule-row small{
   display:block;
-  color:var(--muted);
-  font-size:10px;
-  margin-top:6px;
+  color:#aaaab2;
+  font-size:11px;
+  margin-top:9px;
+}
+
+.schedule-row:first-child small{
+  color:rgba(255,255,255,.82);
 }
 
 .schedule-status{
-  font-size:9px;
-  color:#a4a4ad;
-  letter-spacing:1px;
-  font-weight:800;
+  position:relative;
+  z-index:1;
+  align-self:flex-end;
+  display:inline-block;
+  padding:7px 9px;
+  color:#fff;
+  background:#29292f;
+  font-size:8px;
+  letter-spacing:1.5px;
+  font-weight:950;
+}
+
+.schedule-row:first-child .schedule-status{
+  color:#ed171f;
+  background:#fff;
 }
 
 .schedule-note{
-  margin-top:20px;
+  margin:17px 0 0;
   color:#777780;
   font-size:10px;
   line-height:1.7;
+}
+
+@media(max-width:900px){
+  .schedule-layout{gap:34px}
+  .schedule-intro .section-title{font-size:clamp(45px,7vw,68px)}
+}
+
+@media(max-width:700px){
+  .schedule-section{padding:72px 0 78px}
+  .schedule-layout{grid-template-columns:1fr;gap:34px}
+  .schedule-intro .section-title{font-size:clamp(48px,12vw,70px)}
+  .schedule-intro > p:last-child{font-size:13px;margin-top:18px}
+  .schedule-board{grid-template-columns:1fr}
+  .schedule-row,.schedule-row:first-child{
+    grid-column:auto;
+    min-height:160px;
+    padding:20px;
+  }
+  .schedule-row strong{font-size:25px}
+  .schedule-row:after{font-size:115px;bottom:-22px}
+  .schedule-row:first-child:after{font-size:130px}
+  .schedule-note{font-size:10px}
 }
 
 /* SHOWS */
@@ -1203,8 +1365,6 @@ img{max-width:100%}
   .now-art{width:55px;height:55px}
 
   .schedule-layout{gap:30px}
-  .schedule-row{grid-template-columns:85px 1fr;gap:12px}
-  .schedule-status{grid-column:2}
 
   .show-grid{grid-template-columns:1fr}
   .show-art{height:225px}
@@ -3019,58 +3179,55 @@ img{max-width:100%}
   </div>
 </section>
 
-<!-- RADIO SCHEDULE -->
+<!-- KIZAZI PROGRAMMING -->
 
 <section class="schedule-section" id="schedule">
   <div class="wrap schedule-layout">
 
     <div class="schedule-intro">
-      <div class="section-number">02 / PROGRAMMING</div>
+      <div class="section-number">02 / THE LINEUP</div>
       <p class="eyebrow">What's on KIZAZI</p>
-      <h2 class="section-title">YOUR RADIO.<br><em>YOUR MOMENT.</em></h2>
-
+      <h2 class="section-title">YOUR SOUND.<br><em>YOUR PEOPLE.</em></h2>
       <p>
-        Discover the programmes, voices and sounds that make KIZAZI RADIO part of your day.
+        Tap into the shows, voices and original conversations moving with a new generation.
       </p>
     </div>
 
     <div>
-
       <div class="schedule-board">
 
-        <div class="schedule-row">
-          <div class="schedule-time">ON AIR</div>
+        <a class="schedule-row" data-index="01" href="#listen" aria-label="Listen to KIZAZI RADIO live">
+          <div class="schedule-time">ON AIR / 24-7 SOUND</div>
           <div>
             <strong>KIZAZI RADIO LIVE</strong>
-            <small>Music and entertainment</small>
+            <small>Music, entertainment and the sound of a new generation.</small>
           </div>
-          <div class="schedule-status">LIVE RADIO</div>
-        </div>
+          <div class="schedule-status">TUNE IN ↗</div>
+        </a>
 
-        <div class="schedule-row">
-          <div class="schedule-time">PODCAST</div>
+        <a class="schedule-row" data-index="02" href="/maybe-i-dont-know/" aria-label="Explore Maybe I Don't Know podcast">
+          <div class="schedule-time">KIZAZI ORIGINAL</div>
           <div>
             <strong>Maybe I Don't Know</strong>
-            <small>With Terry &amp; Lucy</small>
+            <small>Real conversations with Terry &amp; Lucy.</small>
           </div>
-          <div class="schedule-status">ORIGINAL</div>
-        </div>
+          <div class="schedule-status">PODCAST ↗</div>
+        </a>
 
-        <div class="schedule-row">
-          <div class="schedule-time">PODCAST</div>
+        <a class="schedule-row" data-index="03" href="/shuganalucy/" aria-label="Explore ShugaNaLucy podcast">
+          <div class="schedule-time">KIZAZI ORIGINAL</div>
           <div>
             <strong>ShugaNaLucy</strong>
-            <small>With Lucy</small>
+            <small>Health, life and honest conversations with Lucy.</small>
           </div>
-          <div class="schedule-status">ORIGINAL</div>
-        </div>
+          <div class="schedule-status">PODCAST ↗</div>
+        </a>
 
       </div>
 
       <p class="schedule-note">
-        Programme broadcast days and times will be published here when the official schedule is confirmed.
+        Show times and new episodes will be announced on KIZAZI RADIO.
       </p>
-
     </div>
 
   </div>
