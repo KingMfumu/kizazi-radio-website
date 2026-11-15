@@ -262,15 +262,47 @@ img{max-width:100%}
 
 /* HERO */
 
+/* HERO — KIZAZI FRONT-PAGE CULTURE STATEMENT */
+
 .hero{
-  height:clamp(560px,43vw,746px);
-  min-height:560px;
+  height:clamp(600px,45vw,770px);
+  min-height:600px;
   position:relative;
   overflow:hidden;
   display:flex;
   align-items:center;
   border-bottom:1px solid var(--line);
   background:#08080b;
+  isolation:isolate;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  opacity:.20;
+  background-image:radial-gradient(rgba(255,255,255,.22) .8px,transparent .8px);
+  background-size:16px 16px;
+  mask-image:linear-gradient(90deg,#000 0%,transparent 75%);
+}
+
+.hero:after{
+  content:"KZ / LIVE";
+  position:absolute;
+  z-index:2;
+  right:26px;
+  top:34px;
+  padding:9px 12px;
+  color:#fff;
+  background:var(--red);
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:2px;
+  transform:rotate(4deg);
+  box-shadow:4px 4px 0 #fff;
+  pointer-events:none;
 }
 
 .hero-image{
@@ -280,51 +312,82 @@ img{max-width:100%}
   height:100%;
   object-fit:cover;
   object-position:center;
+  transform:scale(1.015);
 }
 
 .hero-overlay{
   position:absolute;
   inset:0;
+  z-index:1;
   background:
-    linear-gradient(90deg,rgba(5,5,7,.50),rgba(5,5,7,.15) 65%,rgba(5,5,7,.05)),
-    linear-gradient(0deg,rgba(5,5,7,.25),transparent 55%);
+    linear-gradient(90deg,rgba(5,5,7,.72) 0%,rgba(5,5,7,.50) 36%,rgba(5,5,7,.08) 76%,rgba(5,5,7,.02)),
+    linear-gradient(0deg,rgba(5,5,7,.55),transparent 48%);
 }
 
 .hero-content{
   position:relative;
-  z-index:2;
+  z-index:3;
   width:min(900px,88%);
   margin-left:max(6%,calc((100% - 1200px)/2));
   padding:70px 0;
 }
 
+.hero-content .eyebrow{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 11px;
+  margin:0 0 18px;
+  background:rgba(9,9,11,.76);
+  border:1px solid rgba(255,255,255,.18);
+  color:#f0f0f2;
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:2.2px;
+}
+
+.hero-content .eyebrow:before{
+  width:25px;
+  height:3px;
+  background:var(--red);
+  margin-right:11px;
+}
+
 .hero h1{
-  font-size:clamp(58px,7.5vw,105px);
-  line-height:.91;
-  letter-spacing:-.085em;
-  font-weight:900;
+  font-size:clamp(68px,8.2vw,118px);
+  line-height:.86;
+  letter-spacing:-.09em;
+  font-weight:950;
   margin:0;
+  max-width:760px;
+  text-shadow:5px 5px 0 rgba(237,23,31,.13);
 }
 
 .hero h1 em{
   font-style:normal;
   color:var(--red);
+  text-shadow:5px 5px 0 rgba(255,255,255,.08);
 }
 
 .hero-description{
-  max-width:440px;
-  color:#d0d0d5;
-  font-size:13px;
-  line-height:1.8;
+  max-width:455px;
+  color:#e0e0e4;
+  font-size:14px;
+  line-height:1.85;
   margin:25px 0 0;
+  text-shadow:0 2px 12px rgba(0,0,0,.6);
+}
+
+.hero-description strong{
+  color:#fff;
+  font-weight:900;
 }
 
 .hero-actions{
   display:flex;
   align-items:center;
-  gap:25px;
+  gap:28px;
   flex-wrap:wrap;
-  margin-top:32px;
+  margin-top:34px;
 }
 
 .primary-button{
@@ -333,24 +396,61 @@ img{max-width:100%}
   gap:12px;
   background:var(--red);
   color:white;
-  padding:16px 21px;
+  padding:18px 24px;
   font-size:10px;
-  font-weight:900;
-  letter-spacing:1px;
-  transition:.2s;
+  font-weight:950;
+  letter-spacing:1.3px;
+  border:1px solid var(--red);
+  box-shadow:5px 5px 0 #fff;
+  transition:background .2s,transform .2s,box-shadow .2s;
 }
 
 .primary-button:hover{
-  background:#ff2929;
-  transform:translateY(-3px);
+  background:#fff;
+  color:#09090b;
+  border-color:#fff;
+  transform:translate(-2px,-2px);
+  box-shadow:7px 7px 0 var(--red);
 }
 
 .hero-secondary{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
   font-size:10px;
-  font-weight:850;
-  letter-spacing:1px;
-  border-bottom:1px solid #777;
-  padding-bottom:9px;
+  font-weight:950;
+  letter-spacing:1.4px;
+  border-bottom:2px solid var(--red);
+  padding:0 0 9px;
+  transition:color .2s,gap .2s;
+}
+
+.hero-secondary:hover{
+  color:#fff;
+  gap:15px;
+}
+
+.hero-side-note{
+  position:absolute;
+  z-index:3;
+  right:4.2%;
+  bottom:36px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:rgba(255,255,255,.78);
+  font-size:8px;
+  font-weight:950;
+  letter-spacing:2px;
+  writing-mode:vertical-rl;
+}
+
+.hero-side-note:before{
+  content:"";
+  width:2px;
+  height:36px;
+  background:var(--red);
 }
 
 /* QUICK STRIP */
@@ -1480,11 +1580,20 @@ img{max-width:100%}
   .nav a{font-size:12px}
 
   .hero{height:650px;min-height:650px}
-  .hero-image{object-position:63% center}
+  .hero-image{object-position:63% center;transform:scale(1.04)}
   .hero-overlay{
-    background:linear-gradient(90deg,rgba(5,5,7,.48),rgba(5,5,7,.20)),
-    linear-gradient(0deg,rgba(5,5,7,.55),transparent 75%);
+    background:linear-gradient(90deg,rgba(5,5,7,.66),rgba(5,5,7,.24)),
+    linear-gradient(0deg,rgba(5,5,7,.62),transparent 75%);
   }
+  .hero:after{top:18px;right:18px;font-size:7px;padding:8px 9px}
+  .hero-content{padding:65px 0}
+  .hero-content .eyebrow{font-size:8px;letter-spacing:1.5px}
+  .hero h1{font-size:clamp(54px,12vw,78px);line-height:.9}
+  .hero-description{font-size:12px;max-width:340px;margin-top:20px}
+  .hero-actions{gap:20px;margin-top:27px}
+  .primary-button{padding:15px 18px;font-size:9px;box-shadow:4px 4px 0 #fff}
+  .hero-secondary{font-size:9px}
+  .hero-side-note{display:none}
   .hero-content{width:88%;margin-left:6%;padding:70px 0}
   .hero h1{font-size:clamp(49px,11.5vw,70px)}
   .hero-description{font-size:12px;max-width:330px}
@@ -3196,6 +3305,8 @@ img{max-width:100%}
        alt="KIZAZI RADIO">
 
   <div class="hero-overlay"></div>
+
+  <div class="hero-side-note" aria-hidden="true">NEW GENERATION. NEW SOUND.</div>
 
   <div class="hero-content">
     <p class="eyebrow">Radio • Music • Culture</p>
