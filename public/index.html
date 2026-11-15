@@ -3528,6 +3528,519 @@ img{max-width:100%}
 .live-kicker span{color:#ff2632}
 @media(max-width:900px){.live-visual h3{font-size:clamp(68px,10vw,96px);line-height:.94}}
 @media(max-width:600px){.live-visual h3{font-size:clamp(57px,13vw,78px);line-height:.94}}
+
+
+/* =========================================================
+   KIZAZI LINEUP — GEN Z CULTURE GRID
+   Scoped to #schedule so other homepage sections stay intact.
+========================================================= */
+
+.lineup-section{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  padding:105px 0 112px;
+  background:
+    radial-gradient(ellipse at 82% 48%,rgba(229,9,9,.10),transparent 34%),
+    #09090b;
+  border-top:1px solid #29292e;
+  border-bottom:1px solid #29292e;
+}
+
+.lineup-section:before{
+  content:"KZ / 02";
+  position:absolute;
+  z-index:-1;
+  right:-22px;
+  bottom:-78px;
+  color:rgba(255,255,255,.025);
+  font-size:clamp(170px,28vw,390px);
+  line-height:.8;
+  font-weight:1000;
+  letter-spacing:-.11em;
+  pointer-events:none;
+}
+
+.lineup-layout{
+  display:grid;
+  grid-template-columns:.78fr 1.22fr;
+  gap:clamp(42px,6vw,90px);
+  align-items:center;
+}
+
+.lineup-intro{
+  position:relative;
+  min-width:0;
+  padding:10px 0 16px;
+}
+
+.lineup-intro .section-number{
+  color:#ff252d;
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:1.8px;
+  margin-bottom:30px;
+}
+
+.lineup-intro .eyebrow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:0 0 18px;
+  color:#b6b6bf;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:2.5px;
+}
+
+.lineup-intro .eyebrow:before{
+  content:"";
+  display:block;
+  width:28px;
+  height:3px;
+  margin:0;
+  background:#ed171f;
+}
+
+.lineup-title{
+  position:relative;
+  z-index:1;
+  margin:0;
+  color:#f7f7f8;
+  font-size:clamp(62px,7.1vw,102px);
+  line-height:.82;
+  letter-spacing:-.095em;
+  font-weight:1000;
+  text-transform:uppercase;
+}
+
+.lineup-title>span:first-of-type{
+  color:#ed171f;
+}
+
+.lineup-title .lineup-period{
+  color:#ed171f;
+}
+
+.lineup-description{
+  max-width:390px;
+  margin:28px 0 0;
+  padding-left:15px;
+  border-left:3px solid #ed171f;
+  color:#a6a6af;
+  font-size:14px;
+  line-height:1.9;
+}
+
+.lineup-foot{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:31px;
+  color:#f0f0f2;
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:2px;
+}
+
+.lineup-cross{
+  color:#ed171f;
+  font-size:21px;
+  line-height:1;
+}
+
+.lineup-sticker{
+  position:absolute;
+  right:-4px;
+  top:8px;
+  width:92px;
+  height:92px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:3px;
+  border:5px solid #ed171f;
+  border-radius:50%;
+  outline:1px dashed rgba(255,255,255,.5);
+  outline-offset:5px;
+  background:#f7f7f8;
+  color:#09090b;
+  text-align:center;
+  transform:rotate(9deg);
+  box-shadow:6px 7px 0 rgba(0,0,0,.4);
+}
+
+.lineup-sticker span{
+  color:#ed171f;
+  font-size:6px;
+  font-weight:1000;
+  letter-spacing:1.4px;
+}
+
+.lineup-sticker strong{
+  font-size:17px;
+  line-height:.78;
+  letter-spacing:-1px;
+  font-weight:1000;
+}
+
+.lineup-cards{
+  display:grid;
+  gap:18px;
+  min-width:0;
+}
+
+.lineup-card{
+  position:relative;
+  display:block;
+  min-width:0;
+  overflow:hidden;
+  text-decoration:none;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+
+.lineup-card:hover,
+.lineup-card:focus-visible{
+  transform:translateY(-5px);
+  outline:none;
+  box-shadow:0 18px 45px rgba(0,0,0,.32);
+}
+
+.lineup-live{
+  min-height:222px;
+  padding:27px 31px 25px;
+  color:#fff;
+  background:#ed171f;
+  border:1px solid #ed171f;
+}
+
+.lineup-live:after{
+  content:"";
+  position:absolute;
+  width:230px;
+  height:230px;
+  right:18px;
+  top:10px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:50%;
+  box-shadow:0 0 0 22px rgba(255,255,255,.045),0 0 0 45px rgba(255,255,255,.035);
+  pointer-events:none;
+}
+
+.lineup-card-top{
+  position:relative;
+  z-index:2;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+}
+
+.lineup-status{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:inherit;
+  font-size:9px;
+  line-height:1.2;
+  font-weight:950;
+  letter-spacing:2px;
+}
+
+.lineup-status i{
+  width:8px;
+  height:8px;
+  display:inline-block;
+  border-radius:50%;
+  background:currentColor;
+  box-shadow:0 0 0 5px rgba(255,255,255,.13);
+}
+
+.lineup-index{
+  position:absolute;
+  right:0;
+  top:-34px;
+  color:rgba(0,0,0,.13);
+  font-size:clamp(115px,14vw,190px);
+  line-height:.85;
+  font-weight:1000;
+  letter-spacing:-.12em;
+  pointer-events:none;
+}
+
+.lineup-card-content{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:22px;
+  margin-top:24px;
+}
+
+.lineup-card-kicker{
+  display:block;
+  margin-bottom:10px;
+  color:rgba(255,255,255,.75);
+  font-size:8px;
+  font-weight:950;
+  letter-spacing:2px;
+}
+
+.lineup-card h3{
+  margin:0;
+  color:#fff;
+  font-size:clamp(30px,3.5vw,47px);
+  line-height:.92;
+  letter-spacing:-.07em;
+  font-weight:1000;
+}
+
+.lineup-card h3 em{
+  color:#09090b;
+  font-style:normal;
+}
+
+.lineup-card-content p{
+  margin:10px 0 0;
+  color:rgba(255,255,255,.82);
+  font-size:12px;
+  line-height:1.6;
+}
+
+.lineup-cta{
+  position:relative;
+  z-index:3;
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  padding:12px 14px;
+  background:#fff;
+  color:#ed171f;
+  font-size:8px;
+  font-weight:1000;
+  letter-spacing:1.5px;
+  transition:background .2s,color .2s,transform .2s;
+}
+
+.lineup-cta b{
+  font-size:15px;
+  line-height:.7;
+}
+
+.lineup-live:hover .lineup-cta{
+  background:#09090b;
+  color:#fff;
+}
+
+.lineup-equalizer{
+  position:absolute;
+  right:32px;
+  bottom:25px;
+  z-index:1;
+  height:25px;
+  display:flex;
+  align-items:center;
+  gap:3px;
+  opacity:.35;
+}
+
+.lineup-equalizer i{
+  width:3px;
+  height:9px;
+  background:#fff;
+  animation:lineup-wave .7s ease-in-out infinite alternate;
+}
+
+.lineup-equalizer i:nth-child(3n){animation-delay:.2s}
+.lineup-equalizer i:nth-child(2n){animation-delay:.35s}
+.lineup-equalizer i:nth-child(4n){height:18px}
+
+@keyframes lineup-wave{
+  to{transform:scaleY(2.1)}
+}
+
+.lineup-podcast{
+  min-height:245px;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  background:#151519;
+  color:#fff;
+  border:1px solid #303036;
+}
+
+.lineup-podcast:before{
+  content:"";
+  position:absolute;
+  z-index:1;
+  top:0;
+  left:0;
+  width:5px;
+  height:100%;
+  background:#ed171f;
+}
+
+.lineup-podcast-copy{
+  position:relative;
+  z-index:2;
+  padding:26px 25px 25px 30px;
+}
+
+.lineup-podcast .lineup-status{
+  color:#ff343b;
+}
+
+.lineup-podcast .lineup-card-kicker{
+  margin-top:27px;
+  color:#85858f;
+}
+
+.lineup-podcast h3{
+  font-size:clamp(29px,3vw,41px);
+  line-height:.9;
+}
+
+.lineup-podcast h3 em{
+  color:#ed171f;
+}
+
+.lineup-podcast-copy p{
+  margin:10px 0 17px;
+  color:#a8a8b1;
+  font-size:11px;
+}
+
+.lineup-podcast-copy p strong{
+  color:#fff;
+}
+
+.lineup-cta-dark{
+  padding:10px 12px;
+  background:#ed171f;
+  color:#fff;
+}
+
+.lineup-podcast:hover .lineup-cta-dark{
+  background:#fff;
+  color:#ed171f;
+}
+
+.lineup-host-visual{
+  position:relative;
+  min-height:245px;
+  overflow:hidden;
+  background:linear-gradient(145deg,#303036,#111114 70%);
+}
+
+.lineup-host-visual:before{
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:0;
+  background:linear-gradient(90deg,#151519 0%,rgba(21,21,25,.1) 35%,transparent 70%),linear-gradient(0deg,rgba(0,0,0,.75),transparent 42%);
+  pointer-events:none;
+}
+
+.lineup-host-visual img{
+  position:absolute;
+  right:0;
+  bottom:0;
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center 22%;
+  filter:grayscale(1) contrast(1.08);
+  transition:transform .45s ease;
+}
+
+.lineup-podcast:hover .lineup-host-visual img{
+  transform:scale(1.045);
+}
+
+.lineup-host-visual .lineup-index{
+  z-index:2;
+  right:10px;
+  top:8px;
+  color:rgba(255,255,255,.12);
+  font-size:105px;
+}
+
+.lineup-host-name{
+  position:absolute;
+  z-index:3;
+  left:15px;
+  bottom:15px;
+  color:#fff;
+  font-size:9px;
+  font-weight:1000;
+  letter-spacing:1.5px;
+}
+
+.lineup-host-name i{
+  display:block;
+  margin-top:5px;
+  color:#ff343b;
+  font-size:7px;
+  font-style:normal;
+  letter-spacing:2px;
+}
+
+.lineup-note{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin:0;
+  color:#777780;
+  font-size:10px;
+  letter-spacing:.2px;
+}
+
+.lineup-note span{
+  color:#ed171f;
+  font-size:17px;
+}
+
+@media(max-width:900px){
+  .lineup-layout{grid-template-columns:.85fr 1.15fr;gap:32px}
+  .lineup-title{font-size:clamp(55px,7vw,78px)}
+  .lineup-sticker{width:76px;height:76px;right:-7px}
+  .lineup-sticker strong{font-size:14px}
+  .lineup-live{padding:24px}
+  .lineup-podcast-copy{padding:23px 18px 22px 24px}
+}
+
+@media(max-width:700px){
+  .lineup-section{padding:74px 0 80px}
+  .lineup-layout{grid-template-columns:1fr;gap:34px}
+  .lineup-intro{padding-right:0}
+  .lineup-intro .section-number{margin-bottom:23px}
+  .lineup-title{font-size:clamp(66px,16vw,94px)}
+  .lineup-description{max-width:330px;font-size:13px;margin-top:22px}
+  .lineup-sticker{width:82px;height:82px;right:3px;top:4px}
+  .lineup-sticker strong{font-size:15px}
+  .lineup-live{min-height:220px;padding:23px 20px}
+  .lineup-card-content{display:block;margin-top:28px}
+  .lineup-card h3{font-size:clamp(32px,9vw,43px)}
+  .lineup-card-content p{max-width:260px}
+  .lineup-live .lineup-cta{margin-top:18px}
+  .lineup-podcast{grid-template-columns:1fr .78fr;min-height:220px}
+  .lineup-podcast-copy{padding:22px 12px 20px 20px}
+  .lineup-podcast .lineup-card-kicker{margin-top:22px;font-size:7px;letter-spacing:1.3px}
+  .lineup-podcast h3{font-size:clamp(25px,7vw,34px)}
+  .lineup-podcast-copy p{font-size:10px;line-height:1.5}
+  .lineup-host-visual{min-height:220px}
+  .lineup-host-name{left:9px;bottom:11px;font-size:8px}
+  .lineup-host-visual .lineup-index{font-size:80px}
+  .lineup-note{font-size:9px;line-height:1.6}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .lineup-equalizer i{animation:none}
+  .lineup-card,.lineup-host-visual img{transition:none}
+}
+
 </style>
 </head>
 
@@ -3771,46 +4284,77 @@ img{max-width:100%}
   </div>
 </section>
 
-<!-- KIZAZI PROGRAMMING -->
+<!-- KIZAZI PROGRAMMING / THE LINEUP -->
 
-<section class="schedule-section" id="schedule">
-  <div class="wrap schedule-layout">
+<section class="schedule-section lineup-section" id="schedule">
+  <div class="wrap lineup-layout">
 
-    <div class="schedule-intro">
+    <div class="lineup-intro">
       <div class="section-number">02 / THE LINEUP</div>
-      <p class="eyebrow">What's on KIZAZI</p>
-      <h2 class="section-title">YOUR SOUND.<br><em>YOUR PEOPLE.</em></h2>
-      <p>
-        Tap into the shows, voices and original conversations moving with a new generation.
+      <p class="eyebrow">WHAT'S ON KIZAZI</p>
+
+      <h2 class="lineup-title">
+        YOUR SOUND.<br>
+        <span>YOUR</span><br>
+        PEOPLE<span class="lineup-period">.</span>
+      </h2>
+
+      <p class="lineup-description">
+        Your daily dose of music, culture and real conversations.
+        Find your frequency. Catch your people. Stay in the mix.
       </p>
-    </div>
 
-    <div>
-      <div class="schedule-board">
-
-        <a class="schedule-row" data-index="01" href="#listen" aria-label="Listen to KIZAZI RADIO live">
-          <div class="schedule-time">ON AIR / 24-7 SOUND</div>
-          <div>
-            <strong>KIZAZI RADIO LIVE</strong>
-            <small>Music, entertainment and the sound of a new generation.</small>
-          </div>
-          <div class="schedule-status">TUNE IN ↗</div>
-        </a>
-
-        <a class="schedule-row" data-index="02" href="/maybe-i-dont-know/" aria-label="Explore Maybe I Don't Know podcast">
-          <div class="schedule-time">KIZAZI ORIGINAL</div>
-          <div>
-            <strong>Maybe I Don't Know</strong>
-            <small>Honest conversations with King Mfumu.</small>
-          </div>
-          <div class="schedule-status">PODCAST ↗</div>
-        </a>
-
+      <div class="lineup-foot">
+        <span class="lineup-cross">✳</span>
+        <span>NO STATIC. ALL CULTURE.</span>
       </div>
 
-      <p class="schedule-note">
-        Show times and new episodes will be announced on KIZAZI RADIO.
-      </p>
+      <div class="lineup-sticker" aria-hidden="true">
+        <span>FRESH</span>
+        <strong>VIBE<br>ONLY</strong>
+        <span>EST. KIZAZI</span>
+      </div>
+    </div>
+
+    <div class="lineup-cards">
+
+      <a class="lineup-card lineup-live" href="#listen" aria-label="Listen to KIZAZI RADIO live">
+        <div class="lineup-card-top">
+          <span class="lineup-status"><i></i> ON AIR / 24-7 SOUND</span>
+          <span class="lineup-index">01</span>
+        </div>
+
+        <div class="lineup-card-content">
+          <div>
+            <span class="lineup-card-kicker">THE SOUNDTRACK TO WHAT'S NEXT</span>
+            <h3>KIZAZI RADIO <em>LIVE.</em></h3>
+            <p>Music, entertainment and the sound of a new generation.</p>
+          </div>
+          <span class="lineup-cta">TUNE IN <b>↗</b></span>
+        </div>
+
+        <div class="lineup-equalizer" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </a>
+
+      <a class="lineup-card lineup-podcast" href="/maybe-i-dont-know/" aria-label="Explore Maybe I Don't Know podcast hosted by King Mfumu">
+        <div class="lineup-podcast-copy">
+          <span class="lineup-status"><i></i> KIZAZI ORIGINAL / PODCAST</span>
+          <span class="lineup-card-kicker">REAL TALK. OPEN MINDS.</span>
+          <h3>MAYBE I DON'T<br><em>KNOW?</em></h3>
+          <p>Honest conversations with <strong>King Mfumu.</strong></p>
+          <span class="lineup-cta lineup-cta-dark">GET INTO IT <b>↗</b></span>
+        </div>
+
+        <div class="lineup-host-visual">
+          <span class="lineup-index">02</span>
+          <img src="/assets/king-mfumu-presenter.png" alt="King Mfumu, host of Maybe I Don't Know" loading="lazy">
+          <span class="lineup-host-name">KING MFUMU <i>THE HOST</i></span>
+        </div>
+      </a>
+
+      <p class="lineup-note"><span>✳</span> New episodes, fresh sounds. Always something to tap into.</p>
     </div>
 
   </div>
