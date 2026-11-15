@@ -17,6 +17,26 @@
 .hero{position:relative;overflow:hidden;padding:105px 0 95px;background:radial-gradient(ellipse at 18% 45%,rgba(237,16,25,.2),transparent 38%),radial-gradient(ellipse at 90% 10%,rgba(237,16,25,.09),transparent 35%),linear-gradient(120deg,#09090b,#160609 58%,#09090b);border-bottom:1px solid #29292f}.hero:after{content:"";position:absolute;right:-100px;top:-190px;width:570px;height:570px;border:1px solid rgba(237,16,25,.2);border-radius:50%;box-shadow:0 0 0 35px rgba(237,16,25,.025),0 0 0 75px rgba(237,16,25,.018);pointer-events:none}.eyebrow{display:flex;align-items:center;gap:12px;color:#b5b5bd;font-size:10px;font-weight:900;letter-spacing:2.3px;text-transform:uppercase}.eyebrow:before{content:"";width:28px;height:3px;background:var(--red)}.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.2fr .8fr;gap:65px;align-items:end}h1{margin:24px 0 20px;font-size:clamp(65px,9vw,116px);line-height:.82;letter-spacing:-.09em;font-weight:900;text-transform:uppercase}h1 em{font-style:normal;color:var(--red)}.hero-copy{max-width:490px;color:#aaaab3;font-size:14px;line-height:1.9;margin:0}.hero-aside{border-left:2px solid var(--red);padding:10px 0 10px 28px}.hero-aside strong{font-size:10px;letter-spacing:2px;color:var(--red)}.hero-aside p{font-size:17px;line-height:1.8;color:#b8b8c0;margin:18px 0 0}
 .section{padding:82px 0}.section-heading{max-width:720px;margin-bottom:38px}.kicker{color:var(--red);font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase}.section-heading h2{font-size:clamp(34px,5vw,58px);line-height:.94;letter-spacing:-.07em;margin:14px 0}.section-heading p{max-width:650px;color:var(--muted);font-size:13px;line-height:1.9}.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.impact-card{min-height:220px;padding:26px;border:1px solid var(--line);background:linear-gradient(145deg,#17171c,#0d0d10);position:relative;overflow:hidden}.impact-card:before{content:"";position:absolute;top:0;left:0;width:42px;height:3px;background:var(--red)}.impact-number{color:var(--red);font-size:10px;font-weight:900;letter-spacing:2px}.impact-card h3{font-size:19px;letter-spacing:-.6px;margin:28px 0 10px}.impact-card p{color:#a6a6af;font-size:12px;line-height:1.8;margin:0}
 .support-section{padding:0 0 90px}.support-panel{padding:42px;border:1px solid #383039;background:radial-gradient(ellipse at 90% 10%,rgba(237,16,25,.16),transparent 45%),#121216;display:grid;grid-template-columns:1fr .8fr;gap:45px;align-items:center}.support-panel h2{font-size:clamp(30px,4vw,46px);line-height:.95;letter-spacing:-.07em;margin:13px 0}.support-panel p{max-width:570px;color:#aaaab3;font-size:13px;line-height:1.9}.support-status{padding:24px;border:1px solid #3b3034;background:rgba(0,0,0,.25)}.status-line{display:flex;align-items:center;gap:9px;color:#ff646b;font-size:9px;font-weight:900;letter-spacing:1.6px}.status-line i{width:7px;height:7px;background:var(--red);border-radius:50%;box-shadow:0 0 12px var(--red)}.support-status h3{font-size:18px;margin:17px 0 9px}.support-status p{font-size:11px;margin:0 0 18px}.button{display:inline-flex;align-items:center;justify-content:center;gap:18px;padding:16px 21px;background:var(--red);color:#fff;font-size:10px;font-weight:900;letter-spacing:1.2px;border:1px solid var(--red);transition:.2s}.button:hover{background:#fff;color:#09090b;border-color:#fff}.fine-print{margin-top:18px;color:#777780;font-size:10px;line-height:1.7}
+.donation-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0 14px}
+.donation-option{width:100%;min-height:76px;padding:14px 13px;display:flex;align-items:center;gap:11px;text-align:left;background:#171217;border:1px solid #493037;color:var(--white);cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.donation-option:hover{border-color:var(--red);background:#211216;transform:translateY(-2px)}
+.donation-option[aria-expanded="true"]{border-color:var(--red);background:linear-gradient(135deg,rgba(237,16,25,.2),#171217)}
+.donation-option-icon{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center;border:1px solid rgba(237,16,25,.55);color:#ff5b62;font-size:21px}
+.donation-option>span:nth-child(2){display:flex;flex-direction:column;gap:5px;min-width:0}
+.donation-option strong{font-size:9px;line-height:1.35;letter-spacing:.8px}
+.donation-option small{font-size:9px;color:#92929b}
+.donation-arrow{margin-left:auto;color:var(--red);font-size:17px}
+.donation-details{padding:17px 18px;margin:12px 0 18px;border:1px solid #493037;background:rgba(0,0,0,.32);animation:detailsIn .2s ease}
+.donation-details[hidden]{display:none}
+.details-topline{display:flex;align-items:center;gap:8px;color:#ff646b;font-size:8px;font-weight:900;letter-spacing:1.4px}
+.details-marker{width:6px;height:6px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red)}
+.donation-details h4{font-size:15px;margin:12px 0 7px}
+.donation-details p{font-size:11px;line-height:1.75;margin:0;color:#aaaab3}
+.contact-link{display:inline-flex;align-items:center;gap:10px;margin-top:1px;color:#d9d9df;font-size:9px;font-weight:900;letter-spacing:1px}
+.contact-link:hover{color:var(--red)}
+@keyframes detailsIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:480px){.donation-actions{grid-template-columns:1fr}.donation-option{min-height:68px}}
+
 .footer{border-top:1px solid #28282e;padding:28px 0 35px}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:25px;flex-wrap:wrap}.footer-logo{width:125px;height:58px;object-fit:contain}.footer-links{display:flex;gap:18px;flex-wrap:wrap}.footer-links a{font-size:10px;color:#a4a4ad;font-weight:700}.footer-links a:hover{color:var(--red)}.copyright{color:#707079;font-size:9px;letter-spacing:.5px}
 @media(max-width:900px){.nav{gap:12px}.nav a{font-size:9px}.hero-grid{gap:35px}.support-panel{gap:25px}}
 @media(max-width:700px){.header{height:72px}.header-inner{width:90%}.brand-logo{width:120px;height:56px}.menu{display:block}.nav{display:none;position:absolute;top:71px;left:0;right:0;padding:22px 5%;background:#101014;border-bottom:1px solid #333;flex-direction:column;align-items:flex-start;gap:20px}.nav.open{display:flex}.nav a{font-size:11px}.hero{padding:72px 0 65px}.hero-grid{grid-template-columns:1fr;gap:32px}h1{font-size:clamp(62px,17vw,90px)}.section{padding:62px 0}.impact-grid{grid-template-columns:1fr}.impact-card{min-height:180px}.support-section{padding-bottom:65px}.support-panel{padding:25px 20px;grid-template-columns:1fr;gap:22px}.footer-inner{align-items:flex-start;flex-direction:column}.footer-links{gap:14px}}
@@ -45,7 +65,30 @@
 </div></section>
 <section class="support-section"><div class="wrap"><div class="support-panel">
 <div><span class="kicker">Be part of the journey</span><h2>YOUR SUPPORT.<br>OUR NEXT CHAPTER.</h2><p>We are preparing secure ways for listeners and supporters to contribute. If you are interested in backing KIZAZI RADIO, discussing a partnership or supporting a specific project, get in touch with our team.</p></div>
-<div class="support-status"><span class="status-line"><i></i> CONTRIBUTION CHANNELS IN PREPARATION</span><h3>Support options are coming soon.</h3><p>We are setting up the official contribution channels. No payment is collected through this page at the moment.</p><a class="button" href="/contact/">TALK TO OUR TEAM <span>↗</span></a><p class="fine-print">Please do not send money to unofficial numbers or accounts claiming to represent KIZAZI RADIO. Official details will be published here once verified.</p></div>
+<div class="support-status">
+<span class="status-line"><i></i> CHOOSE HOW YOU WANT TO SUPPORT</span>
+<h3>Make your contribution.</h3>
+<p>Select a secure contribution method below. Official payment details will be displayed when they are confirmed.</p>
+<div class="donation-actions" role="group" aria-label="Choose a donation method">
+<button class="donation-option" type="button" data-donation-method="bank" aria-expanded="false" aria-controls="donation-details">
+<span class="donation-option-icon" aria-hidden="true">▤</span>
+<span><strong>DONATE VIA BANK</strong><small>Bank transfer</small></span>
+<span class="donation-arrow" aria-hidden="true">↗</span>
+</button>
+<button class="donation-option" type="button" data-donation-method="mobile" aria-expanded="false" aria-controls="donation-details">
+<span class="donation-option-icon mobile-icon" aria-hidden="true">▣</span>
+<span><strong>DONATE VIA MOBILE MONEY</strong><small>Mobile payment</small></span>
+<span class="donation-arrow" aria-hidden="true">↗</span>
+</button>
+</div>
+<div class="donation-details" id="donation-details" hidden aria-live="polite">
+<div class="details-topline"><span class="details-marker"></span><span id="donation-details-label">CONTRIBUTION DETAILS</span></div>
+<h4 id="donation-details-title">Payment details coming soon</h4>
+<p id="donation-details-copy">We are preparing and verifying the official payment information. Please check back soon.</p>
+</div>
+<p class="fine-print">Please do not send money to unofficial numbers or accounts claiming to represent KIZAZI RADIO. Official details will be published here once verified.</p>
+<a class="contact-link" href="/contact/">QUESTIONS? TALK TO OUR TEAM <span>↗</span></a>
+</div>
 </div></div></section>
 </main>
 <footer class="footer"><div class="wrap footer-inner">
@@ -54,7 +97,7 @@
 <span class="copyright">© <span id="year"></span> KIZAZI RADIO. ALL RIGHTS RESERVED.</span>
 </div></footer>
 <script>
-document.addEventListener("DOMContentLoaded",()=>{const menu=document.querySelector(".menu"),nav=document.querySelector(".nav");if(menu&&nav){menu.addEventListener("click",()=>{const open=nav.classList.toggle("open");menu.setAttribute("aria-expanded",String(open));menu.textContent=open?"×":"☰"});nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");menu.setAttribute("aria-expanded","false");menu.textContent="☰"}))}const year=document.getElementById("year");if(year)year.textContent=new Date().getFullYear()});
+document.addEventListener("DOMContentLoaded",()=>{const menu=document.querySelector(".menu"),nav=document.querySelector(".nav");if(menu&&nav){menu.addEventListener("click",()=>{const open=nav.classList.toggle("open");menu.setAttribute("aria-expanded",String(open));menu.textContent=open?"×":"☰"});nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");menu.setAttribute("aria-expanded","false");menu.textContent="☰"}))}const donationButtons=document.querySelectorAll("[data-donation-method]"),details=document.getElementById("donation-details"),detailsLabel=document.getElementById("donation-details-label"),detailsTitle=document.getElementById("donation-details-title"),detailsCopy=document.getElementById("donation-details-copy");donationButtons.forEach(button=>button.addEventListener("click",()=>{const method=button.dataset.donationMethod;const alreadyOpen=button.getAttribute("aria-expanded")==="true";donationButtons.forEach(item=>item.setAttribute("aria-expanded","false"));if(alreadyOpen){details.hidden=true;return}button.setAttribute("aria-expanded","true");details.hidden=false;if(method==="bank"){detailsLabel.textContent="BANK TRANSFER";detailsTitle.textContent="Bank details will be added soon";detailsCopy.textContent="KIZAZI RADIO is preparing its official bank contribution details. The verified bank name, account name, account number and branch information will appear here once supplied."}else{detailsLabel.textContent="MOBILE MONEY";detailsTitle.textContent="Mobile Money details will be added soon";detailsCopy.textContent="Official mobile money payment details are being prepared. The verified network, recipient name and payment number will appear here once supplied."}}));const year=document.getElementById("year");if(year)year.textContent=new Date().getFullYear()});
 </script>
 </body>
 </html>
