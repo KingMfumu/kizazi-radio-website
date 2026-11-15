@@ -4041,6 +4041,74 @@ img{max-width:100%}
   .lineup-card,.lineup-host-visual img{transition:none}
 }
 
+
+/* HOMEPAGE REPLACEMENTS — THE KIZAZI EXPERIENCE + ALWAYS CONNECTED */
+.experience-section{position:relative;isolation:isolate;overflow:hidden;padding:104px 0 112px;background:#09090b;border-top:1px solid var(--line)}
+.experience-section:before{content:"FREQUENCY";position:absolute;z-index:-1;top:-32px;right:-28px;color:rgba(255,255,255,.018);font-size:clamp(110px,19vw,260px);line-height:1;font-weight:1000;letter-spacing:-.1em}
+.experience-heading{display:grid;grid-template-columns:1.1fr .9fr;align-items:end;gap:50px;margin-bottom:42px}
+.experience-kicker{color:var(--red);font-size:10px;font-weight:950;letter-spacing:1.8px;margin:0 0 18px}
+.experience-heading .eyebrow{margin-bottom:16px}
+.experience-title{margin:0;font-size:clamp(54px,7.2vw,94px);line-height:.86;letter-spacing:-.085em;font-weight:1000}
+.experience-title em{color:var(--red);font-style:normal}
+.experience-intro{max-width:440px;color:#aaaab3;font-size:14px;line-height:1.9;margin:0 0 5px}
+.experience-stage{display:grid;grid-template-columns:1.05fr .95fr;min-height:350px;border:1px solid #303037;background:#111115}
+.experience-signal{min-height:350px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 52%,rgba(229,9,9,.18),transparent 43%),linear-gradient(145deg,#1b1b20,#0c0c0f)}
+.signal-word{position:relative;z-index:2;font-size:clamp(48px,6vw,78px);line-height:.78;font-weight:1000;letter-spacing:-.09em;text-align:center}
+.signal-word:after{content:"";display:block;width:48px;height:5px;background:var(--red);margin:18px auto 0}
+.signal-bars{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:6px;opacity:.28}
+.signal-bars i{display:block;width:5px;height:55px;border-radius:5px;background:var(--red);box-shadow:0 0 16px rgba(229,9,9,.45)}
+.signal-bars i:nth-child(3n){height:105px}.signal-bars i:nth-child(4n){height:145px}.signal-bars i:nth-child(5n){height:75px}.signal-bars i:nth-child(7n){height:190px}
+.signal-caption{position:absolute;bottom:23px;color:#777780;font-size:8px;font-weight:900;letter-spacing:2.3px}
+.experience-list{display:flex;flex-direction:column;justify-content:center;padding:18px 30px}
+.experience-item{display:grid;grid-template-columns:38px 1fr 35px;align-items:center;gap:15px;min-height:76px;border-bottom:1px solid #303037;transition:padding .2s,color .2s}
+.experience-item:last-child{border-bottom:0}.experience-item:hover{padding-left:8px;color:#fff}
+.experience-index{color:var(--red);font-size:10px;font-weight:900}
+.experience-item-copy{display:flex;flex-direction:column;gap:6px}
+.experience-item-copy strong{font-size:14px;font-weight:900;letter-spacing:.2px}
+.experience-item-copy small{color:#888891;font-size:10px}
+.experience-arrow{width:32px;height:32px;display:grid;place-items:center;border:1px solid #42424a;border-radius:50%;color:var(--red);transition:background .2s,border-color .2s}
+.experience-item:hover .experience-arrow{background:var(--red);border-color:var(--red);color:#fff}
+.connected-section{position:relative;overflow:hidden;padding:95px 0 105px;background:#131317;border-top:1px solid #29292f;border-bottom:1px solid #29292f}
+.connected-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.connected-visual{min-height:360px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(ellipse at center,rgba(255,255,255,.055),transparent 65%)}
+.connected-orbit{position:absolute;width:300px;height:300px;border:1px solid rgba(255,255,255,.09);border-radius:50%}
+.orbit-two{width:390px;height:390px;border-style:dashed;opacity:.45}
+.connected-device{position:absolute;filter:drop-shadow(0 25px 30px rgba(0,0,0,.5))}
+.laptop-device{width:280px;left:8%;top:78px}
+.laptop-screen{height:190px;padding:13px 16px;border:7px solid #34343b;border-bottom-width:11px;border-radius:10px 10px 4px 4px;background:linear-gradient(145deg,#19191e,#08080b)}
+.device-topline{display:flex;gap:5px}.device-topline span{width:5px;height:5px;border-radius:50%;background:#555}.device-topline span:first-child{background:var(--red)}
+.device-logo{margin-top:19px;text-align:center;font-size:39px;line-height:1;font-weight:1000;letter-spacing:-5px}.device-logo span{color:var(--red)}
+.device-equalizer{height:28px;display:flex;justify-content:center;align-items:center;gap:4px;margin-top:10px}
+.device-equalizer i{width:4px;height:12px;background:var(--red);border-radius:3px}.device-equalizer i:nth-child(3n){height:23px}.device-equalizer i:nth-child(4n){height:17px}
+.device-live{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:9px;color:#aaa;font-size:7px;font-weight:900;letter-spacing:1.5px}
+.device-live b,.phone-live i{width:6px;height:6px;border-radius:50%;background:var(--red);display:inline-block}
+.laptop-base{width:305px;height:10px;margin-left:-12px;background:linear-gradient(90deg,#24242a,#66666d,#24242a);clip-path:polygon(4% 0,96% 0,100% 100%,0 100%);border-radius:0 0 8px 8px}
+.phone-device{z-index:3;width:118px;height:225px;right:8%;bottom:45px;padding:7px;border:3px solid #555;border-radius:22px;background:#08080b;transform:rotate(8deg)}
+.phone-speaker{position:absolute;z-index:2;top:9px;left:43px;width:27px;height:4px;border-radius:4px;background:#555}
+.phone-screen{height:100%;padding:30px 9px 10px;border-radius:14px;display:flex;flex-direction:column;align-items:center;background:radial-gradient(circle at 50% 38%,rgba(229,9,9,.2),transparent 48%),#151519}
+.phone-live{display:flex;align-items:center;gap:5px;color:#ccc;font-size:7px;font-weight:900;letter-spacing:1px}
+.phone-play{width:43px;height:43px;display:grid;place-items:center;margin:22px 0 12px;border-radius:50%;background:var(--red);font-size:14px;padding-left:3px}
+.phone-screen strong{font-size:13px;line-height:.9;text-align:center;letter-spacing:-.6px}
+.phone-screen small{margin-top:8px;color:#888;font-size:5px;line-height:1.5;text-align:center;letter-spacing:.7px}
+.phone-progress{width:75%;height:3px;margin-top:13px;background:#444}.phone-progress i{display:block;width:48%;height:100%;background:var(--red)}
+.connected-stamp{position:absolute;left:7%;bottom:23px;z-index:4;width:82px;height:82px;display:grid;place-content:center;text-align:center;border-radius:50%;background:var(--red);color:#fff;font-size:9px;font-weight:1000;line-height:1.15;letter-spacing:.8px;transform:rotate(-10deg);box-shadow:5px 5px 0 #fff}
+.connected-copy .eyebrow{margin-bottom:18px}
+.connected-title{margin:0;font-size:clamp(42px,5.2vw,68px);line-height:.91;letter-spacing:-.075em;font-weight:1000}
+.connected-title em{color:var(--red);font-style:normal}
+.connected-copy>p:not(.eyebrow){max-width:470px;margin:22px 0 25px;color:#aaaab3;font-size:13px;line-height:1.9}
+.connected-actions{display:flex;flex-wrap:wrap;align-items:center;gap:22px}
+.connected-actions .primary-button{box-shadow:none}
+.connected-note{display:inline-flex;align-items:center;gap:8px;color:#8c8c95;font-size:8px;font-weight:900;letter-spacing:1.3px}
+.connected-note i{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(229,9,9,.12)}
+@media(max-width:900px){.experience-heading{gap:28px}.connected-layout{gap:35px}.laptop-device{left:2%;transform:scale(.9);transform-origin:left center}.phone-device{right:3%}}
+@media(max-width:700px){
+.experience-section{padding:72px 0 78px}.experience-heading{grid-template-columns:1fr;gap:20px;margin-bottom:28px}.experience-title{font-size:clamp(52px,13vw,76px)}.experience-intro{font-size:12px;max-width:500px}
+.experience-stage{grid-template-columns:1fr}.experience-signal{min-height:235px}.signal-word{font-size:58px}.experience-list{padding:8px 18px}.experience-item{min-height:69px;grid-template-columns:28px 1fr 32px}.experience-item-copy strong{font-size:12px}.experience-item-copy small{font-size:9px}
+.connected-section{padding:70px 0 78px}.connected-layout{grid-template-columns:1fr;gap:22px}.connected-visual{min-height:300px;order:2}.connected-copy{order:1}.connected-title{font-size:clamp(42px,11vw,62px)}.connected-copy>p:not(.eyebrow){font-size:12px}
+.laptop-device{left:7%;top:64px;transform:scale(.82);transform-origin:left top}.phone-device{right:8%;bottom:25px;transform:scale(.9) rotate(8deg);transform-origin:right bottom}.connected-stamp{left:4%;bottom:12px;width:70px;height:70px;font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){.experience-item,.experience-arrow{transition:none}}
+
 </style>
 </head>
 
@@ -4360,82 +4428,120 @@ img{max-width:100%}
   </div>
 </section>
 
-<!-- SHOWS -->
+<!-- THE KIZAZI EXPERIENCE -->
 
-<section class="shows-section" id="shows">
+<section class="experience-section" id="experience">
   <div class="wrap">
-
-    <div class="section-heading">
+    <div class="experience-heading">
       <div>
-        <div class="section-number">03 / KIZAZI ORIGINALS</div>
-        <p class="eyebrow">The voices of KIZAZI</p>
-        <h2 class="section-title">GOOD SHOWS. <em>GOOD PEOPLE.</em></h2>
+        <p class="experience-kicker">03 / THE KIZAZI EXPERIENCE</p>
+        <p class="eyebrow">More than a playlist</p>
+        <h2 class="experience-title">CULTURE<br>IN <em>EVERY</em><br>FREQUENCY.</h2>
       </div>
+      <p class="experience-intro">
+        From the sounds that move you to the stories that shape the moment,
+        KIZAZI RADIO brings the energy, ideas and conversations of a new
+        generation into one listening experience.
+      </p>
     </div>
 
-    <div class="show-grid">
-
-      <a class="show-card" href="/maybe-i-dont-know/" aria-label="Open Maybe I Don't Know podcast page">
-
-        <div class="show-art maybe">
-          <span class="show-label">KIZAZI ORIGINAL / PODCAST</span>
-
-          <h3>MAYBE<br><em>I DON'T</em><br>KNOW <span>?</span></h3>
-
-          <span class="show-host">WITH KING MFUMU</span>
-
-          <div class="show-portraits single-host" aria-label="King Mfumu, host of Maybe I Don't Know">
-            <figure class="show-portrait">
-              <img src="/assets/king-mfumu-presenter.png" alt="King Mfumu, host of Maybe I Don't Know" loading="lazy">
-              <figcaption>King Mfumu</figcaption>
-            </figure>
-          </div>
+    <div class="experience-stage">
+      <div class="experience-signal" aria-hidden="true">
+        <span class="signal-word">KIZAZI<br>RADIO</span>
+        <div class="signal-bars">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
         </div>
+        <span class="signal-caption">NEW GENERATION. NEW SOUND.</span>
+      </div>
 
-        <div class="show-description">
-          <div>
-            <h3>Maybe I Don't Know</h3>
-            <p>
-              Honest conversations, different perspectives and questions worth asking.
-            </p>
-          </div>
-          <span class="round-arrow">↗</span>
-        </div>
+      <div class="experience-list">
+        <a class="experience-item" href="/#listen">
+          <span class="experience-index">01</span>
+          <span class="experience-item-copy">
+            <strong>LIVE RADIO</strong>
+            <small>Always on. Always moving.</small>
+          </span>
+          <span class="experience-arrow">↗</span>
+        </a>
 
-      </a>
+        <a class="experience-item" href="/shows/">
+          <span class="experience-index">02</span>
+          <span class="experience-item-copy">
+            <strong>SHOWS &amp; CULTURE</strong>
+            <small>Fresh voices. Real conversations.</small>
+          </span>
+          <span class="experience-arrow">↗</span>
+        </a>
 
+        <a class="experience-item" href="/news/">
+          <span class="experience-index">03</span>
+          <span class="experience-item-copy">
+            <strong>NEWS &amp; DISCOVERY</strong>
+            <small>What matters. What's next.</small>
+          </span>
+          <span class="experience-arrow">↗</span>
+        </a>
+
+        <a class="experience-item" href="/top15/">
+          <span class="experience-index">04</span>
+          <span class="experience-item-copy">
+            <strong>THE SOUNDTRACK</strong>
+            <small>New music. Standout sounds.</small>
+          </span>
+          <span class="experience-arrow">↗</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PODCASTS -->
+<!-- ALWAYS CONNECTED -->
 
-<section class="podcast-section" id="podcasts">
-  <div class="wrap podcast-layout">
-
-    <div class="podcast-art">
-      <div class="disc">
-        <small>PODCASTS</small>
+<section class="connected-section" id="connected">
+  <div class="wrap connected-layout">
+    <div class="connected-visual" aria-hidden="true">
+      <div class="connected-orbit orbit-one"></div>
+      <div class="connected-orbit orbit-two"></div>
+      <div class="connected-device laptop-device">
+        <div class="laptop-screen">
+          <div class="device-topline"><span></span><span></span><span></span></div>
+          <div class="device-logo">K<span>•</span>R</div>
+          <div class="device-equalizer">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <div class="device-live"><b></b> LIVE RADIO</div>
+        </div>
+        <div class="laptop-base"></div>
       </div>
-      <span class="podcast-tag">LISTEN<br>YOUR WAY ↗</span>
+      <div class="connected-device phone-device">
+        <div class="phone-speaker"></div>
+        <div class="phone-screen">
+          <span class="phone-live"><i></i> ON AIR</span>
+          <div class="phone-play">▶</div>
+          <strong>KIZAZI<br>RADIO</strong>
+          <small>NEW GENERATION.<br>NEW SOUND.</small>
+          <div class="phone-progress"><i></i></div>
+        </div>
+      </div>
+      <span class="connected-stamp">YOUR<br>RADIO.<br>ANYWHERE.</span>
     </div>
 
-    <div class="podcast-copy">
-      <p class="eyebrow">Take us with you</p>
-
-      <h2 class="section-title">
-        THE CONVERSATION<br>DOESN'T <em>STOP.</em>
-      </h2>
-
+    <div class="connected-copy">
+      <p class="eyebrow">Your frequency travels</p>
+      <h2 class="connected-title">ALWAYS<br>CONNECTED.<br><em>ALWAYS KIZAZI.</em></h2>
       <p>
-        Catch up on KIZAZI RADIO podcasts and take the voices, ideas and stories you love wherever you go.
+        Wherever life takes you, your sound goes with you. Tune in to KIZAZI
+        RADIO from your phone, tablet or computer and stay close to the music,
+        voices and moments moving a new generation.
       </p>
-
-      <a class="text-link" href="#shows">
-        DISCOVER OUR PODCASTS <span>↗</span>
-      </a>
+      <div class="connected-actions">
+        <a class="primary-button" href="/#listen">TUNE IN. STAY CONNECTED ↗</a>
+        <span class="connected-note"><i></i> LISTEN LIVE • WORLDWIDE</span>
+      </div>
     </div>
-
   </div>
 </section>
 
@@ -6322,6 +6428,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
-
 
 
