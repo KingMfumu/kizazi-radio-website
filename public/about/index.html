@@ -214,7 +214,7 @@
     .hero-stamp {
       border: 1px solid #4a4a51;
       padding: 13px 16px;
-      color: #f7f7f8;
+      color: var(--white);
       font-size: 9px;
       font-weight: 1000;
       letter-spacing: 2px;
@@ -599,9 +599,286 @@
       color: #fff;
     }
 
+    /* GEN Z SWAG LAYER — original layout and section order retained */
+
+    ::selection {
+      background: var(--red);
+      color: #fff;
+    }
+
+    body {
+      background-image:
+        radial-gradient(circle at 12% 16%, rgba(237,23,31,.055), transparent 22%),
+        linear-gradient(90deg, transparent 49.9%, rgba(255,255,255,.012) 50%, transparent 50.1%);
+      background-size: auto, 80px 80px;
+    }
+
+    .brand-mark {
+      box-shadow: 4px 4px 0 #fff;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .brand:hover .brand-mark {
+      transform: skew(-7deg) rotate(-7deg) translateY(-2px);
+      box-shadow: 6px 6px 0 #fff;
+    }
+
+    .nav-links a {
+      position: relative;
+      transition: color .2s ease;
+    }
+
+    .nav-links a:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 2px;
+      background: var(--red);
+      transition: width .22s ease;
+    }
+
+    .nav-links a:hover:after,
+    .nav-links a.active:after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      box-shadow: 4px 4px 0 #fff;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translate(-2px,-2px);
+      box-shadow: 6px 6px 0 #fff;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 82% 35%, rgba(237,23,31,.2), transparent 26%),
+        radial-gradient(circle at 10% 100%, rgba(255,255,255,.045), transparent 32%),
+        linear-gradient(130deg,#111115 0%,#09090b 68%);
+    }
+
+    .hero:before {
+      content: "ON AIR / KZ RADIO";
+      position: absolute;
+      top: 34px;
+      right: max(32px, calc((100vw - 1240px)/2));
+      color: rgba(255,255,255,.38);
+      font-size: 8px;
+      font-weight: 1000;
+      letter-spacing: 3px;
+      transform: rotate(90deg) translateX(100%);
+      transform-origin: right top;
+    }
+
+    .hero h1 {
+      text-shadow: 5px 5px 0 rgba(237,23,31,.16);
+    }
+
+    .hero h1 span {
+      text-shadow: 5px 5px 0 rgba(255,255,255,.08);
+    }
+
+    .hero-stamp {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+      box-shadow: 5px 5px 0 #fff;
+      transition: transform .25s ease;
+    }
+
+    .hero-stamp:hover {
+      transform: rotate(0deg) translateY(-3px);
+    }
+
+    .section-index {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 10px;
+      border: 1px solid rgba(237,23,31,.45);
+      background: rgba(237,23,31,.07);
+    }
+
+    .section h2 {
+      text-shadow: 3px 3px 0 rgba(255,255,255,.035);
+    }
+
+    .section h2 em {
+      text-shadow: 3px 3px 0 rgba(237,23,31,.12);
+    }
+
+    .pillar {
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+    }
+
+    .pillar:hover {
+      transform: translateY(-7px) rotate(-1deg);
+      border-color: var(--red);
+      background: #1b1b20;
+    }
+
+    .pillar:nth-child(even):hover {
+      transform: translateY(-7px) rotate(1deg);
+    }
+
+    .pillar h3 {
+      text-transform: uppercase;
+      letter-spacing: -.6px;
+    }
+
+    .pillar small {
+      display: inline-block;
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 5px;
+    }
+
+    .direction-card {
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .direction-card:hover {
+      transform: translateY(-6px);
+      border-color: #fff;
+    }
+
+    .direction-card:first-child:hover {
+      border-color: #fff;
+    }
+
+    .direction-card .tag {
+      display: inline-block;
+      padding: 8px 10px;
+      border: 1px solid rgba(255,255,255,.35);
+      background: rgba(0,0,0,.12);
+    }
+
+    .direction-card h3 {
+      text-shadow: 3px 3px 0 rgba(0,0,0,.12);
+    }
+
+    .founder-visual:after {
+      content: "FOUNDER / KIZAZI";
+      position: absolute;
+      z-index: 3;
+      right: -13px;
+      bottom: 16px;
+      padding: 10px 13px;
+      background: #fff;
+      color: #09090b;
+      font-size: 8px;
+      font-weight: 1000;
+      letter-spacing: 2px;
+      transform: rotate(-4deg);
+      box-shadow: 4px 4px 0 var(--red);
+    }
+
+    .founder-visual img {
+      filter: saturate(1.04) contrast(1.02);
+      transition: filter .3s ease, transform .3s ease;
+    }
+
+    .founder-visual:hover img {
+      filter: saturate(1.12) contrast(1.04);
+      transform: translate(-3px,-3px);
+    }
+
+    .founder-copy h2 {
+      text-shadow: 4px 4px 0 rgba(237,23,31,.11);
+    }
+
+    .founder-role {
+      display: inline-block;
+      padding: 9px 12px;
+      background: var(--red);
+      color: #fff;
+      box-shadow: 4px 4px 0 #fff;
+    }
+
+    blockquote {
+      background: linear-gradient(90deg, rgba(237,23,31,.1), transparent 85%);
+      padding: 20px 20px 18px 22px;
+    }
+
+    .closing {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .closing:after {
+      content: "KZ!";
+      position: absolute;
+      right: 4%;
+      bottom: -90px;
+      color: rgba(255,255,255,.025);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: clamp(180px,28vw,360px);
+      font-weight: 900;
+      line-height: .8;
+      pointer-events: none;
+    }
+
+    .closing-box > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .closing h2 {
+      text-shadow: 4px 4px 0 rgba(255,255,255,.04);
+    }
+
+    .button {
+      box-shadow: 5px 5px 0 #fff;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    .button:hover {
+      transform: translate(-2px,-2px);
+      box-shadow: 7px 7px 0 var(--red);
+    }
+
+    @media (max-width: 700px) {
+      .hero:before {
+        top: 20px;
+        right: 22px;
+        font-size: 7px;
+      }
+
+      .hero-stamp {
+        box-shadow: 3px 3px 0 #fff;
+      }
+
+      .pillar:hover,
+      .pillar:nth-child(even):hover {
+        transform: translateY(-3px);
+      }
+
+      .founder-visual:after {
+        right: -5px;
+        bottom: 12px;
+        font-size: 7px;
+      }
+
+      .closing:after {
+        right: -15px;
+        bottom: -35px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *:before, *:after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+
     /* TABLET */
 
-    @media (max-width: 900px) {
+    @media(max-width:900px) {
       .nav-links {
         gap: 14px;
         font-size: 9px;
@@ -619,7 +896,7 @@
 
     /* MOBILE */
 
-    @media (max-width: 700px) {
+    @media(max-width:700px) {
       .wrap {
         width: min(100% - 38px, 560px);
       }
