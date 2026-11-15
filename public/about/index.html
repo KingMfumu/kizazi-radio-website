@@ -4,247 +4,353 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#ed1c24">
-<title>About KIZAZI RADIO — The Sound of Now</title>
-<meta name="description" content="KIZAZI RADIO. New Generation. New Sound. Discover the sound, culture and conversations of a new generation.">
+<meta name="theme-color" content="#101010">
+<title>About KIZAZI RADIO | The Sound of Now</title>
+<meta name="description" content="KIZAZI RADIO — New Generation. New Sound. A digital radio platform for music, culture, news and conversations.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700;800;900&family=Caveat:wght@600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --red:#ed1c24;
   --black:#101010;
   --white:#fff;
-  --paper:#f2f0e9;
-  --muted:#888;
+  --paper:#f1eee7;
+  --grey:#aaa;
   --display:'Archivo Black',Impact,sans-serif;
   --body:'DM Sans',Arial,sans-serif;
+  --hand:'Caveat',cursive;
   --mono:'Space Mono',monospace;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--black);font-family:var(--body)}
+body{
+  margin:0;background:var(--black);color:var(--white);
+  font-family:var(--body);overflow-x:hidden
+}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
-.wrap{width:min(1280px,92%);margin:auto}
+button{font:inherit}
+.wrap{width:min(1380px,94%);margin:auto}
 ::selection{background:var(--red);color:white}
 
 /* HEADER */
 header{
-  height:78px;background:var(--black);color:white;
-  display:flex;align-items:center;position:relative;z-index:20
+  height:78px;background:#0b0b0b;color:white;
+  display:flex;align-items:center;position:relative;z-index:50;
+  border-bottom:1px solid #ffffff18
 }
-.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo img{width:142px;height:55px;object-fit:contain}
-.navlinks{display:flex;align-items:center;gap:22px}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:25px
+}
+.logo img{width:145px;height:58px;object-fit:contain}
+.navlinks{display:flex;align-items:center;gap:clamp(12px,2.2vw,30px)}
 .navlinks a{
-  color:#aaa;font:10px var(--mono);text-transform:uppercase;
-  transition:color .2s
+  font-size:12px;font-weight:800;text-transform:uppercase;
+  color:#ccc;transition:color .2s
 }
-.navlinks a:hover,.navlinks .active{color:white}
+.navlinks a:hover,.navlinks a.active{color:var(--red)}
+.navlinks a.active:after{
+  content:"";display:block;height:3px;background:var(--red);
+  margin-top:6px
+}
 .navlinks .listen{
-  background:var(--red);color:white;padding:14px 17px
+  background:var(--red);color:white;padding:13px 17px;
+  border-radius:30px
 }
-.menu{display:none;background:var(--red);color:white;border:0;padding:10px 13px;font-size:20px}
+.navlinks .listen:after{display:none}
+.navlinks .listen:hover{background:white;color:var(--black)}
+.menu{
+  display:none;background:var(--red);color:white;border:0;
+  padding:9px 13px;font-size:20px;border-radius:4px
+}
 
-/* HERO */
+/* HERO COLLAGE */
 .hero{
-  background:var(--red);color:white;position:relative;overflow:hidden;
-  padding:18px 0 0
+  position:relative;background:#111;overflow:hidden;
+  min-height:690px
 }
-.hero-top{
-  display:flex;justify-content:space-between;gap:15px;
-  border-bottom:1px solid #ffffff66;padding:0 0 15px;
-  font:10px var(--mono);letter-spacing:1px
+.hero:before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+   radial-gradient(#ffffff18 .7px,transparent .7px);
+  background-size:5px 5px;opacity:.35
 }
-.hero-top span:last-child{text-align:right}
-.hero-main{position:relative;padding:70px 0 60px}
-.hero-kicker{
-  display:flex;align-items:center;gap:10px;
-  font:10px var(--mono);letter-spacing:1.5px;text-transform:uppercase
+.hero-grid{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1.2fr .8fr;
+  min-height:690px
 }
-.live-dot{
-  width:9px;height:9px;background:white;border-radius:50%;
-  box-shadow:0 0 0 5px #ffffff30
+.hero-art{
+  position:relative;min-height:690px;overflow:hidden
 }
-.hero h1{
-  font:clamp(100px,22vw,280px)/.72 var(--display);
-  letter-spacing:-.105em;text-transform:uppercase;
-  margin:43px 0 32px;position:relative;z-index:2
+.hero-red-disc{
+  position:absolute;width:510px;height:510px;border-radius:50%;
+  background:var(--red);left:20%;top:45px
 }
-.hero h1 span{display:block}
-.hero h1 .second{color:var(--black);padding-left:14%}
-.hero-side{
-  position:absolute;right:3%;top:30%;width:180px;
-  transform:rotate(7deg);z-index:3
+.hero-photo{
+  position:absolute;left:13%;top:35px;width:70%;height:650px;
+  object-fit:cover;object-position:center 15%;
+  filter:grayscale(100%) contrast(1.12);
+  mix-blend-mode:screen;
+  mask-image:linear-gradient(to bottom,#000 75%,transparent 100%);
 }
-.hero-side .seal{
-  width:105px;height:105px;border:2px solid white;border-radius:50%;
-  display:grid;place-items:center;font:26px var(--display);
-  margin-bottom:16px
+.hero-word{
+  position:absolute;z-index:3;left:0;top:175px;
+  font:clamp(85px,13vw,175px)/.77 var(--display);
+  letter-spacing:-.09em;text-transform:uppercase;
+  text-shadow:4px 4px 0 #000
 }
-.hero-side p{font-size:12px;line-height:1.6;font-weight:800;text-transform:uppercase}
-.hero-bottom{
-  display:flex;justify-content:space-between;align-items:end;
-  gap:25px;border-top:1px solid #ffffff66;padding:20px 0
+.hero-word span{display:block}
+.hero-word .red-word{color:var(--red)}
+.hero-script{
+  position:absolute;z-index:4;left:17%;bottom:70px;
+  font:clamp(32px,4vw,54px) var(--hand);
+  transform:rotate(-7deg);white-space:nowrap
 }
-.hero-bottom p{font-size:15px;line-height:1.8;max-width:480px;margin:0}
-.hero-bottom .tagline{
-  text-align:right;font:11px/1.8 var(--mono);letter-spacing:1px
+.hero-script:after{
+  content:"";display:block;width:100%;height:5px;
+  background:var(--red);transform:rotate(-3deg);margin-top:2px
+}
+.hero-crown{
+  position:absolute;z-index:4;left:65%;top:40px;
+  font-size:70px;transform:rotate(-15deg);color:white
+}
+.hero-note{
+  position:absolute;z-index:5;left:0;bottom:0;
+  background:var(--red);padding:14px 19px;
+  font:10px var(--mono);letter-spacing:1px;
+  transform:rotate(-2deg)
+}
+.hero-info{
+  position:relative;z-index:3;padding:65px 25px 55px 45px;
+  display:flex;flex-direction:column;justify-content:center
+}
+.brush-label{
+  display:inline-block;align-self:flex-start;
+  background:var(--red);padding:8px 16px;
+  font:11px var(--mono);letter-spacing:1px;
+  transform:rotate(-2deg);margin-bottom:22px
+}
+.hero-info h1{
+  font:clamp(48px,6vw,82px)/.86 var(--display);
+  letter-spacing:-.07em;text-transform:uppercase;margin:0 0 25px
+}
+.hero-info h1 span{color:var(--red)}
+.hero-info .lead{
+  color:#ddd;font-size:18px;line-height:1.7;
+  max-width:480px;margin:0
+}
+.hero-info .underline{
+  width:145px;height:5px;background:var(--red);
+  margin:23px 0 30px;transform:rotate(-2deg)
+}
+.hero-mini-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid #ffffff35
+}
+.hero-mini{
+  padding:20px 12px 5px 0;
+  border-right:1px solid #ffffff35
+}
+.hero-mini:last-child{border:0;padding-left:12px}
+.hero-mini:nth-child(2){padding-left:12px}
+.hero-mini .symbol{font-size:25px;color:var(--red);margin-bottom:8px}
+.hero-mini strong{
+  display:block;font-size:12px;text-transform:uppercase;
+  margin-bottom:5px
+}
+.hero-mini span{font-size:11px;line-height:1.5;color:#aaa}
+
+/* PHOTO RIBBON */
+.photo-ribbon{
+  position:relative;z-index:4;
+  display:grid;grid-template-columns:1fr 1.3fr 1fr;
+  height:190px;overflow:hidden;
+  border-top:7px solid var(--paper);
+  border-bottom:7px solid var(--paper);
+  transform:rotate(-1deg) scale(1.02);
+  margin:0 -5px
+}
+.ribbon-photo{position:relative;overflow:hidden}
+.ribbon-photo img{
+  width:100%;height:100%;object-fit:cover;
+  filter:grayscale(100%) contrast(1.1);
+  transition:transform .5s
+}
+.ribbon-photo:hover img{transform:scale(1.08)}
+.ribbon-photo:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,#ed1c2430,transparent 70%);
+  pointer-events:none
+}
+.ribbon-caption{
+  position:absolute;z-index:2;bottom:12px;left:15px;
+  font:10px var(--mono);color:white;text-transform:uppercase;
+  text-shadow:0 2px 5px #000
 }
 
-/* INTRO */
-.intro{padding:105px 0}
-.intro-grid{
-  display:grid;grid-template-columns:.7fr 1.3fr;gap:8%;
-  align-items:start
+/* PURPOSE */
+.purpose{
+  position:relative;padding:100px 0 95px;background:var(--paper);
+  color:var(--black);overflow:hidden
 }
-.eyebrow{font:10px var(--mono);letter-spacing:1.5px;color:var(--red)}
-.intro-index{
-  font:clamp(75px,10vw,125px)/.8 var(--display);
-  letter-spacing:-.08em;margin-top:22px
+.purpose:after{
+  content:"K!";position:absolute;right:-30px;top:10px;
+  font:clamp(200px,35vw,450px)/1 var(--display);
+  color:#00000006;pointer-events:none
 }
-.intro-index span{display:block;color:var(--red)}
-.intro h2{
-  font:clamp(45px,7.5vw,94px)/.9 var(--display);
-  letter-spacing:-.075em;text-transform:uppercase;margin:0
+.purpose-head{
+  position:relative;z-index:1;display:flex;
+  justify-content:space-between;align-items:end;gap:25px;
+  margin-bottom:45px
 }
-.intro h2 span{color:var(--red)}
-.intro-copy{
-  display:flex;justify-content:space-between;align-items:start;
-  gap:25px;margin-top:30px
+.purpose-head .eyebrow{
+  font:10px var(--mono);color:var(--red);letter-spacing:1px
 }
-.intro-copy p{
-  max-width:590px;font-size:17px;line-height:1.85;color:#555;margin:0
+.purpose-head h2{
+  font:clamp(55px,9vw,110px)/.82 var(--display);
+  letter-spacing:-.08em;text-transform:uppercase;margin:17px 0 0
 }
-.intro-copy .side-note{
-  font:10px/1.8 var(--mono);color:var(--red);
-  min-width:120px;text-align:right
+.purpose-head h2 span{color:var(--red)}
+.purpose-head p{
+  max-width:310px;color:#555;font-size:15px;line-height:1.8;
+  margin:0 0 5px
 }
-
-/* CULTURE SECTION */
-.culture{background:var(--black);color:white;padding:85px 0 90px}
-.culture-top{
-  display:flex;justify-content:space-between;align-items:end;
-  gap:25px;margin-bottom:45px
+.purpose-layout{
+  position:relative;z-index:1;display:grid;
+  grid-template-columns:1fr 1fr 1fr;gap:13px
 }
-.culture-top h2{
-  font:clamp(55px,9vw,115px)/.82 var(--display);
-  letter-spacing:-.08em;text-transform:uppercase;margin:18px 0 0
-}
-.culture-top h2 span{color:var(--red)}
-.culture-top p{
-  max-width:260px;font-size:14px;line-height:1.8;color:#aaa;margin:0
-}
-.culture-grid{
-  display:grid;grid-template-columns:1.05fr .95fr;
-  grid-template-rows:240px 240px;gap:12px
-}
-.culture-item{
-  position:relative;overflow:hidden;padding:25px;
+.purpose-item{
+  position:relative;min-height:240px;padding:25px;
   display:flex;flex-direction:column;justify-content:space-between;
-  transition:transform .25s
+  overflow:hidden
 }
-.culture-item:hover{transform:translateY(-5px)}
-.culture-item.music{grid-row:span 2;background:var(--red)}
-.culture-item.culture-card{background:var(--paper);color:var(--black)}
-.culture-item.talk{background:#282828}
-.item-top{font:10px var(--mono);letter-spacing:1px}
-.item-title{
-  font:clamp(38px,5.5vw,72px)/.84 var(--display);
-  letter-spacing:-.07em;text-transform:uppercase;
+.purpose-item.red{background:var(--red);color:white}
+.purpose-item.dark{background:var(--black);color:white}
+.purpose-item.white{background:white;color:var(--black)}
+.purpose-item .index{font:10px var(--mono);letter-spacing:1px}
+.purpose-item .big{
+  font:clamp(35px,4.5vw,58px)/.86 var(--display);
+  letter-spacing:-.06em;text-transform:uppercase;
   position:relative;z-index:1
 }
-.item-title span{display:block}
-.item-desc{
-  font-size:13px;line-height:1.7;max-width:310px;
-  margin:13px 0 0;position:relative;z-index:1
+.purpose-item p{
+  position:relative;z-index:1;max-width:270px;
+  font-size:13px;line-height:1.7;margin:15px 0 0
 }
-.item-symbol{
-  position:absolute;right:10px;top:25px;
-  font:180px/.8 var(--display);opacity:.09
+.purpose-item .watermark{
+  position:absolute;right:7px;top:25px;
+  font:150px/.8 var(--display);opacity:.09
 }
-.music .item-symbol{font-size:300px;right:-25px;top:80px}
 
-/* WORD STRIP */
-.word-strip{
-  background:var(--red);color:white;padding:25px 0;overflow:hidden
+/* BRAND MESSAGE */
+.manifesto{
+  position:relative;background:var(--red);color:white;
+  padding:75px 0;overflow:hidden
 }
-.word-strip p{
-  margin:0;white-space:nowrap;
-  font:clamp(30px,5.5vw,65px)/1 var(--display);
-  letter-spacing:-.04em;text-transform:uppercase
+.manifesto:before{
+  content:"";position:absolute;right:10%;top:-160px;
+  width:380px;height:380px;border:50px solid #ffffff18;
+  border-radius:50%
 }
-.word-strip span{color:var(--black);padding:0 24px}
+.manifesto-inner{position:relative;z-index:1}
+.manifesto .eyebrow{font:10px var(--mono);letter-spacing:1.5px}
+.manifesto h2{
+  font:clamp(55px,10vw,130px)/.84 var(--display);
+  letter-spacing:-.08em;text-transform:uppercase;
+  margin:25px 0;max-width:1100px
+}
+.manifesto h2 span{color:var(--black)}
+.manifesto p{
+  max-width:540px;font-size:16px;line-height:1.8;margin:0
+}
 
 /* FOUNDER */
-.founder{padding:100px 0}
+.founder{
+  background:#141414;color:white;padding:95px 0;
+  position:relative;overflow:hidden
+}
 .founder-grid{
-  display:grid;grid-template-columns:.95fr 1.05fr;
+  display:grid;grid-template-columns:.9fr 1.1fr;
   gap:8%;align-items:center
 }
-.founder-photo{position:relative;padding:0 20px 20px 0}
+.founder-photo{
+  position:relative;padding:0 20px 20px 0
+}
 .founder-photo:after{
   content:"";position:absolute;right:0;bottom:0;
-  width:72%;height:72%;background:var(--red)
+  width:76%;height:76%;background:var(--red)
 }
 .founder-photo img{
   position:relative;z-index:1;width:100%;height:490px;
-  object-fit:cover;object-position:center 18%;filter:grayscale(100%)
+  object-fit:cover;object-position:center 18%;
+  filter:grayscale(100%)
 }
-.founder-caption{
-  position:absolute;left:0;bottom:0;z-index:2;
-  padding:13px 17px;background:var(--black);
-  color:white;font:9px var(--mono);letter-spacing:1px
+.founder-photo .caption{
+  position:absolute;z-index:2;left:0;bottom:0;
+  padding:13px 17px;background:var(--red);
+  color:white;font:10px var(--mono)
+}
+.founder-copy .eyebrow{
+  color:var(--red);font:10px var(--mono);letter-spacing:1px
 }
 .founder-copy h2{
-  font:clamp(45px,6.5vw,82px)/.88 var(--display);
-  letter-spacing:-.075em;text-transform:uppercase;margin:20px 0
+  font:clamp(43px,6.5vw,82px)/.87 var(--display);
+  letter-spacing:-.07em;text-transform:uppercase;margin:22px 0
 }
 .founder-copy h2 span{color:var(--red)}
-.founder-copy h3{font-size:17px;margin:0 0 14px}
-.founder-copy p{font-size:15px;line-height:1.9;color:#666;margin:0;max-width:540px}
-.founder-sign{
-  border-top:1px solid #ccc;margin-top:26px;padding-top:15px;
+.founder-copy h3{font-size:18px;margin:0 0 15px}
+.founder-copy p{
+  color:#aaa;font-size:15px;line-height:1.9;
+  max-width:520px;margin:0
+}
+.founder-copy .signature{
+  border-top:1px solid #444;margin-top:27px;padding-top:15px;
   font:10px var(--mono);letter-spacing:1px;color:var(--red)
 }
 
-/* LISTEN CTA */
+/* FINAL */
 .final{
-  background:var(--black);color:white;padding:75px 0;
-  position:relative;overflow:hidden
-}
-.final:after{
-  content:"ON";position:absolute;right:1%;top:-60px;
-  font:clamp(200px,35vw,440px)/1 var(--display);
-  color:#ffffff09;pointer-events:none
+  background:var(--paper);color:var(--black);
+  padding:75px 0;position:relative;overflow:hidden
 }
 .final-inner{
-  position:relative;z-index:1;display:flex;
-  justify-content:space-between;align-items:center;gap:30px
+  display:flex;justify-content:space-between;
+  align-items:center;gap:30px;position:relative;z-index:1
 }
+.final .eyebrow{font:10px var(--mono);color:var(--red)}
 .final h2{
-  font:clamp(65px,10vw,125px)/.83 var(--display);
-  letter-spacing:-.08em;text-transform:uppercase;margin:18px 0
+  font:clamp(65px,11vw,135px)/.82 var(--display);
+  letter-spacing:-.08em;text-transform:uppercase;margin:20px 0
 }
 .final h2 span{color:var(--red)}
-.final p{font-size:15px;line-height:1.8;color:#aaa;max-width:400px}
+.final p{font-size:15px;line-height:1.8;color:#555;max-width:420px}
 .final-button{
-  display:inline-block;background:var(--red);color:white;
-  padding:19px 23px;font:10px var(--mono);white-space:nowrap;
-  transition:background .2s,color .2s
+  display:inline-flex;align-items:center;gap:13px;
+  background:var(--red);color:white;padding:19px 24px;
+  border-radius:3px;font:11px var(--mono);
+  white-space:nowrap;transition:background .2s,color .2s
 }
-.final-button:hover{background:white;color:var(--black)}
+.final-button:hover{background:var(--black);color:white}
+.final-button .play{
+  width:26px;height:26px;border-radius:50%;
+  background:white;color:var(--red);display:grid;place-items:center
+}
 
 /* FOOTER */
-footer{background:#080808;color:white;padding:30px 0 18px}
+footer{background:#080808;color:white;padding:30px 0 20px}
 .footer-top{
   display:flex;justify-content:space-between;align-items:center;
   gap:20px;padding-bottom:22px;border-bottom:1px solid #333
 }
-.footer-top img{width:130px;height:50px;object-fit:contain}
+.footer-top img{width:135px;height:50px;object-fit:contain}
 .footer-links{display:flex;gap:18px;flex-wrap:wrap}
-.footer-links a{font:10px var(--mono);color:#aaa;text-transform:uppercase}
+.footer-links a{
+  font:10px var(--mono);color:#aaa;text-transform:uppercase
+}
 .footer-links a:hover{color:var(--red)}
 .footer-bottom{
   display:flex;justify-content:space-between;gap:15px;
@@ -252,52 +358,70 @@ footer{background:#080808;color:white;padding:30px 0 18px}
 }
 
 /* RESPONSIVE */
-@media(max-width:850px){
+@media(max-width:950px){
+  .navlinks{gap:12px}
+  .navlinks a{font-size:10px}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{min-height:600px}
+  .hero-info{padding:50px 5% 60px}
+  .hero-word{font-size:clamp(100px,19vw,190px)}
+  .hero-photo{height:590px;width:64%;left:18%}
+  .hero-red-disc{left:24%;width:430px;height:430px}
+  .purpose-head{display:block}
+  .purpose-head p{margin-top:20px}
+}
+@media(max-width:700px){
+  header{height:70px}
+  .logo img{width:125px;height:50px}
+  .menu{display:block}
   .navlinks{
-    display:none;position:absolute;top:78px;left:0;right:0;
-    background:var(--black);padding:20px 5%;
+    display:none;position:absolute;top:70px;left:0;right:0;
+    background:#101010;padding:18px 5%;
     flex-direction:column;align-items:stretch;gap:0
   }
   .navlinks.open{display:flex}
-  .navlinks a{padding:13px 0;border-bottom:1px solid #333}
-  .navlinks .listen{text-align:center;margin-top:12px}
-  .menu{display:block}
-  .hero-main{padding:60px 0}
-  .hero h1{font-size:clamp(95px,21vw,180px)}
-  .hero-side{
-    position:relative;right:auto;top:auto;width:auto;
-    transform:none;display:flex;align-items:center;gap:18px;margin-top:35px
-  }
-  .hero-side .seal{width:70px;height:70px;font-size:20px;flex-shrink:0;margin:0}
-  .hero-side p{max-width:240px}
-  .intro-grid{grid-template-columns:1fr;gap:35px}
-  .culture-top{display:block}
-  .culture-top p{margin-top:20px}
-  .founder-grid{grid-template-columns:1fr;gap:35px}
-  .founder-photo img{height:430px}
-  .final-inner{display:block}
-  .final-button{margin-top:15px}
-  .footer-top{display:block}
-  .footer-links{margin-top:20px}
-}
-@media(max-width:520px){
-  .hero-top{font-size:8px}
-  .hero-top span:last-child{max-width:115px}
-  .hero h1{font-size:clamp(80px,21vw,115px)}
-  .hero-bottom p{font-size:13px}
-  .hero-bottom .tagline{font-size:9px}
-  .intro{padding:70px 0}
-  .intro-copy{display:block}
-  .intro-copy .side-note{text-align:left;margin-top:20px}
-  .intro-copy p{font-size:15px}
-  .culture{padding:65px 0}
-  .culture-grid{grid-template-columns:1fr;grid-template-rows:auto}
-  .culture-item.music{grid-row:auto;min-height:340px}
-  .culture-item{min-height:230px}
+  .navlinks a{padding:13px 0;border-bottom:1px solid #333;font-size:12px}
+  .navlinks a.active:after{display:none}
+  .navlinks .listen{text-align:center;margin-top:12px;border:0}
+  .hero-art{min-height:490px}
+  .hero-red-disc{width:310px;height:310px;left:24%;top:45px}
+  .hero-photo{width:75%;height:475px;left:14%;top:25px}
+  .hero-word{top:150px;font-size:clamp(78px,18vw,130px)}
+  .hero-script{bottom:45px;left:12%;font-size:35px}
+  .hero-crown{font-size:48px;left:70%;top:28px}
+  .hero-info{padding:40px 5% 50px}
+  .hero-info h1{font-size:clamp(48px,11vw,70px)}
+  .hero-info .lead{font-size:16px}
+  .photo-ribbon{height:125px}
+  .purpose{padding:70px 0}
+  .purpose-layout{grid-template-columns:1fr}
+  .purpose-item{min-height:190px}
+  .purpose-head h2{font-size:clamp(55px,12vw,85px)}
+  .manifesto{padding:60px 0}
   .founder{padding:70px 0}
-  .founder-photo img{height:360px}
-  .final{padding:60px 0}
-  .footer-links{gap:12px}
+  .founder-grid{grid-template-columns:1fr;gap:35px}
+  .founder-photo img{height:390px}
+  .final-inner{display:block}
+  .final-button{margin-top:20px}
+  .footer-top{display:block}
+  .footer-links{margin-top:20px;gap:13px}
+}
+@media(max-width:430px){
+  .hero-top{font-size:8px}
+  .hero-top span:last-child{max-width:130px;text-align:right}
+  .hero-art{min-height:410px}
+  .hero-red-disc{width:260px;height:260px;left:24%;top:35px}
+  .hero-photo{height:400px;width:80%;left:10%}
+  .hero-word{top:135px;font-size:clamp(70px,18vw,90px)}
+  .hero-script{font-size:29px;bottom:38px}
+  .hero-note{font-size:8px}
+  .hero-crown{font-size:40px}
+  .hero-mini{padding-right:6px}
+  .hero-mini:nth-child(2),.hero-mini:last-child{padding-left:7px}
+  .hero-mini strong{font-size:10px}
+  .hero-mini span{font-size:9px}
+  .photo-ribbon{height:105px}
+  .founder-photo img{height:330px}
   .footer-bottom{display:block;line-height:2.2}
   .footer-bottom span{display:block}
 }
@@ -315,139 +439,186 @@ footer{background:#080808;color:white;padding:30px 0 18px}
   <a class="logo" href="/" aria-label="KIZAZI RADIO home">
    <img src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
   </a>
+
   <button class="menu" id="menu" aria-label="Open navigation" aria-expanded="false">☰</button>
-  <nav class="navlinks" id="navlinks">
+
+  <nav class="navlinks" id="navlinks" aria-label="Main navigation">
    <a href="/">Home</a>
-   <a href="/#listen">Listen Live</a>
    <a href="/schedule/">Schedule</a>
    <a href="/shows/">Shows</a>
    <a href="/podcasts/">Podcasts</a>
    <a href="/news/">News</a>
    <a class="active" href="/about/">About</a>
-   <a class="listen" href="/#listen">LISTEN NOW ↗</a>
+   <a class="listen" href="/#listen">▶ &nbsp; Listen Live</a>
   </nav>
  </div>
 </header>
 
 <main>
 
-<!-- HERO -->
+<!-- HERO COLLAGE -->
 <section class="hero">
- <div class="wrap">
-  <div class="hero-top">
-   <span>KIZAZI RADIO / ABOUT US</span>
-   <span>THE SOUND OF NOW / EST. FOR THE NEXT</span>
+ <div class="wrap hero-grid">
+
+  <div class="hero-art">
+   <div class="hero-red-disc"></div>
+
+   <img class="hero-photo"
+    src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1100&q=85"
+    alt="Young creative performing with a microphone">
+
+   <div class="hero-crown">♕</div>
+
+   <div class="hero-word">
+    <span>KIZAZI</span>
+    <span class="red-word">RADIO</span>
+   </div>
+
+   <div class="hero-script">The Sound of Now.</div>
+   <div class="hero-note">NEW GENERATION. NEW SOUND.</div>
   </div>
 
-  <div class="hero-main">
-   <div class="hero-kicker"><span class="live-dot"></span> A NEW GENERATION IS HERE</div>
-   <h1><span>KI</span><span class="second">ZAZI.</span></h1>
+  <div class="hero-info">
+   <div class="brush-label">ABOUT KIZAZI</div>
 
-   <div class="hero-side">
-    <div class="seal">K!</div>
-    <p>THE SOUND OF A GENERATION MOVING FORWARD.</p>
+   <h1>A DIGITAL RADIO<br>FOR A <span>NEW GENERATION.</span></h1>
+
+   <p class="lead">
+    KIZAZI RADIO is an online radio platform that brings together music, culture, entertainment, news and real conversations that matter to today's generation.
+   </p>
+
+   <div class="underline"></div>
+
+   <div class="hero-mini-grid">
+    <div class="hero-mini">
+     <div class="symbol">♫</div>
+     <strong>Music</strong>
+     <span>Fresh sounds and discoveries</span>
+    </div>
+
+    <div class="hero-mini">
+     <div class="symbol">▣</div>
+     <strong>Culture</strong>
+     <span>Entertainment, lifestyle and trends</span>
+    </div>
+
+    <div class="hero-mini">
+     <div class="symbol">☏</div>
+     <strong>Talk</strong>
+     <span>Real ideas and young voices</span>
+    </div>
    </div>
   </div>
 
-  <div class="hero-bottom">
-   <p>We are the music, the conversations and the culture of a generation finding its own voice.</p>
-   <div class="tagline">NEW GENERATION.<br>NEW SOUND.</div>
-  </div>
  </div>
 </section>
 
-<!-- INTRO -->
-<section class="intro">
- <div class="wrap intro-grid">
-  <div>
-   <div class="eyebrow">01 / THE IDEA</div>
-   <div class="intro-index">THE<span>NOW.</span></div>
-  </div>
-  <div>
-   <h2>EVERY GENERATION<br>HAS A <span>SOUND.</span></h2>
-   <div class="intro-copy">
-    <p>KIZAZI RADIO is an online radio platform for a new generation. We bring together music, entertainment, news and meaningful conversations — giving fresh sounds and new perspectives a place to be heard.</p>
-    <div class="side-note">DIGITAL RADIO<br>GLOBAL CULTURE<br>ONE GENERATION</div>
-   </div>
-  </div>
+<!-- IMAGE RIBBON -->
+<section class="photo-ribbon" aria-label="KIZAZI RADIO culture">
+ <div class="ribbon-photo">
+  <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=85" alt="Young woman smiling" loading="lazy">
+  <span class="ribbon-caption">THE PEOPLE</span>
+ </div>
+ <div class="ribbon-photo">
+  <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=85" alt="Live music event" loading="lazy">
+  <span class="ribbon-caption">THE CULTURE</span>
+ </div>
+ <div class="ribbon-photo">
+  <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=700&q=85" alt="Music crowd" loading="lazy">
+  <span class="ribbon-caption">THE ENERGY</span>
  </div>
 </section>
 
-<!-- CULTURE -->
-<section class="culture">
+<!-- PURPOSE -->
+<section class="purpose">
  <div class="wrap">
-  <div class="culture-top">
+
+  <div class="purpose-head">
    <div>
-    <div class="eyebrow">02 / WHAT WE REPRESENT</div>
-    <h2>OUR WORLD.<br><span>OUR SOUND.</span></h2>
+    <div class="eyebrow">01 / WHAT WE STAND FOR</div>
+    <h2>OUR <span>PURPOSE.</span></h2>
    </div>
-   <p>Different interests. Different voices. One generation connected through sound and ideas.</p>
+   <p>To entertain, inform and educate a generation that is curious, creative and always on the move.</p>
   </div>
 
-  <div class="culture-grid">
-   <article class="culture-item music">
-    <div class="item-top">01 / MUSIC</div>
+  <div class="purpose-layout">
+   <article class="purpose-item red">
+    <div class="index">01 / ENTERTAIN</div>
     <div>
-     <div class="item-title"><span>FEEL</span><span>THE</span><span>SOUND.</span></div>
-     <p class="item-desc">Fresh discoveries, favourite hits and music that moves with your world.</p>
+     <div class="big">FEEL<br>THE SOUND.</div>
+     <p>Music, shows and entertainment that bring energy to everyday life.</p>
     </div>
-    <div class="item-symbol">♪</div>
+    <div class="watermark">♫</div>
    </article>
 
-   <article class="culture-item culture-card">
-    <div class="item-top">02 / CULTURE & ENTERTAINMENT</div>
+   <article class="purpose-item dark">
+    <div class="index">02 / INFORM</div>
     <div>
-     <div class="item-title"><span>IN THE</span><span>MOMENT.</span></div>
-     <p class="item-desc">Pop culture, entertainment and the stories shaping today's conversations.</p>
+     <div class="big">STAY<br>IN THE KNOW.</div>
+     <p>News, trends and conversations that keep you connected.</p>
     </div>
-    <div class="item-symbol">!</div>
+    <div class="watermark">!</div>
    </article>
 
-   <article class="culture-item talk">
-    <div class="item-top">03 / NEWS & CONVERSATIONS</div>
+   <article class="purpose-item white">
+    <div class="index">03 / EDUCATE</div>
     <div>
-     <div class="item-title"><span>THINK.</span><span>CONNECT.</span></div>
-     <p class="item-desc">Relevant updates, real conversations and ideas worth sharing.</p>
+     <div class="big">KEEP<br>GROWING.</div>
+     <p>Ideas and knowledge that open minds and inspire new perspectives.</p>
     </div>
-    <div class="item-symbol">?</div>
+    <div class="watermark">?</div>
    </article>
   </div>
+
  </div>
 </section>
 
 <!-- BRAND STATEMENT -->
-<div class="word-strip">
- <div class="wrap">
-  <p>NEW GENERATION <span>✳</span> NEW SOUND <span>✳</span> KIZAZI RADIO</p>
+<section class="manifesto">
+ <div class="wrap manifesto-inner">
+  <div class="eyebrow">02 / THE KIZAZI SPIRIT</div>
+  <h2>BUILT FOR<br>THIS <span>GENERATION.</span></h2>
+  <p>New sounds. New ideas. New voices. KIZAZI RADIO is a space for a generation to connect, discover and express itself.</p>
  </div>
-</div>
+</section>
 
 <!-- FOUNDER -->
 <section class="founder">
  <div class="wrap founder-grid">
+
   <div class="founder-photo">
-   <img src="/assets/founder-telesphory-mfumu.png" alt="Telesphory Deogratius Mfumu, Founder of KIZAZI RADIO" loading="lazy">
-   <div class="founder-caption">THE PERSON BEHIND THE IDEA</div>
+   <img src="/assets/founder-telesphory-mfumu.png"
+    alt="Telesphory Deogratius Mfumu, Founder of KIZAZI RADIO"
+    loading="lazy">
+   <div class="caption">THE PERSON BEHIND THE VISION</div>
   </div>
+
   <div class="founder-copy">
    <div class="eyebrow">03 / THE FOUNDER</div>
-   <h2>BUILT FOR<br>WHAT'S <span>NEXT.</span></h2>
+   <h2>THE IDEA<br>BEHIND THE <span>FREQUENCY.</span></h2>
    <h3>Telesphory Deogratius Mfumu</h3>
-   <p>Creative and digital media professional, and founder of KIZAZI RADIO. His vision is to create a media platform that reflects the sound, interests and perspectives of a new generation.</p>
-   <div class="founder-sign">FOUNDER / KIZAZI RADIO</div>
+   <p>
+    Creative and digital media professional, and founder of KIZAZI RADIO. His vision is to build a media platform that reflects the sound, interests and perspectives of a new generation.
+   </p>
+   <div class="signature">FOUNDER / KIZAZI RADIO</div>
   </div>
+
  </div>
 </section>
 
-<!-- LISTEN -->
+<!-- LISTEN CTA -->
 <section class="final">
  <div class="wrap final-inner">
   <div>
-   <div class="eyebrow">04 / GET CONNECTED</div>
-   <h2>THIS IS<br><span>YOUR SOUND.</span></h2>
-   <p>Discover the music. Join the conversation. Be part of the generation.</p>
+   <div class="eyebrow">04 / JOIN THE GENERATION</div>
+   <h2>YOUR SOUND.<br><span>YOUR RADIO.</span></h2>
+   <p>Discover the music. Join the conversation. Be part of KIZAZI RADIO.</p>
   </div>
-  <a class="final-button" href="/#listen">LISTEN LIVE NOW ↗</a>
+
+  <a class="final-button" href="/#listen">
+   <span class="play">▶</span>
+   LISTEN LIVE NOW
+  </a>
  </div>
 </section>
 
@@ -459,7 +630,8 @@ footer{background:#080808;color:white;padding:30px 0 18px}
    <a href="/" aria-label="KIZAZI RADIO home">
     <img src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
    </a>
-   <nav class="footer-links">
+
+   <nav class="footer-links" aria-label="Footer navigation">
     <a href="/">Home</a>
     <a href="/schedule/">Schedule</a>
     <a href="/shows/">Shows</a>
@@ -468,6 +640,7 @@ footer{background:#080808;color:white;padding:30px 0 18px}
     <a href="/about/">About</a>
    </nav>
   </div>
+
   <div class="footer-bottom">
    <span>© <span id="year"></span> KIZAZI RADIO. ALL RIGHTS RESERVED.</span>
    <span>NEW GENERATION. NEW SOUND.</span>
@@ -480,17 +653,17 @@ const menu=document.getElementById('menu');
 const nav=document.getElementById('navlinks');
 
 menu.addEventListener('click',()=>{
- const open=nav.classList.toggle('open');
- menu.setAttribute('aria-expanded',String(open));
- menu.textContent=open?'×':'☰';
+  const open=nav.classList.toggle('open');
+  menu.setAttribute('aria-expanded',String(open));
+  menu.textContent=open?'×':'☰';
 });
 
 nav.querySelectorAll('a').forEach(link=>{
- link.addEventListener('click',()=>{
-  nav.classList.remove('open');
-  menu.setAttribute('aria-expanded','false');
-  menu.textContent='☰';
- });
+  link.addEventListener('click',()=>{
+    nav.classList.remove('open');
+    menu.setAttribute('aria-expanded','false');
+    menu.textContent='☰';
+  });
 });
 
 document.getElementById('year').textContent=new Date().getFullYear();
