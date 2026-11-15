@@ -4,1554 +4,217 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#09090b">
-
 <title>Shows & Schedule | KIZAZI RADIO</title>
 <meta name="description" content="Discover KIZAZI RADIO shows, meet presenter King Mfumu and explore our weekday programme schedule.">
-
 <link rel="icon" href="/assets/kizazi-radio-official-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-:root {
- --bg:#09090b;
- --panel:#111115;
- --red:#e50909;
- --white:#f7f7f8;
- --muted:#a1a1aa;
- --line:#29292f;
-}
-
-* { box-sizing:border-box; }
-
-html {
- scroll-behavior:smooth;
- scroll-padding-top:90px;
-}
-
-body {
- margin:0;
- background:var(--bg);
- color:var(--white);
- font-family:Inter,Arial,sans-serif;
- overflow-x:hidden;
-}
-
-a { color:inherit; text-decoration:none; }
-
-.wrap {
- width:min(1220px,88%);
- margin:auto;
-}
-
-/* HEADER */
-
-header {
- height:82px;
- position:sticky;
- top:0;
- z-index:100;
- background:#09090bf5;
- border-bottom:1px solid var(--line);
- backdrop-filter:blur(16px);
-}
-
-.head {
- height:100%;
- width:92%;
- margin:auto;
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:20px;
-}
-
-.logo {
- width:140px;
- height:65px;
- object-fit:contain;
- object-position:left;
-}
-
-.nav {
- display:flex;
- gap:25px;
- align-items:center;
-}
-
-.nav a {
- font-size:11px;
- font-weight:800;
- color:#ccc;
- transition:.25s;
-}
-
-.nav a:hover,
-.nav a.current {
- color:var(--red);
-}
-
-.live {
- border:1px solid #45454d;
- padding:14px 17px;
- font-size:10px;
- font-weight:900;
- letter-spacing:1px;
- transition:.25s;
-}
-
-.live:hover {
- background:var(--red);
- border-color:var(--red);
-}
-
-.dot {
- display:inline-block;
- width:8px;
- height:8px;
- border-radius:50%;
- background:var(--red);
- margin-right:9px;
- box-shadow:0 0 12px var(--red);
-}
-
-.menu {
- display:none;
- background:none;
- color:white;
- border:0;
- font-size:27px;
- cursor:pointer;
-}
-
-/* HERO */
-
-.hero {
- min-height:650px;
- position:relative;
- display:flex;
- align-items:center;
- overflow:hidden;
- border-bottom:1px solid var(--line);
- background:
- radial-gradient(ellipse at 80% 45%,#e5090930,transparent 35%),
- radial-gradient(ellipse at 15% 90%,#25252c55,transparent 40%),
- linear-gradient(120deg,#101014,#09090b 65%);
-}
-
-.hero:before {
- content:"";
- position:absolute;
- width:650px;
- height:650px;
- border:1px solid #ffffff0a;
- border-radius:50%;
- right:-100px;
- top:-80px;
- box-shadow:0 0 0 55px #ffffff05,0 0 0 110px #ffffff04,0 0 0 165px #ffffff03;
-}
-
-.hero:after {
- content:"KIZAZI";
- position:absolute;
- right:-20px;
- bottom:-90px;
- font-size:clamp(150px,25vw,360px);
- font-weight:900;
- letter-spacing:-.12em;
- color:#ffffff04;
- pointer-events:none;
-}
-
-.hero-inner {
- position:relative;
- z-index:2;
- display:grid;
- grid-template-columns:1.2fr .8fr;
- align-items:center;
- gap:45px;
- padding:95px 0;
-}
-
-.eyebrow {
- color:#b8b8c0;
- font-size:10px;
- font-weight:900;
- letter-spacing:2.5px;
- text-transform:uppercase;
-}
-
-.eyebrow:before {
- content:"";
- display:inline-block;
- width:25px;
- height:2px;
- background:var(--red);
- margin:0 11px 3px 0;
-}
-
-.hero h1 {
- font-size:clamp(58px,8vw,112px);
- line-height:.86;
- letter-spacing:-.09em;
- margin:24px 0;
- font-weight:900;
-}
-
-.hero h1 em {
- font-style:normal;
- color:var(--red);
-}
-
-.intro {
- max-width:650px;
- color:#c5c5cc;
- font-size:15px;
- line-height:1.9;
-}
-
-.hero-meta {
- display:flex;
- flex-wrap:wrap;
- gap:10px;
- margin-top:32px;
-}
-
-.meta {
- border:1px solid #38383f;
- padding:13px 16px;
- color:#ddd;
- font-size:9px;
- font-weight:900;
- letter-spacing:1px;
-}
-
-.hero-visual {
- min-height:390px;
- position:relative;
- display:flex;
- align-items:center;
- justify-content:center;
-}
-
-.sound-disc {
- width:min(340px,75vw);
- aspect-ratio:1;
- border-radius:50%;
- position:relative;
- display:flex;
- align-items:center;
- justify-content:center;
- background:
- radial-gradient(circle,#111115 0 28%,transparent 29%),
- repeating-radial-gradient(circle,#ffffff12 0 1px,transparent 2px 15px),
- linear-gradient(135deg,#26262c,#09090b);
- border:1px solid #ffffff24;
- box-shadow:0 0 70px #e5090920,0 30px 80px #000a;
-}
-
-.sound-disc:before,
-.sound-disc:after {
- content:"";
- position:absolute;
- inset:18px;
- border:1px solid #e5090955;
- border-radius:50%;
-}
-
-.sound-disc:after {
- inset:40px;
- border-color:#ffffff20;
-}
-
-.disc-core {
- width:115px;
- height:115px;
- border-radius:50%;
- background:linear-gradient(145deg,#f01818,#930000);
- display:flex;
- align-items:center;
- justify-content:center;
- box-shadow:0 0 45px #e5090966;
-}
-
-.disc-core span {
- font-size:43px;
- color:white;
-}
-
-.sound-wave {
- position:absolute;
- bottom:30px;
- left:50%;
- transform:translateX(-50%);
- display:flex;
- align-items:center;
- gap:5px;
- height:48px;
-}
-
-.sound-wave i {
- display:block;
- width:4px;
- border-radius:5px;
- background:var(--red);
- height:var(--h);
- box-shadow:0 0 12px #e5090955;
-}
-
-.visual-label {
- position:absolute;
- bottom:0;
- right:0;
- border:1px solid #393940;
- padding:13px 17px;
- background:#111115;
- font-size:9px;
- font-weight:900;
- letter-spacing:1.5px;
-}
-
-.visual-label span { color:var(--red); }
-
-/* GENERAL CONTENT */
-
-section.content {
- padding:95px 0;
-}
-
-.kicker {
- color:var(--red);
- font-size:10px;
- font-weight:900;
- letter-spacing:2px;
- margin-bottom:15px;
-}
-
-.section-heading {
- display:flex;
- align-items:flex-end;
- justify-content:space-between;
- gap:25px;
- margin-bottom:20px;
-}
-
-.section-title {
- font-size:clamp(38px,5vw,62px);
- line-height:.95;
- letter-spacing:-.075em;
- margin:0;
- font-weight:900;
-}
-
-.section-title em {
- font-style:normal;
- color:var(--red);
-}
-
-.section-intro {
- max-width:670px;
- color:var(--muted);
- font-size:13px;
- line-height:1.9;
- margin:20px 0 46px;
-}
-
-#featured-shows {
- position:relative;
- overflow:hidden;
- background:radial-gradient(ellipse at 50% 0%,#ffffff08,transparent 48%);
-}
-
-#featured-shows:before {
- content:"KIZAZI";
- position:absolute;
- right:-25px;
- top:55px;
- color:#ffffff04;
- font-size:clamp(100px,19vw,250px);
- font-weight:900;
- letter-spacing:-.12em;
- pointer-events:none;
-}
-
-/* SHOW CARDS — KING MFUMU CINEMATIC PHOTO ARTWORK */
-
-.show-grid {
- display:grid;
- grid-template-columns:repeat(3,minmax(0,1fr));
- gap:22px;
- align-items:stretch;
-}
-
-.show-card {
- --accent:#f3a52c;
- position:relative;
- min-height:610px;
- display:flex;
- flex-direction:column;
- justify-content:flex-end;
- overflow:hidden;
- border:1px solid #ffffff20;
- border-radius:4px;
- background:#111115;
- isolation:isolate;
- transition:transform .4s ease,border-color .4s ease,box-shadow .4s ease;
-}
-
-.show-card:hover {
- transform:translateY(-7px);
- border-color:var(--accent);
- box-shadow:0 22px 55px #0009;
-}
-
-.morning { --accent:#ffb43d; }
-.nocap { --accent:#ff3038; }
-.love { --accent:#d69aff; }
-
-.card-art {
- position:absolute;
- inset:0;
- overflow:hidden;
- z-index:0;
- background:#17171b;
-}
-
-.card-art img {
- width:100%;
- height:100%;
- display:block;
- object-fit:cover;
- object-position:center 22%;
- transition:transform .7s ease;
-}
-
-.show-card:hover .card-art img {
- transform:scale(1.045);
-}
-
-.card-art:after {
- content:"";
- position:absolute;
- inset:0;
- background:linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.02) 30%,rgba(8,8,11,.35) 53%,#111115 82%,#111115 100%);
- pointer-events:none;
-}
-
-.morning .card-art:after {
- background:linear-gradient(180deg,rgba(69,31,5,.04) 0%,rgba(69,31,5,.02) 30%,rgba(13,10,8,.28) 52%,#111115 83%,#111115 100%);
-}
-
-.nocap .card-art:after {
- background:linear-gradient(180deg,rgba(50,0,0,.12) 0%,rgba(30,0,0,.06) 30%,rgba(8,5,7,.38) 53%,#111115 83%,#111115 100%);
-}
-
-.love .card-art:after {
- background:linear-gradient(180deg,rgba(28,8,45,.08) 0%,rgba(28,8,45,.04) 30%,rgba(10,7,16,.35) 53%,#111115 83%,#111115 100%);
-}
-
-.card-body {
- position:relative;
- z-index:2;
- padding:32px 25px 23px;
- margin-top:255px;
- background:linear-gradient(180deg,rgba(17,17,21,0) 0%,#111115 18%,#111115 100%);
-}
-
-.show-number {
- color:#a1a1aa;
- font-size:9px;
- font-weight:900;
- letter-spacing:2px;
-}
-
-.live-label {
- display:inline-flex;
- align-items:center;
- gap:7px;
- margin:13px 0 0;
- color:var(--accent);
- font-size:9px;
- font-weight:900;
- letter-spacing:1.4px;
-}
-
-.live-label:before {
- content:"";
- width:7px;
- height:7px;
- background:#f01818;
- border-radius:50%;
- box-shadow:0 0 12px #f01818;
-}
-
-.show-card h3 {
- font-size:clamp(29px,3vw,39px);
- line-height:.94;
- letter-spacing:-.075em;
- margin:16px 0 10px;
- font-weight:900;
-}
-
-.tagline {
- color:var(--accent);
- font-size:11px;
- font-weight:900;
-}
-
-.show-card p {
- color:#b6b6bf;
- font-size:11px;
- line-height:1.9;
- margin:16px 0 0;
-}
-
-.card-footer {
- border-top:1px solid #ffffff20;
- padding:17px 25px 22px;
- position:relative;
- z-index:2;
- background:#111115;
-}
-
-.host-label {
- color:#777;
- font-size:8px;
- font-weight:900;
- letter-spacing:1.5px;
- margin-bottom:7px;
-}
-
-.host-name {
- font-size:14px;
- font-weight:900;
-}
-
-.show-time {
- margin-top:7px;
- color:#aaa;
- font-size:10px;
- font-weight:700;
-}
-
-.show-link {
- display:inline-block;
- margin-top:16px;
- color:var(--accent);
- font-size:9px;
- font-weight:900;
- letter-spacing:1px;
-}
-
-/* WEEKDAY PROGRAMMING — COMPACT EDITORIAL SCHEDULE */
-
-.schedule-section {
- position:relative;
- overflow:hidden;
- background:
-  radial-gradient(ellipse at 94% 8%,rgba(229,9,9,.12),transparent 34%),
-  linear-gradient(115deg,#0c0c10,#101014 55%,#0c0c10);
- border-top:1px solid var(--line);
- border-bottom:1px solid var(--line);
-}
-
-.schedule-section:before {
- content:"ON AIR";
- position:absolute;
- right:-18px;
- top:70px;
- color:rgba(255,255,255,.018);
- font-size:clamp(100px,17vw,220px);
- font-weight:900;
- letter-spacing:-.1em;
- pointer-events:none;
-}
-
-.schedule-section .wrap { position:relative; z-index:1; }
-
-.schedule-head {
- display:flex;
- justify-content:space-between;
- align-items:flex-end;
- gap:25px;
- margin-bottom:27px;
-}
-
-.weekday {
- border:1px solid rgba(255,255,255,.18);
- padding:13px 17px;
- color:#ddd;
- background:rgba(255,255,255,.025);
- font-size:9px;
- font-weight:900;
- letter-spacing:1.3px;
- white-space:nowrap;
-}
-
-.schedule-list {
- display:flex;
- flex-direction:column;
- gap:9px;
- border:0;
-}
-
-.schedule-row {
- --slot-accent:#e50909;
- position:relative;
- display:grid;
- grid-template-columns:190px minmax(0,1fr) 105px;
- align-items:center;
- gap:22px;
- min-height:94px;
- padding:17px 22px 17px 25px;
- border:1px solid rgba(255,255,255,.09);
- border-radius:5px;
- overflow:hidden;
- background:linear-gradient(100deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
- transition:transform .25s ease,border-color .25s ease,background .25s ease,box-shadow .25s ease;
-}
-
-.schedule-row:before {
- content:"";
- position:absolute;
- left:0;
- top:0;
- bottom:0;
- width:4px;
- background:var(--slot-accent);
- box-shadow:0 0 18px var(--slot-accent);
-}
-
-.schedule-row:hover {
- transform:translateX(4px);
- border-color:color-mix(in srgb,var(--slot-accent) 55%,transparent);
- background:linear-gradient(100deg,color-mix(in srgb,var(--slot-accent) 9%,#151519),rgba(255,255,255,.025));
- box-shadow:0 10px 28px rgba(0,0,0,.18);
-}
-
-.schedule-row.morning-slot { --slot-accent:#ffb43d; }
-.schedule-row.nocap-slot { --slot-accent:#ff3038; }
-.schedule-row.love-slot { --slot-accent:#d69aff; }
-.schedule-row.playlist { --slot-accent:#85858f; min-height:76px; background:rgba(255,255,255,.018); }
-
-.schedule-time {
- color:var(--slot-accent);
- font-size:10px;
- font-weight:900;
- letter-spacing:.8px;
- white-space:nowrap;
-}
-
-.schedule-info { min-width:0; }
-
-.schedule-name {
- color:#f7f7f8;
- font-size:18px;
- font-weight:900;
- letter-spacing:-.6px;
- line-height:1.1;
-}
-
-.schedule-host {
- color:#a7a7b1;
- font-size:10px;
- line-height:1.5;
- margin-top:6px;
-}
-
-.schedule-status {
- justify-self:end;
- min-width:68px;
- text-align:center;
- padding:9px 10px;
- border:1px solid rgba(255,255,255,.11);
- border-radius:3px;
- color:#aaaab2;
- background:rgba(0,0,0,.18);
- font-size:8px;
- font-weight:900;
- letter-spacing:1.4px;
-}
-
-.schedule-status.live-status {
- color:var(--slot-accent);
- border-color:color-mix(in srgb,var(--slot-accent) 30%,transparent);
- background:color-mix(in srgb,var(--slot-accent) 7%,transparent);
-}
-
-.schedule-status.live-status:before {
- content:"";
- display:inline-block;
- width:6px;
- height:6px;
- margin:0 7px 1px 0;
- border-radius:50%;
- background:var(--slot-accent);
- box-shadow:0 0 9px var(--slot-accent);
- animation:liveBlink 1.5s ease-in-out infinite;
-}
-
-.schedule-row.playlist .schedule-name { color:#c5c5cd; font-size:15px; }
-.schedule-row.playlist .schedule-time { color:#a1a1aa; }
-.schedule-row.playlist .schedule-host { margin-top:4px; }
-
-@keyframes liveBlink {
- 0%,100% { opacity:1; }
- 50% { opacity:.42; }
-}
+:root{--bg:#08080b;--panel:#121217;--line:#292930;--red:#ed1018;--muted:#a5a5af;--white:#f7f7f8;--amber:#ffb43d;--purple:#d18bff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1380px,92%);margin:auto}
+
+header{height:78px;position:sticky;top:0;z-index:100;background:#08080bf2;border-bottom:1px solid #ffffff17;backdrop-filter:blur(18px)}
+.head{height:100%;width:92%;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{width:136px;height:62px;object-fit:contain;object-position:left}
+.nav{display:flex;align-items:center;gap:27px}
+.nav a{font-size:11px;font-weight:800;color:#c8c8ce;transition:.2s}
+.nav a:hover,.nav a.current{color:var(--red)}
+.nav a.current:after{content:"";display:block;height:2px;background:var(--red);margin-top:7px}
+.head-actions{display:flex;align-items:center;gap:10px}
+.onair,.listen-btn{font-size:10px;font-weight:900;letter-spacing:.7px;border-radius:30px;padding:13px 18px}
+.onair{border:1px solid #ed101866;color:#fff}
+.onair i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red);margin-right:7px}
+.listen-btn{background:var(--red);padding-inline:22px;transition:.2s}
+.listen-btn:hover{background:#bd0008;transform:translateY(-2px)}
+.menu{display:none;background:none;border:0;color:#fff;font-size:26px}
+
+/* CINEMATIC BROADCAST HERO */
+
+.hero{position:relative;isolation:isolate;min-height:500px;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid #ffffff18;background:linear-gradient(90deg,rgba(5,5,8,.97) 0%,rgba(5,5,8,.88) 38%,rgba(5,5,8,.48) 72%,rgba(5,5,8,.56) 100%),linear-gradient(0deg,rgba(5,5,8,.4),transparent),url('/assets/kizazi-radio-studio-bg.png') center right/cover no-repeat,#09090b}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 78% 50%,#ed10182c,transparent 38%),linear-gradient(110deg,transparent 45%,#ed101812 60%,transparent 75%);pointer-events:none}
+.hero-inner{padding:75px 0 70px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:35px}
+.eyebrow,.kicker{color:var(--red);font-size:10px;font-weight:900;letter-spacing:2.3px;text-transform:uppercase}
+.hero h1{font-size:clamp(58px,7.1vw,102px);line-height:.86;letter-spacing:-.09em;margin:24px 0 22px;font-weight:900;text-transform:uppercase}
+.hero h1 em{display:block;color:var(--red);font-style:italic}
+.hero-copy>p:not(.eyebrow){max-width:610px;color:#d0d0d5;font-size:15px;line-height:1.8}
+.hero-points{display:flex;flex-wrap:wrap;gap:0;margin-top:28px}
+.hero-point{display:flex;align-items:center;gap:10px;padding:0 22px;border-right:1px solid #ffffff2b;font-size:11px;font-weight:900;text-transform:uppercase}
+.hero-point:first-child{padding-left:0}
+.hero-point:last-child{border:0}
+.hero-point b{font-size:23px;color:var(--red)}
+.hero-stamp{justify-self:end;align-self:end;padding:14px 18px;border:1px solid #ffffff30;background:#09090bbd;backdrop-filter:blur(10px);font-size:10px;font-weight:900;letter-spacing:1.4px}
+.hero-stamp span{color:var(--red)}
+
+/* HYBRID SHOWS + SCHEDULE LAYOUT */
+
+.programme-section{padding:42px 0 72px;position:relative;background:radial-gradient(ellipse at 90% 0%,#ed10180d,transparent 42%),linear-gradient(120deg,#0a0a0e,#0d0b10 65%,#10090d)}
+.programme-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(440px,.88fr);gap:26px;align-items:start}
+.column-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px;min-height:34px}
+.column-title{margin:0;font-size:clamp(20px,2vw,27px);font-weight:900;letter-spacing:-1.1px;text-transform:uppercase;font-style:italic}
+.column-title:before{content:"";display:inline-block;width:5px;height:25px;background:var(--red);transform:skew(-24deg);margin-right:13px;vertical-align:-5px}
+.day-pill{border:1px solid #ffffff2c;border-radius:30px;padding:10px 14px;font-size:9px;font-weight:900;letter-spacing:1px;white-space:nowrap;color:#ddd}
+.day-pill span{color:var(--red);margin-right:6px}
+
+.show-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.show-card{--accent:var(--amber);position:relative;min-width:0;min-height:310px;border:1px solid color-mix(in srgb,var(--accent) 70%,transparent);border-radius:13px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;background:#141419;isolation:isolate;box-shadow:0 12px 35px #0005;transition:transform .3s,border-color .3s,box-shadow .3s}
+.show-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px #0009,0 0 22px color-mix(in srgb,var(--accent) 18%,transparent)}
+.show-card.morning{--accent:var(--amber)}
+.show-card.nocap{--accent:#ff343b}
+.show-card.love{--accent:#d18bff}
+.show-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;z-index:-2;transition:transform .6s}
+.show-card:hover img{transform:scale(1.05)}
+.show-card:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#08080b08 0%,#08080b12 30%,#08080bd9 72%,#08080bf7 100%)}
+.show-card-content{padding:16px 15px 15px}
+.show-live{display:inline-flex;align-items:center;gap:6px;border-radius:20px;background:var(--red);padding:6px 9px;font-size:8px;font-weight:900;letter-spacing:.7px;margin-bottom:12px}
+.show-live:before{content:"";width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff}
+.show-card h3{font-size:clamp(17px,1.65vw,23px);line-height:.98;letter-spacing:-1px;margin:0 0 8px;font-weight:900}
+.show-card p{font-size:10px;color:#e1e1e5;line-height:1.5;margin:0 0 12px;min-height:30px}
+.show-time{border-top:1px solid #ffffff42;padding-top:11px;font-size:10px;font-weight:900;white-space:nowrap}
+.show-time span{color:var(--accent);margin-right:5px}
+
+/* WEEKDAY SCHEDULE */
+
+.schedule-list{display:flex;flex-direction:column;gap:7px}
+.schedule-row{--accent:#8d8d98;position:relative;display:grid;grid-template-columns:105px 30px minmax(0,1fr) 66px;align-items:center;gap:12px;min-height:64px;padding:9px 12px 9px 15px;border:1px solid #ffffff17;border-radius:9px;background:linear-gradient(100deg,#ffffff0c,#ffffff04);overflow:hidden;transition:transform .22s,border-color .22s,background .22s}
+.schedule-row:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--accent);box-shadow:0 0 18px var(--accent)}
+.schedule-row:hover{transform:translateX(3px);border-color:color-mix(in srgb,var(--accent) 65%,transparent);background:linear-gradient(100deg,color-mix(in srgb,var(--accent) 12%,#141419),#ffffff07)}
+.schedule-row.morning{--accent:var(--amber)}
+.schedule-row.nocap{--accent:#ff343b}
+.schedule-row.love{--accent:#d18bff}
+.schedule-row.playlist{--accent:#8c8f9a;background:linear-gradient(100deg,#ffffff0a,#ffffff03)}
+.schedule-time{font-size:10px;line-height:1.35;font-weight:900;color:#e8e8eb}
+.schedule-icon{font-size:20px;color:var(--accent);text-align:center}
+.schedule-info{min-width:0}
+.schedule-name{font-size:14px;font-weight:900;letter-spacing:-.45px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.schedule-desc{font-size:9px;color:#b6b6c0;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.status{justify-self:end;min-width:61px;text-align:center;border-radius:20px;padding:7px 8px;font-size:8px;font-weight:900;letter-spacing:.8px;background:#ffffff12;color:#c8c8cf}
+.status.live{background:var(--red);color:white;box-shadow:0 0 16px #ed101844}
+
+/* LISTEN LIVE PANEL */
+
+.listen-panel{position:relative;display:flex;align-items:center;gap:17px;margin-top:18px;padding:17px 18px;border:1px solid #ffffff28;border-radius:12px;overflow:hidden;background:radial-gradient(ellipse at 0% 100%,#ed101832,transparent 48%),linear-gradient(110deg,#171116,#100d12)}
+.listen-art{font-size:38px;color:#f33;filter:drop-shadow(0 0 13px #ed101866)}
+.listen-copy{flex:1;min-width:0}
+.listen-copy strong{font-size:clamp(16px,2vw,23px);font-style:italic;font-weight:900;letter-spacing:-.8px}
+.listen-copy strong em{color:var(--red);font-style:normal}
+.listen-copy small{display:block;color:#c2c2ca;font-size:10px;margin-top:5px}
+.listen-panel .listen-btn{white-space:nowrap}
 
 /* PRESENTER */
 
-.presenter-section {
- display:grid;
- grid-template-columns:.9fr 1.1fr;
- gap:70px;
- align-items:center;
-}
-
-.presenter-art {
- position:relative;
- width:100%;
- aspect-ratio:4 / 5;
- max-height:680px;
- overflow:hidden;
- border:1px solid #38383f;
- border-radius:12px;
- background:#d77b19;
- box-shadow:0 25px 70px #0008;
- isolation:isolate;
-}
-
-.presenter-art img {
- position:absolute;
- inset:0;
- width:100%;
- height:100%;
- display:block;
- object-fit:cover;
- object-position:center 22%;
- transition:transform .7s ease;
-}
-
-.presenter-art:hover img {
- transform:scale(1.035);
-}
-
-.presenter-art:after {
- content:"";
- position:absolute;
- inset:0;
- z-index:1;
- background:linear-gradient(to bottom,transparent 42%,#09090b18 58%,#09090be8 100%);
- pointer-events:none;
-}
-
-.presenter-frame {
- position:absolute;
- inset:12px;
- z-index:2;
- border:1px solid #ffffff45;
- pointer-events:none;
-}
-
-.presenter-photo-top {
- position:absolute;
- top:25px;
- left:25px;
- z-index:3;
- display:flex;
- align-items:center;
- gap:9px;
- padding:12px 15px;
- background:#09090bd9;
- border:1px solid #ffffff35;
- backdrop-filter:blur(10px);
- font-size:9px;
- font-weight:900;
- letter-spacing:1.5px;
-}
-
-.presenter-photo-top span {
- width:7px;
- height:7px;
- border-radius:50%;
- background:var(--red);
- box-shadow:0 0 10px var(--red);
-}
-
-.presenter-photo-bottom {
- position:absolute;
- left:30px;
- right:25px;
- bottom:32px;
- z-index:3;
-}
-
-.presenter-photo-bottom small {
- display:block;
- color:#f2f2f2;
- font-size:9px;
- font-weight:900;
- letter-spacing:2.5px;
- margin-bottom:10px;
-}
-
-.presenter-photo-bottom h3 {
- margin:0;
- color:#fff;
- font-size:clamp(45px,5vw,70px);
- font-weight:900;
- line-height:.84;
- letter-spacing:-.085em;
- text-transform:uppercase;
-}
-
-.presenter-photo-bottom h3 span {
- display:block;
- color:var(--red);
-}
-
-.presenter-photo-bottom p {
- color:#e4e4e7;
- font-size:9px;
- font-weight:900;
- letter-spacing:2px;
- margin:16px 0 0;
-}
-
-.presenter-copy h2 {
- font-size:clamp(38px,5vw,64px);
- line-height:.95;
- letter-spacing:-.08em;
- margin:15px 0 22px;
-}
-
-.presenter-copy p {
- color:var(--muted);
- font-size:13px;
- line-height:1.95;
-}
-
-.presenter-role {
- color:var(--red);
- font-size:10px;
- font-weight:900;
- letter-spacing:2px;
-}
-
-.presenter-shows {
- display:flex;
- flex-wrap:wrap;
- gap:9px;
- margin-top:28px;
-}
-
-.presenter-shows span {
- border:1px solid #38383f;
- padding:12px 14px;
- font-size:8px;
- font-weight:900;
- letter-spacing:.8px;
- transition:.25s;
-}
-
-.presenter-shows span:hover {
- border-color:var(--red);
- color:var(--red);
-}
-
-/* CTA */
-
-.cta {
- padding:70px 0;
-}
-
-.cta-box {
- position:relative;
- overflow:hidden;
- padding:45px;
- border:1px solid var(--line);
- background:
- radial-gradient(circle at 90% 10%,#e5090925,transparent 35%),
- #111115;
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:25px;
-}
-
-.cta-box:after {
- content:"";
- position:absolute;
- right:15%;
- top:-100px;
- width:260px;
- height:260px;
- border:1px solid #ffffff0b;
- border-radius:50%;
- box-shadow:0 0 0 30px #ffffff05,0 0 0 60px #ffffff04;
- pointer-events:none;
-}
-
-.cta-content {
- position:relative;
- z-index:1;
-}
-
-.cta h2 {
- font-size:clamp(30px,4vw,48px);
- line-height:.95;
- margin:0;
- letter-spacing:-.07em;
-}
-
-.cta h2 em {
- font-style:normal;
- color:var(--red);
-}
-
-.cta p {
- font-size:12px;
- color:var(--muted);
- line-height:1.8;
-}
-
-.button {
- position:relative;
- z-index:1;
- display:inline-block;
- background:var(--red);
- padding:16px 20px;
- font-size:9px;
- font-weight:900;
- letter-spacing:1px;
- white-space:nowrap;
- transition:.25s;
-}
-
-.button:hover {
- background:#bb0000;
- transform:translateY(-3px);
-}
+.presenter-section{padding:78px 0;display:grid;grid-template-columns:.78fr 1.22fr;gap:55px;align-items:center}
+.presenter-art{position:relative;aspect-ratio:4/5;max-height:570px;overflow:hidden;border:1px solid #ffffff25;border-radius:13px;background:#17171c}
+.presenter-art img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block}
+.presenter-art:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#08080be8,transparent 60%)}
+.presenter-frame{position:absolute;inset:12px;border:1px solid #ffffff45;z-index:2}
+.presenter-photo-top{position:absolute;top:24px;left:24px;z-index:3;padding:10px 13px;background:#08080bd9;border:1px solid #ffffff35;font-size:9px;font-weight:900;letter-spacing:1.2px}
+.presenter-photo-top span{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);margin-right:8px}
+.presenter-photo-bottom{position:absolute;left:27px;bottom:25px;z-index:3}
+.presenter-photo-bottom small{font-size:9px;font-weight:900;letter-spacing:2px}
+.presenter-photo-bottom h3{font-size:clamp(42px,5vw,65px);line-height:.84;letter-spacing:-.08em;margin:10px 0}
+.presenter-photo-bottom h3 span{display:block;color:var(--red)}
+.presenter-photo-bottom p{font-size:9px;font-weight:900;letter-spacing:1.8px}
+.presenter-copy h2{font-size:clamp(38px,5vw,64px);line-height:.93;letter-spacing:-.08em;margin:15px 0 22px}
+.presenter-copy h2 em{font-style:normal;color:var(--red)}
+.presenter-copy p{color:var(--muted);font-size:13px;line-height:1.9}
+.presenter-role{color:var(--red);font-size:10px;font-weight:900;letter-spacing:2px}
+.presenter-shows{display:flex;flex-wrap:wrap;gap:8px;margin-top:25px}
+.presenter-shows span{border:1px solid #ffffff25;padding:10px 12px;font-size:8px;font-weight:900;letter-spacing:.8px}
 
 /* FOOTER */
 
-footer {
- background:#08080a;
- padding:35px 0 22px;
- border-top:1px solid var(--line);
-}
-
-.foot {
- display:flex;
- justify-content:space-between;
- gap:25px;
- align-items:center;
- padding-bottom:27px;
-}
-
-.foot img {
- width:130px;
- height:60px;
- object-fit:contain;
-}
-
-.links {
- display:flex;
- gap:22px;
- flex-wrap:wrap;
-}
-
-.links a {
- font-size:10px;
- color:#aaa;
-}
-
-.links a:hover {
- color:#fff;
-}
-
-.bottom {
- border-top:1px solid var(--line);
- padding-top:18px;
- color:#777;
- font-size:9px;
- display:flex;
- justify-content:space-between;
-}
+footer{background:#070709;border-top:1px solid var(--line);padding:30px 0 20px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:25px;padding-bottom:22px}
+.foot img{width:125px;height:58px;object-fit:contain}
+.links{display:flex;gap:20px;flex-wrap:wrap}
+.links a{font-size:10px;color:#aaa}
+.links a:hover{color:#fff}
+.bottom{border-top:1px solid var(--line);padding-top:16px;color:#777;font-size:9px;display:flex;justify-content:space-between}
 
 /* TABLET */
 
-@media(max-width:950px) {
- .hero-inner {
-  grid-template-columns:1fr .65fr;
-  gap:15px;
- }
-
- .hero-visual {
-  min-height:300px;
- }
-
- .sound-disc {
-  width:260px;
- }
-
- .show-grid {
-  grid-template-columns:1fr 1fr;
- }
-
- .show-card:last-child {
-  grid-column:1 / -1;
- }
-
- .show-card {
-  min-height:570px;
- }
-
- .presenter-section {
-  gap:35px;
- }
+@media(max-width:1050px){
+.programme-grid{grid-template-columns:1fr;gap:35px}
+.show-card{min-height:360px}
+.schedule-row{grid-template-columns:125px 34px minmax(0,1fr) 70px}
+.hero{min-height:460px}
 }
 
 /* MOBILE */
 
-@media(max-width:700px) {
- header {
-  height:70px;
- }
-
- .head {
-  width:90%;
- }
-
- .logo {
-  width:108px;
- }
-
- .menu {
-  display:block;
- }
-
- .live {
-  font-size:8px;
-  padding:10px;
- }
-
- .nav {
-  display:none;
-  position:absolute;
-  top:69px;
-  left:0;
-  right:0;
-  background:#101014;
-  padding:22px 6%;
-  flex-direction:column;
-  align-items:flex-start;
-  border-bottom:1px solid var(--line);
- }
-
- .nav.open {
-  display:flex;
- }
-
- .nav a {
-  font-size:12px;
- }
-
- .wrap {
-  width:90%;
- }
-
- .hero {
-  min-height:auto;
- }
-
- .hero-inner {
-  grid-template-columns:1fr;
-  padding:75px 0 55px;
-  gap:25px;
- }
-
- .hero h1 {
-  font-size:clamp(58px,13vw,88px);
- }
-
- .intro {
-  font-size:13px;
- }
-
- .hero-visual {
-  min-height:280px;
-  margin-top:10px;
- }
-
- .sound-disc {
-  width:240px;
- }
-
- .visual-label {
-  right:5px;
-  bottom:-3px;
- }
-
- section.content {
-  padding:70px 0;
- }
-
- .section-heading {
-  display:block;
- }
-
- .show-grid {
-  grid-template-columns:1fr;
- }
-
- .show-card,
- .show-card:last-child {
-  grid-column:auto;
-  min-height:570px;
- }
-
- .card-art {
-  height:100%;
- }
-
- .card-body {
-  padding:32px 23px 23px;
-  margin-top:275px;
- }
-
- .schedule-head {
-  display:block;
- }
-
- .weekday {
-  display:inline-block;
-  margin-top:18px;
- }
-
- .schedule-row {
-  grid-template-columns:1fr auto;
-  gap:8px 12px;
-  min-height:104px;
-  padding:16px 14px 15px 19px;
- }
-
- .schedule-time {
-  grid-column:1 / -1;
-  font-size:9px;
- }
-
- .schedule-name { font-size:16px; }
- .schedule-host { font-size:9px; }
-
- .schedule-status {
-  grid-column:2;
-  grid-row:2 / span 2;
-  align-self:center;
- }
-
- .schedule-row.playlist { min-height:88px; }
-
- .presenter-section {
-  grid-template-columns:1fr;
-  gap:35px;
- }
-
- .presenter-art {
-  aspect-ratio:4 / 5;
-  max-height:620px;
- }
-
- .presenter-art img {
-  object-position:center 22%;
- }
-
- .presenter-photo-top {
-  top:19px;
-  left:19px;
-  font-size:8px;
- }
-
- .presenter-photo-bottom {
-  left:23px;
-  bottom:25px;
- }
-
- .presenter-photo-bottom h3 {
-  font-size:clamp(45px,12vw,65px);
- }
-
- .presenter-copy h2 {
-  font-size:44px;
- }
-
- .cta-box {
-  display:block;
-  padding:30px 24px;
- }
-
- .button {
-  margin-top:15px;
- }
-
- .foot,
- .bottom {
-  display:block;
- }
-
- .links {
-  margin-top:20px;
- }
-
- .bottom span {
-  display:block;
-  margin-top:8px;
- }
+@media(max-width:760px){
+header{height:68px}
+.head{width:90%}
+.logo{width:110px}
+.menu{display:block}
+.head-actions .onair{display:none}
+.nav{display:none;position:absolute;top:67px;left:0;right:0;padding:22px 6%;background:#101014;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:18px}
+.nav.open{display:flex}
+.nav a{font-size:12px}
+.wrap{width:90%}
+.hero{min-height:0;background-position:62% center}
+.hero-inner{grid-template-columns:1fr;padding:72px 0 45px;gap:20px}
+.hero h1{font-size:clamp(54px,12vw,82px)}
+.hero-copy>p:not(.eyebrow){font-size:13px}
+.hero-stamp{justify-self:start}
+.hero-point{padding:0 12px;font-size:9px}
+.hero-point b{font-size:19px}
+.programme-section{padding:35px 0 55px}
+.programme-grid{gap:34px}
+.column-head{align-items:flex-start}
+.column-title{font-size:20px}
+.show-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.show-card{min-height:260px;border-radius:9px}
+.show-card-content{padding:11px 9px}
+.show-card h3{font-size:clamp(13px,3.2vw,19px)}
+.show-card p{font-size:9px;min-height:40px}
+.show-time{font-size:8px}
+.show-live{font-size:7px;padding:5px 7px;margin-bottom:8px}
+.schedule-row{grid-template-columns:94px 25px minmax(0,1fr) 58px;gap:8px;min-height:62px;padding:8px 8px 8px 12px}
+.schedule-time{font-size:9px}
+.schedule-icon{font-size:17px}
+.schedule-name{font-size:12px}
+.schedule-desc{font-size:8px}
+.status{min-width:53px;font-size:7px;padding:7px 5px}
+.listen-panel{gap:10px;padding:14px 12px}
+.listen-art{font-size:28px}
+.listen-copy strong{font-size:16px}
+.listen-copy small{font-size:8px}
+.listen-panel .listen-btn{font-size:8px;padding:11px 12px}
+.presenter-section{grid-template-columns:1fr;gap:30px;padding:58px 0}
+.presenter-art{max-height:540px}
+.presenter-copy h2{font-size:45px}
+.foot,.bottom{display:block}
+.links{margin-top:18px}
+.bottom span{display:block;margin-top:8px}
 }
 
-@media(max-width:380px) {
- .hero h1 {
-  font-size:54px;
- }
-
- .presenter-photo-top {
-  top:14px;
-  left:14px;
-  font-size:7px;
- }
-
- .presenter-photo-bottom {
-  left:18px;
-  bottom:19px;
- }
-
- .presenter-photo-bottom h3 {
-  font-size:42px;
- }
+@media(max-width:430px){
+.show-grid{grid-template-columns:1fr}
+.show-card{min-height:390px}
+.show-card-content{padding:17px}
+.show-card h3{font-size:23px}
+.show-card p{font-size:10px;min-height:0}
+.show-time{font-size:10px}
+.schedule-row{grid-template-columns:78px 20px minmax(0,1fr) 49px;gap:6px;padding-left:10px}
+.schedule-time{font-size:8px}
+.schedule-name{font-size:11px}
+.schedule-desc{font-size:7px}
+.status{min-width:46px;font-size:6px}
+.day-pill{font-size:8px;padding:9px 10px}
+.hero-point{padding:0 8px}
+.hero-point b{font-size:17px}
 }
 
-/* HERO — PREMIUM RADIO EXPERIENCE (hero only) */
-
-.hero {
- min-height:700px;
- isolation:isolate;
- background:
-  radial-gradient(ellipse at 78% 48%,rgba(229,9,9,.19),transparent 29%),
-  radial-gradient(ellipse at 8% 100%,rgba(100,100,115,.13),transparent 38%),
-  linear-gradient(112deg,#0c0c10 0%,#09090b 55%,#10090b 100%);
+@media(prefers-reduced-motion:reduce){
+*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
 }
-
-.hero:before {
- width:720px;
- height:720px;
- right:-130px;
- top:50%;
- transform:translateY(-50%);
- border-color:rgba(255,255,255,.055);
- box-shadow:0 0 0 45px rgba(255,255,255,.022),0 0 0 95px rgba(255,255,255,.018),0 0 0 150px rgba(229,9,9,.025),0 0 100px rgba(229,9,9,.09);
-}
-
-.hero:after {
- right:-8px;
- bottom:-105px;
- color:rgba(255,255,255,.025);
- letter-spacing:-.13em;
-}
-
-.hero-inner {
- gap:clamp(30px,5vw,80px);
- padding:105px 0 110px;
-}
-
-.hero-copy { position:relative; z-index:2; }
-
-.hero .eyebrow {
- color:#d0d0d5;
- letter-spacing:2.8px;
-}
-
-.hero h1 {
- max-width:800px;
- font-size:clamp(66px,8.6vw,124px);
- line-height:.82;
- letter-spacing:-.095em;
- margin:30px 0 32px;
- text-wrap:balance;
-}
-
-.hero h1 em {
- display:inline-block;
- text-shadow:0 10px 38px rgba(229,9,9,.13);
-}
-
-.hero .intro {
- max-width:690px;
- font-size:clamp(14px,1.15vw,17px);
- line-height:1.85;
- color:#c9c9d0;
-}
-
-.hero-meta {
- margin-top:36px;
- gap:11px;
-}
-
-.hero .meta {
- padding:14px 18px;
- background:rgba(255,255,255,.018);
- border-color:rgba(255,255,255,.15);
- transition:background .25s ease,border-color .25s ease,transform .25s ease;
-}
-
-.hero .meta:hover {
- background:rgba(229,9,9,.08);
- border-color:rgba(229,9,9,.55);
- transform:translateY(-2px);
-}
-
-.hero-visual {
- min-height:440px;
- isolation:isolate;
-}
-
-.hero-visual:before {
- content:"";
- position:absolute;
- width:min(440px,95%);
- aspect-ratio:1;
- border-radius:50%;
- background:radial-gradient(circle,rgba(229,9,9,.16),rgba(229,9,9,.045) 45%,transparent 70%);
- filter:blur(8px);
- z-index:-1;
-}
-
-.sound-disc {
- width:min(370px,78vw);
- background:
-  radial-gradient(circle at 50% 50%,#16161b 0 26%,transparent 26.5%),
-  repeating-radial-gradient(circle,rgba(255,255,255,.09) 0 1px,transparent 2px 17px),
-  radial-gradient(circle at 35% 25%,#303038,#111116 56%,#08080a 78%);
- border:1px solid rgba(255,255,255,.2);
- box-shadow:0 0 0 10px rgba(255,255,255,.018),0 0 0 22px rgba(255,255,255,.018),0 0 85px rgba(229,9,9,.19),0 35px 90px #000c;
- animation:discFloat 7s ease-in-out infinite;
-}
-
-.sound-disc:before {
- inset:15px;
- border-color:rgba(229,9,9,.42);
-}
-
-.sound-disc:after {
- inset:39px;
- border-color:rgba(255,255,255,.16);
-}
-
-.disc-core {
- width:124px;
- height:124px;
- background:linear-gradient(145deg,#ff2020 0%,#e50909 48%,#970000 100%);
- box-shadow:0 0 0 10px rgba(229,9,9,.07),0 0 55px rgba(229,9,9,.55),inset 0 2px 8px rgba(255,255,255,.22);
- transition:transform .3s ease,box-shadow .3s ease;
-}
-
-.sound-disc:hover .disc-core {
- transform:scale(1.06);
- box-shadow:0 0 0 13px rgba(229,9,9,.09),0 0 70px rgba(229,9,9,.7),inset 0 2px 8px rgba(255,255,255,.25);
-}
-
-.disc-core span {
- font-size:46px;
- margin-left:6px;
- text-shadow:0 2px 8px rgba(0,0,0,.2);
-}
-
-.sound-wave {
- bottom:27px;
- height:54px;
- gap:6px;
-}
-
-.sound-wave i {
- width:4px;
- border-radius:8px;
- animation:wavePulse 1.05s ease-in-out infinite alternate;
- animation-delay:calc(var(--h) * -0.025);
-}
-
-.visual-label {
- bottom:2px;
- right:-12px;
- padding:15px 19px;
- background:rgba(15,15,19,.9);
- border-color:rgba(255,255,255,.17);
- box-shadow:0 12px 35px rgba(0,0,0,.25);
- backdrop-filter:blur(12px);
-}
-
-@keyframes discFloat {
- 0%,100% { transform:translateY(0) rotate(-2deg); }
- 50% { transform:translateY(-9px) rotate(1deg); }
-}
-
-@keyframes wavePulse {
- from { transform:scaleY(.58); opacity:.72; }
- to { transform:scaleY(1.08); opacity:1; }
-}
-
-@media(max-width:950px) {
- .hero { min-height:620px; }
- .hero-inner { gap:15px; padding:85px 0; }
- .hero h1 { font-size:clamp(58px,8vw,90px); }
- .hero-visual { min-height:340px; }
- .sound-disc { width:275px; }
- .visual-label { right:-4px; }
-}
-
-@media(max-width:700px) {
- .hero { min-height:auto; }
- .hero-inner { padding:76px 0 58px; gap:20px; }
- .hero h1 { font-size:clamp(58px,13vw,88px); margin:25px 0 25px; }
- .hero .intro { font-size:13px; line-height:1.8; }
- .hero-meta { margin-top:25px; gap:8px; }
- .hero .meta { padding:11px 12px; font-size:8px; }
- .hero-visual { min-height:290px; margin-top:2px; }
- .sound-disc { width:235px; }
- .disc-core { width:91px; height:91px; }
- .disc-core span { font-size:36px; }
- .sound-wave { bottom:19px; gap:4px; }
- .sound-wave i { width:3px; }
- .visual-label { right:0; bottom:-2px; padding:11px 12px; font-size:7px; letter-spacing:1px; }
-}
-
-@media(max-width:380px) {
- .hero h1 { font-size:54px; }
- .visual-label { font-size:6px; }
-}
-
-@media(prefers-reduced-motion:reduce) {
- .sound-disc,.sound-wave i,
- .schedule-status.live-status:before { animation:none !important; }
- .hero .meta,.disc-core { transition:none; }
-}
-
-/* HERO BACKGROUND — stronger studio visibility and live-radio energy */
-
-.hero {
-  isolation:isolate;
-  background:
-    linear-gradient(90deg,
-      rgba(7,7,10,.88) 0%,
-      rgba(7,7,10,.76) 34%,
-      rgba(7,7,10,.42) 66%,
-      rgba(7,7,10,.48) 100%),
-    linear-gradient(0deg, rgba(7,7,10,.35), rgba(7,7,10,.12)),
-    radial-gradient(ellipse at 78% 42%, rgba(229,9,9,.24), transparent 42%),
-    url("/assets/kizazi-radio-studio-bg.png") center right / cover no-repeat,
-    #09090b;
-}
-
-/* Moving red atmosphere over the studio image */
-
-.hero:before {
-  content:"";
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  border:0;
-  border-radius:0;
-  right:auto;
-  top:0;
-  transform:none;
-  pointer-events:none;
-  z-index:0;
-  background:
-    radial-gradient(ellipse at 78% 35%, rgba(255,20,20,.18), transparent 34%),
-    linear-gradient(110deg, transparent 45%, rgba(255,15,15,.08) 58%, transparent 72%);
-  box-shadow:none;
-  animation:studioGlow 7s ease-in-out infinite alternate;
-}
-
-.hero-inner { z-index:2; }
-.hero-copy, .hero-visual { position:relative; z-index:2; }
-
-/* Give the record a subtle animated broadcast feel without moving the play icon */
-
-.sound-disc:before {
-  animation:recordRing 16s linear infinite;
-  border-color:rgba(255,35,35,.72);
-}
-
-.sound-disc:after {
-  animation:recordPulse 3s ease-in-out infinite;
-}
-
-.disc-core {
-  animation:coreGlow 2.8s ease-in-out infinite;
-}
-
-.sound-wave i {
-  transform-origin:center;
-  animation:wavePulse .85s ease-in-out infinite alternate;
-}
-
-.sound-wave i:nth-child(2n) { animation-delay:.18s; }
-.sound-wave i:nth-child(3n) { animation-delay:.32s; }
-.sound-wave i:nth-child(4n) { animation-delay:.11s; }
-
-@keyframes studioGlow {
-  from { opacity:.55; }
-  to { opacity:1; }
-}
-
-@keyframes recordRing {
-  to { transform:rotate(360deg); }
-}
-
-@keyframes recordPulse {
-  0%,100% { opacity:.45; transform:scale(.98); }
-  50% { opacity:1; transform:scale(1.025); }
-}
-
-@keyframes coreGlow {
-  0%,100% { box-shadow:0 0 35px rgba(229,9,9,.48); }
-  50% { box-shadow:0 0 65px rgba(255,20,20,.9); }
-}
-
-@keyframes wavePulse {
-  from { transform:scaleY(.62); }
-  to { transform:scaleY(1.12); }
-}
-
-@media(max-width:700px) {
-  .hero {
-    background:
-      linear-gradient(180deg,
-        rgba(7,7,10,.78) 0%,
-        rgba(7,7,10,.66) 45%,
-        rgba(7,7,10,.88) 100%),
-      radial-gradient(ellipse at 60% 38%, rgba(229,9,9,.2), transparent 48%),
-      url("/assets/kizazi-radio-studio-bg.png") 62% center / cover no-repeat,
-      #09090b;
-  }
-
-  .hero:before {
-    background:radial-gradient(ellipse at 65% 35%, rgba(255,20,20,.15), transparent 45%);
-  }
-}
-
-@media(prefers-reduced-motion:reduce) {
-  .hero:before,
-  .sound-disc:before,
-  .sound-disc:after,
-  .disc-core,
-  .sound-wave i {
-    animation:none !important;
-  }
-}
-
 </style>
 </head>
 
@@ -1576,242 +239,178 @@ footer {
 <a href="/about/">About Us</a>
 </nav>
 
-<a class="live" href="/#listen">
-<span class="dot"></span>LISTEN LIVE ↗
-</a>
+<div class="head-actions">
+<div class="onair"><i></i>LIVE ON AIR</div>
+<a class="listen-btn" href="/#listen">▶ Listen Live</a>
+</div>
 
 </div>
 </header>
 
 <main>
 
-<!-- HERO -->
+<!-- CINEMATIC HERO -->
 
 <section class="hero">
 <div class="wrap hero-inner">
 
 <div class="hero-copy">
-
 <p class="eyebrow">KIZAZI RADIO PROGRAMMING</p>
 
-<h1>THE SHOWS.<br><em>THE SOUND.</em></h1>
+<h1>THE SHOWS.<em>THE SCHEDULE.</em></h1>
 
-<p class="intro">
-From the first connection in the morning to conversations after dark, KIZAZI RADIO brings you music, fresh perspectives and experiences that move with a new generation.
+<p>
+Live shows, real conversations and the best music for a new generation, every weekday on KIZAZI RADIO.
 </p>
 
-<div class="hero-meta">
-<div class="meta">MONDAY – FRIDAY</div>
-<div class="meta">LIVE RADIO</div>
-<div class="meta">WITH KING MFUMU</div>
+<div class="hero-points">
+<div class="hero-point"><b>◉</b> LIVE SHOWS</div>
+<div class="hero-point"><b>♫</b> CURATED PLAYLISTS</div>
+<div class="hero-point"><b>▦</b> MONDAY – FRIDAY</div>
+</div>
 </div>
 
-</div>
-
-<div class="hero-visual">
-<div class="sound-disc">
-<div class="disc-core"><span>▶</span></div>
-<div class="sound-wave">
-<i style="--h:12px"></i>
-<i style="--h:24px"></i>
-<i style="--h:36px"></i>
-<i style="--h:20px"></i>
-<i style="--h:42px"></i>
-<i style="--h:27px"></i>
-<i style="--h:15px"></i>
-<i style="--h:35px"></i>
-<i style="--h:22px"></i>
-<i style="--h:12px"></i>
-</div>
-</div>
-<div class="visual-label"><span>●</span> THE SOUND OF A NEW GENERATION</div>
+<div class="hero-stamp">
+<span>●</span> THE SOUND OF A NEW GENERATION
 </div>
 
 </div>
 </section>
 
-<!-- FEATURED SHOWS -->
+<!-- SHOWS + WEEKDAY PROGRAMME -->
 
-<section class="content" id="featured-shows">
-<div class="wrap">
+<section class="programme-section">
+<div class="wrap programme-grid">
 
-<div class="kicker">01 / ON AIR PROGRAMMES</div>
+<!-- SHOW CARDS -->
 
-<div class="section-heading">
-<h2 class="section-title">MEET THE <em>SHOWS.</em></h2>
+<div class="shows-column">
+
+<div class="column-head">
+<h2 class="column-title">THE SHOWS</h2>
 </div>
-
-<p class="section-intro">
-Three live shows. Three different moods. One connection to the new generation. Meet your weekday companion on KIZAZI RADIO.
-</p>
 
 <div class="show-grid">
 
-<!-- MORNING LINKUP -->
-
 <article class="show-card morning">
-
-<div class="card-art">
-<img
-src="/assets/morning-linkup-king-mfumu.png"
-alt="King Mfumu in the golden Morning LinkUp studio"
-loading="lazy">
-</div>
-
-<div class="card-body">
-<div class="show-number">01 / YOUR MORNING CONNECTION</div>
-<div class="live-label">LIVE · MONDAY – FRIDAY</div>
+<img src="/assets/morning-linkup-king-mfumu.png" alt="King Mfumu presenting Morning LinkUp" loading="lazy">
+<div class="show-card-content">
+<span class="show-live">LIVE</span>
 <h3>MORNING LINKUP</h3>
-<div class="tagline">Start Your Day Connected.</div>
-<p>
-Start your day with social conversations, lifestyle, entertainment, trending topics and music. Join the connection and bring your voice to the morning.
-</p>
+<p>Start Your Day Connected.</p>
+<div class="show-time"><span>▦</span> 10:00 AM – 12:00 PM</div>
 </div>
-
-<div class="card-footer">
-<div class="host-label">YOUR HOST</div>
-<div class="host-name">King Mfumu</div>
-<div class="show-time">10:00 AM – 12:00 PM</div>
-<a class="show-link" href="#weekly-schedule">VIEW SCHEDULE ↗</a>
-</div>
-
 </article>
-
-<!-- NO CAP -->
 
 <article class="show-card nocap">
-
-<div class="card-art">
-<img
-src="/assets/no-cap-king-mfumu.png"
-alt="King Mfumu in the red and black No Cap studio"
-loading="lazy">
-</div>
-
-<div class="card-body">
-<div class="show-number">02 / REAL CONVERSATIONS</div>
-<div class="live-label">LIVE · MONDAY – FRIDAY</div>
+<img src="/assets/no-cap-king-mfumu.png" alt="King Mfumu presenting No Cap" loading="lazy">
+<div class="show-card-content">
+<span class="show-live">LIVE</span>
 <h3>NO CAP</h3>
-<div class="tagline">Real Talk. No Filter.</div>
-<p>
-A space for real talk, youth culture, opinions, viral trends, entertainment and conversations that challenge perspectives. No pretending. Just honest discussion.
-</p>
+<p>Real Talk. No Filter.</p>
+<div class="show-time"><span>▦</span> 3:00 PM – 6:00 PM</div>
 </div>
-
-<div class="card-footer">
-<div class="host-label">YOUR HOST</div>
-<div class="host-name">King Mfumu</div>
-<div class="show-time">3:00 PM – 6:00 PM</div>
-<a class="show-link" href="#weekly-schedule">VIEW SCHEDULE ↗</a>
-</div>
-
 </article>
-
-<!-- THE LOVE NIGHTS -->
 
 <article class="show-card love">
-
-<div class="card-art">
-<img
-src="/assets/the-love-nights-king-mfumu.png"
-alt="King Mfumu in the purple and pink Love Nights studio"
-loading="lazy">
-</div>
-
-<div class="card-body">
-<div class="show-number">03 / YOUR NIGHT COMPANION</div>
-<div class="live-label">LIVE · MONDAY – FRIDAY</div>
+<img src="/assets/the-love-nights-king-mfumu.png" alt="King Mfumu presenting The Love Nights" loading="lazy">
+<div class="show-card-content">
+<span class="show-live">LIVE</span>
 <h3>THE LOVE NIGHTS</h3>
-<div class="tagline">Where Love Meets Music.</div>
-<p>
-Love, relationships, romance, heartfelt conversations, dedications and music for every mood. Settle in and let the night tell its story.
-</p>
+<p>Where Love Meets Music.</p>
+<div class="show-time"><span>▦</span> 8:00 PM – 11:00 PM</div>
 </div>
-
-<div class="card-footer">
-<div class="host-label">YOUR HOST</div>
-<div class="host-name">King Mfumu</div>
-<div class="show-time">8:00 PM – 11:00 PM</div>
-<a class="show-link" href="#weekly-schedule">VIEW SCHEDULE ↗</a>
-</div>
-
 </article>
 
 </div>
+
+<!-- LISTEN LIVE PANEL -->
+
+<div class="listen-panel">
+<div class="listen-art">♫</div>
+<div class="listen-copy">
+<strong>LISTEN LIVE <em>NOW</em></strong>
+<small>Catch your favourite shows on KIZAZI RADIO.</small>
 </div>
-</section>
+<a class="listen-btn" href="/#listen">▶ LISTEN LIVE</a>
+</div>
+
+</div>
 
 <!-- WEEKDAY SCHEDULE -->
 
-<section class="content schedule-section" id="weekly-schedule">
-<div class="wrap">
+<div class="schedule-column" id="weekly-schedule">
 
-<div class="schedule-head">
-<div>
-<div class="kicker">02 / WEEKDAY PROGRAMMING</div>
-<h2 class="section-title">YOUR DAY.<br><em>YOUR RADIO.</em></h2>
-</div>
-
-<div class="weekday">MONDAY – FRIDAY</div>
+<div class="column-head">
+<h2 class="column-title">WEEKDAY PROGRAMME</h2>
+<div class="day-pill"><span>▦</span> MONDAY – FRIDAY</div>
 </div>
 
 <div class="schedule-list">
 
-<article class="schedule-row morning-slot">
-<div class="schedule-time">10:00 AM – 12:00 PM</div>
+<div class="schedule-row morning">
+<div class="schedule-time">10:00 AM –<br>12:00 PM</div>
+<div class="schedule-icon">♩</div>
 <div class="schedule-info">
-<div class="schedule-name">MORNING LINKUP</div>
-<div class="schedule-host">Start Your Day Connected. · With King Mfumu</div>
+<div class="schedule-name">Morning LinkUp</div>
+<div class="schedule-desc">Start Your Day Connected · With King Mfumu</div>
 </div>
-<div class="schedule-status live-status">LIVE</div>
-</article>
+<div class="status live">● LIVE</div>
+</div>
 
-<article class="schedule-row playlist">
-<div class="schedule-time">12:00 PM – 3:00 PM</div>
+<div class="schedule-row playlist">
+<div class="schedule-time">12:00 PM –<br>3:00 PM</div>
+<div class="schedule-icon">♫</div>
 <div class="schedule-info">
-<div class="schedule-name">KIZAZI PLAYLIST</div>
-<div class="schedule-host">Your soundtrack through the day</div>
+<div class="schedule-name">Kizazi Playlist</div>
+<div class="schedule-desc">Your soundtrack through the day</div>
 </div>
-<div class="schedule-status">MUSIC</div>
-</article>
+<div class="status">MUSIC</div>
+</div>
 
-<article class="schedule-row nocap-slot">
-<div class="schedule-time">3:00 PM – 6:00 PM</div>
+<div class="schedule-row nocap">
+<div class="schedule-time">3:00 PM –<br>6:00 PM</div>
+<div class="schedule-icon">♩</div>
 <div class="schedule-info">
-<div class="schedule-name">NO CAP</div>
-<div class="schedule-host">Real Talk. No Filter. · With King Mfumu</div>
+<div class="schedule-name">No Cap</div>
+<div class="schedule-desc">Real Talk. No Filter · With King Mfumu</div>
 </div>
-<div class="schedule-status live-status">LIVE</div>
-</article>
+<div class="status live">● LIVE</div>
+</div>
 
-<article class="schedule-row playlist">
-<div class="schedule-time">6:00 PM – 8:00 PM</div>
+<div class="schedule-row playlist">
+<div class="schedule-time">6:00 PM –<br>8:00 PM</div>
+<div class="schedule-icon">♫</div>
 <div class="schedule-info">
-<div class="schedule-name">KIZAZI PLAYLIST</div>
-<div class="schedule-host">Music for your evening</div>
+<div class="schedule-name">Kizazi Playlist</div>
+<div class="schedule-desc">Music for your evening</div>
 </div>
-<div class="schedule-status">MUSIC</div>
-</article>
+<div class="status">MUSIC</div>
+</div>
 
-<article class="schedule-row love-slot">
-<div class="schedule-time">8:00 PM – 11:00 PM</div>
+<div class="schedule-row love">
+<div class="schedule-time">8:00 PM –<br>11:00 PM</div>
+<div class="schedule-icon">♩</div>
 <div class="schedule-info">
-<div class="schedule-name">THE LOVE NIGHTS</div>
-<div class="schedule-host">Where Love Meets Music. · With King Mfumu</div>
+<div class="schedule-name">The Love Nights</div>
+<div class="schedule-desc">Where Love Meets Music · With King Mfumu</div>
 </div>
-<div class="schedule-status live-status">LIVE</div>
-</article>
+<div class="status live">● LIVE</div>
+</div>
 
-<article class="schedule-row playlist">
-<div class="schedule-time">11:00 PM – 10:00 AM</div>
+<div class="schedule-row playlist">
+<div class="schedule-time">11:00 PM –<br>10:00 AM</div>
+<div class="schedule-icon">♫</div>
 <div class="schedule-info">
-<div class="schedule-name">KIZAZI PLAYLIST</div>
-<div class="schedule-host">Overnight music selection</div>
+<div class="schedule-name">Kizazi Playlist</div>
+<div class="schedule-desc">Overnight music selection</div>
 </div>
-<div class="schedule-status">MUSIC</div>
-</article>
+<div class="status">MUSIC</div>
+</div>
 
 </div>
+</div>
+
 </div>
 </section>
 
@@ -1870,22 +469,6 @@ Three shows. Different moods. One voice connecting you to music, ideas and conve
 </div>
 
 </div>
-
-</div>
-</section>
-
-<!-- CALL TO ACTION -->
-
-<section class="cta">
-<div class="wrap cta-box">
-
-<div class="cta-content">
-<h2>YOUR RADIO.<br><em>YOUR GENERATION.</em></h2>
-<p>Join the conversation and stay connected to the sound of a new generation.</p>
-</div>
-
-<a class="button" href="/#listen">LISTEN LIVE ↗</a>
-
 </div>
 </section>
 
@@ -1922,25 +505,25 @@ Three shows. Different moods. One voice connecting you to music, ideas and conve
 </footer>
 
 <script>
-const menu = document.querySelector('.menu');
-const nav = document.querySelector('.nav');
+const menu=document.querySelector('.menu');
+const nav=document.querySelector('.nav');
 
-menu.addEventListener('click', () => {
- const open = nav.classList.toggle('open');
- menu.setAttribute('aria-expanded', String(open));
- menu.textContent = open ? '×' : '☰';
+menu.addEventListener('click',()=>{
+const open=nav.classList.toggle('open');
+menu.setAttribute('aria-expanded',String(open));
+menu.textContent=open?'×':'☰';
 });
 
-nav.querySelectorAll('a').forEach(link => {
- link.addEventListener('click', () => {
-  nav.classList.remove('open');
-  menu.setAttribute('aria-expanded', 'false');
-  menu.textContent = '☰';
- });
-});
+nav.querySelectorAll('a').forEach(link=>
+link.addEventListener('click',()=>{
+nav.classList.remove('open');
+menu.setAttribute('aria-expanded','false');
+menu.textContent='☰';
+})
+);
 
-document.getElementById('year').textContent =
- new Date().getFullYear();
+const year=document.getElementById('year');
+if(year) year.textContent=new Date().getFullYear();
 </script>
 
 </body>
