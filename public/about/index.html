@@ -3,688 +3,539 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080808">
-<meta name="description" content="KIZAZI RADIO — New Generation. New Sound. Discover our sound, culture and vision.">
-<title>About KIZAZI — New Generation. New Sound.</title>
+<meta name="description" content="KIZAZI RADIO — New Generation. New Sound.">
+<title>Inside KIZAZI | KIZAZI RADIO</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --black:#070707;
-  --panel:#101010;
-  --panel2:#171717;
-  --white:#f8f7f3;
+  --bg:#080808;
+  --surface:#111;
+  --white:#f6f5f1;
   --red:#ff2638;
-  --red2:#ff5260;
-  --muted:#929292;
-  --line:rgba(255,255,255,.13);
-  --display:'Anton',sans-serif;
+  --grey:#858585;
+  --line:rgba(255,255,255,.14);
+  --display:'Archivo Black',sans-serif;
   --body:'DM Sans',sans-serif;
   --mono:'Space Mono',monospace;
-  --glow:0 0 12px rgba(255,38,56,.65),0 0 35px rgba(255,38,56,.3);
 }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--body);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+::selection{background:var(--red);color:white}
 
-* {box-sizing:border-box;margin:0;padding:0}
-html {scroll-behavior:smooth}
-body {
-  background:var(--black);
-  color:var(--white);
-  font-family:var(--body);
-  overflow-x:hidden;
-}
-a {color:inherit;text-decoration:none}
-button {font:inherit}
-::selection {background:var(--red);color:white}
+/* NAVIGATION */
 
-/* BACKGROUND TEXTURE */
-
-body::before {
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:100;
-  opacity:.035;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
-}
-
-/* HEADER */
-
-.header {
-  height:82px;
-  padding:0 5%;
+.navbar{
+  height:76px;
+  padding:0 4%;
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  background:rgba(7,7,7,.92);
+  align-items:center;
   border-bottom:1px solid var(--line);
   position:relative;
-  z-index:50;
-  backdrop-filter:blur(16px);
+  z-index:30;
+  background:#080808;
 }
-.logo img {width:145px;display:block}
-.nav {display:flex;align-items:center;gap:25px}
-.nav a {
+.logo img{width:135px;display:block}
+.navlinks{display:flex;align-items:center;gap:27px}
+.navlinks a{
   font-size:10px;
   font-weight:800;
-  letter-spacing:1px;
   text-transform:uppercase;
-  transition:.25s;
+  letter-spacing:1px;
+  color:#aaa;
+  transition:.2s;
 }
-.nav a:hover,.nav a.active {
-  color:var(--red);
-  text-shadow:0 0 12px rgba(255,38,56,.7);
-}
-.nav .live {
+.navlinks a:hover,.navlinks a.active{color:var(--red)}
+.navlinks .listen{
+  color:white;
   background:var(--red);
-  color:white;
-  padding:14px 19px;
-  box-shadow:0 0 18px rgba(255,38,56,.3);
+  padding:13px 18px;
 }
-.nav .live:hover {
-  color:white;
-  background:#d90019;
-  box-shadow:var(--glow);
-}
-.menu {
+.navlinks .listen:hover{background:white;color:black}
+.menu{
   display:none;
-  background:none;
   border:0;
+  background:none;
   color:white;
   font-size:27px;
   cursor:pointer;
 }
 
-/* HERO */
+/* HERO: MAGAZINE COVER */
 
-.hero {
-  min-height:760px;
-  padding:42px 5% 55px;
+.hero{
+  min-height:690px;
+  padding:35px 4% 40px;
+  display:grid;
+  grid-template-columns:1fr .9fr;
+  gap:25px;
   position:relative;
   overflow:hidden;
+  border-bottom:1px solid var(--line);
+}
+.hero-left{
   display:flex;
   flex-direction:column;
   justify-content:space-between;
-  isolation:isolate;
-  border-bottom:1px solid var(--line);
+  position:relative;
+  z-index:2;
 }
-.hero::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-3;
-  background:
-    radial-gradient(ellipse at 76% 45%,rgba(255,38,56,.19),transparent 38%),
-    radial-gradient(ellipse at 12% 90%,rgba(255,38,56,.09),transparent 40%),
-    #080808;
-}
-.hero::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-2;
-  opacity:.22;
-  background-image:
-    linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
-  background-size:45px 45px;
-  mask-image:linear-gradient(to bottom,black,transparent 85%);
-}
-.hero-top {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.eyebrow {
+.meta{
   color:var(--red);
   font:10px var(--mono);
   letter-spacing:2px;
-  text-transform:uppercase;
 }
-.edition {
-  color:#777;
-  font:9px var(--mono);
-  letter-spacing:1px;
-}
-.hero-content {
-  position:relative;
-  z-index:3;
-  margin-top:70px;
-}
-.hero-kicker {
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  color:white;
+.hero-title{margin-top:65px}
+.hero-title .overline{
+  color:#999;
   font:10px var(--mono);
-  letter-spacing:2px;
-  margin-bottom:25px;
+  letter-spacing:3px;
+  margin-bottom:20px;
 }
-.live-dot {
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:var(--red);
-  box-shadow:var(--glow);
-  animation:blink 1.5s infinite;
-}
-@keyframes blink {
-  50% {opacity:.3;transform:scale(.75)}
-}
-.hero h1 {
-  font:400 clamp(95px,16.5vw,225px)/.76 var(--display);
-  letter-spacing:-4px;
+.hero-title h1{
+  font:400 clamp(70px,9.5vw,145px)/.82 var(--display);
+  letter-spacing:-7px;
   text-transform:uppercase;
-  position:relative;
-  z-index:3;
 }
-.hero h1 .red {
-  display:block;
+.hero-title h1 .red{
   color:var(--red);
-  text-shadow:0 0 15px rgba(255,38,56,.5),0 0 65px rgba(255,38,56,.25);
-  margin-left:9%;
-}
-.hero h1 .outline {
   display:block;
+  text-shadow:0 0 35px rgba(255,38,56,.3);
+}
+.hero-title h1 .stroke{
   color:transparent;
-  -webkit-text-stroke:1.5px white;
-  margin-left:0;
+  -webkit-text-stroke:1px white;
+  display:block;
 }
-.hero-bottom {
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  gap:25px;
-  position:relative;
-  z-index:3;
-}
-.hero-bottom p {
-  max-width:390px;
+.hero-description{
+  max-width:370px;
   color:#aaa;
   font-size:14px;
   line-height:1.9;
+  margin-top:35px;
 }
-.hero-bottom .scroll {
+.hero-foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:45px;
   font:9px var(--mono);
-  letter-spacing:2px;
-  color:var(--red);
-  text-transform:uppercase;
+  color:#777;
+  letter-spacing:1px;
 }
+.hero-foot span:last-child{color:var(--red)}
 
-/* HERO SOUND GRAPHIC */
+/* HERO RIGHT ARTWORK */
 
-.sound-orbit {
-  position:absolute;
-  width:min(45vw,570px);
-  aspect-ratio:1;
-  right:3%;
-  top:48%;
-  transform:translateY(-43%);
-  border:1px solid rgba(255,38,56,.4);
-  border-radius:50%;
-  z-index:0;
+.hero-art{
+  position:relative;
+  min-height:570px;
+  background:#121212;
+  overflow:hidden;
   display:flex;
   justify-content:center;
   align-items:center;
-  pointer-events:none;
-  box-shadow:inset 0 0 70px rgba(255,38,56,.06),0 0 50px rgba(255,38,56,.07);
+  isolation:isolate;
 }
-.sound-orbit::before,.sound-orbit::after {
+.hero-art::before{
   content:"";
-  position:absolute;
-  border:1px solid rgba(255,38,56,.23);
-  border-radius:50%;
-}
-.sound-orbit::before {inset:10%}
-.sound-orbit::after {inset:22%}
-.orbit-inner {
-  width:38%;
-  aspect-ratio:1;
-  border-radius:50%;
-  background:var(--red);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  box-shadow:0 0 20px var(--red),0 0 75px rgba(255,38,56,.6);
-  animation:orbitPulse 3.5s ease-in-out infinite;
-}
-.orbit-inner strong {
-  font:400 clamp(38px,5vw,65px) var(--display);
-}
-.orbit-inner span {
-  font:8px var(--mono);
-  letter-spacing:2px;
-}
-.orbit-dash {
   position:absolute;
   inset:0;
-  border:1px dashed rgba(255,255,255,.35);
-  border-radius:50%;
-  animation:spin 32s linear infinite;
+  z-index:-1;
+  background:
+    linear-gradient(135deg,transparent 45%,rgba(255,38,56,.13)),
+    repeating-linear-gradient(0deg,transparent 0 35px,rgba(255,255,255,.035) 36px);
 }
-.orbit-dash::after {
+.art-circle{
+  width:72%;
+  aspect-ratio:1;
+  border-radius:50%;
+  border:1px solid rgba(255,38,56,.6);
+  position:absolute;
+  display:grid;
+  place-items:center;
+  box-shadow:0 0 70px rgba(255,38,56,.08),inset 0 0 70px rgba(255,38,56,.08);
+}
+.art-circle::before,.art-circle::after{
   content:"";
   position:absolute;
-  top:-5px;
-  left:50%;
-  width:10px;
-  height:10px;
-  background:white;
+  border:1px solid rgba(255,38,56,.35);
   border-radius:50%;
-  box-shadow:0 0 15px white;
 }
-@keyframes spin {to{transform:rotate(360deg)}}
-@keyframes orbitPulse {
-  50% {transform:scale(1.07);box-shadow:0 0 35px var(--red),0 0 100px rgba(255,38,56,.65)}
-}
-
-/* EQUALIZER */
-
-.equalizer {
-  height:32px;
-  display:flex;
-  align-items:center;
-  gap:4px;
-  margin-top:30px;
-}
-.equalizer span {
-  width:4px;
-  height:var(--h);
+.art-circle::before{inset:10%}
+.art-circle::after{inset:22%}
+.art-core{
+  width:43%;
+  aspect-ratio:1;
+  border-radius:50%;
   background:var(--red);
-  box-shadow:0 0 9px rgba(255,38,56,.7);
-  animation:equalize var(--speed) ease-in-out infinite alternate;
+  display:grid;
+  place-items:center;
+  font:400 clamp(50px,8vw,100px) var(--display);
+  color:white;
+  box-shadow:0 0 25px var(--red),0 0 100px rgba(255,38,56,.45);
+  animation:throb 3s ease-in-out infinite;
 }
-@keyframes equalize {
-  from {transform:scaleY(.25)}
-  to {transform:scaleY(1)}
+@keyframes throb{
+  50%{transform:scale(1.07);box-shadow:0 0 40px var(--red),0 0 120px rgba(255,38,56,.55)}
+}
+.art-ring{
+  position:absolute;
+  inset:0;
+  border:1px dashed rgba(255,255,255,.45);
+  border-radius:50%;
+  animation:rotate 35s linear infinite;
+}
+@keyframes rotate{to{transform:rotate(360deg)}}
+.art-caption{
+  position:absolute;
+  top:25px;
+  left:25px;
+  font:9px/1.8 var(--mono);
+  color:#aaa;
+  letter-spacing:1px;
+}
+.art-number{
+  position:absolute;
+  bottom:22px;
+  right:25px;
+  font:400 75px/.8 var(--display);
+  color:var(--red);
+}
+.art-side{
+  position:absolute;
+  right:20px;
+  top:50%;
+  transform:translateY(-50%);
+  writing-mode:vertical-rl;
+  color:#777;
+  font:9px var(--mono);
+  letter-spacing:3px;
 }
 
-/* MARQUEE */
+/* TICKER */
 
-.marquee {
+.ticker{
   background:var(--red);
   color:white;
-  padding:16px 0;
+  padding:14px 0;
   overflow:hidden;
   white-space:nowrap;
 }
-.marquee-track {
+.ticker-track{
   display:flex;
-  gap:30px;
   width:max-content;
-  animation:move 27s linear infinite;
-  font:30px var(--display);
+  animation:marquee 25s linear infinite;
+  font:28px var(--display);
+  gap:30px;
 }
-.marquee-track span {display:flex;gap:30px;align-items:center}
-.marquee-track i {
-  font-style:normal;
-  color:var(--black);
-}
-@keyframes move {to{transform:translateX(-50%)}}
+.ticker-track span{display:flex;gap:30px;align-items:center}
+.ticker-track i{font-style:normal;color:#080808}
+@keyframes marquee{to{transform:translateX(-50%)}}
 
-/* INTRO */
+/* INTRO: SPLIT STATEMENT */
 
-.intro {
-  padding:145px 8%;
+.intro{
+  padding:120px 7%;
   display:grid;
-  grid-template-columns:.7fr 1.5fr;
-  gap:9%;
+  grid-template-columns:.65fr 1.5fr;
+  gap:8%;
 }
-.label {
+.section-tag{
   color:var(--red);
   font:10px var(--mono);
   letter-spacing:2px;
   text-transform:uppercase;
 }
-.intro h2 {
-  font:400 clamp(55px,8vw,105px)/.9 var(--display);
+.intro h2{
+  font:400 clamp(55px,8vw,105px)/.92 var(--display);
+  letter-spacing:-4px;
   text-transform:uppercase;
-  letter-spacing:-2px;
 }
-.intro h2 span {
-  color:var(--red);
-  text-shadow:0 0 24px rgba(255,38,56,.35);
-}
-.intro-copy {
+.intro h2 span{color:var(--red)}
+.intro-copy{
   max-width:650px;
   margin-top:35px;
 }
-.intro-copy p {
+.intro-copy p{
   color:#aaa;
   font-size:15px;
   line-height:1.95;
-  margin-bottom:20px;
-}
-.intro-signature {
-  display:inline-block;
-  margin-top:25px;
-  border-bottom:2px solid var(--red);
-  padding-bottom:9px;
-  color:white;
-  font:10px var(--mono);
-  letter-spacing:2px;
+  margin-bottom:18px;
 }
 
-/* CULTURE */
+/* BENTO CULTURE */
 
-.culture {
-  background:#0d0d0d;
-  padding:110px 6%;
-  position:relative;
+.universe{
+  padding:95px 5%;
+  background:#101010;
 }
-.culture::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:radial-gradient(ellipse at 50% 0%,rgba(255,38,56,.08),transparent 60%);
-}
-.culture-head {
+.universe-head{
   display:flex;
   justify-content:space-between;
   align-items:flex-end;
-  gap:30px;
-  margin-bottom:55px;
-  position:relative;
+  margin-bottom:35px;
+  gap:25px;
 }
-.culture-head h2 {
-  margin-top:18px;
-  font:400 clamp(60px,9vw,115px)/.85 var(--display);
+.universe-head h2{
+  font:400 clamp(45px,7vw,85px)/.9 var(--display);
   text-transform:uppercase;
+  margin-top:17px;
 }
-.culture-head h2 span {color:var(--red)}
-.culture-head p {
+.universe-head h2 span{color:var(--red)}
+.universe-head p{
+  max-width:250px;
   color:#999;
-  font-size:13px;
+  font-size:12px;
   line-height:1.8;
-  max-width:260px;
 }
-.culture-grid {
+.bento{
   display:grid;
-  grid-template-columns:repeat(6,1fr);
+  grid-template-columns:1.15fr 1fr 1fr;
+  grid-template-rows:230px 230px;
   gap:12px;
-  position:relative;
 }
-.culture-card {
-  grid-column:span 2;
-  min-height:255px;
-  background:var(--panel);
-  border:1px solid var(--line);
+.bento-item{
   padding:25px;
+  background:#171717;
+  border:1px solid var(--line);
   position:relative;
+  overflow:hidden;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
-  overflow:hidden;
-  transition:.35s;
-}
-.culture-card:nth-child(4) {grid-column:2/span 2}
-.culture-card::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  border:1px solid transparent;
   transition:.3s;
-  pointer-events:none;
 }
-.culture-card:hover {
-  transform:translateY(-7px);
-  background:#161010;
+.bento-item:hover{
   border-color:var(--red);
-  box-shadow:0 0 18px rgba(255,38,56,.15),inset 0 0 35px rgba(255,38,56,.06);
+  box-shadow:inset 0 0 40px rgba(255,38,56,.08),0 0 20px rgba(255,38,56,.1);
+  transform:translateY(-3px);
 }
-.culture-card:hover::before {
-  border-color:rgba(255,38,56,.5);
-  box-shadow:var(--glow);
+.bento-item.music{
+  grid-row:span 2;
+  background:var(--red);
+  color:white;
 }
-.culture-card .num {
-  color:var(--red);
-  font:10px var(--mono);
-}
-.culture-card h3 {
-  font:400 clamp(27px,3vw,39px)/.95 var(--display);
+.bento-item.music .bento-number{color:white}
+.bento-number{font:10px var(--mono);color:var(--red)}
+.bento-item h3{
+  font:400 clamp(25px,3.2vw,43px)/.95 var(--display);
   text-transform:uppercase;
+  max-width:270px;
   position:relative;
   z-index:2;
 }
-.culture-card p {
-  margin-top:12px;
-  max-width:230px;
-  color:#999;
-  font-size:12px;
+.bento-item p{
+  color:#aaa;
+  font-size:11px;
   line-height:1.7;
-  position:relative;
-  z-index:2;
+  max-width:240px;
+  margin-top:10px;
 }
-.culture-card .glyph {
+.bento-item.music p{color:rgba(255,255,255,.8)}
+.bento-symbol{
   position:absolute;
   right:12px;
-  bottom:-32px;
+  bottom:-30px;
   font:180px/.8 var(--display);
-  color:rgba(255,38,56,.08);
-  transition:.3s;
-}
-.culture-card:hover .glyph {
-  color:rgba(255,38,56,.2);
-  text-shadow:0 0 30px rgba(255,38,56,.3);
-}
-
-/* MISSION / VISION */
-
-.purpose {
-  padding:130px 8%;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10%;
-}
-.purpose-card {
-  padding:25px 0;
-  position:relative;
-}
-.purpose-card + .purpose-card {
-  border-left:1px solid var(--line);
-  padding-left:12%;
-}
-.purpose-card .index {
-  font:10px var(--mono);
-  color:var(--red);
-}
-.purpose-card h2 {
-  margin:30px 0;
-  font:400 clamp(50px,7vw,85px)/.9 var(--display);
-  text-transform:uppercase;
-}
-.purpose-card h2 span {
-  color:var(--red);
-  text-shadow:0 0 20px rgba(255,38,56,.3);
-}
-.purpose-card p {
-  max-width:410px;
-  color:#aaa;
-  font-size:14px;
-  line-height:1.95;
-}
-
-/* FOUNDER */
-
-.founder {
-  padding:110px 6%;
-  background:#101010;
-  position:relative;
-  overflow:hidden;
-}
-.founder::before {
-  content:"KIZAZI";
-  position:absolute;
-  left:-10px;
-  top:25px;
-  font:400 22vw/.8 var(--display);
-  color:rgba(255,255,255,.025);
-  white-space:nowrap;
+  color:rgba(255,255,255,.055);
   pointer-events:none;
 }
-.founder-head {
+.bento-item.music .bento-symbol{color:rgba(0,0,0,.12)}
+.bento-item .corner{
+  position:absolute;
+  top:0;right:0;
+  width:28px;height:28px;
+  border-top:2px solid var(--red);
+  border-right:2px solid var(--red);
+}
+.bento-item.music .corner{border-color:white}
+
+/* MISSION AND VISION */
+
+.direction{
+  padding:110px 7%;
+}
+.direction-head{
+  margin-bottom:45px;
   display:flex;
   justify-content:space-between;
   align-items:flex-end;
-  gap:30px;
-  margin-bottom:55px;
+}
+.direction-head h2{
+  font:400 clamp(45px,7vw,85px)/.9 var(--display);
+  text-transform:uppercase;
+  margin-top:15px;
+}
+.direction-head h2 span{color:var(--red)}
+.direction-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.direction-card{
+  min-height:330px;
+  padding:35px;
+  background:#111;
+  border:1px solid var(--line);
+  position:relative;
+  overflow:hidden;
+}
+.direction-card .big-index{
+  position:absolute;
+  right:10px;
+  top:-30px;
+  font:230px/.9 var(--display);
+  color:rgba(255,255,255,.035);
+}
+.direction-card .mini{
+  font:10px var(--mono);
+  color:var(--red);
+}
+.direction-card h3{
+  font:400 clamp(45px,6vw,72px)/.9 var(--display);
+  text-transform:uppercase;
+  margin:65px 0 25px;
   position:relative;
   z-index:2;
 }
-.founder-head h2 {
-  margin-top:20px;
-  font:400 clamp(60px,9vw,112px)/.84 var(--display);
+.direction-card h3 span{color:var(--red)}
+.direction-card p{
+  color:#aaa;
+  max-width:420px;
+  font-size:13px;
+  line-height:1.9;
+  position:relative;
+  z-index:2;
+}
+
+/* FOUNDER: COVER FEATURE */
+
+.founder{
+  padding:100px 5%;
+  background:#121212;
+}
+.founder-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:35px;
+}
+.founder-top h2{
+  font:400 clamp(50px,8vw,100px)/.85 var(--display);
   text-transform:uppercase;
 }
-.founder-head h2 span {
-  color:var(--red);
-  text-shadow:0 0 24px rgba(255,38,56,.35);
-}
-.founder-head .issue {
+.founder-top h2 span{color:var(--red)}
+.founder-top .edition{
   color:#777;
   font:9px/1.8 var(--mono);
   text-align:right;
 }
-.founder-layout {
+.founder-cover{
   display:grid;
-  grid-template-columns:1.05fr 1fr;
-  gap:7%;
-  align-items:center;
-  position:relative;
-  z-index:2;
+  grid-template-columns:1.1fr .9fr;
+  min-height:570px;
+  background:#080808;
+  border:1px solid var(--line);
 }
-.portrait {
-  min-height:590px;
+.founder-photo{
   position:relative;
-  background:#1a1a1a;
+  min-height:570px;
   overflow:hidden;
-  border:1px solid rgba(255,38,56,.35);
-  box-shadow:0 0 30px rgba(255,38,56,.08);
 }
-.portrait::before {
-  content:"01";
-  position:absolute;
-  top:0;
-  left:15px;
-  font:220px/.9 var(--display);
-  color:rgba(255,255,255,.06);
-}
-.portrait img {
-  position:absolute;
-  inset:0;
+.founder-photo img{
   width:100%;
   height:100%;
+  position:absolute;
+  inset:0;
   object-fit:cover;
   object-position:center top;
   filter:grayscale(100%);
 }
-.portrait::after {
-  content:"";
+.photo-index{
   position:absolute;
-  inset:0;
-  border:1px solid rgba(255,38,56,.3);
-  box-shadow:inset 0 0 45px rgba(255,38,56,.08);
-  pointer-events:none;
-}
-.portrait-tag {
-  position:absolute;
-  bottom:20px;
-  left:20px;
-  z-index:2;
+  top:20px;left:20px;
   background:var(--red);
   color:white;
-  padding:13px 16px;
+  padding:12px 15px;
+  font:9px var(--mono);
+}
+.founder-text{
+  padding:50px 9%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.founder-text .section-tag{margin-bottom:25px}
+.founder-text h3{
+  font:400 clamp(36px,4.5vw,61px)/.95 var(--display);
+  text-transform:uppercase;
+}
+.founder-text h3 span{color:var(--red)}
+.founder-role{
+  color:var(--red);
+  font:10px var(--mono);
+  letter-spacing:1px;
+  margin:22px 0;
+  text-transform:uppercase;
+}
+.founder-text p{
+  color:#aaa;
+  font-size:13px;
+  line-height:1.95;
+  margin-bottom:17px;
+}
+.founder-signature{
+  border-top:1px solid var(--line);
+  padding-top:20px;
+  margin-top:15px;
   font:9px var(--mono);
   letter-spacing:1px;
-  box-shadow:var(--glow);
-}
-.founder-copy .label {margin-bottom:25px}
-.founder-copy h3 {
-  font:400 clamp(40px,5vw,67px)/.91 var(--display);
-  text-transform:uppercase;
-}
-.founder-copy h3 span {
-  color:var(--red);
-  text-shadow:0 0 25px rgba(255,38,56,.3);
-}
-.role {
-  display:inline-block;
-  margin:25px 0;
-  color:var(--red);
-  font:10px var(--mono);
-  letter-spacing:1px;
-  text-transform:uppercase;
-}
-.founder-copy p {
-  color:#aaa;
-  font-size:14px;
-  line-height:1.95;
-  margin-bottom:18px;
-}
-.founder-quote {
-  border-top:1px solid var(--line);
-  margin-top:35px;
-  padding-top:22px;
-  font:10px var(--mono);
-  letter-spacing:1px;
-  color:white;
 }
 
-/* FINAL CTA */
+/* CLOSING */
 
-.final {
-  min-height:520px;
-  padding:100px 7%;
-  position:relative;
-  overflow:hidden;
+.closing{
+  padding:100px 6%;
+  min-height:470px;
   background:var(--red);
   color:white;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
+  position:relative;
+  overflow:hidden;
 }
-.final::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  opacity:.13;
-  background-image:
-    linear-gradient(rgba(0,0,0,.5) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,0,0,.5) 1px,transparent 1px);
-  background-size:35px 35px;
-}
-.final::after {
+.closing::after{
   content:"KZ";
   position:absolute;
-  right:-25px;
-  bottom:-100px;
-  font:400 400px/.8 var(--display);
+  right:-20px;
+  bottom:-90px;
+  font:400 380px/.8 var(--display);
   color:rgba(0,0,0,.1);
 }
-.final .label {
-  color:rgba(255,255,255,.75);
-  position:relative;
-  z-index:2;
-}
-.final h2 {
-  position:relative;
-  z-index:2;
-  font:400 clamp(65px,12vw,155px)/.82 var(--display);
+.closing .section-tag{color:rgba(255,255,255,.7)}
+.closing h2{
+  font:400 clamp(60px,11vw,140px)/.83 var(--display);
   text-transform:uppercase;
-  letter-spacing:-3px;
+  position:relative;
+  z-index:2;
 }
-.final h2 span {
+.closing h2 span{
   display:block;
-  color:var(--black);
-  margin-left:9%;
+  color:#080808;
+  margin-left:10%;
 }
-.final-bottom {
+.closing-bottom{
   display:flex;
   justify-content:space-between;
   align-items:flex-end;
@@ -692,64 +543,55 @@ body::before {
   position:relative;
   z-index:2;
 }
-.final-bottom p {
-  max-width:350px;
+.closing-bottom p{
+  max-width:340px;
   font-size:13px;
-  line-height:1.9;
+  line-height:1.8;
 }
-.final-bottom a {
-  padding:18px 24px;
-  background:var(--black);
+.closing-bottom a{
+  background:#080808;
   color:white;
+  padding:18px 23px;
   font-size:10px;
   font-weight:900;
-  letter-spacing:1px;
   text-transform:uppercase;
-  transition:.25s;
+  letter-spacing:1px;
+  transition:.2s;
 }
-.final-bottom a:hover {
-  background:white;
-  color:var(--black);
-  box-shadow:0 0 20px rgba(255,255,255,.4);
-}
+.closing-bottom a:hover{background:white;color:black}
 
 /* FOOTER */
 
-.footer {
-  background:#050505;
-  padding:55px 6% 25px;
-}
-.footer-main {
+.footer{padding:50px 5% 23px;background:#050505}
+.footer-main{
   display:flex;
   justify-content:space-between;
-  gap:50px;
-  padding-bottom:45px;
+  gap:40px;
+  padding-bottom:40px;
   border-bottom:1px solid var(--line);
 }
-.footer-logo img {width:140px;margin-bottom:18px}
-.footer-logo p {
-  max-width:260px;
+.footer-logo img{width:140px;margin-bottom:18px}
+.footer-logo p{
   color:#777;
   font-size:12px;
   line-height:1.8;
+  max-width:260px;
 }
-.footer-links {display:flex;gap:65px}
-.footer-col h4 {
+.footer-links{display:flex;gap:60px}
+.footer-col h4{
   color:var(--red);
   font:10px var(--mono);
   margin-bottom:20px;
-  letter-spacing:1px;
 }
-.footer-col a {
+.footer-col a{
   display:block;
-  color:#999;
   font-size:12px;
+  color:#999;
   margin-bottom:13px;
-  transition:.2s;
 }
-.footer-col a:hover {color:var(--red)}
-.footer-bottom {
-  padding-top:22px;
+.footer-col a:hover{color:white}
+.footer-bottom{
+  padding-top:20px;
   display:flex;
   justify-content:space-between;
   gap:20px;
@@ -757,235 +599,218 @@ body::before {
   font:9px var(--mono);
 }
 
-/* SCROLL REVEAL */
+/* ANIMATION */
 
-.reveal {
+.reveal{
   opacity:0;
-  transform:translateY(28px);
-  transition:opacity .8s ease,transform .8s ease;
+  transform:translateY(25px);
+  transition:opacity .7s ease,transform .7s ease;
 }
-.reveal.visible {
-  opacity:1;
-  transform:translateY(0);
-}
+.reveal.visible{opacity:1;transform:translateY(0)}
 
-@media(prefers-reduced-motion:reduce) {
-  *,*::before,*::after {
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
     animation-duration:.01ms!important;
     transition-duration:.01ms!important;
     scroll-behavior:auto!important;
   }
-  .reveal {opacity:1;transform:none}
+  .reveal{opacity:1;transform:none}
 }
 
 /* TABLET */
 
-@media(max-width:1000px) {
-  .nav {gap:13px}
-  .nav a {font-size:9px}
-  .sound-orbit {width:48vw;right:-5%}
-  .intro {grid-template-columns:1fr;gap:35px}
-  .culture-card {grid-column:span 3}
-  .culture-card:nth-child(4) {grid-column:span 3}
-  .culture-card:last-child {grid-column:2/span 4}
-  .founder-layout {gap:5%}
-  .portrait {min-height:500px}
+@media(max-width:950px){
+  .navlinks{gap:13px}
+  .navlinks a{font-size:9px}
+  .hero-title h1{font-size:10vw}
+  .bento{grid-template-columns:1fr 1fr;grid-template-rows:220px 220px 220px}
+  .bento-item.music{grid-row:span 2}
+  .bento-item:last-child{grid-column:2}
+  .founder-cover{grid-template-columns:1fr 1fr}
 }
 
 /* MOBILE */
 
-@media(max-width:720px) {
-  .header {height:72px;padding:0 6%}
-  .logo img {width:125px}
-  .menu {display:block}
-  .nav {
+@media(max-width:700px){
+  .navbar{height:70px;padding:0 6%}
+  .logo img{width:120px}
+  .menu{display:block}
+  .navlinks{
     display:none;
     position:absolute;
-    top:72px;
+    top:70px;
     left:0;right:0;
-    background:#080808;
     padding:20px 6% 30px;
+    background:#080808;
     flex-direction:column;
     align-items:stretch;
     gap:0;
     border-bottom:1px solid var(--line);
   }
-  .nav.open {display:flex}
-  .nav a {
+  .navlinks.open{display:flex}
+  .navlinks a{
     padding:15px 0;
     border-bottom:1px solid var(--line);
     font-size:12px;
   }
-  .nav .live {
-    text-align:center;
+  .navlinks .listen{
     margin-top:15px;
+    text-align:center;
     padding:16px;
   }
 
-  .hero {min-height:690px;padding:30px 6% 45px}
-  .hero-top {align-items:flex-start}
-  .eyebrow {font-size:8px;letter-spacing:1px}
-  .edition {font-size:7px}
-  .hero-content {margin-top:100px}
-  .hero h1 {
-    font-size:clamp(78px,16.5vw,120px);
-    letter-spacing:-2px;
+  .hero{
+    padding:30px 6% 35px;
+    min-height:auto;
+    grid-template-columns:1fr;
+    gap:25px;
   }
-  .hero h1 .red {margin-left:0}
-  .sound-orbit {
-    width:310px;
-    right:-115px;
-    top:48%;
-    opacity:.65;
+  .hero-title{margin-top:65px}
+  .hero-title h1{
+    font-size:clamp(73px,15vw,110px);
+    letter-spacing:-4px;
   }
-  .hero-bottom {align-items:flex-end}
-  .hero-bottom p {font-size:12px;max-width:270px}
-  .hero-bottom .scroll {font-size:7px}
-  .equalizer {margin-top:22px}
-  .marquee-track {font-size:23px}
+  .hero-description{font-size:13px;max-width:310px}
+  .hero-art{min-height:350px}
+  .art-circle{width:65%}
+  .art-number{font-size:55px}
+  .hero-foot{margin-top:30px}
+  .ticker-track{font-size:22px}
 
-  .intro {padding:95px 6%;gap:30px}
-  .intro h2 {font-size:65px}
-  .intro-copy p {font-size:14px}
-
-  .culture {padding:85px 6%}
-  .culture-head {display:block}
-  .culture-head h2 {font-size:68px}
-  .culture-head p {margin-top:22px}
-  .culture-grid {grid-template-columns:1fr 1fr;gap:9px}
-  .culture-card,.culture-card:nth-child(4),.culture-card:last-child {
-    grid-column:auto;
-    min-height:220px;
-    padding:18px;
+  .intro{
+    padding:85px 6%;
+    grid-template-columns:1fr;
+    gap:30px;
   }
-  .culture-card:last-child {grid-column:1/-1}
-  .culture-card h3 {font-size:25px}
-  .culture-card p {font-size:11px}
+  .intro h2{font-size:63px}
 
-  .purpose {padding:85px 6%;grid-template-columns:1fr;gap:35px}
-  .purpose-card + .purpose-card {
-    border-left:0;
-    border-top:1px solid var(--line);
-    padding:40px 0 0;
+  .universe{padding:80px 6%}
+  .universe-head{display:block}
+  .universe-head h2{font-size:60px}
+  .universe-head p{margin-top:20px}
+  .bento{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:210px 210px 210px;
+    gap:9px;
   }
-  .purpose-card h2 {font-size:65px}
+  .bento-item{padding:17px}
+  .bento-item.music{grid-row:span 2}
+  .bento-item h3{font-size:26px}
+  .bento-item p{font-size:10px}
+  .bento-symbol{font-size:120px}
 
-  .founder {padding:85px 6%}
-  .founder-head {display:block;margin-bottom:35px}
-  .founder-head h2 {font-size:68px}
-  .founder-head .issue {text-align:left;margin-top:20px}
-  .founder-layout {grid-template-columns:1fr;gap:35px}
-  .portrait {min-height:440px}
-  .founder-copy h3 {font-size:51px}
+  .direction{padding:85px 6%}
+  .direction-head{display:block}
+  .direction-grid{grid-template-columns:1fr}
+  .direction-card{min-height:290px;padding:25px}
+  .direction-card h3{margin:55px 0 20px;font-size:58px}
 
-  .final {min-height:450px;padding:80px 6%}
-  .final h2 {font-size:clamp(62px,13vw,100px)}
-  .final-bottom {display:block}
-  .final-bottom p {margin-bottom:25px}
-  .final::after {font-size:270px}
+  .founder{padding:80px 6%}
+  .founder-top{display:block}
+  .founder-top h2{font-size:65px}
+  .founder-top .edition{text-align:left;margin-top:18px}
+  .founder-cover{grid-template-columns:1fr}
+  .founder-photo{min-height:420px}
+  .founder-text{padding:35px 25px}
+  .founder-text h3{font-size:49px}
 
-  .footer {padding:45px 6% 22px}
-  .footer-main {display:block}
-  .footer-links {margin-top:40px;gap:45px}
-  .footer-bottom {flex-direction:column;line-height:1.8}
+  .closing{padding:80px 6%;min-height:420px}
+  .closing h2{font-size:clamp(58px,12vw,90px)}
+  .closing-bottom{display:block}
+  .closing-bottom p{margin-bottom:25px}
+  .closing::after{font-size:240px}
+
+  .footer{padding:42px 6% 22px}
+  .footer-main{display:block}
+  .footer-links{margin-top:35px;gap:40px}
+  .footer-bottom{flex-direction:column;line-height:1.8}
 }
 
-@media(max-width:380px) {
-  .hero h1 {font-size:73px}
-  .hero-bottom .scroll {display:none}
-  .intro h2 {font-size:55px}
-  .culture-head h2 {font-size:58px}
-  .culture-grid {grid-template-columns:1fr}
-  .culture-card:last-child {grid-column:auto}
-  .founder-head h2 {font-size:58px}
-  .founder-copy h3 {font-size:43px}
-  .final h2 {font-size:57px}
+@media(max-width:380px){
+  .hero-title h1{font-size:68px}
+  .intro h2{font-size:53px}
+  .bento{grid-template-columns:1fr;grid-template-rows:auto}
+  .bento-item,.bento-item.music,.bento-item:last-child{
+    grid-column:auto;
+    grid-row:auto;
+    min-height:190px;
+  }
+  .founder-top h2{font-size:55px}
+  .founder-text h3{font-size:42px}
+  .closing h2{font-size:55px}
 }
 </style>
 </head>
 
 <body>
 
-<header class="header">
-  <a href="/" class="logo" aria-label="KIZAZI RADIO Home">
+<header class="navbar">
+  <a class="logo" href="/">
     <img src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
   </a>
 
   <button class="menu" id="menu" aria-label="Open navigation" aria-expanded="false">☰</button>
 
-  <nav class="nav" id="nav">
+  <nav class="navlinks" id="navlinks">
     <a href="/">Home</a>
     <a href="/schedule/">Schedule</a>
     <a href="/shows/">Shows</a>
     <a href="/podcasts/">Podcasts</a>
     <a href="/news/">News</a>
     <a href="/about/" class="active">About Us</a>
-    <a href="/#listen" class="live">Listen Live ↗</a>
+    <a href="/#listen" class="listen">Listen Live ↗</a>
   </nav>
 </header>
 
 <main>
 
-<!-- HERO -->
+<!-- MAGAZINE COVER HERO -->
 <section class="hero">
-  <div class="hero-top">
-    <div class="eyebrow">KIZAZI RADIO / DIGITAL CULTURE</div>
-    <div class="edition">ABOUT US — KZ / 001</div>
-  </div>
 
-  <div class="sound-orbit" aria-hidden="true">
-    <div class="orbit-dash"></div>
-    <div class="orbit-inner">
-      <strong>KZ</strong>
-      <span>ON AIR</span>
+  <div class="hero-left">
+    <div class="meta">KIZAZI RADIO / DIGITAL CULTURE</div>
+
+    <div class="hero-title">
+      <div class="overline">A NEW GENERATION MEDIA EXPERIENCE</div>
+      <h1>
+        THE
+        <span class="red">CULTURE</span>
+        <span class="stroke">SHIFT.</span>
+      </h1>
+
+      <p class="hero-description">
+        A new voice. A different perspective. A platform built
+        around the sound, ideas and energy of a new generation.
+      </p>
+    </div>
+
+    <div class="hero-foot">
+      <span>INDEPENDENT DIGITAL RADIO</span>
+      <span>SCROLL TO EXPLORE ↓</span>
     </div>
   </div>
 
-  <div class="hero-content">
-    <div class="hero-kicker">
-      <span class="live-dot"></span>
-      THE FREQUENCY IS DIFFERENT
+  <div class="hero-art">
+    <div class="art-caption">
+      FREQUENCY<br>
+      001 / KZ<br>
+      ALWAYS MOVING
     </div>
 
-    <h1>
-      THIS IS
-      <span class="red">KIZAZI</span>
-      <span class="outline">RADIO.</span>
-    </h1>
-
-    <div class="equalizer" aria-hidden="true">
-      <span style="--h:12px;--speed:.5s"></span>
-      <span style="--h:25px;--speed:.8s"></span>
-      <span style="--h:17px;--speed:.6s"></span>
-      <span style="--h:30px;--speed:.7s"></span>
-      <span style="--h:14px;--speed:.4s"></span>
-      <span style="--h:26px;--speed:.9s"></span>
-      <span style="--h:19px;--speed:.6s"></span>
-      <span style="--h:31px;--speed:.5s"></span>
-      <span style="--h:13px;--speed:.8s"></span>
-      <span style="--h:24px;--speed:.6s"></span>
-      <span style="--h:16px;--speed:.4s"></span>
-      <span style="--h:29px;--speed:.7s"></span>
-      <span style="--h:11px;--speed:.5s"></span>
-      <span style="--h:22px;--speed:.9s"></span>
-      <span style="--h:30px;--speed:.6s"></span>
-      <span style="--h:15px;--speed:.7s"></span>
+    <div class="art-circle">
+      <div class="art-ring"></div>
+      <div class="art-core">KZ</div>
     </div>
+
+    <div class="art-side">NEW GENERATION. NEW SOUND.</div>
+    <div class="art-number">001</div>
   </div>
 
-  <div class="hero-bottom">
-    <p>
-      Not just another radio station. A new-generation media
-      platform connecting sound, culture, conversations and
-      the people shaping what comes next.
-    </p>
-    <div class="scroll">SCROLL TO EXPLORE ↓</div>
-  </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee">
-  <div class="marquee-track">
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
     <span>NEW GENERATION <i>✳</i> NEW SOUND <i>✳</i> KIZAZI RADIO <i>✳</i></span>
     <span>NEW GENERATION <i>✳</i> NEW SOUND <i>✳</i> KIZAZI RADIO <i>✳</i></span>
   </div>
@@ -994,7 +819,7 @@ body::before {
 <!-- INTRO -->
 <section class="intro reveal">
   <div>
-    <div class="label">01 / WHO WE ARE</div>
+    <div class="section-tag">01 / WHO WE ARE</div>
   </div>
 
   <div>
@@ -1020,121 +845,140 @@ body::before {
         a platform for ideas and a voice for a generation.
       </p>
     </div>
-
-    <div class="intro-signature">NEW GENERATION. NEW SOUND.</div>
   </div>
 </section>
 
-<!-- CULTURE -->
-<section class="culture">
-  <div class="culture-head reveal">
+<!-- BENTO CULTURE -->
+<section class="universe">
+  <div class="universe-head reveal">
     <div>
-      <div class="label">02 / OUR UNIVERSE</div>
-      <h2>OUR <span>FREQUENCY.</span></h2>
+      <div class="section-tag">02 / WHAT WE ARE MADE OF</div>
+      <h2>THE KIZAZI<br><span>UNIVERSE.</span></h2>
     </div>
     <p>
-      Five dimensions. One destination.
-      Discover the content and culture that make KIZAZI.
+      One platform. Multiple dimensions.
+      This is the culture, content and conversation
+      that shape our frequency.
     </p>
   </div>
 
-  <div class="culture-grid">
-    <article class="culture-card reveal">
-      <div class="num">01 / SOUND</div>
+  <div class="bento">
+
+    <article class="bento-item music reveal">
+      <span class="bento-number">01 / SOUND</span>
       <div>
-        <h3>Music</h3>
+        <h3>Music<br>is the language.</h3>
         <p>Fresh sounds, new discoveries and music for every moment.</p>
       </div>
-      <div class="glyph">♪</div>
+      <div class="bento-symbol">♪</div>
+      <div class="corner"></div>
     </article>
 
-    <article class="culture-card reveal">
-      <div class="num">02 / CULTURE</div>
+    <article class="bento-item reveal">
+      <span class="bento-number">02 / CULTURE</span>
       <div>
         <h3>Entertainment</h3>
         <p>Trends, personalities, pop culture and stories worth sharing.</p>
       </div>
-      <div class="glyph">✳</div>
+      <div class="bento-symbol">✳</div>
+      <div class="corner"></div>
     </article>
 
-    <article class="culture-card reveal">
-      <div class="num">03 / VOICE</div>
+    <article class="bento-item reveal">
+      <span class="bento-number">03 / VOICE</span>
       <div>
         <h3>Information</h3>
         <p>Relevant updates and conversations that matter.</p>
       </div>
-      <div class="glyph">!</div>
+      <div class="bento-symbol">!</div>
+      <div class="corner"></div>
     </article>
 
-    <article class="culture-card reveal">
-      <div class="num">04 / ENERGY</div>
+    <article class="bento-item reveal">
+      <span class="bento-number">04 / ENERGY</span>
       <div>
         <h3>Sports & Lifestyle</h3>
         <p>Passion, everyday living and the things that connect us.</p>
       </div>
-      <div class="glyph">+</div>
+      <div class="bento-symbol">+</div>
+      <div class="corner"></div>
     </article>
 
-    <article class="culture-card reveal">
-      <div class="num">05 / STORIES</div>
+    <article class="bento-item reveal">
+      <span class="bento-number">05 / STORIES</span>
       <div>
         <h3>Podcasts</h3>
         <p>Interesting voices, real conversations and fresh ideas.</p>
       </div>
-      <div class="glyph">◉</div>
+      <div class="bento-symbol">◉</div>
+      <div class="corner"></div>
     </article>
+
   </div>
 </section>
 
-<!-- MISSION AND VISION -->
-<section class="purpose reveal">
-  <div class="purpose-card">
-    <div class="index">03 / OUR MISSION</div>
-    <h2>MAKE<br>THEM<br><span>HEARD.</span></h2>
-    <p>
-      To entertain, inform and inspire the new generation through
-      engaging radio programming, music, conversations and digital
-      media experiences that connect people and ideas.
-    </p>
-  </div>
-
-  <div class="purpose-card">
-    <div class="index">04 / OUR VISION</div>
-    <h2>THINK<br>BEYOND<br><span>RADIO.</span></h2>
-    <p>
-      To become a recognised global digital radio and youth media
-      brand, creating a platform where the sound, voices and
-      perspectives of a new generation can be discovered and heard.
-    </p>
-  </div>
-</section>
-
-<!-- FOUNDER -->
-<section class="founder">
-  <div class="founder-head reveal">
+<!-- MISSION & VISION -->
+<section class="direction">
+  <div class="direction-head reveal">
     <div>
-      <div class="label">05 / THE PEOPLE BEHIND THE SIGNAL</div>
-      <h2>THE<br><span>ORIGIN.</span></h2>
-    </div>
-    <div class="issue">
-      KIZAZI JOURNAL<br>
-      FOUNDER PROFILE<br>
-      FEATURE 001
+      <div class="section-tag">03 / THE REASON WE EXIST</div>
+      <h2>OUR <span>WHY.</span></h2>
     </div>
   </div>
 
-  <div class="founder-layout">
-    <div class="portrait reveal">
+  <div class="direction-grid">
+
+    <article class="direction-card reveal">
+      <div class="mini">OUR MISSION / 001</div>
+      <div class="big-index">01</div>
+      <h3>MAKE THEM<br><span>HEARD.</span></h3>
+      <p>
+        To entertain, inform and inspire the new generation through
+        engaging radio programming, music, conversations and digital
+        media experiences that connect people and ideas.
+      </p>
+    </article>
+
+    <article class="direction-card reveal">
+      <div class="mini">OUR VISION / 002</div>
+      <div class="big-index">02</div>
+      <h3>THINK<br><span>BEYOND RADIO.</span></h3>
+      <p>
+        To become a recognised global digital radio and youth media
+        brand, creating a platform where the sound, voices and
+        perspectives of a new generation can be discovered and heard.
+      </p>
+    </article>
+
+  </div>
+</section>
+
+<!-- FOUNDER FEATURE -->
+<section class="founder">
+  <div class="founder-top reveal">
+    <div>
+      <div class="section-tag">04 / THE PERSON BEHIND THE IDEA</div>
+      <h2>THE <span>FOUNDER.</span></h2>
+    </div>
+    <div class="edition">
+      KIZAZI PEOPLE<br>
+      PROFILE 001<br>
+      THE ORIGIN STORY
+    </div>
+  </div>
+
+  <div class="founder-cover">
+    <div class="founder-photo">
       <img
         src="/assets/founder-telesphory-mfumu.png"
-        alt="Telesphory Deogratius Mfumu — Founder of KIZAZI RADIO"
+        alt="Telesphory Deogratius Mfumu, Founder of KIZAZI RADIO"
         loading="lazy"
       >
-      <div class="portrait-tag">THE VISION BEHIND KZ</div>
+      <div class="photo-index">KZ / 001</div>
     </div>
 
-    <div class="founder-copy reveal">
-      <div class="label">THE FOUNDER</div>
+    <div class="founder-text">
+      <div class="section-tag">THE VISION BEHIND THE FREQUENCY</div>
 
       <h3>
         TELESPHORY<br>
@@ -1142,7 +986,7 @@ body::before {
         <span>MFUMU.</span>
       </h3>
 
-      <span class="role">Founder & Creative Director</span>
+      <div class="founder-role">Founder & Creative Director</div>
 
       <p>
         KIZAZI RADIO was founded by Telesphory Deogratius Mfumu,
@@ -1164,7 +1008,7 @@ body::before {
         global youth culture.
       </p>
 
-      <div class="founder-quote">
+      <div class="founder-signature">
         ONE IDEA. ONE FREQUENCY. A NEW GENERATION.
       </div>
     </div>
@@ -1172,8 +1016,8 @@ body::before {
 </section>
 
 <!-- CLOSING -->
-<section class="final">
-  <div class="label">06 / YOUR FREQUENCY IS WAITING</div>
+<section class="closing">
+  <div class="section-tag">05 / THE NEXT CHAPTER STARTS HERE</div>
 
   <h2>
     DON'T JUST
@@ -1181,12 +1025,11 @@ body::before {
     BELONG.
   </h2>
 
-  <div class="final-bottom">
+  <div class="closing-bottom">
     <p>
       The sound is different. The energy is different.
       This is KIZAZI RADIO. New Generation. New Sound.
     </p>
-
     <a href="/#listen">Experience KIZAZI ↗</a>
   </div>
 </section>
@@ -1196,6 +1039,7 @@ body::before {
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-main">
+
     <div class="footer-logo">
       <a href="/">
         <img src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
@@ -1222,6 +1066,7 @@ body::before {
         <a href="/#listen">Listen Live</a>
       </div>
     </div>
+
   </div>
 
   <div class="footer-bottom">
@@ -1233,12 +1078,12 @@ body::before {
 <script>
   // Mobile navigation
   const menuButton = document.getElementById("menu");
-  const nav = document.getElementById("nav");
+  const nav = document.getElementById("navlinks");
 
   menuButton.addEventListener("click", () => {
-    const opened = nav.classList.toggle("open");
-    menuButton.setAttribute("aria-expanded", String(opened));
-    menuButton.textContent = opened ? "×" : "☰";
+    const open = nav.classList.toggle("open");
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.textContent = open ? "×" : "☰";
   });
 
   nav.querySelectorAll("a").forEach(link => {
@@ -1250,24 +1095,24 @@ body::before {
   });
 
   // Scroll reveal
-  const revealItems = document.querySelectorAll(".reveal");
+  const revealElements = document.querySelectorAll(".reveal");
 
   if ("IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, {threshold:0.12});
 
-    revealItems.forEach(item => revealObserver.observe(item));
+    revealElements.forEach(element => observer.observe(element));
   } else {
-    revealItems.forEach(item => item.classList.add("visible"));
+    revealElements.forEach(element => element.classList.add("visible"));
   }
 
-  // Current year
+  // Footer year
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
