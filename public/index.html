@@ -289,7 +289,7 @@ img{max-width:100%}
 }
 
 .hero:after{
-  content:"KZ / LIVE";
+  content:"KIZAZI / LIVE";
   position:absolute;
   z-index:2;
   right:26px;
@@ -1710,7 +1710,7 @@ img{max-width:100%}
 }
 
 .community-box:after{
-  content:"KZ / COMMUNITY";
+  content:"KIZAZI / COMMUNITY";
   position:absolute;
   top:20px;
   right:22px;
@@ -2778,7 +2778,7 @@ img{max-width:100%}
     linear-gradient(140deg,#1b1b21 0%,#111115 48%,#09090c 100%);
 }
 .live-visual:before{
-  content:"KZ";right:-25px;bottom:-90px;
+  content:"KIZAZI";right:-25px;bottom:-90px;
   color:rgba(255,255,255,.035);font-size:clamp(230px,29vw,430px);
   font-weight:1000;letter-spacing:-.14em;transform:skewX(-8deg);
 }
@@ -3305,7 +3305,7 @@ img{max-width:100%}
   box-shadow:0 32px 100px rgba(0,0,0,.62),0 0 70px rgba(255,25,40,.09);
 }
 .live-card:before{
-  content:"KZ / LIVE";
+  content:"KIZAZI / LIVE";
   position:absolute;
   z-index:8;
   top:18px;
@@ -3548,7 +3548,7 @@ img{max-width:100%}
 }
 
 .lineup-section:before{
-  content:"KZ / 02";
+  content:"KIZAZI / 02";
   position:absolute;
   z-index:-1;
   right:-22px;
@@ -4103,6 +4103,167 @@ img{max-width:100%}
 .frequency-ring.ring-a{width:180px}.frequency-ring.ring-b{width:255px}.frequency-ring.ring-c{width:310px}.frequency-core{width:142px;height:142px}.core-name{font-size:16px}.frequency-wave{left:3%;right:3%;gap:4px}.frequency-wave i{width:2px}.frequency-label.label-top{top:20px;left:4%}.frequency-label.label-bottom{bottom:18px;right:4%}.connected-stamp{left:6%;bottom:54px;width:66px;height:66px;font-size:7px}
 }
 @media(prefers-reduced-motion:reduce){.experience-item,.experience-arrow{transition:none}.connected-orbit,.device-equalizer i{animation:none}}
+
+
+/* =========================================================
+   MOBILE RESPONSIVENESS FIX — HOMEPAGE
+   Keeps the existing desktop design and radio player intact.
+   ========================================================= */
+@media (max-width: 700px) {
+  html, body {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .experience-section,
+  .experience-section .wrap,
+  .experience-heading,
+  .experience-stage,
+  .experience-signal,
+  .experience-list {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* Stack the section title and introduction instead of
+     squeezing them into two narrow columns. */
+  .experience-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+    align-items: start;
+    margin-bottom: 28px;
+  }
+
+  .experience-heading > div,
+  .experience-intro {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .experience-kicker {
+    font-size: 9px;
+    line-height: 1.5;
+    letter-spacing: 1.45px;
+    overflow-wrap: anywhere;
+  }
+
+  .experience-title {
+    max-width: 100%;
+    font-size: clamp(43px, 12.2vw, 62px);
+    line-height: .9;
+    letter-spacing: -.075em;
+    overflow-wrap: normal;
+  }
+
+  .experience-intro {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+  }
+
+  /* Stack the visual panel above the links and keep both
+     columns fully inside the phone viewport. */
+  .experience-stage {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .experience-signal {
+    width: 100%;
+    min-height: 225px;
+  }
+
+  .signal-word {
+    max-width: 100%;
+    font-size: clamp(46px, 13vw, 64px);
+  }
+
+  .signal-bars {
+    gap: 4px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .signal-bars i {
+    width: 3px;
+  }
+
+  .signal-caption {
+    max-width: calc(100% - 24px);
+    text-align: center;
+    font-size: 7px;
+    letter-spacing: 1.6px;
+  }
+
+  .experience-list {
+    width: 100%;
+    padding: 8px 16px;
+  }
+
+  .experience-item {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: 25px minmax(0, 1fr) 32px;
+    gap: 10px;
+    min-height: 78px;
+    padding: 12px 0;
+  }
+
+  .experience-item-copy {
+    min-width: 0;
+  }
+
+  .experience-item-copy strong {
+    font-size: 14px;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .experience-item-copy small {
+    font-size: 11px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+
+  .experience-arrow {
+    width: 30px;
+    height: 30px;
+  }
+
+  .experience-item:hover {
+    padding-left: 0;
+  }
+}
+
+/* Narrow phones: prevent decorative headline elements
+   from forcing the hero wider than the viewport. */
+@media (max-width: 390px) {
+  .hero-content {
+    width: 88%;
+    margin-left: 6%;
+  }
+
+  .hero h1 {
+    font-size: clamp(43px, 11.2vw, 54px);
+    letter-spacing: -.075em;
+  }
+
+  .hero-content .eyebrow {
+    max-width: calc(100% - 8px);
+    font-size: 7px;
+    letter-spacing: 1.15px;
+  }
+
+  .hero-actions {
+    column-gap: 14px;
+    row-gap: 18px;
+  }
+}
 
 </style>
 </head>
@@ -6415,5 +6576,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
-
-
