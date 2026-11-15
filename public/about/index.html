@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#09090b">
+  <meta name="theme-color" content="#080808">
   <meta name="description" content="Get to know KIZAZI RADIO — an independent online radio platform for a new generation. Meet our founder and discover our mission, vision and culture.">
   <title>About Us | KIZAZI RADIO</title>
 
@@ -14,13 +13,12 @@
 
   <style>
     :root {
-      --red: #ed171f;
-      --white: #f7f7f8;
-      --black: #09090b;
-      --panel: #141418;
-      --muted: #a4a4ad;
-      --line: #29292f;
-      --lime: #dfff35;
+      --red: #f01824;
+      --white: #f7f7f5;
+      --black: #080808;
+      --panel: #111113;
+      --muted: #a7a7a7;
+      --line: #303033;
     }
 
     * {
@@ -36,6 +34,7 @@
       background: var(--black);
       color: var(--white);
       font-family: "DM Sans", Arial, sans-serif;
+      letter-spacing: -.01em;
     }
 
     a {
@@ -51,11 +50,11 @@
     /* HEADER */
 
     .site-header {
-      height: 82px;
+      height: 76px;
+      background: rgba(8, 8, 8, .92);
       border-bottom: 1px solid var(--line);
       display: flex;
       align-items: center;
-      background: rgba(9, 9, 11, .94);
       position: sticky;
       top: 0;
       z-index: 20;
@@ -77,9 +76,9 @@
 
     .brand-logo {
       display: block;
-      width: 168px;
+      width: 158px;
       max-width: 100%;
-      height: 52px;
+      height: 48px;
       object-fit: contain;
       object-position: left center;
       transition: transform .22s ease, filter .22s ease;
@@ -87,17 +86,17 @@
 
     .brand:hover .brand-logo {
       transform: translateY(-2px) rotate(-1deg);
-      filter: drop-shadow(3px 3px 0 rgba(237, 23, 31, .45));
+      filter: drop-shadow(3px 3px 0 rgba(240, 24, 36, .45));
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 27px;
+      gap: 24px;
       color: #b7b7bf;
       font-size: 10px;
       font-weight: 900;
-      letter-spacing: 1.2px;
+      letter-spacing: 1.35px;
       text-transform: uppercase;
     }
 
@@ -128,19 +127,19 @@
     }
 
     .nav-cta {
-      padding: 13px 17px;
+      padding: 14px 18px;
       background: var(--red);
       color: white;
       font-size: 9px;
       font-weight: 1000;
       letter-spacing: 1.2px;
-      box-shadow: 4px 4px 0 #fff;
+      box-shadow: 4px 4px 0 var(--white);
       transition: transform .2s ease, box-shadow .2s ease;
     }
 
     .nav-cta:hover {
       transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0 #fff;
+      box-shadow: 6px 6px 0 var(--white);
     }
 
     .menu-toggle {
@@ -158,98 +157,153 @@
     .hero {
       position: relative;
       overflow: hidden;
-      padding: 95px 0 100px;
-      border-bottom: 1px solid var(--line);
-      background:
-        radial-gradient(ellipse at 84% 42%, rgba(237, 23, 31, .17), transparent 33%),
-        linear-gradient(130deg, #101014, #09090b 65%);
-    }
-
-    .hero:after {
-      content: "KZ";
-      position: absolute;
-      right: -15px;
-      bottom: -105px;
-      font-family: "Barlow Condensed", sans-serif;
-      font-weight: 900;
-      font-size: clamp(300px, 44vw, 650px);
-      line-height: .8;
-      color: rgba(255, 255, 255, .025);
-      pointer-events: none;
-    }
-
-    .kicker {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: #b5b5bd;
-      font-size: 10px;
-      font-weight: 1000;
-      letter-spacing: 2.4px;
-      text-transform: uppercase;
-    }
-
-    .kicker:before {
-      content: "";
-      width: 28px;
-      height: 3px;
+      padding: 35px 0 28px;
       background: var(--red);
+      color: var(--black);
+    }
+
+    .hero-editorial {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-meta,
+    .hero-index {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(0, 0, 0, .35);
+      padding: 12px 0;
+    }
+
+    .hero-mainline {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 250px;
+      gap: 38px;
+      align-items: end;
+      padding: 62px 0 46px;
+    }
+
+    .hero .kicker {
+      color: var(--black);
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: 900;
+      margin-bottom: 20px;
     }
 
     .hero h1 {
-      position: relative;
-      z-index: 1;
-      margin: 26px 0 22px;
-      max-width: 950px;
       font-family: "Barlow Condensed", Impact, sans-serif;
-      font-size: clamp(76px, 12vw, 158px);
-      line-height: .78;
-      letter-spacing: -.035em;
+      font-size: clamp(76px, 12.4vw, 172px);
+      line-height: .77;
+      letter-spacing: -.055em;
       font-weight: 900;
+      margin: 0;
       text-transform: uppercase;
-      text-shadow: 5px 5px 0 rgba(237, 23, 31, .16);
+      max-width: 950px;
     }
 
     .hero h1 span {
       display: block;
+      color: var(--white);
+      -webkit-text-stroke: 1px var(--black);
+    }
+
+    .hero h1 i {
+      font-style: normal;
+      display: inline-block;
+      font-size: .43em;
+      vertical-align: middle;
+      letter-spacing: -.02em;
+      margin: 0 .12em 0 .22em;
+      color: var(--black);
+    }
+
+    .hero-period {
+      color: var(--white);
+    }
+
+    .hero-side-note {
+      background: var(--black);
+      color: var(--white);
+      padding: 22px 22px 20px;
+      transform: rotate(1.5deg);
+      box-shadow: 8px 8px 0 rgba(0, 0, 0, .18);
+    }
+
+    .hero-side-note > b {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 72px;
+      line-height: .9;
+      letter-spacing: -5px;
+    }
+
+    .hero-side-note > b span {
       color: var(--red);
-      text-shadow: 5px 5px 0 rgba(255, 255, 255, .08);
+    }
+
+    .hero-side-note p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #d0d0d0;
+      margin: 18px 0 22px;
+    }
+
+    .hero-side-note a {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #444;
+      padding-top: 13px;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 1.4px;
+    }
+
+    .hero-side-note a span {
+      color: var(--red);
+      font-size: 18px;
+      line-height: 10px;
     }
 
     .hero-bottom {
-      position: relative;
-      z-index: 1;
       display: flex;
-      align-items: flex-end;
       justify-content: space-between;
-      gap: 40px;
-      margin-top: 42px;
+      align-items: flex-end;
+      gap: 30px;
+      padding: 20px 0 28px;
+      border-top: 1px solid rgba(0, 0, 0, .35);
     }
 
     .hero-bottom p {
-      max-width: 610px;
-      color: #b2b2ba;
-      font-size: 16px;
-      line-height: 1.85;
+      max-width: 530px;
+      color: #161616;
+      font-size: 14px;
+      line-height: 1.75;
       margin: 0;
+      font-weight: 600;
     }
 
     .hero-stamp {
-      border: 1px solid var(--red);
-      padding: 13px 16px;
-      color: #fff;
-      background: var(--red);
-      font-size: 9px;
-      font-weight: 1000;
-      letter-spacing: 2px;
-      white-space: nowrap;
-      transform: rotate(-3deg);
-      box-shadow: 5px 5px 0 #fff;
-      transition: transform .25s ease;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 16px;
+      line-height: 1.05;
+      letter-spacing: 1.2px;
+      text-align: right;
+      font-weight: 800;
     }
 
-    .hero-stamp:hover {
-      transform: rotate(0deg) translateY(-3px);
+    .hero-stamp strong {
+      font-size: 28px;
+    }
+
+    .hero-index {
+      border-top: 1px solid rgba(0, 0, 0, .35);
+      border-bottom: 0;
+      padding: 13px 0 0;
     }
 
     /* GENERAL SECTIONS */
@@ -274,33 +328,32 @@
       padding: 7px 10px;
       color: var(--red);
       font-size: 10px;
-      font-weight: 1000;
+      font-weight: 900;
       letter-spacing: 2px;
-      border: 1px solid rgba(237, 23, 31, .45);
-      background: rgba(237, 23, 31, .07);
+      border: 1px solid rgba(240, 24, 36, .45);
+      background: rgba(240, 24, 36, .07);
     }
 
     .section h2 {
       margin: 15px 0 0;
       font-family: "Barlow Condensed", Impact, sans-serif;
-      font-size: clamp(48px, 7vw, 86px);
+      font-size: clamp(48px, 7vw, 88px);
       line-height: .88;
-      letter-spacing: -.025em;
+      letter-spacing: -.035em;
       text-transform: uppercase;
-      text-shadow: 3px 3px 0 rgba(255, 255, 255, .035);
+      font-weight: 900;
     }
 
     .section h2 em {
       font-style: normal;
       color: var(--red);
-      text-shadow: 3px 3px 0 rgba(237, 23, 31, .12);
     }
 
     .section-lead {
-      max-width: 420px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.9;
+      max-width: 340px;
+      color: #bcbcc2;
+      font-size: 14px;
+      line-height: 1.8;
       margin: 0;
     }
 
@@ -309,18 +362,30 @@
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 70px;
+      gap: 22px;
       align-items: start;
     }
 
     .about-copy {
-      color: #b7b7bf;
-      font-size: 15px;
-      line-height: 2;
+      background: var(--panel);
+      border: 1px solid #29292d;
+      padding: 30px;
+      position: relative;
+    }
+
+    .about-copy:first-child {
+      border-top: 4px solid var(--red);
     }
 
     .about-copy p {
+      font-size: 14px;
+      line-height: 1.9;
+      color: #c4c4c8;
       margin: 0 0 20px;
+    }
+
+    .about-copy p:last-child {
+      margin-bottom: 0;
     }
 
     .about-copy strong {
@@ -396,7 +461,12 @@
     /* MISSION & VISION */
 
     .direction {
-      background: #101014;
+      background: #f2f2ef;
+      color: var(--black);
+    }
+
+    .direction .section-lead {
+      color: #555;
     }
 
     .direction-grid {
@@ -405,32 +475,32 @@
       gap: 14px;
     }
 
-    .direction-card {
+    .direction .direction-card {
       position: relative;
-      min-height: 280px;
-      padding: 34px;
-      background: #17171c;
-      border: 1px solid #33333a;
+      min-height: 330px;
+      padding: 36px;
+      background: var(--black);
+      color: var(--white);
+      border: 0;
       overflow: hidden;
-      transition: transform .25s ease, border-color .25s ease;
+      transition: transform .25s ease;
     }
 
-    .direction-card:first-child {
+    .direction .direction-card:first-child {
       background: var(--red);
-      border-color: var(--red);
+      color: var(--black);
     }
 
-    .direction-card:hover {
+    .direction .direction-card:hover {
       transform: translateY(-6px);
-      border-color: #fff;
     }
 
     .direction-card .tag {
       display: inline-block;
       padding: 8px 10px;
       font-size: 9px;
-      font-weight: 1000;
-      letter-spacing: 2px;
+      font-weight: 900;
+      letter-spacing: 1.7px;
       border: 1px solid rgba(255, 255, 255, .35);
       background: rgba(0, 0, 0, .12);
     }
@@ -438,23 +508,22 @@
     .direction-card h3 {
       margin: 55px 0 14px;
       font-family: "Barlow Condensed", sans-serif;
-      font-size: clamp(40px, 5vw, 62px);
-      line-height: .9;
+      font-size: clamp(45px, 6vw, 76px);
+      line-height: .88;
       text-transform: uppercase;
-      letter-spacing: -.02em;
-      text-shadow: 3px 3px 0 rgba(0, 0, 0, .12);
+      letter-spacing: -2px;
     }
 
     .direction-card p {
-      max-width: 470px;
+      max-width: 420px;
       color: #c0c0c8;
       font-size: 13px;
-      line-height: 1.9;
+      line-height: 1.8;
       margin: 0;
     }
 
     .direction-card:first-child p {
-      color: rgba(255, 255, 255, .88);
+      color: rgba(0, 0, 0, .8);
     }
 
     .direction-card:after {
@@ -472,17 +541,19 @@
     }
 
     .approach {
-      padding: 48px 0 0;
-      color: var(--muted);
-      font-size: 13px;
+      border-top: 1px solid #c8c8c4;
+      padding: 25px 0 0;
+      color: #333;
+      font-size: 14px;
       line-height: 1.9;
       max-width: 800px;
+      margin-top: 35px;
     }
 
     /* FOUNDER */
 
     .founder {
-      background: #09090b;
+      background: #0a0a0b;
     }
 
     .founder-grid {
@@ -495,14 +566,8 @@
     .founder-visual {
       position: relative;
       max-width: 510px;
-    }
-
-    .founder-visual:before {
-      content: "";
-      position: absolute;
-      inset: 18px -18px -18px 18px;
-      border: 1px solid var(--red);
-      z-index: 0;
+      background: var(--red);
+      padding: 14px 14px 0;
     }
 
     .founder-visual img {
@@ -510,17 +575,30 @@
       z-index: 1;
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
       object-fit: cover;
-      object-position: center;
+      object-position: center top;
       border: 1px solid #34343a;
-      filter: saturate(1.04) contrast(1.02);
+      filter: grayscale(1) contrast(1.08);
       transition: filter .3s ease, transform .3s ease;
     }
 
     .founder-visual:hover img {
-      filter: saturate(1.12) contrast(1.04);
+      filter: grayscale(1) contrast(1.15);
       transform: translate(-3px, -3px);
+    }
+
+    .founder-label {
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      top: 25px;
+      background: var(--black);
+      color: white;
+      padding: 11px 14px;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
     }
 
     .founder-visual:after {
@@ -531,7 +609,7 @@
       bottom: 16px;
       padding: 10px 13px;
       background: #fff;
-      color: #09090b;
+      color: var(--black);
       font-size: 8px;
       font-weight: 1000;
       letter-spacing: 2px;
@@ -539,30 +617,26 @@
       box-shadow: 4px 4px 0 var(--red);
     }
 
-    .founder-label {
-      position: absolute;
-      z-index: 2;
-      left: -16px;
-      top: 24px;
-      background: var(--red);
-      padding: 11px 15px;
-      font-size: 9px;
-      font-weight: 1000;
-      letter-spacing: 2px;
-    }
-
     .founder-copy .section-index {
       margin-bottom: 17px;
+    }
+
+    .founder-copy .kicker {
+      color: #b5b5bd;
+      font-size: 10px;
+      font-weight: 1000;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
     }
 
     .founder-copy h2 {
       margin: 14px 0 10px;
       font-family: "Barlow Condensed", sans-serif;
-      font-size: clamp(52px, 7vw, 86px);
-      line-height: .82;
-      letter-spacing: -.025em;
+      font-size: clamp(48px, 6vw, 78px);
+      line-height: .88;
+      letter-spacing: -.035em;
       text-transform: uppercase;
-      text-shadow: 4px 4px 0 rgba(237, 23, 31, .11);
+      font-weight: 900;
     }
 
     .founder-copy h2 span {
@@ -583,28 +657,27 @@
     }
 
     .founder-copy p {
-      color: #b2b2ba;
+      color: #bdbdc2;
       font-size: 13px;
-      line-height: 2;
+      line-height: 1.9;
       margin: 0 0 17px;
     }
 
     blockquote {
       margin: 30px 0 0;
-      padding: 20px 20px 18px 22px;
-      border-left: 3px solid var(--red);
+      border-left: 4px solid var(--red);
+      padding: 8px 0 8px 20px;
       color: #fff;
       font-size: 17px;
       line-height: 1.7;
       font-weight: 700;
-      background: linear-gradient(90deg, rgba(237, 23, 31, .1), transparent 85%);
     }
 
     .founder-signoff {
       margin-top: 22px;
       color: var(--red);
-      font-size: 9px;
-      font-weight: 1000;
+      font-size: 10px;
+      font-weight: 900;
       letter-spacing: 2px;
     }
 
@@ -613,24 +686,10 @@
     .closing {
       position: relative;
       overflow: hidden;
-      padding: 80px 0;
-      background:
-        radial-gradient(ellipse at 80% 50%, rgba(237, 23, 31, .18), transparent 40%),
-        #111114;
+      padding: 75px 0;
+      background: var(--red);
+      color: var(--black);
       border-bottom: 1px solid var(--line);
-    }
-
-    .closing:after {
-      content: "KZ!";
-      position: absolute;
-      right: 4%;
-      bottom: -90px;
-      color: rgba(255, 255, 255, .025);
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: clamp(180px, 28vw, 360px);
-      font-weight: 900;
-      line-height: .8;
-      pointer-events: none;
     }
 
     .closing-box {
@@ -640,31 +699,32 @@
       gap: 30px;
     }
 
-    .closing-box > * {
-      position: relative;
-      z-index: 1;
-    }
-
     .closing h2 {
       margin: 16px 0 0;
       font-family: "Barlow Condensed", sans-serif;
-      font-size: clamp(52px, 8vw, 100px);
+      font-size: clamp(60px, 9vw, 112px);
       line-height: .82;
-      letter-spacing: -.025em;
+      letter-spacing: -.035em;
       text-transform: uppercase;
-      text-shadow: 4px 4px 0 rgba(255, 255, 255, .04);
+      font-weight: 900;
     }
 
     .closing h2 span {
-      color: var(--red);
+      color: var(--white);
+      -webkit-text-stroke: 1px var(--black);
     }
 
     .closing p {
-      color: var(--muted);
+      color: #171717;
       font-size: 13px;
       line-height: 1.8;
       max-width: 430px;
       margin: 18px 0 0;
+    }
+
+    .closing .kicker {
+      font-weight: 900;
+      letter-spacing: 2px;
     }
 
     .button {
@@ -672,7 +732,8 @@
       align-items: center;
       justify-content: center;
       gap: 18px;
-      background: var(--red);
+      background: var(--black);
+      color: #fff;
       padding: 18px 23px;
       font-size: 10px;
       font-weight: 1000;
@@ -684,7 +745,7 @@
 
     .button:hover {
       background: #fff;
-      color: #09090b;
+      color: var(--black);
       transform: translate(-2px, -2px);
       box-shadow: 7px 7px 0 var(--red);
     }
@@ -733,6 +794,41 @@
       }
     }
 
+    /* TABLET HERO */
+
+    @media(max-width: 800px) {
+      .hero-mainline {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 48px 0 35px;
+      }
+
+      .hero h1 {
+        font-size: clamp(70px, 16vw, 120px);
+      }
+
+      .hero-side-note {
+        max-width: 360px;
+        margin-left: auto;
+      }
+
+      .hero-bottom {
+        align-items: flex-start;
+      }
+
+      .hero-stamp {
+        min-width: 110px;
+      }
+
+      .section {
+        padding: 75px 0;
+      }
+
+      .direction .direction-card {
+        min-height: 280px;
+      }
+    }
+
     /* MOBILE */
 
     @media(max-width: 700px) {
@@ -775,30 +871,42 @@
       }
 
       .hero {
-        padding: 75px 0 68px;
+        padding: 35px 0 25px;
       }
 
       .hero h1 {
-        font-size: clamp(68px, 17vw, 105px);
+        font-size: clamp(62px, 17vw, 90px);
+      }
+
+      .hero-mainline {
+        padding: 42px 0 30px;
+      }
+
+      .hero-meta,
+      .hero-index {
+        font-size: 8px;
+        letter-spacing: 1px;
       }
 
       .hero-bottom {
         display: block;
-        margin-top: 30px;
       }
 
       .hero-bottom p {
-        font-size: 14px;
+        font-size: 12px;
       }
 
       .hero-stamp {
-        display: inline-block;
-        margin-top: 25px;
-        box-shadow: 3px 3px 0 #fff;
+        text-align: left;
+        margin-top: 20px;
+      }
+
+      .hero-stamp strong {
+        font-size: 23px;
       }
 
       .section {
-        padding: 72px 0;
+        padding: 62px 0;
       }
 
       .section-head {
@@ -817,6 +925,10 @@
       }
 
       .about-copy {
+        padding: 22px;
+      }
+
+      .about-copy p {
         font-size: 13px;
       }
 
@@ -844,13 +956,17 @@
         grid-template-columns: 1fr;
       }
 
-      .direction-card {
-        min-height: 240px;
-        padding: 25px;
+      .direction .direction-card {
+        min-height: 280px;
+        padding: 26px;
       }
 
       .direction-card h3 {
         margin-top: 45px;
+      }
+
+      .founder-grid {
+        gap: 35px;
       }
 
       .founder-visual {
@@ -858,8 +974,9 @@
         margin: 0 auto 18px;
       }
 
-      .founder-visual:before {
-        inset: 12px -10px -10px 10px;
+      .founder-label {
+        left: 0;
+        top: 16px;
       }
 
       .founder-visual:after {
@@ -868,22 +985,12 @@
         font-size: 7px;
       }
 
-      .founder-label {
-        left: -8px;
-        top: 16px;
-      }
-
       .founder-copy h2 {
         font-size: 64px;
       }
 
       .closing {
-        padding: 65px 0;
-      }
-
-      .closing:after {
-        right: -15px;
-        bottom: -35px;
+        padding: 58px 0;
       }
 
       .closing-box {
@@ -904,339 +1011,40 @@
       }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *:before,
-      *:after {
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-        animation-duration: .01ms !important;
+    @media(max-width: 520px) {
+      .wrap {
+        width: min(100% - 34px, 1240px);
+      }
+
+      .hero h1 {
+        font-size: clamp(62px, 17vw, 90px);
+      }
+
+      .hero-side-note {
+        max-width: 100%;
+      }
+
+      .direction .direction-card {
+        padding: 26px;
+      }
+
+      .founder-copy h2 {
+        font-size: 58px;
       }
     }
 
-    /* KIZAZI EDITORIAL REDESIGN — ABOUT PAGE */
-    :root {
-      --lime: #ed171f;
-    }
+    @media(prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
 
-    body { overflow-x: hidden; }
-    .site-header { border-bottom-color: rgba(255,255,255,.13); }
-    .brand-logo { width: 178px; }
-    .nav-cta { text-transform: uppercase; }
-
-    .hero {
-      min-height: 650px;
-      padding: 82px 0 78px;
-      background:
-        radial-gradient(circle at 76% 46%, rgba(237,23,31,.20), transparent 28%),
-        linear-gradient(118deg, #111115 0%, #09090b 58%, #14090b 100%);
-      isolation: isolate;
+      *,
+      *:before,
+      *:after {
+        animation: none !important;
+        transition: none !important;
+      }
     }
-    .hero:before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      opacity: .19;
-      background-image: radial-gradient(rgba(255,255,255,.45) .7px, transparent .7px);
-      background-size: 14px 14px;
-      mask-image: linear-gradient(90deg, #000, transparent 82%);
-    }
-    .hero:after {
-      content: "KZ";
-      right: auto;
-      left: -30px;
-      bottom: -120px;
-      font-size: clamp(280px, 38vw, 570px);
-      color: rgba(255,255,255,.025);
-    }
-    .hero-layout {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1.08fr .92fr;
-      align-items: center;
-      gap: clamp(28px, 5vw, 78px);
-    }
-    .hero-copy { position: relative; z-index: 2; min-width: 0; }
-    .hero .kicker {
-      display: inline-flex;
-      padding: 10px 13px;
-      background: rgba(255,255,255,.045);
-      border: 1px solid rgba(255,255,255,.16);
-      transform: rotate(-1deg);
-    }
-    .hero h1 {
-      max-width: 760px;
-      margin: 32px 0 24px;
-      font-size: clamp(76px, 9.2vw, 132px);
-      line-height: .80;
-      letter-spacing: -.055em;
-      text-shadow: 5px 5px 0 rgba(237,23,31,.18);
-    }
-    .hero h1 span {
-      margin-top: 8px;
-      width: max-content;
-      max-width: 100%;
-      padding-right: 9px;
-      transform: skewX(-4deg);
-    }
-    .hero-bottom {
-      display: block;
-      max-width: 560px;
-      margin-top: 32px;
-    }
-    .hero-bottom p {
-      max-width: 500px;
-      padding-left: 17px;
-      border-left: 3px solid var(--red);
-      font-size: 14px;
-      line-height: 1.9;
-    }
-    .hero-stamp {
-      display: inline-block;
-      margin-top: 27px;
-      transform: rotate(-2deg);
-    }
-
-    .hero-art {
-      position: relative;
-      min-height: 465px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.18);
-      background:
-        radial-gradient(circle at 50% 48%, rgba(237,23,31,.26), transparent 34%),
-        linear-gradient(145deg, #1b1b20, #0b0b0e 68%);
-      box-shadow: 12px 12px 0 rgba(237,23,31,.9);
-      transform: rotate(1.5deg);
-    }
-    .hero-art:before {
-      content: "";
-      position: absolute;
-      inset: 14px;
-      border: 1px solid rgba(255,255,255,.12);
-      pointer-events: none;
-    }
-    .hero-art-top, .hero-art-bottom {
-      position: absolute;
-      left: 28px;
-      right: 28px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 4;
-      font-size: 9px;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
-    .hero-art-top { top: 27px; color: #b9b9c1; }
-    .hero-art-top span:last-child { color: #fff; }
-    .hero-art-top span:last-child { color: #fff; }
-    .hero-art-bottom { bottom: 27px; color: #fff; }
-    .hero-art-bottom span { color: var(--red); }
-    .hero-orbit {
-      position: absolute;
-      width: min(76%, 350px);
-      aspect-ratio: 1;
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 50%;
-    }
-    .orbit-one { transform: scaleX(.72) rotate(35deg); }
-    .orbit-two {
-      width: min(92%, 420px);
-      border-color: rgba(237,23,31,.65);
-      transform: scaleY(.48) rotate(-28deg);
-    }
-    .hero-core {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      place-items: center;
-      width: clamp(170px, 20vw, 260px);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      color: #fff;
-      background: var(--red);
-      border: 9px solid #fff;
-      outline: 1px solid rgba(255,255,255,.5);
-      box-shadow: 0 0 0 22px rgba(237,23,31,.12), 0 22px 70px rgba(0,0,0,.55);
-      font-family: "Barlow Condensed", Impact, sans-serif;
-      font-size: clamp(90px, 12vw, 150px);
-      font-weight: 900;
-      letter-spacing: -.09em;
-      transform: rotate(-8deg);
-    }
-    .hero-core span { color: #09090b; }
-    .hero-wave {
-      position: absolute;
-      z-index: 3;
-      left: 9%;
-      right: 9%;
-      top: 50%;
-      height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      opacity: .72;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-    .hero-wave i {
-      display: block;
-      width: 4px;
-      height: 22%;
-      border-radius: 4px;
-      background: #fff;
-      box-shadow: 0 0 12px rgba(237,23,31,.6);
-      animation: about-wave 1s ease-in-out infinite alternate;
-    }
-    .hero-wave i:nth-child(3n) { background: var(--red); }
-    .hero-wave i:nth-child(2n) { animation-delay: .25s; }
-    .hero-wave i:nth-child(4n) { animation-delay: .45s; }
-    .hero-wave i:nth-child(5n) { height: 80%; }
-    .hero-wave i:nth-child(7n) { height: 100%; }
-    @keyframes about-wave { to { transform: scaleY(2.3); opacity: .55; } }
-    .hero-art-sticker {
-      position: absolute;
-      z-index: 5;
-      right: 7%;
-      top: 20%;
-      display: grid;
-      place-content: center;
-      width: 92px;
-      height: 92px;
-      border-radius: 50%;
-      background: #fff;
-      color: #09090b;
-      border: 5px solid var(--red);
-      outline: 1px dashed #fff;
-      text-align: center;
-      font-size: 11px;
-      line-height: 1.05;
-      font-weight: 1000;
-      letter-spacing: 1px;
-      transform: rotate(12deg);
-    }
-
-    .about-ticker {
-      overflow: hidden;
-      padding: 17px 0;
-      background: var(--red);
-      color: #fff;
-      border-bottom: 1px solid rgba(255,255,255,.2);
-    }
-    .ticker-track {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      width: max-content;
-      white-space: nowrap;
-      animation: about-ticker 28s linear infinite;
-      font-size: 11px;
-      font-weight: 1000;
-      letter-spacing: 2px;
-    }
-    .ticker-track b { font-size: 19px; color: #09090b; }
-    @keyframes about-ticker { to { transform: translateX(-50%); } }
-    .about-ticker:hover .ticker-track { animation-play-state: paused; }
-
-    .section { padding: 96px 0; }
-    .section-head { align-items: end; }
-    .section-index { box-shadow: 3px 3px 0 rgba(237,23,31,.16); }
-    .section h2, .founder-copy h2, .closing h2 {
-      text-shadow: 4px 4px 0 rgba(237,23,31,.12);
-    }
-    .section-lead { border-left: 2px solid var(--red); padding-left: 17px; }
-    .about-copy { font-size: 14px; line-height: 1.95; }
-    .pillars { gap: 10px; }
-    .pillar {
-      min-height: 185px;
-      background: linear-gradient(145deg, #19191e, #101014);
-    }
-    .pillar:nth-child(2n) { transform: translateY(13px); }
-    .pillar:nth-child(2n):hover { transform: translateY(5px) rotate(1deg); }
-    .pillar h3 { font-family: "Barlow Condensed", sans-serif; font-size: 23px; letter-spacing: 0; }
-    .pillar p { font-size: 11px; }
-
-    .direction { background: #0d0d10; }
-    .direction-card {
-      min-height: 320px;
-      padding: 38px;
-      background: linear-gradient(145deg, #1a1a20, #111115);
-    }
-    .direction-card:first-child {
-      background:
-        radial-gradient(circle at 85% 80%, rgba(0,0,0,.16), transparent 38%),
-        var(--red);
-    }
-    .direction-card h3 { font-size: clamp(46px, 5.5vw, 70px); }
-    .direction-card p { max-width: 430px; }
-
-    .founder { background: #0b0b0e; }
-    .founder-grid { gap: clamp(45px, 7vw, 100px); }
-    .founder-visual {
-      max-width: 540px;
-      padding: 0 12px 12px 0;
-    }
-    .founder-visual:before {
-      inset: 22px -2px -2px 22px;
-      background: var(--red);
-      border: 0;
-      z-index: 0;
-    }
-    .founder-visual img {
-      filter: grayscale(1) contrast(1.08);
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-      object-position: center top;
-    }
-    .founder-visual:hover img { filter: grayscale(1) contrast(1.14); }
-    .founder-copy h2 { font-size: clamp(54px, 6.5vw, 88px); }
-    .founder-copy p { font-size: 13px; }
-    blockquote { font-size: 16px; }
-
-    .closing {
-      background:
-        linear-gradient(115deg, rgba(237,23,31,.13), transparent 48%),
-        #111114;
-    }
-    .closing-box { gap: 45px; }
-    .closing .button { flex-shrink: 0; }
-    footer { background: #08080a; }
-
-    @media (max-width: 900px) {
-      .hero-layout { grid-template-columns: 1fr .85fr; gap: 25px; }
-      .hero-art { min-height: 390px; }
-      .hero h1 { font-size: clamp(66px, 9vw, 105px); }
-      .pillars { grid-template-columns: repeat(3, 1fr); }
-      .pillar:nth-child(2n) { transform: none; }
-    }
-    @media (max-width: 700px) {
-      .hero { padding: 65px 0 55px; }
-      .hero-layout { grid-template-columns: 1fr; gap: 38px; }
-      .hero h1 { font-size: clamp(66px, 17vw, 105px); }
-      .hero-art { min-height: 330px; margin: 0 8px 8px 0; }
-      .hero-core { width: 175px; font-size: 100px; }
-      .hero-art-sticker { width: 76px; height: 76px; font-size: 9px; }
-      .hero-art-top, .hero-art-bottom { left: 22px; right: 22px; font-size: 8px; }
-      .ticker-track { font-size: 10px; gap: 22px; }
-      .section { padding: 72px 0; }
-      .pillars { grid-template-columns: 1fr 1fr; }
-      .pillar { min-height: 150px; }
-      .direction-card { min-height: 255px; padding: 27px; }
-      .founder-visual { margin: 0 10px 12px 0; }
-      .founder-copy h2 { font-size: clamp(56px, 14vw, 76px); }
-      .closing-box { display: block; }
-      .closing .button { margin-top: 28px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .hero-wave i, .ticker-track { animation: none !important; }
-    }
-
   </style>
 </head>
 
@@ -1275,56 +1083,71 @@
 
     <!-- HERO -->
     <section class="hero">
-      <div class="wrap hero-layout">
-        <div class="hero-copy">
-          <div class="kicker">Who we are • What we stand for</div>
+      <div class="wrap hero-editorial">
 
-          <h1>
-            A NEW<br>
-            GENERATION.
-            <span>A NEW SOUND.</span>
-          </h1>
+        <div class="hero-meta">
+          <span>INDEPENDENT DIGITAL RADIO</span>
+          <span>EST. FOR WHAT'S NEXT&nbsp; ↗</span>
+        </div>
 
-          <div class="hero-bottom">
+        <div class="hero-mainline">
+
+          <div class="hero-title-wrap">
+            <div class="kicker">WHO WE ARE / 001</div>
+
+            <h1>
+              THE NEXT<br>
+              <span>GENERATION</span>
+              <i>IS</i><br>
+              ON AIR<span class="hero-period">.</span>
+            </h1>
+          </div>
+
+          <div class="hero-side-note">
+            <b>KZ<span>!</span></b>
+
             <p>
-              KIZAZI RADIO is an independent online radio station built for a
-              generation that is constantly evolving, connecting, creating and
-              shaping the future.
+              Not just another radio station. A digital space for the sound,
+              ideas and culture moving a generation forward.
             </p>
 
-            <div class="hero-stamp">
-              INDEPENDENT / DIGITAL / CULTURE
-            </div>
+            <a href="#about-kizazi">
+              GET TO KNOW US
+              <span>↓</span>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="hero-bottom">
+          <p>
+            KIZAZI RADIO is an independent online radio station built for a
+            generation that is constantly evolving, connecting, creating
+            and shaping the future.
+          </p>
+
+          <div class="hero-stamp">
+            NEW GENERATION<br>
+            <strong>NEW SOUND.</strong>
           </div>
         </div>
 
-        <div class="hero-art" aria-hidden="true">
-          <div class="hero-art-top"><span>FREQUENCY 001</span><span>● ON AIR</span></div>
-          <div class="hero-orbit orbit-one"></div>
-          <div class="hero-orbit orbit-two"></div>
-          <div class="hero-core">KZ<span>!</span></div>
-          <div class="hero-wave">
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-          </div>
-          <div class="hero-art-bottom"><strong>NEW GENERATION.</strong><span>NEW SOUND.</span></div>
-          <div class="hero-art-sticker">FRESH<br>FREQUENCY</div>
+        <div class="hero-index">
+          <span>01 — ABOUT THE MOVEMENT</span>
+          <span>SCROLL TO EXPLORE&nbsp; ↓</span>
         </div>
+
       </div>
     </section>
 
-    <div class="about-ticker" aria-label="KIZAZI RADIO identity">
-      <div class="ticker-track">
-        <span>NEW GENERATION. NEW SOUND.</span><b>✳</b><span>MUSIC / CULTURE / IDEAS</span><b>✳</b><span>MADE TO MOVE WITH YOU</span><b>✳</b>
-        <span>NEW GENERATION. NEW SOUND.</span><b>✳</b><span>MUSIC / CULTURE / IDEAS</span><b>✳</b><span>MADE TO MOVE WITH YOU</span><b>✳</b>
-      </div>
-    </div>
     <!-- ABOUT KIZAZI RADIO -->
-    <section class="section">
+    <section class="section" id="about-kizazi">
       <div class="wrap">
 
         <div class="section-head">
           <div>
             <div class="section-index">01 / ABOUT KIZAZI RADIO</div>
+
             <h2>
               RADIO THAT MOVES<br>
               <em>WITH THE GENERATION.</em>
@@ -1425,6 +1248,7 @@
         <div class="section-head">
           <div>
             <div class="section-index">02 / OUR DIRECTION</div>
+
             <h2>
               WHY<br>
               <em>WE'RE HERE.</em>
