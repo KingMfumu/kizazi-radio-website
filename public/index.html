@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#09090b">
 
-<title>KIZAZI RADIO | New Generation, New Sound</title>
+<title>KIZAZI RADIO | Music, Culture & Entertainment</title>
 <meta name="description" content="KIZAZI RADIO — your destination for music, culture, entertainment, news and original podcasts. Listen live.">
 <meta name="application-name" content="KIZAZI RADIO">
 
@@ -1053,66 +1053,38 @@ img{max-width:100%}
   border-color:var(--red);
 }
 
-/* MUSIC & EDITORIAL SUBMISSIONS */
+/* CONTACT / COMMUNITY */
 
 .community-section{
   padding:75px 0;
   border-bottom:1px solid var(--line);
 }
 
-.community-heading{
-  margin-bottom:28px;
+.community-box{
+  padding:40px;
+  border:1px solid var(--line);
+  background:
+    radial-gradient(circle at 90% 50%,#e509091a,transparent 35%),
+    #121216;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
 }
 
-.community-heading h2{
+.community-box h2{
   font-size:clamp(28px,4vw,43px);
   line-height:1;
   letter-spacing:-.06em;
   margin:0;
 }
 
-.submission-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-}
-
-.submission-card{
-  min-height:245px;
-  padding:32px;
-  border:1px solid var(--line);
-  background:
-    radial-gradient(circle at 90% 10%,#e509091a,transparent 38%),
-    #121216;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-}
-
-.submission-card h3{
-  font-size:clamp(21px,2.5vw,29px);
-  line-height:1.08;
-  letter-spacing:-.045em;
-  margin:0;
-}
-
-.submission-card p{
+.community-box p{
   color:var(--muted);
   font-size:12px;
   line-height:1.8;
   max-width:470px;
-  margin:14px 0 24px;
-}
-
-.submission-card .primary-button{
-  margin-top:auto;
-}
-
-.submission-email{
-  color:#a5a5ae;
-  font-size:11px;
-  margin-top:13px;
-  overflow-wrap:anywhere;
+  margin:14px 0 0;
 }
 
 /* FOOTER */
@@ -1247,8 +1219,8 @@ img{max-width:100%}
   .news-card{min-height:220px}
 
   .about-grid{gap:20px}
-  .submission-grid{grid-template-columns:1fr}
-  .submission-card{padding:25px;min-height:220px}
+  .community-box{padding:27px;display:block}
+  .community-box .primary-button{margin-top:22px}
 
   .footer-top{display:block}
   .footer-links{margin-top:20px;gap:17px}
@@ -1270,7 +1242,7 @@ img{max-width:100%}
 <header class="header" id="top">
   <div class="header-inner">
 
-    <a href="#top" aria-label="KIZAZI RADIO home">
+    <a href="/" aria-label="KIZAZI RADIO home">
       <img class="brand-logo" data-official-logo alt="KIZAZI RADIO official logo">
     </a>
 
@@ -1279,10 +1251,10 @@ img{max-width:100%}
     <nav class="nav" aria-label="Main navigation">
       <a href="#listen">Listen Live</a>
       <a href="#schedule">Schedule</a>
-      <a href="#shows">Shows</a>
+      <a href="/shows/">Shows</a>
       <a href="#podcasts">Podcasts</a>
       <a href="#news">News</a>
-      <a href="/about/"">About</a>
+      <a href="#about">About</a>
 
       <div class="social-links header-socials" aria-label="KIZAZI RADIO social media">
 
@@ -1333,7 +1305,7 @@ img{max-width:100%}
     <h1>THE SOUND<br>OF <em>WHAT'S<br>NEXT.</em></h1>
 
     <p class="hero-description">
-      Welcome to KiZaZi Radio: Home of the New Generation and New Sound.
+      Welcome to <strong>KiZaZi Radio</strong> — Your Home for the Sounds, Stories, and Voices of a New Generation.
     </p>
 
     <div class="hero-actions">
@@ -1691,43 +1663,27 @@ img{max-width:100%}
   </div>
 </section>
 
-<!-- MUSIC & EDITORIAL SUBMISSIONS -->
+<!-- COMMUNITY -->
 
-<section class="community-section" id="submissions">
+<section class="community-section">
   <div class="wrap">
 
-    <div class="community-heading">
-      <p class="eyebrow">Be part of the conversation</p>
-      <h2>YOUR VOICE.<br><span style="color:#e50909">YOUR KIZAZI.</span></h2>
-    </div>
+    <div class="community-box">
 
-    <div class="submission-grid">
+      <div>
+        <p class="eyebrow">Be part of the conversation</p>
 
-      <article class="submission-card">
-        <p class="eyebrow">For artists & music creators</p>
-        <h3>SUBMIT YOUR MUSIC.</h3>
+        <h2>YOUR VOICE.<br><span style="color:#e50909">YOUR KIZAZI.</span></h2>
+
         <p>
-          Got a new single, EP or album? Send your music to KIZAZI RADIO for consideration and music coverage.
+          Have a story, music release, event or idea to share? Connect with the KIZAZI RADIO team.
         </p>
-        <a class="primary-button"
-           href="mailto:hello@kizaziradio.com?subject=Music%20Submission%20-%20KIZAZI%20RADIO">
-          SUBMIT YOUR TRACK ↗
-        </a>
-        <span class="submission-email">hello@kizaziradio.com</span>
-      </article>
+      </div>
 
-      <article class="submission-card">
-        <p class="eyebrow">For writers, journalists & contributors</p>
-        <h3>SUBMIT YOUR STORY, NEWS, ARTICLE.</h3>
-        <p>
-          Have a news update, feature, interview, article or story to share? Send it to our editorial team.
-        </p>
-        <a class="primary-button"
-           href="mailto:editor@kizaziradio.com?subject=Story%20or%20News%20Submission%20-%20KIZAZI%20RADIO">
-          SUBMIT YOUR STORY ↗
-        </a>
-        <span class="submission-email">editor@kizaziradio.com</span>
-      </article>
+      <a class="primary-button"
+         href="mailto:hello@kizaziradio.com?subject=Connect%20with%20KIZAZI%20RADIO">
+        CONNECT WITH US ↗
+      </a>
 
     </div>
 
@@ -1743,17 +1699,17 @@ img{max-width:100%}
 
     <div class="footer-top">
 
-      <a href="#top" aria-label="KIZAZI RADIO home">
+      <a href="/" aria-label="KIZAZI RADIO home">
         <img class="footer-logo" data-official-logo alt="KIZAZI RADIO official logo">
       </a>
 
       <div class="footer-links">
         <a href="#listen">Listen Live</a>
         <a href="#schedule">Schedule</a>
-        <a href="#shows">Shows</a>
+        <a href="/shows/">Shows</a>
         <a href="#podcasts">Podcasts</a>
         <a href="#news">News</a>
-        <a href="/about/"">About</a>
+        <a href="#about">About</a>
         <a href="mailto:hello@kizaziradio.com">Contact</a>
       </div>
 
@@ -1823,7 +1779,7 @@ nav.querySelectorAll('a').forEach(link=>{
 document.getElementById('year').textContent=new Date().getFullYear();
 
 </script>
-<script src="/app.js?v=2"></script>
+
 </body>
 </html>
 
