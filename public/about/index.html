@@ -52,7 +52,7 @@
     .hero-mark .core{position:absolute;inset:105px;background:var(--red);border-radius:50%;display:grid;place-items:center;font:700 11px var(--mono);letter-spacing:2px;box-shadow:0 0 70px rgba(240,24,37,.35)}
     @keyframes spin{to{transform:rotate(360deg)}}
 
-    /* MOVING BRAND TICKER */
+    /* TICKER */
     .ticker{overflow:hidden;background:var(--red);color:#fff;border-bottom:1px solid #fff}
     .ticker-track{display:flex;width:max-content;animation:marquee 26s linear infinite}
     .ticker span{display:block;padding:17px 28px;font:700 12px var(--mono);letter-spacing:2px;white-space:nowrap}
@@ -75,13 +75,28 @@
     .story-copy{display:grid;grid-template-columns:1fr 1fr;gap:34px}
     .story-copy p{margin:0 0 22px;color:#bdbdbd;font-size:14px;line-height:2}
     .story-copy strong{color:#fff}
-    .pillars{margin-top:70px;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid #444;border-bottom:1px solid #444}
-    .pillar{min-height:190px;padding:22px 17px 25px;border-right:1px solid #333;position:relative;overflow:hidden;transition:background .25s}
+
+    /* PILLARS — FIXED HEADING WIDTH */
+    .pillars{margin-top:70px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid #444;border-bottom:1px solid #444}
+    .pillar{min-width:0;min-height:190px;padding:22px 17px 25px;border-right:1px solid #333;position:relative;overflow:hidden;transition:background .25s}
     .pillar:last-child{border-right:0}
     .pillar:hover{background:var(--red)}
     .pillar .n{font:700 10px var(--mono);color:var(--red)}
     .pillar:hover .n,.pillar:hover p{color:#fff}
-    .pillar h3{font:400 21px var(--display);letter-spacing:-1px;text-transform:uppercase;margin:44px 0 10px}
+
+    .pillar h3{
+      font-family:var(--display);
+      font-size:clamp(14px,1.2vw,18px);
+      line-height:1.15;
+      letter-spacing:-.8px;
+      text-transform:uppercase;
+      margin:44px 0 10px;
+      max-width:100%;
+      white-space:normal;
+      overflow-wrap:normal;
+      word-break:normal;
+    }
+
     .pillar p{margin:0;color:#999;font-size:11px;line-height:1.7}
 
     /* MISSION & VISION */
@@ -135,10 +150,11 @@
       .nav-links{gap:13px;font-size:9px}
       .hero-mark{right:0;opacity:.45}
       .story{gap:40px}
-      .pillars{grid-template-columns:repeat(3,1fr)}
+      .pillars{grid-template-columns:repeat(3,minmax(0,1fr))}
       .pillar:nth-child(3){border-right:0}
       .pillar:nth-child(n+4){border-top:1px solid #333}
       .founder-grid{gap:50px}
+      .pillar h3{font-size:17px}
     }
 
     /* MOBILE */
@@ -173,7 +189,7 @@
       .pillar{min-height:150px;border-top:1px solid #333}
       .pillar:nth-child(odd){border-right:1px solid #333}
       .pillar:nth-child(even){border-right:0}
-      .pillar h3{font-size:18px;margin-top:30px}
+      .pillar h3{font-size:16px;line-height:1.15;letter-spacing:-.65px;margin-top:30px;overflow-wrap:anywhere}
       .direction-grid{grid-template-columns:1fr}
       .direction-card{min-height:280px;padding:26px}
       .direction-card h3{margin-top:55px}
@@ -416,12 +432,13 @@
   </footer>
 
   <script>
-    const toggle=document.querySelector('.menu-toggle');
-    const links=document.querySelector('.nav-links');
-    toggle.addEventListener('click',()=>{
-      const open=links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded',String(open));
-      toggle.textContent=open?'×':'☰';
+    const toggle = document.querySelector('.menu-toggle');
+    const links = document.querySelector('.nav-links');
+
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.textContent = open ? '×' : '☰';
     });
   </script>
 </body>
