@@ -2535,6 +2535,269 @@ img{max-width:100%}
   .sound-bars i,.live-kicker span{animation:none}
 }
 
+
+
+/* =========================================================
+   KIZAZI LIVE — HYBRID CULTURE EXPERIENCE
+   MTV energy + Boiler Room atmosphere + streaming polish
+   + streetwear/editorial attitude. Embed remains untouched.
+   ========================================================= */
+.live-section{
+  background:
+    radial-gradient(ellipse at 7% 25%,rgba(255,31,45,.20),transparent 27%),
+    radial-gradient(ellipse at 92% 75%,rgba(162,255,35,.075),transparent 23%),
+    linear-gradient(135deg,#080809 0%,#101014 48%,#080809 100%);
+}
+.live-section:after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  opacity:.12;
+  pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
+  background-size:54px 54px;
+  mask-image:linear-gradient(90deg,black,transparent 78%);
+}
+.live-section .section-heading{
+  position:relative;
+  padding-left:22px;
+  border-left:4px solid #ff2632;
+}
+.live-section .section-heading:after{
+  content:"GLOBAL YOUTH RADIO / EST. FOR THE NEXT";
+  position:absolute;
+  right:0;
+  bottom:4px;
+  color:#74747d;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+.live-section .section-title{
+  text-shadow:3px 3px 0 rgba(255,38,50,.13);
+}
+.live-section .section-title em{
+  color:#ff2632;
+  text-shadow:0 0 28px rgba(255,38,50,.28);
+}
+.live-card{
+  grid-template-columns:minmax(0,1.08fr) minmax(380px,.92fr);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:5px;
+  background:#0b0b0e;
+  box-shadow:0 32px 100px rgba(0,0,0,.62),0 0 70px rgba(255,25,40,.09);
+}
+.live-card:before{
+  content:"KZ / LIVE";
+  position:absolute;
+  z-index:8;
+  top:18px;
+  right:18px;
+  padding:8px 11px;
+  color:#080809;
+  background:#c5ff42;
+  font-size:9px;
+  font-weight:1000;
+  letter-spacing:1.5px;
+  transform:rotate(2deg);
+}
+.live-visual{
+  min-height:620px;
+  padding:clamp(30px,4.5vw,64px);
+  background:
+    radial-gradient(circle at 72% 42%,rgba(255,26,41,.38),transparent 28%),
+    radial-gradient(circle at 18% 82%,rgba(157,255,40,.10),transparent 25%),
+    linear-gradient(145deg,#17171c 0%,#09090b 72%);
+}
+.live-visual:before{
+  content:"KIZAZI";
+  right:-22px;
+  bottom:-52px;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,.13);
+  font-size:clamp(170px,24vw,340px);
+  letter-spacing:-.075em;
+  transform:rotate(-8deg);
+}
+.live-visual:after{
+  width:390px;
+  height:390px;
+  right:-130px;
+  top:95px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 14px rgba(255,255,255,.025),
+    0 0 0 34px rgba(255,255,255,.025),
+    0 0 0 62px rgba(255,38,50,.035),
+    0 0 85px rgba(255,38,50,.2);
+}
+.live-label{
+  position:relative;
+  z-index:3;
+  border-color:rgba(255,255,255,.26);
+  background:rgba(5,5,7,.7);
+  backdrop-filter:blur(8px);
+  box-shadow:5px 5px 0 rgba(255,38,50,.45);
+}
+.live-label span:last-child{color:#c5ff42}
+.live-kicker{
+  position:relative;
+  z-index:3;
+  margin-top:clamp(58px,7vw,88px);
+  color:#c5ff42;
+  font-size:9px;
+  letter-spacing:2px;
+}
+.live-kicker span{
+  color:#ff2632;
+  font-size:24px;
+}
+.live-visual h3{
+  position:relative;
+  z-index:3;
+  font-size:clamp(76px,8.8vw,124px);
+  line-height:.72;
+  letter-spacing:-.055em;
+  transform:rotate(-2deg);
+  text-shadow:4px 5px 0 rgba(255,38,50,.22),0 14px 40px rgba(0,0,0,.5);
+}
+.live-visual h3 em{
+  color:#c5ff42;
+  -webkit-text-stroke:.5px #c5ff42;
+  text-shadow:4px 5px 0 rgba(255,38,50,.24);
+}
+.live-visual p{
+  position:relative;
+  z-index:3;
+  max-width:390px;
+  padding-left:14px;
+  border-left:2px solid #ff2632;
+  color:#d0d0d5;
+}
+.live-bottom{
+  position:relative;
+  z-index:3;
+}
+.live-bottom span{
+  color:#c5ff42;
+  font-size:8px;
+}
+.live-bottom strong{
+  color:#fff;
+  text-shadow:3px 3px 0 #ff2632;
+}
+.sound-bars{
+  z-index:4;
+  top:52px;
+  right:clamp(28px,4vw,58px);
+  height:55px;
+  transform:skewY(-12deg);
+}
+.sound-bars i{
+  width:5px;
+  border-radius:4px;
+  background:linear-gradient(180deg,#c5ff42 0%,#ff2632 72%);
+  box-shadow:0 0 15px rgba(255,38,50,.55);
+}
+.player-panel{
+  background:
+    radial-gradient(ellipse at 100% 0%,rgba(255,38,50,.17),transparent 40%),
+    linear-gradient(160deg,#202027 0%,#111115 54%,#0c0c0f 100%);
+  border-left:1px solid rgba(255,255,255,.1);
+}
+.player-panel:after{
+  content:"PLAY IT LOUD";
+  position:absolute;
+  bottom:18px;
+  right:22px;
+  color:rgba(255,255,255,.13);
+  font:900 10px "DM Sans",Arial,sans-serif;
+  letter-spacing:3px;
+  transform:rotate(-90deg);
+  transform-origin:right bottom;
+}
+.player-heading small{
+  color:#c5ff42;
+}
+.player-heading h3{
+  font-size:clamp(48px,5vw,68px);
+  text-shadow:2px 2px 0 rgba(255,38,50,.25);
+}
+.player-heading h3 em{
+  color:#ff2632;
+}
+.caster-player{
+  position:relative;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:5px;
+  background:linear-gradient(145deg,#08080a,#15151a);
+  box-shadow:0 18px 55px rgba(0,0,0,.5),0 0 0 5px rgba(255,255,255,.025);
+}
+.caster-player:before{
+  content:"LIVE PLAYER";
+  position:absolute;
+  top:-10px;
+  left:15px;
+  z-index:4;
+  padding:5px 9px;
+  background:#ff2632;
+  color:white;
+  font-size:8px;
+  font-weight:1000;
+  letter-spacing:1.4px;
+}
+.player-note{
+  color:#c0c0c8;
+}
+.player-note:before{color:#c5ff42}
+.now-playing{
+  min-height:112px;
+  border:1px solid rgba(255,255,255,.19);
+  border-radius:5px;
+  background:
+    linear-gradient(100deg,rgba(255,38,50,.18),transparent 46%),
+    #111115;
+  box-shadow:0 14px 45px rgba(0,0,0,.28);
+}
+.now-art{
+  border-radius:3px;
+  background:
+    linear-gradient(135deg,rgba(255,38,50,.7),transparent),
+    repeating-linear-gradient(135deg,#17171d 0 8px,#202027 8px 16px);
+  color:#c5ff42;
+  font-size:28px;
+  box-shadow:4px 4px 0 #ff2632;
+}
+.now-details small{color:#c5ff42}
+.now-details strong{
+  font-family:"Barlow Condensed",Impact,sans-serif;
+  font-size:23px;
+  letter-spacing:1px;
+}
+.now-details strong span{color:#c5ff42}
+.now-details p{color:#aaaab3}
+
+@media(max-width:900px){
+  .live-card{grid-template-columns:1fr}
+  .player-panel{border-left:0;border-top:1px solid rgba(255,255,255,.12)}
+  .live-section .section-heading:after{display:none}
+}
+@media(max-width:600px){
+  .live-section .section-heading{padding-left:14px}
+  .live-visual{min-height:480px;padding:25px 20px}
+  .live-visual h3{font-size:clamp(68px,16vw,94px)}
+  .live-visual:before{font-size:190px;bottom:-20px}
+  .live-visual:after{width:270px;height:270px;right:-145px;top:115px}
+  .live-card:before{top:12px;right:12px;font-size:7px}
+  .player-panel{padding:28px 17px}
+  .player-heading h3{font-size:51px}
+  .now-playing:before{display:none}
+}
+
 </style>
 </head>
 
@@ -2658,8 +2921,8 @@ img{max-width:100%}
     <div class="section-heading">
       <div>
         <div class="section-number">01 / LIVE RADIO</div>
-        <p class="eyebrow">YOUR FREQUENCY. YOUR GENERATION.</p>
-        <h2 class="section-title">KIZAZI <em>IS ON.</em></h2>
+        <p class="eyebrow">MUSIC CHANNEL ENERGY · UNDERGROUND SOUL · ALWAYS ON</p>
+        <h2 class="section-title">THIS IS <em>KIZAZI.</em></h2>
       </div>
     </div>
 
@@ -2677,11 +2940,11 @@ img{max-width:100%}
           KIZAZI RADIO <span>• ON AIR</span>
         </div>
 
-        <div class="live-kicker">THE SOUNDTRACK STARTS HERE <span>✳</span></div>
-        <h3>PRESS PLAY.<br>FIND YOUR<br><em>FREQUENCY.</em></h3>
+        <div class="live-kicker">NOT JUST RADIO. IT’S A WHOLE FREQUENCY <span>✳</span></div>
+        <h3>LOUD SOUND.<br>REAL CULTURE.<br><em>NO RULES.</em></h3>
 
         <p>
-          Fresh sounds. Real energy. No waiting for the next wave — we are the new wave.
+          From underground energy to global hits. Fresh sounds, fearless voices and the culture moving a new generation.
         </p>
 
         <div class="live-bottom">
@@ -2694,8 +2957,8 @@ img{max-width:100%}
       <div class="player-panel">
 
         <div class="player-heading">
-          <small>YOUR DAILY SOUND FIX <span class="player-live-mark">● STREAM PLAYER</span></small>
-          <h3>THIS IS YOUR<br><em>FREQUENCY.</em></h3>
+          <small>LIVE STREAM <span class="player-live-mark">● CONNECTED TO THE CULTURE</span></small>
+          <h3>LOCK IN.<br><em>LISTEN UP.</em></h3>
         </div>
 
         <div class="caster-player">
@@ -2717,7 +2980,7 @@ img{max-width:100%}
         </div>
 
         <p class="player-note">
-          Hit play. Lock in. Let KIZAZI RADIO take it from here.
+          One tap from the sound, stories and voices shaping what’s next.
         </p>
 
       </div>
@@ -2731,7 +2994,7 @@ img{max-width:100%}
       <div class="now-art">♫</div>
 
       <div class="now-details">
-        <small>YOU ARE LISTENING TO</small>
+        <small>YOUR FREQUENCY RIGHT NOW</small>
         <strong>KIZAZI RADIO <span>✳</span></strong>
         <p>NEW GENERATION. NEW SOUND. · MUSIC / CULTURE / CONVERSATION</p>
       </div>
