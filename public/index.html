@@ -1177,76 +1177,225 @@ img{max-width:100%}
   margin-bottom:8px;
 }
 
-/* ABOUT */
+/* ABOUT — KIZAZI CULTURE STATEMENT */
 
 .about-section{
-  padding:80px 0;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  padding:105px 0 112px;
   background:#101014;
-  border-top:1px solid var(--line);
+  border-top:1px solid #29292e;
+}
+
+.about-section:after{
+  content:"NEW GENERATION";
+  position:absolute;
+  z-index:-1;
+  right:-28px;
+  bottom:-48px;
+  color:rgba(255,255,255,.022);
+  font-size:clamp(90px,16vw,220px);
+  line-height:.8;
+  letter-spacing:-.09em;
+  font-weight:1000;
+  white-space:nowrap;
 }
 
 .about-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
+  grid-template-columns:1.05fr .95fr;
+  gap:70px;
   align-items:center;
+}
+
+.about-intro .eyebrow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#b0b0b8;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:2.3px;
+  text-transform:uppercase;
+}
+
+.about-intro .eyebrow:before{
+  content:"";
+  width:27px;
+  height:3px;
+  background:#ed171f;
+}
+
+.about-intro .section-title{
+  margin:24px 0 0;
+  max-width:650px;
+  font-size:clamp(56px,8.2vw,112px);
+  line-height:.82;
+  letter-spacing:-.085em;
+  font-weight:1000;
+}
+
+.about-intro .section-title em{
+  color:#ed171f;
+  font-style:normal;
+}
+
+.about-copy{
+  position:relative;
+  padding:28px 0 28px 30px;
+  border-left:2px solid #ed171f;
+}
+
+.about-copy:before{
+  content:"01 / OUR FREQUENCY";
+  display:block;
+  margin-bottom:23px;
+  color:#ed171f;
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:2px;
 }
 
 .about-copy p{
   max-width:480px;
-  color:var(--muted);
-  font-size:13px;
+  color:#b1b1b9;
+  font-size:15px;
   line-height:1.9;
-  margin:0 0 22px;
+  margin:0 0 27px;
 }
 
 .outline-button{
-  display:inline-block;
-  border:1px solid #55555d;
-  padding:14px 18px;
+  display:inline-flex;
+  align-items:center;
+  gap:22px;
+  border:1px solid #5a5a62;
+  padding:15px 18px;
+  color:#fff;
   font-size:10px;
-  font-weight:900;
-  letter-spacing:1px;
-  transition:.2s;
+  font-weight:950;
+  letter-spacing:1.2px;
+  transition:background .2s,border-color .2s,transform .2s;
 }
 
 .outline-button:hover{
-  color:var(--red);
-  border-color:var(--red);
+  color:#fff;
+  background:#ed171f;
+  border-color:#ed171f;
+  transform:translateY(-3px);
 }
 
-/* CONTACT / COMMUNITY */
+/* CONTACT / COMMUNITY — JOIN THE CULTURE */
 
 .community-section{
-  padding:75px 0;
-  border-bottom:1px solid var(--line);
+  position:relative;
+  overflow:hidden;
+  padding:78px 0 92px;
+  background:#08080a;
+  border-bottom:1px solid #29292e;
 }
 
 .community-box{
-  padding:40px;
-  border:1px solid var(--line);
+  position:relative;
+  min-height:280px;
+  padding:48px 52px;
+  border:1px solid #393940;
   background:
-    radial-gradient(circle at 90% 50%,#e509091a,transparent 35%),
-    #121216;
+    linear-gradient(112deg,#151519 0%,#151519 58%,#260d10 100%);
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:30px;
+  gap:35px;
+}
+
+.community-box:before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:7px;
+  height:100%;
+  background:#ed171f;
+}
+
+.community-box:after{
+  content:"KZ / COMMUNITY";
+  position:absolute;
+  top:20px;
+  right:22px;
+  color:#777780;
+  font-size:8px;
+  font-weight:950;
+  letter-spacing:2px;
+}
+
+.community-copy{
+  position:relative;
+  z-index:1;
+}
+
+.community-copy .eyebrow{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  color:#b1b1b9;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.community-copy .eyebrow:before{
+  content:"";
+  width:25px;
+  height:3px;
+  background:#ed171f;
 }
 
 .community-box h2{
-  font-size:clamp(28px,4vw,43px);
-  line-height:1;
-  letter-spacing:-.06em;
-  margin:0;
+  margin:15px 0 0;
+  font-size:clamp(42px,6vw,76px);
+  line-height:.86;
+  letter-spacing:-.075em;
+  font-weight:1000;
+}
+
+.community-box h2 span{
+  color:#ed171f;
 }
 
 .community-box p{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.8;
-  max-width:470px;
-  margin:14px 0 0;
+  color:#a7a7af;
+  font-size:13px;
+  line-height:1.85;
+  max-width:490px;
+  margin:20px 0 0;
+}
+
+.community-box .primary-button{
+  position:relative;
+  z-index:1;
+  flex:0 0 auto;
+  min-width:190px;
+  min-height:56px;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  padding:16px 20px;
+  background:#ed171f;
+  border:1px solid #ed171f;
+  color:#fff;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:1.2px;
+  transition:background .2s,transform .2s;
+}
+
+.community-box .primary-button:hover{
+  background:#fff;
+  border-color:#fff;
+  color:#09090b;
+  transform:translateY(-3px);
 }
 
 /* FOOTER */
@@ -1378,9 +1527,17 @@ img{max-width:100%}
   .news-placeholder{grid-column:auto}
   .news-card{min-height:220px}
 
-  .about-grid{gap:20px}
-  .community-box{padding:27px;display:block}
-  .community-box .primary-button{margin-top:22px}
+  .about-section{padding:72px 0 78px}
+  .about-grid{gap:30px}
+  .about-intro .section-title{font-size:clamp(58px,14vw,82px)}
+  .about-copy{padding:22px 0 22px 20px}
+  .about-copy p{font-size:13px}
+  .community-section{padding:55px 0 65px}
+  .community-box{padding:34px 25px 30px;display:block;min-height:0}
+  .community-box:after{top:14px;right:14px;font-size:7px}
+  .community-box h2{font-size:clamp(39px,10vw,58px)}
+  .community-box p{font-size:12px;margin-top:16px}
+  .community-box .primary-button{margin-top:25px;min-height:50px}
 
   .footer-top{display:block}
   .footer-links{margin-top:20px;gap:17px}
@@ -3382,18 +3539,18 @@ img{max-width:100%}
 <section class="about-section" id="about">
   <div class="wrap about-grid">
 
-    <div>
+    <div class="about-intro">
       <p class="eyebrow">Music. Culture. Conversation.</p>
-      <h2 class="section-title">THIS IS<br><em>KIZAZI RADIO.</em></h2>
+      <h2 class="section-title">WE ARE<br><em>KIZAZI.</em></h2>
     </div>
 
     <div class="about-copy">
       <p>
-        KIZAZI RADIO is a home for music, culture and conversation. We bring together fresh sounds and real voices that connect, inspire and entertain.
+        More than a radio station. KIZAZI is where fresh sounds, fearless voices and new perspectives come together. We entertain, inform and connect a generation moving to its own rhythm.
       </p>
 
       <a class="outline-button" href="mailto:hello@kizaziradio.com">
-        GET IN TOUCH ↗
+        MEET THE KIZAZI TEAM <span aria-hidden="true">↗</span>
       </a>
     </div>
 
@@ -3407,19 +3564,19 @@ img{max-width:100%}
 
     <div class="community-box">
 
-      <div>
-        <p class="eyebrow">Be part of the conversation</p>
+      <div class="community-copy">
+        <p class="eyebrow">This is your space</p>
 
-        <h2>YOUR VOICE.<br><span style="color:#e50909">YOUR KIZAZI.</span></h2>
+        <h2>DON'T JUST<br><span>FOLLOW THE CULTURE.</span></h2>
 
         <p>
-          Have a story, music release, event or idea to share? Connect with the KIZAZI RADIO team.
+          Got a track, a story, an event or something worth putting on the radar? Bring it to KIZAZI. Let's make some noise together.
         </p>
       </div>
 
       <a class="primary-button"
-         href="mailto:hello@kizaziradio.com?subject=Connect%20with%20KIZAZI%20RADIO">
-        CONNECT WITH US ↗
+         href="mailto:hello@kizaziradio.com?subject=Join%20the%20KIZAZI%20Conversation">
+        GET IN THE MIX ↗
       </a>
 
     </div>
