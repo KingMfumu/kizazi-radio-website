@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09090b">
+<meta name="description" content="Get in touch with KIZAZI RADIO. Share a story, music, partnership idea or general enquiry.">
+<title>Contact Us | KIZAZI RADIO</title>
+<link rel="icon" type="image/png" href="/assets/kizazi-radio-official-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--red:#ed1019;--bg:#09090b;--panel:#121216;--line:#29292f;--muted:#a5a5af;--white:#f7f7f8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1160px,90%);margin:auto}
+.header{height:88px;border-bottom:1px solid #25252a;background:rgba(9,9,11,.96);display:flex;align-items:center;position:relative;z-index:10}
+.header-inner{width:min(1280px,92%);margin:auto;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.brand-logo{width:145px;height:66px;object-fit:contain;display:block}
+.nav{display:flex;align-items:center;gap:25px}
+.nav a{font-size:11px;font-weight:800;letter-spacing:.7px;color:#d1d1d6;transition:color .2s}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--red)}
+.menu{display:none;border:0;background:none;color:#fff;font-size:28px;cursor:pointer}
+.hero{padding:92px 0 74px;background:radial-gradient(ellipse at 16% 42%,rgba(237,16,25,.16),transparent 38%),linear-gradient(120deg,#0b0b0e,#110609 55%,#09090b);border-bottom:1px solid #28282e;overflow:hidden}
+.eyebrow{display:flex;align-items:center;gap:12px;color:#b5b5bd;font-size:10px;font-weight:900;letter-spacing:2.3px;text-transform:uppercase}
+.eyebrow:before{content:"";width:28px;height:3px;background:var(--red)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:end}
+h1{margin:24px 0 20px;font-size:clamp(62px,9vw,112px);line-height:.83;letter-spacing:-.085em;font-weight:900;text-transform:uppercase}
+h1 em{font-style:normal;color:var(--red)}
+.hero-copy{max-width:440px;color:#aaaab3;font-size:14px;line-height:1.9;margin:0 0 8px}
+.hero-index{border-left:2px solid var(--red);padding:12px 0 12px 28px}
+.hero-index strong{font-size:10px;letter-spacing:2px;color:var(--red)}
+.hero-index p{font-size:17px;line-height:1.8;color:#b8b8c0;margin:18px 0 0}
+.contact-main{padding:75px 0 100px}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:75px}
+.section-kicker{color:var(--red);font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+.contact-intro h2{font-size:clamp(30px,4vw,48px);line-height:.98;letter-spacing:-.06em;margin:17px 0}
+.contact-intro>p{color:var(--muted);font-size:13px;line-height:1.9;max-width:390px}
+.contact-card{margin-top:38px;padding:22px 23px;border:1px solid var(--line);background:linear-gradient(145deg,#151519,#0e0e11)}
+.contact-card small{color:#85858e;font-size:9px;font-weight:900;letter-spacing:1.8px}
+.contact-card strong{display:block;margin-top:10px;font-size:15px;letter-spacing:.3px}
+.contact-card p{color:#9696a0;font-size:11px;line-height:1.7;margin:9px 0 0}
+.contact-form-wrap{padding:34px;background:#121216;border:1px solid #2c2c33;position:relative}
+.contact-form-wrap:before{content:"";position:absolute;top:-1px;left:-1px;width:72px;height:3px;background:var(--red)}
+.form-heading{margin:0 0 24px;font-size:23px;letter-spacing:-.7px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:9px}
+.field.full{grid-column:1/-1}
+label{font-size:9px;font-weight:900;letter-spacing:1.4px;color:#bcbcc4;text-transform:uppercase}
+input,select,textarea{width:100%;background:#0b0b0e;border:1px solid #34343b;border-radius:0;color:#f5f5f6;padding:14px 13px;font:12px Inter,Arial,sans-serif;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--red)}
+textarea{min-height:145px;resize:vertical}
+select:disabled,input:disabled,textarea:disabled{opacity:.62;cursor:not-allowed}
+.form-note{margin:19px 0 0;padding:13px 15px;border-left:2px solid var(--red);background:#1a1012;color:#bcb4b7;font-size:11px;line-height:1.7}
+.submit-button{margin-top:21px;display:inline-flex;align-items:center;gap:18px;padding:16px 22px;background:#333339;color:#92929b;border:0;font-size:10px;font-weight:900;letter-spacing:1.2px;cursor:not-allowed}
+.footer{border-top:1px solid #28282e;padding:28px 0 35px}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:25px;flex-wrap:wrap}
+.footer-logo{width:125px;height:58px;object-fit:contain}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a{font-size:10px;color:#a4a4ad;font-weight:700}
+.footer-links a:hover{color:var(--red)}
+.copyright{color:#707079;font-size:9px;letter-spacing:.5px}
+@media(max-width:850px){.nav{gap:14px}.nav a{font-size:9px}.hero-grid{gap:35px}.contact-grid{gap:35px}}
+@media(max-width:700px){.header{height:72px}.header-inner{width:90%}.brand-logo{width:120px;height:56px}.menu{display:block}.nav{display:none;position:absolute;top:71px;left:0;right:0;padding:22px 5%;background:#101014;border-bottom:1px solid #333;flex-direction:column;align-items:flex-start;gap:20px}.nav.open{display:flex}.nav a{font-size:11px}.hero{padding:70px 0 55px}.hero-grid{grid-template-columns:1fr;gap:34px}h1{font-size:clamp(58px,17vw,88px)}.hero-index{max-width:500px}.contact-main{padding:55px 0 70px}.contact-grid{grid-template-columns:1fr;gap:35px}.contact-form-wrap{padding:24px 18px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.footer-inner{align-items:flex-start;flex-direction:column}.footer-links{gap:14px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="header">
+ <div class="header-inner">
+  <a href="/" aria-label="KIZAZI RADIO home"><img class="brand-logo" src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO official logo"></a>
+  <button class="menu" aria-label="Open navigation" aria-expanded="false">☰</button>
+  <nav class="nav" aria-label="Main navigation">
+   <a href="/#listen">Listen Live</a><a href="/#schedule">Schedule</a><a href="/shows/">Shows</a>
+   <a href="/maybe-i-dont-know/">Podcast</a><a href="/top15/">TOP 15</a><a href="/news/">News</a>
+   <a href="/about/">About</a><a href="/contact/" aria-current="page">Contact</a>
+  </nav>
+ </div>
+</header>
+<main>
+<section class="hero">
+ <div class="wrap hero-grid">
+  <div>
+   <p class="eyebrow">The conversation starts here</p>
+   <h1>LET'S<br><em>CONNECT.</em></h1>
+   <p class="hero-copy">Have a story, a sound, an idea or a question? We want to hear from you. Reach out and connect with the KIZAZI RADIO team.</p>
+  </div>
+  <div class="hero-index">
+   <strong>01 / GET IN TOUCH</strong>
+   <p>Music. Culture. Partnerships. Feedback. Whatever brings you here, this is your space to start the conversation.</p>
+  </div>
+ </div>
+</section>
+<section class="contact-main">
+ <div class="wrap contact-grid">
+  <div class="contact-intro">
+   <span class="section-kicker">Make some noise with us</span>
+   <h2>YOUR VOICE<br>MATTERS HERE.</h2>
+   <p>Whether you are an artist, listener, creative, event organiser or potential partner, KIZAZI RADIO is open to meaningful conversations and fresh ideas.</p>
+   <div class="contact-card">
+    <small>GENERAL ENQUIRIES</small>
+    <strong>KIZAZI RADIO</strong>
+    <p>Our official email channel is currently being set up. We will publish the active contact details here once configuration is complete.</p>
+   </div>
+  </div>
+  <div class="contact-form-wrap">
+   <p class="section-kicker">SEND US A MESSAGE</p>
+   <h2 class="form-heading">TELL US WHAT'S ON YOUR MIND.</h2>
+   <form>
+    <div class="form-grid">
+     <div class="field"><label for="contact-name">Your name</label><input id="contact-name" name="name" type="text" placeholder="Full name" disabled></div>
+     <div class="field"><label for="contact-email">Email address</label><input id="contact-email" name="email" type="email" placeholder="you@example.com" disabled></div>
+     <div class="field full"><label for="contact-topic">What is it about?</label><select id="contact-topic" name="topic" disabled><option>Select an enquiry type</option><option>Music submission</option><option>Partnership / Advertising</option><option>Media / Press</option><option>Events</option><option>General enquiry</option></select></div>
+     <div class="field full"><label for="contact-message">Your message</label><textarea id="contact-message" name="message" placeholder="Write your message here..." disabled></textarea></div>
+    </div>
+    <p class="form-note">Our contact email and message-delivery system are still being configured. This form is a design preview and is not accepting or sending messages yet.</p>
+    <button class="submit-button" type="button" disabled>MESSAGING SETUP IN PROGRESS <span>↗</span></button>
+   </form>
+  </div>
+ </div>
+</section>
+</main>
+<footer class="footer">
+ <div class="wrap footer-inner">
+  <a href="/" aria-label="KIZAZI RADIO home"><img class="footer-logo" src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO official logo"></a>
+  <nav class="footer-links" aria-label="Footer navigation">
+   <a href="/#listen">Listen Live</a><a href="/#schedule">Schedule</a><a href="/shows/">Shows</a>
+   <a href="/maybe-i-dont-know/">Podcast</a><a href="/news/">News</a><a href="/about/">About</a><a href="/contact/">Contact</a>
+  </nav>
+  <span class="copyright">© <span id="year"></span> KIZAZI RADIO. ALL RIGHTS RESERVED.</span>
+ </div>
+</footer>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const menu=document.querySelector(".menu"),nav=document.querySelector(".nav");
+ if(menu&&nav){menu.addEventListener("click",()=>{const open=nav.classList.toggle("open");menu.setAttribute("aria-expanded",String(open));menu.textContent=open?"×":"☰"});nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");menu.setAttribute("aria-expanded","false");menu.textContent="☰"}))}
+ const year=document.getElementById("year");if(year)year.textContent=new Date().getFullYear();
+});
+</script>
+</body>
+</html>
