@@ -22,43 +22,99 @@
   --display:'Space Grotesk',sans-serif;
   --body:'DM Sans',sans-serif;
 }
+
 *{box-sizing:border-box;margin:0;padding:0}
+
 html{scroll-behavior:smooth}
-body{background:var(--black);color:var(--white);font-family:var(--body)}
+
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:var(--body);
+}
+
 a{color:inherit;text-decoration:none}
 button{font:inherit}
-.container{width:min(1380px,90%);margin:auto}
+
+.container{
+  width:min(1380px,90%);
+  margin:auto;
+}
 
 /* HEADER */
+
 .header{
-  height:80px;padding:0 4%;
-  display:flex;align-items:center;justify-content:space-between;
-  background:#080808;border-bottom:1px solid var(--line);
-  position:relative;z-index:30;
+  height:80px;
+  padding:0 4%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:#080808;
+  border-bottom:1px solid var(--line);
+  position:relative;
+  z-index:30;
 }
-.brand img{width:145px;display:block}
-.nav{display:flex;align-items:center;gap:30px}
+
+.brand img{
+  width:145px;
+  display:block;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:30px;
+}
+
 .nav a{
-  font-size:13px;font-weight:600;color:#ccc;
+  font-size:13px;
+  font-weight:600;
+  color:#ccc;
   transition:color .2s;
 }
-.nav a:hover,.nav a.active{color:white}
-.nav a.active{position:relative}
+
+.nav a:hover,
+.nav a.active{
+  color:white;
+}
+
+.nav a.active{
+  position:relative;
+}
+
 .nav a.active:after{
-  content:"";height:3px;background:var(--red);
-  position:absolute;bottom:-28px;left:0;right:0;
+  content:"";
+  height:3px;
+  background:var(--red);
+  position:absolute;
+  bottom:-28px;
+  left:0;
+  right:0;
 }
+
 .nav .listen{
-  background:var(--red);color:white;
-  padding:13px 19px;border-radius:7px;
+  background:var(--red);
+  color:white;
+  padding:13px 19px;
+  border-radius:7px;
 }
-.nav .listen:hover{background:white;color:#111}
+
+.nav .listen:hover{
+  background:white;
+  color:#111;
+}
+
 .menu{
-  display:none;background:none;border:0;color:white;
-  font-size:26px;cursor:pointer;
+  display:none;
+  background:none;
+  border:0;
+  color:white;
+  font-size:26px;
+  cursor:pointer;
 }
 
 /* HERO */
+
 .hero{
   min-height:490px;
   position:relative;
@@ -66,32 +122,63 @@ button{font:inherit}
   background:#080808;
   border-bottom:1px solid rgba(237,23,38,.35);
 }
+
 .hero-image{
-  position:absolute;inset:0;
+  position:absolute;
+  inset:0;
+  background-color:#080808;
+
   background-image:
-    linear-gradient(90deg,#080808 0%,rgba(8,8,8,.98) 27%,rgba(8,8,8,.35) 56%,rgba(8,8,8,.05) 100%),
-    linear-gradient(0deg,rgba(8,8,8,.2),transparent 45%),
+    linear-gradient(
+      90deg,
+      #080808 0%,
+      rgba(8,8,8,.97) 23%,
+      rgba(8,8,8,.62) 43%,
+      rgba(8,8,8,.12) 72%,
+      rgba(8,8,8,.04) 100%
+    ),
     url('/assets/kizazi-about-hero-visual.jpg');
-  background-size:cover;
-  background-position:center 43%;
+
+  background-repeat:no-repeat,no-repeat;
+
+  /* Keep the full portrait visible without excessive zoom */
+  background-size:100% 100%, auto 100%;
+
+  background-position:center,right center;
 }
+
 .hero-inner{
-  position:relative;z-index:2;
-  width:88%;max-width:1320px;margin:auto;
+  position:relative;
+  z-index:2;
+  width:88%;
+  max-width:1320px;
+  margin:auto;
   min-height:490px;
-  display:flex;flex-direction:column;
-  justify-content:center;align-items:flex-start;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
   padding:45px 0;
 }
+
 .hero-label{
-  font-size:12px;font-weight:700;
-  letter-spacing:.18em;text-transform:uppercase;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
   margin-bottom:22px;
-  display:flex;align-items:center;gap:13px;
+  display:flex;
+  align-items:center;
+  gap:13px;
 }
+
 .hero-label:before{
-  content:"";width:29px;height:4px;background:var(--red);
+  content:"";
+  width:29px;
+  height:4px;
+  background:var(--red);
 }
+
 .hero h1{
   font-family:var(--display);
   font-size:clamp(65px,8.2vw,112px);
@@ -100,99 +187,183 @@ button{font:inherit}
   line-height:.82;
   text-transform:uppercase;
 }
-.hero h1 span{color:var(--red)}
+
+.hero h1 span{
+  color:var(--red);
+}
+
 .hero-description{
-  font-size:17px;line-height:1.6;
-  margin-top:23px;color:#eee;
+  font-size:17px;
+  line-height:1.6;
+  margin-top:23px;
+  color:#eee;
 }
-.hero-description span{display:block}
+
+.hero-description span{
+  display:block;
+}
+
 .hero-actions{
-  display:flex;gap:14px;margin-top:25px;
+  display:flex;
+  gap:14px;
+  margin-top:25px;
 }
+
 .btn{
-  min-height:46px;padding:0 20px;
-  display:inline-flex;align-items:center;justify-content:center;
-  gap:11px;border-radius:6px;
-  font-size:13px;font-weight:800;
+  min-height:46px;
+  padding:0 20px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:11px;
+  border-radius:6px;
+  font-size:13px;
+  font-weight:800;
   transition:.2s;
 }
-.btn-red{background:var(--red);color:white}
-.btn-red:hover{background:white;color:#111}
-.btn-outline{border:1px solid white;color:white}
-.btn-outline:hover{background:white;color:#111}
+
+.btn-red{
+  background:var(--red);
+  color:white;
+}
+
+.btn-red:hover{
+  background:white;
+  color:#111;
+}
+
+.btn-outline{
+  border:1px solid white;
+  color:white;
+}
+
+.btn-outline:hover{
+  background:white;
+  color:#111;
+}
 
 /* CATEGORY STRIP */
+
 .category-strip{
   min-height:61px;
-  display:flex;align-items:center;
+  display:flex;
+  align-items:center;
   border-bottom:1px solid var(--line);
   background:#0b0b0b;
 }
+
 .category-inner{
-  width:88%;margin:auto;
-  display:flex;align-items:center;
-  justify-content:space-between;gap:15px;
+  width:88%;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
 }
+
 .category-inner span{
-  color:#aaa;font-size:13px;
-  letter-spacing:.2em;font-weight:600;
+  color:#aaa;
+  font-size:13px;
+  letter-spacing:.2em;
+  font-weight:600;
   white-space:nowrap;
 }
+
 .category-inner i{
-  font-style:normal;color:var(--red);
-  font-size:22px;font-weight:700;
+  font-style:normal;
+  color:var(--red);
+  font-size:22px;
+  font-weight:700;
 }
 
 /* INTRO */
-.intro{padding:58px 0 55px}
+
+.intro{
+  padding:58px 0 55px;
+}
+
 .intro-grid{
   display:grid;
   grid-template-columns:1.05fr 1.05fr 1.9fr;
-  gap:32px;align-items:center;
+  gap:32px;
+  align-items:center;
 }
+
 .intro-title{
   border-right:1px solid var(--line);
   padding-right:20px;
 }
+
 .intro-title h2{
   font-family:var(--display);
   font-size:clamp(30px,3.3vw,45px);
-  line-height:.91;letter-spacing:-.065em;
+  line-height:.91;
+  letter-spacing:-.065em;
   text-transform:uppercase;
 }
-.intro-title h2 span{display:block}
+
+.intro-title h2 span{
+  display:block;
+}
+
 .intro-title .underline{
-  width:120px;height:7px;background:var(--red);
-  transform:rotate(-5deg);margin:9px 0 0 100px;
+  width:120px;
+  height:7px;
+  background:var(--red);
+  transform:rotate(-5deg);
+  margin:9px 0 0 100px;
   border-radius:50%;
 }
+
 .intro-copy{
   border-right:1px solid var(--line);
   padding-right:25px;
 }
+
 .intro-copy p{
-  color:#d0d0d0;font-size:14px;line-height:1.75;
+  color:#d0d0d0;
+  font-size:14px;
+  line-height:1.75;
 }
+
 .pillars{
-  display:grid;grid-template-columns:repeat(4,1fr);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
   gap:17px;
 }
-.pillar{text-align:center}
+
+.pillar{
+  text-align:center;
+}
+
 .pillar-icon{
-  height:45px;display:grid;place-items:center;
-  color:var(--red);font-size:32px;
+  height:45px;
+  display:grid;
+  place-items:center;
+  color:var(--red);
+  font-size:32px;
   margin-bottom:10px;
 }
+
 .pillar h3{
-  font-size:12px;font-weight:800;
-  text-transform:uppercase;margin-bottom:7px;
+  font-size:12px;
+  font-weight:800;
+  text-transform:uppercase;
+  margin-bottom:7px;
 }
+
 .pillar p{
-  color:#aaa;font-size:11px;line-height:1.55;
+  color:#aaa;
+  font-size:11px;
+  line-height:1.55;
 }
 
 /* STORY BANNER */
-.story-wrap{padding:0 0 65px}
+
+.story-wrap{
+  padding:0 0 65px;
+}
+
 .story-banner{
   min-height:145px;
   display:grid;
@@ -203,214 +374,513 @@ button{font:inherit}
   border-radius:17px;
   overflow:hidden;
   background:
-    radial-gradient(ellipse at 90% 50%,rgba(237,23,38,.14),transparent 42%),
+    radial-gradient(
+      ellipse at 90% 50%,
+      rgba(237,23,38,.14),
+      transparent 42%
+    ),
     #101010;
   transition:border-color .25s;
 }
-.story-banner:hover{border-color:var(--red)}
-.vinyl{
-  height:145px;position:relative;overflow:hidden;
-  background:
-    radial-gradient(circle at 50% 50%,#080808 0 5%,#ed1726 5.5% 7%,#111 7.5% 9%,transparent 9.5%),
-    repeating-radial-gradient(circle at 50% 50%,#181818 0 2px,#080808 3px 5px,#292929 6px 7px);
+
+.story-banner:hover{
+  border-color:var(--red);
 }
+
+.vinyl{
+  height:145px;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      #080808 0 5%,
+      #ed1726 5.5% 7%,
+      #111 7.5% 9%,
+      transparent 9.5%
+    ),
+    repeating-radial-gradient(
+      circle at 50% 50%,
+      #181818 0 2px,
+      #080808 3px 5px,
+      #292929 6px 7px
+    );
+}
+
 .vinyl:before{
-  content:"";position:absolute;
-  width:270px;height:270px;border-radius:50%;
-  top:50%;left:50%;transform:translate(-50%,-50%);
-  background:repeating-radial-gradient(circle,#111 0 2px,#242424 3px 4px,#080808 5px 7px);
+  content:"";
+  position:absolute;
+  width:270px;
+  height:270px;
+  border-radius:50%;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:
+    repeating-radial-gradient(
+      circle,
+      #111 0 2px,
+      #242424 3px 4px,
+      #080808 5px 7px
+    );
   box-shadow:0 0 30px rgba(237,23,38,.45);
 }
+
 .vinyl:after{
-  content:"";position:absolute;
-  width:100px;height:100px;border-radius:50%;
-  background:var(--red);border:5px solid #111;
-  top:50%;left:50%;transform:translate(-50%,-50%);
+  content:"";
+  position:absolute;
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:var(--red);
+  border:5px solid #111;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
   box-shadow:0 0 0 2px rgba(255,255,255,.1);
 }
+
 .story-title{
-  display:flex;align-items:center;gap:13px;
+  display:flex;
+  align-items:center;
+  gap:13px;
   font-family:var(--display);
-  font-size:29px;font-weight:700;
+  font-size:29px;
+  font-weight:700;
   white-space:nowrap;
 }
-.story-title span{color:var(--red);font-size:28px}
+
+.story-title span{
+  color:var(--red);
+  font-size:28px;
+}
+
 .story-copy{
   border-left:1px solid var(--line);
   padding-left:27px;
-  color:#ddd;font-size:16px;line-height:1.55;
+  color:#ddd;
+  font-size:16px;
+  line-height:1.55;
 }
+
 .story-arrow{
-  width:42px;height:42px;border:2px solid white;
-  border-radius:50%;display:grid;place-items:center;
-  font-size:22px;margin-right:25px;
+  width:42px;
+  height:42px;
+  border:2px solid white;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:22px;
+  margin-right:25px;
   transition:.2s;
 }
+
 .story-banner:hover .story-arrow{
-  background:var(--red);border-color:var(--red);
+  background:var(--red);
+  border-color:var(--red);
 }
 
 /* STORY DETAIL */
+
 .story-detail{
   padding:95px 0;
   background:#111;
   border-top:1px solid var(--line);
   display:none;
 }
-.story-detail:target{display:block}
-.story-detail-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:10%;
+
+.story-detail:target{
+  display:block;
 }
+
+.story-detail-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10%;
+}
+
 .story-detail h2{
   font-family:var(--display);
   font-size:clamp(40px,6vw,70px);
-  line-height:.95;letter-spacing:-.07em;
+  line-height:.95;
+  letter-spacing:-.07em;
 }
+
 .story-detail p{
-  color:#bbb;font-size:15px;line-height:1.9;
+  color:#bbb;
+  font-size:15px;
+  line-height:1.9;
   margin-bottom:18px;
 }
 
 /* FOUNDER */
-.founder{padding:75px 0;background:#090909}
+
+.founder{
+  padding:75px 0;
+  background:#090909;
+}
+
 .founder-grid{
-  display:grid;grid-template-columns:230px 1fr;
-  gap:42px;align-items:center;max-width:980px;margin:auto;
+  display:grid;
+  grid-template-columns:230px 1fr;
+  gap:42px;
+  align-items:center;
+  max-width:980px;
+  margin:auto;
 }
+
 .founder-image{
-  width:100%;aspect-ratio:4/5;
-  object-fit:cover;object-position:center top;
-  border-radius:5px;filter:grayscale(100%);
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  object-position:center top;
+  border-radius:5px;
+  filter:grayscale(100%);
 }
+
 .founder-copy .eyebrow{
-  color:var(--red);font-size:10px;
-  letter-spacing:.16em;font-weight:800;
+  color:var(--red);
+  font-size:10px;
+  letter-spacing:.16em;
+  font-weight:800;
   margin-bottom:15px;
 }
+
 .founder-copy h2{
   font-family:var(--display);
   font-size:clamp(35px,5vw,56px);
-  letter-spacing:-.07em;line-height:.95;
+  letter-spacing:-.07em;
+  line-height:.95;
   margin-bottom:18px;
 }
+
 .founder-copy p{
-  max-width:650px;color:#aaa;
-  font-size:14px;line-height:1.85;
+  max-width:650px;
+  color:#aaa;
+  font-size:14px;
+  line-height:1.85;
 }
-.founder-name{font-size:13px;font-weight:800;margin-top:20px}
+
+.founder-name{
+  font-size:13px;
+  font-weight:800;
+  margin-top:20px;
+}
+
 .founder-role{
-  color:var(--red);font-size:10px;
-  font-weight:700;letter-spacing:.12em;margin-top:5px;
+  color:var(--red);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.12em;
+  margin-top:5px;
 }
 
 /* CTA */
+
 .cta{
-  padding:45px 0;background:var(--red);
+  padding:45px 0;
+  background:var(--red);
 }
+
 .cta-inner{
-  display:flex;justify-content:space-between;
-  align-items:center;gap:25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:25px;
 }
+
 .cta h2{
   font-family:var(--display);
   font-size:clamp(32px,4vw,48px);
-  letter-spacing:-.065em;line-height:1;
+  letter-spacing:-.065em;
+  line-height:1;
 }
-.cta p{font-size:13px;color:rgba(255,255,255,.85);margin-top:9px}
+
+.cta p{
+  font-size:13px;
+  color:rgba(255,255,255,.85);
+  margin-top:9px;
+}
+
 .cta a{
-  background:white;color:#111;
-  padding:16px 22px;border-radius:5px;
-  font-size:12px;font-weight:800;white-space:nowrap;
+  background:white;
+  color:#111;
+  padding:16px 22px;
+  border-radius:5px;
+  font-size:12px;
+  font-weight:800;
+  white-space:nowrap;
 }
-.cta a:hover{background:#111;color:white}
+
+.cta a:hover{
+  background:#111;
+  color:white;
+}
 
 /* FOOTER */
-.footer{background:#050505;padding:30px 0 22px}
-.footer-top{
-  display:flex;justify-content:space-between;
-  align-items:center;padding-bottom:24px;
-  border-bottom:1px solid var(--line);
-}
-.footer-logo{width:135px;display:block}
-.footer-slogan{
-  color:#999;font-size:10px;
-  font-weight:700;letter-spacing:.15em;
-}
-.footer-bottom{
-  padding-top:20px;display:flex;
-  justify-content:space-between;gap:20px;
-  color:#777;font-size:10px;
+
+.footer{
+  background:#050505;
+  padding:30px 0 22px;
 }
 
-/* RESPONSIVE */
+.footer-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-bottom:24px;
+  border-bottom:1px solid var(--line);
+}
+
+.footer-logo{
+  width:135px;
+  display:block;
+}
+
+.footer-slogan{
+  color:#999;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.15em;
+}
+
+.footer-bottom{
+  padding-top:20px;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  color:#777;
+  font-size:10px;
+}
+
+/* TABLET */
+
 @media(max-width:1000px){
+
   .nav{gap:17px}
+
   .nav a{font-size:11px}
-  .intro-grid{grid-template-columns:1fr 1fr}
-  .pillars{grid-column:1/-1;padding-top:18px}
-  .intro-copy{border-right:0}
-  .story-banner{grid-template-columns:.8fr .9fr 1.1fr 55px}
+
+  .intro-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .pillars{
+    grid-column:1/-1;
+    padding-top:18px;
+  }
+
+  .intro-copy{
+    border-right:0;
+  }
+
+  .story-banner{
+    grid-template-columns:.8fr .9fr 1.1fr 55px;
+  }
+
   .story-title{font-size:23px}
 }
+
+/* MOBILE */
+
 @media(max-width:760px){
-  .header{height:70px;padding:0 5%}
+
+  .header{
+    height:70px;
+    padding:0 5%;
+  }
+
   .brand img{width:125px}
+
   .menu{display:block}
+
   .nav{
-    display:none;position:absolute;top:69px;left:0;right:0;
-    padding:20px 6%;background:#101010;
+    display:none;
+    position:absolute;
+    top:69px;
+    left:0;
+    right:0;
+    padding:20px 6%;
+    background:#101010;
     border-bottom:1px solid var(--line);
-    flex-direction:column;align-items:stretch;gap:0;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
   }
+
   .nav.open{display:flex}
-  .nav a{padding:14px 0;font-size:13px}
-  .nav a.active:after{display:none}
-  .nav .listen{text-align:center;margin-top:10px}
-  .hero,.hero-inner{min-height:470px}
-  .hero-image{
-    background-image:
-      linear-gradient(90deg,rgba(8,8,8,.95),rgba(8,8,8,.58) 58%,rgba(8,8,8,.18)),
-      linear-gradient(0deg,#080808 0%,transparent 50%),
-      url('/assets/kizazi-about-hero-visual.jpg');
-    background-position:58% center;
+
+  .nav a{
+    padding:14px 0;
+    font-size:13px;
   }
-  .hero-inner{width:90%}
-  .hero h1{font-size:clamp(60px,12vw,90px)}
-  .hero-description{font-size:14px}
-  .category-inner{width:90%;overflow-x:auto;justify-content:flex-start;padding:18px 0}
-  .category-inner span{font-size:10px}
-  .intro{padding:45px 0}
-  .intro-grid{grid-template-columns:1fr;gap:25px}
+
+  .nav a.active:after{display:none}
+
+  .nav .listen{
+    text-align:center;
+    margin-top:10px;
+  }
+
+  .hero,
+  .hero-inner{
+    min-height:470px;
+  }
+
+  .hero-image{
+    background-color:#080808;
+
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(8,8,8,.96) 0%,
+        rgba(8,8,8,.82) 32%,
+        rgba(8,8,8,.48) 65%,
+        rgba(8,8,8,.22) 100%
+      ),
+      linear-gradient(
+        0deg,
+        #080808 0%,
+        transparent 35%
+      ),
+      url('/assets/kizazi-about-hero-visual.jpg');
+
+    background-repeat:no-repeat,no-repeat,no-repeat;
+
+    /* Portrait is scaled to the hero height instead of filling and zooming */
+    background-size:100% 100%,100% 100%,auto 100%;
+
+    background-position:center,center,65% center;
+  }
+
+  .hero-inner{
+    width:90%;
+  }
+
+  .hero h1{
+    font-size:clamp(60px,12vw,90px);
+  }
+
+  .hero-description{
+    font-size:14px;
+  }
+
+  .category-inner{
+    width:90%;
+    overflow-x:auto;
+    justify-content:flex-start;
+    padding:18px 0;
+  }
+
+  .category-inner span{
+    font-size:10px;
+  }
+
+  .intro{
+    padding:45px 0;
+  }
+
+  .intro-grid{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+
   .intro-title{border:0}
   .intro-copy{padding:0}
-  .pillars{grid-column:auto;grid-template-columns:repeat(2,1fr);gap:24px}
+
+  .pillars{
+    grid-column:auto;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+  }
+
   .story-wrap{padding-bottom:45px}
+
   .story-banner{
     grid-template-columns:1fr 1fr;
-    gap:0;padding-bottom:18px;
+    gap:0;
+    padding-bottom:18px;
   }
-  .vinyl{grid-column:1/-1;height:120px}
-  .story-title{padding:18px 15px;font-size:21px}
-  .story-copy{font-size:12px;padding:12px 15px}
-  .story-arrow{margin:0 auto}
-  .story-detail-grid{grid-template-columns:1fr;gap:25px}
-  .founder-grid{grid-template-columns:1fr;gap:25px}
-  .founder-image{max-width:250px}
-  .cta-inner{align-items:flex-start;flex-direction:column}
+
+  .vinyl{
+    grid-column:1/-1;
+    height:120px;
+  }
+
+  .story-title{
+    padding:18px 15px;
+    font-size:21px;
+  }
+
+  .story-copy{
+    font-size:12px;
+    padding:12px 15px;
+  }
+
+  .story-arrow{
+    margin:0 auto;
+  }
+
+  .story-detail-grid{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+
+  .founder-grid{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+
+  .founder-image{
+    max-width:250px;
+  }
+
+  .cta-inner{
+    align-items:flex-start;
+    flex-direction:column;
+  }
 }
+
+/* SMALL MOBILE */
+
 @media(max-width:420px){
+
   .hero h1{font-size:16vw}
+
   .hero-label{font-size:10px}
+
   .hero-actions{gap:9px}
-  .btn{padding:0 13px;font-size:11px}
+
+  .btn{
+    padding:0 13px;
+    font-size:11px;
+  }
+
   .category-inner{gap:12px}
-  .category-inner span{letter-spacing:.12em}
+
+  .category-inner span{
+    letter-spacing:.12em;
+  }
+
   .story-title{font-size:18px}
+
   .story-copy{font-size:11px}
-  .footer-top,.footer-bottom{align-items:flex-start;flex-direction:column}
+
+  .footer-top,
+  .footer-bottom{
+    align-items:flex-start;
+    flex-direction:column;
+  }
 }
+
 @media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
+
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto!important;
+    transition:none!important;
+  }
 }
 </style>
 </head>
@@ -418,11 +888,17 @@ button{font:inherit}
 <body>
 
 <header class="header">
+
   <a class="brand" href="/" aria-label="KIZAZI RADIO Home">
     <img src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
   </a>
 
-  <button class="menu" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <button
+    class="menu"
+    id="menuToggle"
+    aria-label="Toggle navigation"
+    aria-expanded="false"
+  >☰</button>
 
   <nav class="nav" id="mainNav">
     <a href="/">Home</a>
@@ -433,161 +909,265 @@ button{font:inherit}
     <a href="/about/" class="active">About</a>
     <a href="/#listen" class="listen">▶ &nbsp; Listen Live</a>
   </nav>
+
 </header>
 
 <main>
 
-<section class="hero">
-  <div class="hero-image"></div>
-  <div class="hero-inner">
-    <div class="hero-label">ABOUT KIZAZI RADIO</div>
+  <!-- HERO -->
 
-    <h1>
-      THE<br>
-      CULTURE<br>
-      <span>IS ON.</span>
-    </h1>
+  <section class="hero">
 
-    <p class="hero-description">
-      <span>Music. Entertainment. Lifestyle. Conversations.</span>
-      A digital radio platform for a new generation.
-    </p>
+    <div class="hero-image"></div>
 
-    <div class="hero-actions">
-      <a href="/#listen" class="btn btn-red">▶ &nbsp; Listen Live</a>
-      <a href="#our-story" class="btn btn-outline">Our Story ↓</a>
-    </div>
-  </div>
-</section>
+    <div class="hero-inner">
 
-<section class="category-strip">
-  <div class="category-inner">
-    <span>MUSIC</span><i>/</i>
-    <span>CULTURE</span><i>/</i>
-    <span>LIFESTYLE</span><i>/</i>
-    <span>ENTERTAINMENT</span><i>/</i>
-    <span>CONVERSATIONS</span>
-  </div>
-</section>
+      <div class="hero-label">ABOUT KIZAZI RADIO</div>
 
-<section class="intro">
-  <div class="container intro-grid">
-    <div class="intro-title">
-      <h2>
-        <span>BUILT FOR</span>
-        <span>A NEW</span>
-        <span>GENERATION.</span>
-      </h2>
-      <div class="underline"></div>
-    </div>
+      <h1>
+        THE<br>
+        CULTURE<br>
+        <span>IS ON.</span>
+      </h1>
 
-    <div class="intro-copy">
-      <p>KIZAZI RADIO brings together music, media and real conversations that reflect the interests, energy and creativity of today's generation.</p>
-    </div>
-
-    <div class="pillars">
-      <article class="pillar">
-        <div class="pillar-icon">♫</div>
-        <h3>Music</h3>
-        <p>Fresh sounds & new discoveries</p>
-      </article>
-
-      <article class="pillar">
-        <div class="pillar-icon">▣</div>
-        <h3>Entertainment</h3>
-        <p>Pop culture, trends & what's next</p>
-      </article>
-
-      <article class="pillar">
-        <div class="pillar-icon">♡</div>
-        <h3>Lifestyle</h3>
-        <p>Ideas, experiences & everyday stories</p>
-      </article>
-
-      <article class="pillar">
-        <div class="pillar-icon">♩</div>
-        <h3>Conversations</h3>
-        <p>Real people, real perspectives</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="story-wrap" id="our-story">
-  <div class="container">
-    <a href="#story-detail" class="story-banner">
-      <div class="vinyl" aria-hidden="true"></div>
-
-      <div class="story-title">
-        <span>▶</span> OUR STORY
-      </div>
-
-      <p class="story-copy">
-        From an idea to a digital radio platform for the next generation.
+      <p class="hero-description">
+        <span>Music. Entertainment. Lifestyle. Conversations.</span>
+        A digital radio platform for a new generation.
       </p>
 
-      <div class="story-arrow">↗</div>
-    </a>
-  </div>
-</section>
+      <div class="hero-actions">
+        <a href="/#listen" class="btn btn-red">▶ &nbsp; Listen Live</a>
+        <a href="#our-story" class="btn btn-outline">Our Story ↓</a>
+      </div>
 
-<section class="story-detail" id="story-detail">
-  <div class="container story-detail-grid">
-    <div>
-      <div class="hero-label">THE STORY</div>
-      <h2>AN IDEA.<br>A FREQUENCY.<br>A GENERATION.</h2>
     </div>
-    <div>
-      <p>KIZAZI RADIO was created around a simple belief: radio can evolve with the people who listen to it.</p>
-      <p>As an independent online radio platform, we bring music, entertainment, lifestyle and conversations together in one digital listening experience.</p>
-      <p>Our ambition is to connect with a new generation, amplify fresh perspectives and make radio part of the culture — wherever our listeners are.</p>
-    </div>
-  </div>
-</section>
 
-<section class="founder">
-  <div class="container founder-grid">
-    <img class="founder-image"
-         src="/assets/founder-telesphory-mfumu.png"
-         alt="Telesphory Deogratius Mfumu, founder of KIZAZI RADIO">
+  </section>
 
-    <div class="founder-copy">
-      <div class="eyebrow">THE VISION BEHIND KIZAZI</div>
-      <h2>CREATED TO<br>CONNECT.</h2>
-      <p>KIZAZI RADIO was founded by Telesphory Deogratius Mfumu, driven by a passion for media, music, creativity and digital broadcasting.</p>
-      <p>The vision is to build a radio platform that connects with the next generation through sound, ideas and culture.</p>
-      <div class="founder-name">Telesphory Deogratius Mfumu</div>
-      <div class="founder-role">FOUNDER · KIZAZI RADIO</div>
-    </div>
-  </div>
-</section>
+  <!-- CATEGORY STRIP -->
 
-<section class="cta">
-  <div class="container cta-inner">
-    <div>
-      <h2>NEW GENERATION. NEW SOUND.</h2>
-      <p>Your frequency. Your culture. Your radio.</p>
+  <section class="category-strip">
+
+    <div class="category-inner">
+      <span>MUSIC</span>
+      <i>/</i>
+      <span>CULTURE</span>
+      <i>/</i>
+      <span>LIFESTYLE</span>
+      <i>/</i>
+      <span>ENTERTAINMENT</span>
+      <i>/</i>
+      <span>CONVERSATIONS</span>
     </div>
-    <a href="/#listen">▶ &nbsp; LISTEN LIVE</a>
-  </div>
-</section>
+
+  </section>
+
+  <!-- INTRO -->
+
+  <section class="intro">
+
+    <div class="container intro-grid">
+
+      <div class="intro-title">
+
+        <h2>
+          <span>BUILT FOR</span>
+          <span>A NEW</span>
+          <span>GENERATION.</span>
+        </h2>
+
+        <div class="underline"></div>
+
+      </div>
+
+      <div class="intro-copy">
+
+        <p>
+          KIZAZI RADIO brings together music, media and real conversations that reflect the interests, energy and creativity of today's generation.
+        </p>
+
+      </div>
+
+      <div class="pillars">
+
+        <article class="pillar">
+          <div class="pillar-icon">♫</div>
+          <h3>Music</h3>
+          <p>Fresh sounds & new discoveries</p>
+        </article>
+
+        <article class="pillar">
+          <div class="pillar-icon">▣</div>
+          <h3>Entertainment</h3>
+          <p>Pop culture, trends & what's next</p>
+        </article>
+
+        <article class="pillar">
+          <div class="pillar-icon">♡</div>
+          <h3>Lifestyle</h3>
+          <p>Ideas, experiences & everyday stories</p>
+        </article>
+
+        <article class="pillar">
+          <div class="pillar-icon">♩</div>
+          <h3>Conversations</h3>
+          <p>Real people, real perspectives</p>
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- OUR STORY BANNER -->
+
+  <section class="story-wrap" id="our-story">
+
+    <div class="container">
+
+      <a href="#story-detail" class="story-banner">
+
+        <div class="vinyl" aria-hidden="true"></div>
+
+        <div class="story-title">
+          <span>▶</span> OUR STORY
+        </div>
+
+        <p class="story-copy">
+          From an idea to a digital radio platform for the next generation.
+        </p>
+
+        <div class="story-arrow">↗</div>
+
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- STORY DETAIL -->
+
+  <section class="story-detail" id="story-detail">
+
+    <div class="container story-detail-grid">
+
+      <div>
+        <div class="hero-label">THE STORY</div>
+        <h2>AN IDEA.<br>A FREQUENCY.<br>A GENERATION.</h2>
+      </div>
+
+      <div>
+
+        <p>
+          KIZAZI RADIO was created around a simple belief: radio can evolve with the people who listen to it.
+        </p>
+
+        <p>
+          As an independent online radio platform, we bring music, entertainment, lifestyle and conversations together in one digital listening experience.
+        </p>
+
+        <p>
+          Our ambition is to connect with a new generation, amplify fresh perspectives and make radio part of the culture — wherever our listeners are.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOUNDER -->
+
+  <section class="founder">
+
+    <div class="container founder-grid">
+
+      <img
+        class="founder-image"
+        src="/assets/founder-telesphory-mfumu.png"
+        alt="Telesphory Deogratius Mfumu, founder of KIZAZI RADIO"
+      >
+
+      <div class="founder-copy">
+
+        <div class="eyebrow">THE VISION BEHIND KIZAZI</div>
+
+        <h2>CREATED TO<br>CONNECT.</h2>
+
+        <p>
+          KIZAZI RADIO was founded by Telesphory Deogratius Mfumu, driven by a passion for media, music, creativity and digital broadcasting.
+        </p>
+
+        <p>
+          The vision is to build a radio platform that connects with the next generation through sound, ideas and culture.
+        </p>
+
+        <div class="founder-name">Telesphory Deogratius Mfumu</div>
+
+        <div class="founder-role">FOUNDER · KIZAZI RADIO</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <div class="container cta-inner">
+
+      <div>
+        <h2>NEW GENERATION. NEW SOUND.</h2>
+        <p>Your frequency. Your culture. Your radio.</p>
+      </div>
+
+      <a href="/#listen">▶ &nbsp; LISTEN LIVE</a>
+
+    </div>
+
+  </section>
 
 </main>
 
+<!-- FOOTER -->
+
 <footer class="footer">
+
   <div class="container">
+
     <div class="footer-top">
+
       <a href="/">
-        <img class="footer-logo" src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
+        <img
+          class="footer-logo"
+          src="/assets/kizazi-radio-official-logo.png"
+          alt="KIZAZI RADIO"
+        >
       </a>
-      <div class="footer-slogan">NEW GENERATION. NEW SOUND.</div>
+
+      <div class="footer-slogan">
+        NEW GENERATION. NEW SOUND.
+      </div>
+
     </div>
 
     <div class="footer-bottom">
-      <span>© <span id="year"></span> KIZAZI RADIO. All rights reserved.</span>
-      <span>Independent online radio · Broadcasting to the world</span>
+
+      <span>
+        © <span id="year"></span> KIZAZI RADIO. All rights reserved.
+      </span>
+
+      <span>
+        Independent online radio · Broadcasting to the world
+      </span>
+
     </div>
+
   </div>
+
 </footer>
 
 <script>
@@ -595,20 +1175,34 @@ const menuToggle = document.getElementById('menuToggle');
 const mainNav = document.getElementById('mainNav');
 
 menuToggle.addEventListener('click', () => {
+
   const opened = mainNav.classList.toggle('open');
+
   menuToggle.textContent = opened ? '✕' : '☰';
-  menuToggle.setAttribute('aria-expanded', String(opened));
+
+  menuToggle.setAttribute(
+    'aria-expanded',
+    String(opened)
+  );
+
 });
 
 mainNav.querySelectorAll('a').forEach(link => {
+
   link.addEventListener('click', () => {
+
     mainNav.classList.remove('open');
+
     menuToggle.textContent = '☰';
+
     menuToggle.setAttribute('aria-expanded', 'false');
+
   });
+
 });
 
-document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('year').textContent =
+  new Date().getFullYear();
 </script>
 
 </body>
