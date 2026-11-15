@@ -20,6 +20,7 @@
       --panel: #141418;
       --muted: #a4a4ad;
       --line: #29292f;
+      --lime: #dfff35;
     }
 
     * {
@@ -71,31 +72,22 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-weight: 1000;
-      letter-spacing: -.06em;
-      font-size: 20px;
+      flex: 0 0 auto;
     }
 
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      background: var(--red);
-      display: grid;
-      place-items: center;
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 21px;
-      font-weight: 900;
-      transform: skew(-7deg);
-    }
-
-    .brand small {
+    .brand-logo {
       display: block;
-      font-size: 8px;
-      letter-spacing: 2px;
-      color: var(--muted);
-      font-weight: 900;
-      margin-top: 2px;
+      width: 168px;
+      max-width: 100%;
+      height: 52px;
+      object-fit: contain;
+      object-position: left center;
+      transition: transform .22s ease, filter .22s ease;
+    }
+
+    .brand:hover .brand-logo {
+      transform: translateY(-2px) rotate(-1deg);
+      filter: drop-shadow(3px 3px 0 rgba(237, 23, 31, .45));
     }
 
     .nav-links {
@@ -109,9 +101,30 @@
       text-transform: uppercase;
     }
 
+    .nav-links a {
+      position: relative;
+      transition: color .2s ease;
+    }
+
     .nav-links a:hover,
     .nav-links a.active {
       color: #fff;
+    }
+
+    .nav-links a:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 2px;
+      background: var(--red);
+      transition: width .22s ease;
+    }
+
+    .nav-links a:hover:after,
+    .nav-links a.active:after {
+      width: 100%;
     }
 
     .nav-cta {
@@ -121,6 +134,13 @@
       font-size: 9px;
       font-weight: 1000;
       letter-spacing: 1.2px;
+      box-shadow: 4px 4px 0 #fff;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 #fff;
     }
 
     .menu-toggle {
@@ -130,6 +150,7 @@
       color: white;
       padding: 9px 12px;
       font-size: 20px;
+      cursor: pointer;
     }
 
     /* HERO */
@@ -140,7 +161,7 @@
       padding: 95px 0 100px;
       border-bottom: 1px solid var(--line);
       background:
-        radial-gradient(ellipse at 84% 42%, rgba(237,23,31,.17), transparent 33%),
+        radial-gradient(ellipse at 84% 42%, rgba(237, 23, 31, .17), transparent 33%),
         linear-gradient(130deg, #101014, #09090b 65%);
     }
 
@@ -153,7 +174,7 @@
       font-weight: 900;
       font-size: clamp(300px, 44vw, 650px);
       line-height: .8;
-      color: rgba(255,255,255,.025);
+      color: rgba(255, 255, 255, .025);
       pointer-events: none;
     }
 
@@ -186,11 +207,13 @@
       letter-spacing: -.035em;
       font-weight: 900;
       text-transform: uppercase;
+      text-shadow: 5px 5px 0 rgba(237, 23, 31, .16);
     }
 
     .hero h1 span {
       display: block;
       color: var(--red);
+      text-shadow: 5px 5px 0 rgba(255, 255, 255, .08);
     }
 
     .hero-bottom {
@@ -212,14 +235,21 @@
     }
 
     .hero-stamp {
-      border: 1px solid #4a4a51;
+      border: 1px solid var(--red);
       padding: 13px 16px;
-      color: var(--white);
+      color: #fff;
+      background: var(--red);
       font-size: 9px;
       font-weight: 1000;
       letter-spacing: 2px;
       white-space: nowrap;
       transform: rotate(-3deg);
+      box-shadow: 5px 5px 0 #fff;
+      transition: transform .25s ease;
+    }
+
+    .hero-stamp:hover {
+      transform: rotate(0deg) translateY(-3px);
     }
 
     /* GENERAL SECTIONS */
@@ -238,10 +268,16 @@
     }
 
     .section-index {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 10px;
       color: var(--red);
       font-size: 10px;
       font-weight: 1000;
       letter-spacing: 2px;
+      border: 1px solid rgba(237, 23, 31, .45);
+      background: rgba(237, 23, 31, .07);
     }
 
     .section h2 {
@@ -251,11 +287,13 @@
       line-height: .88;
       letter-spacing: -.025em;
       text-transform: uppercase;
+      text-shadow: 3px 3px 0 rgba(255, 255, 255, .035);
     }
 
     .section h2 em {
       font-style: normal;
       color: var(--red);
+      text-shadow: 3px 3px 0 rgba(237, 23, 31, .12);
     }
 
     .section-lead {
@@ -303,6 +341,7 @@
       border: 1px solid var(--line);
       position: relative;
       overflow: hidden;
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
     }
 
     .pillar:after {
@@ -313,14 +352,27 @@
       font-family: "Barlow Condensed", sans-serif;
       font-size: 100px;
       font-weight: 900;
-      color: rgba(255,255,255,.045);
+      color: rgba(255, 255, 255, .045);
+    }
+
+    .pillar:hover {
+      transform: translateY(-7px) rotate(-1deg);
+      border-color: var(--red);
+      background: #1b1b20;
+    }
+
+    .pillar:nth-child(even):hover {
+      transform: translateY(-7px) rotate(1deg);
     }
 
     .pillar small {
+      display: inline-block;
       color: var(--red);
       font-size: 9px;
       font-weight: 1000;
       letter-spacing: 1.5px;
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 5px;
     }
 
     .pillar h3 {
@@ -328,7 +380,8 @@
       z-index: 1;
       margin: 35px 0 8px;
       font-size: 15px;
-      letter-spacing: -.4px;
+      letter-spacing: -.6px;
+      text-transform: uppercase;
     }
 
     .pillar p {
@@ -359,6 +412,7 @@
       background: #17171c;
       border: 1px solid #33333a;
       overflow: hidden;
+      transition: transform .25s ease, border-color .25s ease;
     }
 
     .direction-card:first-child {
@@ -366,10 +420,19 @@
       border-color: var(--red);
     }
 
+    .direction-card:hover {
+      transform: translateY(-6px);
+      border-color: #fff;
+    }
+
     .direction-card .tag {
+      display: inline-block;
+      padding: 8px 10px;
       font-size: 9px;
       font-weight: 1000;
       letter-spacing: 2px;
+      border: 1px solid rgba(255, 255, 255, .35);
+      background: rgba(0, 0, 0, .12);
     }
 
     .direction-card h3 {
@@ -379,6 +442,7 @@
       line-height: .9;
       text-transform: uppercase;
       letter-spacing: -.02em;
+      text-shadow: 3px 3px 0 rgba(0, 0, 0, .12);
     }
 
     .direction-card p {
@@ -390,7 +454,7 @@
     }
 
     .direction-card:first-child p {
-      color: rgba(255,255,255,.88);
+      color: rgba(255, 255, 255, .88);
     }
 
     .direction-card:after {
@@ -398,13 +462,13 @@
       position: absolute;
       width: 190px;
       height: 190px;
-      border: 1px solid rgba(255,255,255,.12);
+      border: 1px solid rgba(255, 255, 255, .12);
       border-radius: 50%;
       right: -75px;
       bottom: -90px;
       box-shadow:
-        0 0 0 22px rgba(255,255,255,.025),
-        0 0 0 45px rgba(255,255,255,.02);
+        0 0 0 22px rgba(255, 255, 255, .025),
+        0 0 0 45px rgba(255, 255, 255, .02);
     }
 
     .approach {
@@ -450,6 +514,29 @@
       object-fit: cover;
       object-position: center;
       border: 1px solid #34343a;
+      filter: saturate(1.04) contrast(1.02);
+      transition: filter .3s ease, transform .3s ease;
+    }
+
+    .founder-visual:hover img {
+      filter: saturate(1.12) contrast(1.04);
+      transform: translate(-3px, -3px);
+    }
+
+    .founder-visual:after {
+      content: "FOUNDER / KIZAZI";
+      position: absolute;
+      z-index: 3;
+      right: -13px;
+      bottom: 16px;
+      padding: 10px 13px;
+      background: #fff;
+      color: #09090b;
+      font-size: 8px;
+      font-weight: 1000;
+      letter-spacing: 2px;
+      transform: rotate(-4deg);
+      box-shadow: 4px 4px 0 var(--red);
     }
 
     .founder-label {
@@ -475,6 +562,7 @@
       line-height: .82;
       letter-spacing: -.025em;
       text-transform: uppercase;
+      text-shadow: 4px 4px 0 rgba(237, 23, 31, .11);
     }
 
     .founder-copy h2 span {
@@ -482,7 +570,11 @@
     }
 
     .founder-role {
+      display: inline-block;
+      padding: 9px 12px;
+      background: var(--red);
       color: #fff;
+      box-shadow: 4px 4px 0 #fff;
       font-size: 11px;
       font-weight: 900;
       letter-spacing: 1.5px;
@@ -499,12 +591,13 @@
 
     blockquote {
       margin: 30px 0 0;
-      padding: 19px 0 0 22px;
+      padding: 20px 20px 18px 22px;
       border-left: 3px solid var(--red);
       color: #fff;
       font-size: 17px;
       line-height: 1.7;
       font-weight: 700;
+      background: linear-gradient(90deg, rgba(237, 23, 31, .1), transparent 85%);
     }
 
     .founder-signoff {
@@ -518,11 +611,26 @@
     /* CLOSING */
 
     .closing {
+      position: relative;
+      overflow: hidden;
       padding: 80px 0;
       background:
-        radial-gradient(ellipse at 80% 50%, rgba(237,23,31,.18), transparent 40%),
+        radial-gradient(ellipse at 80% 50%, rgba(237, 23, 31, .18), transparent 40%),
         #111114;
       border-bottom: 1px solid var(--line);
+    }
+
+    .closing:after {
+      content: "KZ!";
+      position: absolute;
+      right: 4%;
+      bottom: -90px;
+      color: rgba(255, 255, 255, .025);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: clamp(180px, 28vw, 360px);
+      font-weight: 900;
+      line-height: .8;
+      pointer-events: none;
     }
 
     .closing-box {
@@ -532,6 +640,11 @@
       gap: 30px;
     }
 
+    .closing-box > * {
+      position: relative;
+      z-index: 1;
+    }
+
     .closing h2 {
       margin: 16px 0 0;
       font-family: "Barlow Condensed", sans-serif;
@@ -539,6 +652,7 @@
       line-height: .82;
       letter-spacing: -.025em;
       text-transform: uppercase;
+      text-shadow: 4px 4px 0 rgba(255, 255, 255, .04);
     }
 
     .closing h2 span {
@@ -564,13 +678,15 @@
       font-weight: 1000;
       letter-spacing: 1.4px;
       white-space: nowrap;
-      transition: .2s;
+      box-shadow: 5px 5px 0 #fff;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
     }
 
     .button:hover {
       background: #fff;
       color: #09090b;
-      transform: translateY(-3px);
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 var(--red);
     }
 
     /* FOOTER */
@@ -599,286 +715,9 @@
       color: #fff;
     }
 
-    /* GEN Z SWAG LAYER — original layout and section order retained */
-
-    ::selection {
-      background: var(--red);
-      color: #fff;
-    }
-
-    body {
-      background-image:
-        radial-gradient(circle at 12% 16%, rgba(237,23,31,.055), transparent 22%),
-        linear-gradient(90deg, transparent 49.9%, rgba(255,255,255,.012) 50%, transparent 50.1%);
-      background-size: auto, 80px 80px;
-    }
-
-    .brand-mark {
-      box-shadow: 4px 4px 0 #fff;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-
-    .brand:hover .brand-mark {
-      transform: skew(-7deg) rotate(-7deg) translateY(-2px);
-      box-shadow: 6px 6px 0 #fff;
-    }
-
-    .nav-links a {
-      position: relative;
-      transition: color .2s ease;
-    }
-
-    .nav-links a:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -8px;
-      width: 0;
-      height: 2px;
-      background: var(--red);
-      transition: width .22s ease;
-    }
-
-    .nav-links a:hover:after,
-    .nav-links a.active:after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      box-shadow: 4px 4px 0 #fff;
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-
-    .nav-cta:hover {
-      transform: translate(-2px,-2px);
-      box-shadow: 6px 6px 0 #fff;
-    }
-
-    .hero {
-      background:
-        radial-gradient(circle at 82% 35%, rgba(237,23,31,.2), transparent 26%),
-        radial-gradient(circle at 10% 100%, rgba(255,255,255,.045), transparent 32%),
-        linear-gradient(130deg,#111115 0%,#09090b 68%);
-    }
-
-    .hero:before {
-      content: "ON AIR / KZ RADIO";
-      position: absolute;
-      top: 34px;
-      right: max(32px, calc((100vw - 1240px)/2));
-      color: rgba(255,255,255,.38);
-      font-size: 8px;
-      font-weight: 1000;
-      letter-spacing: 3px;
-      transform: rotate(90deg) translateX(100%);
-      transform-origin: right top;
-    }
-
-    .hero h1 {
-      text-shadow: 5px 5px 0 rgba(237,23,31,.16);
-    }
-
-    .hero h1 span {
-      text-shadow: 5px 5px 0 rgba(255,255,255,.08);
-    }
-
-    .hero-stamp {
-      background: var(--red);
-      color: #fff;
-      border-color: var(--red);
-      box-shadow: 5px 5px 0 #fff;
-      transition: transform .25s ease;
-    }
-
-    .hero-stamp:hover {
-      transform: rotate(0deg) translateY(-3px);
-    }
-
-    .section-index {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 7px 10px;
-      border: 1px solid rgba(237,23,31,.45);
-      background: rgba(237,23,31,.07);
-    }
-
-    .section h2 {
-      text-shadow: 3px 3px 0 rgba(255,255,255,.035);
-    }
-
-    .section h2 em {
-      text-shadow: 3px 3px 0 rgba(237,23,31,.12);
-    }
-
-    .pillar {
-      transition: transform .25s ease, border-color .25s ease, background .25s ease;
-    }
-
-    .pillar:hover {
-      transform: translateY(-7px) rotate(-1deg);
-      border-color: var(--red);
-      background: #1b1b20;
-    }
-
-    .pillar:nth-child(even):hover {
-      transform: translateY(-7px) rotate(1deg);
-    }
-
-    .pillar h3 {
-      text-transform: uppercase;
-      letter-spacing: -.6px;
-    }
-
-    .pillar small {
-      display: inline-block;
-      border-bottom: 2px solid var(--red);
-      padding-bottom: 5px;
-    }
-
-    .direction-card {
-      transition: transform .25s ease, border-color .25s ease;
-    }
-
-    .direction-card:hover {
-      transform: translateY(-6px);
-      border-color: #fff;
-    }
-
-    .direction-card:first-child:hover {
-      border-color: #fff;
-    }
-
-    .direction-card .tag {
-      display: inline-block;
-      padding: 8px 10px;
-      border: 1px solid rgba(255,255,255,.35);
-      background: rgba(0,0,0,.12);
-    }
-
-    .direction-card h3 {
-      text-shadow: 3px 3px 0 rgba(0,0,0,.12);
-    }
-
-    .founder-visual:after {
-      content: "FOUNDER / KIZAZI";
-      position: absolute;
-      z-index: 3;
-      right: -13px;
-      bottom: 16px;
-      padding: 10px 13px;
-      background: #fff;
-      color: #09090b;
-      font-size: 8px;
-      font-weight: 1000;
-      letter-spacing: 2px;
-      transform: rotate(-4deg);
-      box-shadow: 4px 4px 0 var(--red);
-    }
-
-    .founder-visual img {
-      filter: saturate(1.04) contrast(1.02);
-      transition: filter .3s ease, transform .3s ease;
-    }
-
-    .founder-visual:hover img {
-      filter: saturate(1.12) contrast(1.04);
-      transform: translate(-3px,-3px);
-    }
-
-    .founder-copy h2 {
-      text-shadow: 4px 4px 0 rgba(237,23,31,.11);
-    }
-
-    .founder-role {
-      display: inline-block;
-      padding: 9px 12px;
-      background: var(--red);
-      color: #fff;
-      box-shadow: 4px 4px 0 #fff;
-    }
-
-    blockquote {
-      background: linear-gradient(90deg, rgba(237,23,31,.1), transparent 85%);
-      padding: 20px 20px 18px 22px;
-    }
-
-    .closing {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .closing:after {
-      content: "KZ!";
-      position: absolute;
-      right: 4%;
-      bottom: -90px;
-      color: rgba(255,255,255,.025);
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: clamp(180px,28vw,360px);
-      font-weight: 900;
-      line-height: .8;
-      pointer-events: none;
-    }
-
-    .closing-box > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    .closing h2 {
-      text-shadow: 4px 4px 0 rgba(255,255,255,.04);
-    }
-
-    .button {
-      box-shadow: 5px 5px 0 #fff;
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-    }
-
-    .button:hover {
-      transform: translate(-2px,-2px);
-      box-shadow: 7px 7px 0 var(--red);
-    }
-
-    @media (max-width: 700px) {
-      .hero:before {
-        top: 20px;
-        right: 22px;
-        font-size: 7px;
-      }
-
-      .hero-stamp {
-        box-shadow: 3px 3px 0 #fff;
-      }
-
-      .pillar:hover,
-      .pillar:nth-child(even):hover {
-        transform: translateY(-3px);
-      }
-
-      .founder-visual:after {
-        right: -5px;
-        bottom: 12px;
-        font-size: 7px;
-      }
-
-      .closing:after {
-        right: -15px;
-        bottom: -35px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *:before, *:after {
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-        animation-duration: .01ms !important;
-      }
-    }
-
     /* TABLET */
 
-    @media(max-width:900px) {
+    @media(max-width: 900px) {
       .nav-links {
         gap: 14px;
         font-size: 9px;
@@ -896,9 +735,14 @@
 
     /* MOBILE */
 
-    @media(max-width:700px) {
+    @media(max-width: 700px) {
       .wrap {
         width: min(100% - 38px, 560px);
+      }
+
+      .brand-logo {
+        width: 145px;
+        height: 46px;
       }
 
       .site-header {
@@ -950,6 +794,7 @@
       .hero-stamp {
         display: inline-block;
         margin-top: 25px;
+        box-shadow: 3px 3px 0 #fff;
       }
 
       .section {
@@ -990,6 +835,11 @@
         margin-top: 25px;
       }
 
+      .pillar:hover,
+      .pillar:nth-child(even):hover {
+        transform: translateY(-3px);
+      }
+
       .direction-grid {
         grid-template-columns: 1fr;
       }
@@ -1012,6 +862,12 @@
         inset: 12px -10px -10px 10px;
       }
 
+      .founder-visual:after {
+        right: -5px;
+        bottom: 12px;
+        font-size: 7px;
+      }
+
       .founder-label {
         left: -8px;
         top: 16px;
@@ -1023,6 +879,11 @@
 
       .closing {
         padding: 65px 0;
+      }
+
+      .closing:after {
+        right: -15px;
+        bottom: -35px;
       }
 
       .closing-box {
@@ -1042,6 +903,16 @@
         flex-wrap: wrap;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *:before,
+      *:after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
   </style>
 </head>
 
@@ -1052,11 +923,11 @@
     <div class="wrap nav">
 
       <a class="brand" href="/" aria-label="KIZAZI RADIO home">
-        <span class="brand-mark">KZ</span>
-        <span>
-          KIZAZI RADIO
-          <small>NEW GENERATION. NEW SOUND.</small>
-        </span>
+        <img
+          class="brand-logo"
+          src="/assets/kizazi-radio-official-logo.png"
+          alt="KIZAZI RADIO — New Generation. New Sound."
+        >
       </a>
 
       <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
