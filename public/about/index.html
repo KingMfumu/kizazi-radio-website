@@ -4,1139 +4,519 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f1f0ec">
+<meta name="theme-color" content="#111111">
+
 <title>About KIZAZI RADIO — New Generation. New Sound.</title>
-<meta name="description" content="Meet KIZAZI RADIO: an independent digital radio platform for new-generation music, culture, ideas and voices.">
+<meta name="description" content="KIZAZI RADIO is where new sounds, fresh ideas and the next generation meet.">
 <link rel="icon" href="/assets/kizazi-radio-official-logo.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
---red:#ed1c24;
---black:#101010;
---paper:#f1f0ec;
---white:#fff;
---grey:#777;
---line:rgba(16,16,16,.2);
---display:'Anton',Impact,sans-serif;
---body:'DM Sans',Arial,sans-serif;
---mono:'Space Mono',monospace
-}
+:root{--red:#ed1c24;--ink:#111;--paper:#f4f2ed;--white:#fff;--muted:#aaa;--display:'Archivo Black',Impact,sans-serif;--body:'DM Sans',Arial,sans-serif;--mono:'Space Mono',monospace}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--black);font-family:var(--body);overflow-x:hidden}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
+img{max-width:100%;display:block}
+.wrap{width:min(1320px,91%);margin:auto}
 ::selection{background:var(--red);color:#fff}
-.wrap{width:min(1380px,90%);margin:auto}
 
-/* NAV */
-header{
-height:82px;
-background:var(--black);
-color:#fff;
-display:flex;
-align-items:center;
-position:relative;
-z-index:20
-}
-.nav{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:28px
-}
-.brand img{
-width:142px;
-height:62px;
-object-fit:contain
-}
-.navlinks{
-display:flex;
-align-items:center;
-gap:25px
-}
-.navlinks a{
-font:700 10px var(--mono);
-letter-spacing:.7px;
-text-transform:uppercase;
-color:#bbb;
-transition:color .2s
-}
-.navlinks a:hover,
-.navlinks a.active{color:var(--red)}
-.navlinks .listen{
-background:var(--red);
-color:#fff;
-padding:14px 17px
-}
-.menu{
-display:none;
-border:1px solid #555;
-background:none;
-color:#fff;
-padding:8px 12px;
-font-size:22px
-}
+header{height:78px;background:var(--ink);color:#fff;display:flex;align-items:center;position:relative;z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo img{width:140px;height:58px;object-fit:contain}
+.links{display:flex;align-items:center;gap:24px}
+.links a{font:700 10px var(--mono);text-transform:uppercase;letter-spacing:.5px;color:#c8c8c8}
+.links a:hover,.links a.active{color:var(--red)}
+.links .listen{background:var(--red);padding:13px 17px;color:#fff}
+.menu{display:none;background:none;border:1px solid #555;color:#fff;font-size:23px;padding:6px 12px}
 
-/* COVER */
-.hero{
-background:var(--red);
-color:#fff;
-position:relative;
-overflow:hidden;
-padding:34px 0 0
-}
-.hero:after{
-content:'K';
-position:absolute;
-right:-.02em;
-top:-.24em;
-font:clamp(380px,70vw,950px)/1 var(--display);
-color:rgba(0,0,0,.08);
-pointer-events:none
-}
-.hero-meta{
-display:flex;
-justify-content:space-between;
-gap:20px;
-padding-bottom:24px;
-border-bottom:1px solid rgba(255,255,255,.45);
-font:10px var(--mono);
-letter-spacing:1.3px;
-text-transform:uppercase;
-position:relative;
-z-index:1
-}
-.hero-layout{
-display:grid;
-grid-template-columns:1.1fr .9fr;
-gap:4%;
-align-items:end;
-min-height:610px;
-padding:38px 0 48px;
-position:relative;
-z-index:1
-}
-.hero h1{
-font:clamp(100px,17vw,235px)/.76 var(--display);
-letter-spacing:-.035em;
-text-transform:uppercase;
-margin:0 0 34px
-}
+/* HERO */
+.hero{background:var(--ink);color:#fff;position:relative;overflow:hidden;padding:24px 0 0}
+.hero:before{content:'✳';position:absolute;font-size:clamp(330px,60vw,780px);line-height:1;color:rgba(237,28,36,.12);right:-.08em;top:-.25em;transform:rotate(14deg)}
+.topline{display:flex;justify-content:space-between;border-bottom:1px solid #444;padding:0 0 15px;font:10px var(--mono);letter-spacing:1px;color:#aaa;text-transform:uppercase}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:4%;align-items:center;padding:64px 0 74px}
+.eyebrow{font:10px var(--mono);letter-spacing:1.4px;text-transform:uppercase;color:var(--red)}
+.hero h1{font:clamp(78px,13vw,180px)/.82 var(--display);letter-spacing:-.075em;margin:24px 0 26px;text-transform:uppercase}
 .hero h1 span{display:block}
-.hero h1 .stroke{
-color:transparent;
--webkit-text-stroke:2px #fff
-}
-.hero-deck{
-max-width:490px;
-font-size:16px;
-line-height:1.75;
-font-weight:600
-}
-.hero-side{
-align-self:stretch;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-align-items:stretch;
-padding-top:20px
-}
-.sticker{
-align-self:flex-end;
-background:var(--paper);
-color:var(--black);
-width:128px;
-height:128px;
-border-radius:50%;
-display:grid;
-place-items:center;
-text-align:center;
-transform:rotate(10deg);
-font:13px/1.2 var(--mono);
-font-weight:700
-}
-.hero-art{
-position:relative;
-min-height:320px;
-border:2px solid rgba(255,255,255,.8);
-background:var(--black);
-overflow:hidden;
-transform:rotate(-2deg);
-box-shadow:14px 14px 0 rgba(0,0,0,.15)
-}
-.hero-art:before{
-content:'';
-position:absolute;
-inset:-20%;
-background:repeating-linear-gradient(135deg,transparent 0 23px,rgba(255,255,255,.12) 24px 26px);
-transform:rotate(7deg)
-}
-.hero-art:after{
-content:'ON AIR';
-position:absolute;
-left:7%;
-top:7%;
-color:var(--red);
-font:clamp(65px,10vw,130px)/.8 var(--display);
-letter-spacing:-.02em;
-transform:rotate(-8deg);
-text-shadow:5px 5px 0 #fff
-}
-.art-bottom{
-position:absolute;
-bottom:18px;
-left:20px;
-right:20px;
-display:flex;
-justify-content:space-between;
-align-items:end;
-color:#fff;
-font:10px var(--mono);
-letter-spacing:1px
-}
-.art-bottom strong{
-font:32px var(--display);
-color:var(--red)
-}
-.hero-foot{
-display:flex;
-justify-content:space-between;
-gap:20px;
-padding:17px 0;
-border-top:1px solid rgba(255,255,255,.45);
-font:10px var(--mono);
-letter-spacing:1px;
-text-transform:uppercase;
-position:relative;
-z-index:1
-}
+.hero h1 .outline{color:transparent;-webkit-text-stroke:1.5px #fff}
+.hero-copy{max-width:490px;font-size:15px;line-height:1.8;color:#c8c8c8}
+.hero-copy strong{color:#fff}
+.hero-actions{display:flex;align-items:center;gap:20px;margin-top:30px}
+.primary{background:var(--red);color:#fff;padding:16px 20px;font:700 10px var(--mono);letter-spacing:.7px;text-transform:uppercase;display:inline-flex;gap:18px;align-items:center}
+.secondary{font:700 10px var(--mono);text-transform:uppercase;border-bottom:1px solid #777;padding:12px 0;color:#ddd}
+.hero-visual{min-height:500px;position:relative;display:flex;align-items:center;justify-content:center}
+.visual-frame{width:84%;height:430px;background:var(--red);position:relative;transform:rotate(4deg);overflow:hidden;border:8px solid #fff;box-shadow:20px 20px 0 rgba(255,255,255,.08)}
+.visual-frame:before{content:'KIZAZI';position:absolute;left:-.1em;top:12%;font:clamp(65px,10vw,135px)/.8 var(--display);letter-spacing:-.08em;color:var(--ink);transform:rotate(-90deg) translateX(-100%);transform-origin:top left}
+.visual-frame:after{content:'RADIO';position:absolute;right:-.06em;bottom:7%;font:clamp(70px,11vw,145px)/.8 var(--display);letter-spacing:-.08em;color:#fff;writing-mode:vertical-rl}
+.disc{position:absolute;width:230px;height:230px;border-radius:50%;background:var(--ink);border:2px solid #fff;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;box-shadow:0 0 0 18px rgba(255,255,255,.12)}
+.disc:before{content:'';width:64px;height:64px;border:2px solid var(--red);border-radius:50%;background:var(--paper)}
+.disc:after{content:'✳';position:absolute;color:var(--red);font-size:75px}
+.sticker{position:absolute;right:0;top:8%;background:var(--paper);color:var(--ink);width:105px;height:105px;border-radius:50%;display:grid;place-items:center;text-align:center;font:10px/1.5 var(--mono);transform:rotate(12deg);z-index:2}
+.hero-bottom{border-top:1px solid #444;padding:15px 0;display:flex;justify-content:space-between;font:10px var(--mono);letter-spacing:1px;color:#aaa;text-transform:uppercase}
 
-/* EDITORIAL INTRO */
-.intro{
-padding:115px 0 105px;
-display:grid;
-grid-template-columns:.7fr 1.3fr;
-gap:8%;
-align-items:start
-}
-.side-label{
-font:10px var(--mono);
-letter-spacing:1.5px;
-text-transform:uppercase;
-color:var(--red)
-}
-.side-label b{
-display:block;
-color:var(--black);
-font:clamp(55px,8vw,110px)/.8 var(--display);
-margin-top:22px
-}
-.intro-main h2{
-font:clamp(55px,8vw,112px)/.85 var(--display);
-letter-spacing:-.02em;
-text-transform:uppercase;
-margin:0 0 34px
-}
-.intro-main h2 em{
-font-style:normal;
-color:var(--red)
-}
-.intro-copy{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:35px
-}
-.intro-copy p{
-font-size:14px;
-line-height:1.95;
-color:#555;
-margin:0
-}
-.intro-copy p:first-child{
-color:#171717;
-font-weight:700;
-font-size:16px
-}
+/* TICKER */
+.ticker{background:var(--red);color:#fff;overflow:hidden;white-space:nowrap;padding:15px 0;font:clamp(17px,2vw,24px) var(--display);letter-spacing:.02em}
+.ticker-track{display:flex;gap:35px;width:max-content;animation:scroll 28s linear infinite}
+.ticker span{display:inline-flex;align-items:center;gap:35px}
+.ticker b{color:var(--ink);font-size:25px}
+@keyframes scroll{to{transform:translateX(-50%)}}
 
-/* WHAT WE DO */
-.what{
-background:var(--black);
-color:#fff;
-padding:100px 0 110px;
-position:relative;
-overflow:hidden
-}
-.what:before{
-content:'CULTURE';
-position:absolute;
-right:-.03em;
-top:15px;
-font:clamp(130px,25vw,350px)/.8 var(--display);
-color:rgba(255,255,255,.035);
-pointer-events:none
-}
-.section-head{
-display:flex;
-justify-content:space-between;
-align-items:end;
-gap:30px;
-margin-bottom:55px;
-position:relative;
-z-index:1
-}
-.kicker{
-font:10px var(--mono);
-letter-spacing:1.5px;
-color:var(--red);
-text-transform:uppercase
-}
-.section-head h2{
-font:clamp(60px,9vw,125px)/.82 var(--display);
-margin:17px 0 0;
-text-transform:uppercase
-}
-.section-head h2 span{color:var(--red)}
-.section-head p{
-max-width:290px;
-color:#999;
-font-size:13px;
-line-height:1.8
-}
-.services{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-border-top:1px solid #444;
-border-bottom:1px solid #444;
-position:relative;
-z-index:1
-}
-.service{
-padding:25px 18px 30px;
-min-height:250px;
-border-right:1px solid #444;
-position:relative;
-transition:background .25s
-}
-.service:last-child{border:0}
-.service:hover{background:var(--red)}
-.service .num{
-font:10px var(--mono);
-color:var(--red)
-}
-.service:hover .num,
-.service:hover p{color:#fff}
-.service h3{
-font:clamp(26px,3vw,39px)/.9 var(--display);
-text-transform:uppercase;
-margin:72px 0 17px
-}
-.service p{
-font-size:11px;
-line-height:1.8;
-color:#999;
-margin:0
-}
-.service .symbol{
-position:absolute;
-right:16px;
-top:19px;
-font-size:23px;
-color:#555
-}
-.service:hover .symbol{color:#fff}
+/* INTRO */
+.intro{padding:110px 0 120px}
+.intro-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:8%;align-items:start}
+.index{font:10px var(--mono);letter-spacing:1px;color:var(--red);text-transform:uppercase}
+.index strong{display:block;font:clamp(62px,9vw,112px)/.85 var(--display);color:var(--ink);letter-spacing:-.07em;margin-top:20px}
+.intro h2{font:clamp(48px,7vw,96px)/.9 var(--display);letter-spacing:-.07em;text-transform:uppercase;margin:0 0 30px}
+.intro h2 em{font-style:normal;color:var(--red)}
+.intro-bottom{display:grid;grid-template-columns:1fr 1fr;gap:35px}
+.intro-bottom p{font-size:14px;line-height:1.9;color:#666;margin:0}
+.intro-bottom p:first-child{font-weight:700;color:#222;font-size:16px}
 
-/* MANIFESTO */
-.manifesto{
-background:var(--paper);
-padding:105px 0
-}
-.manifesto-top{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:8%;
-align-items:end;
-margin-bottom:50px
-}
-.manifesto-top h2{
-font:clamp(64px,10vw,140px)/.8 var(--display);
-text-transform:uppercase;
-margin:18px 0 0
-}
-.manifesto-top h2 span{color:var(--red)}
-.manifesto-top p{
-max-width:420px;
-color:#666;
-font-size:14px;
-line-height:1.9
-}
-.manifesto-list{border-top:2px solid var(--black)}
-.manifesto-row{
-display:grid;
-grid-template-columns:90px 1fr 1fr 35px;
-gap:25px;
-align-items:center;
-padding:25px 0;
-border-bottom:1px solid #aaa;
-transition:padding .2s
-}
-.manifesto-row:hover{
-padding-left:12px;
-padding-right:12px
-}
-.manifesto-row .no{
-font:10px var(--mono);
-color:var(--red)
-}
-.manifesto-row h3{
-font:clamp(27px,4vw,52px)/.9 var(--display);
-text-transform:uppercase;
-margin:0
-}
-.manifesto-row p{
-font-size:12px;
-line-height:1.8;
-color:#666;
-margin:0;
-max-width:420px
-}
-.manifesto-row .arrow{
-font-size:25px;
-color:var(--red);
-text-align:right
-}
+/* MIX */
+.mix{background:#e5e2dc;padding:100px 0}
+.mix-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:48px}
+.mix h2{font:clamp(60px,9vw,120px)/.82 var(--display);letter-spacing:-.07em;text-transform:uppercase;margin:16px 0 0}
+.mix h2 span{color:var(--red)}
+.mix-head p{max-width:300px;color:#666;font-size:13px;line-height:1.8}
+.mix-grid{display:grid;grid-template-columns:1.15fr .85fr 1fr;grid-template-rows:240px 240px;gap:14px}
+.mix-card{padding:25px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;transition:transform .25s}
+.mix-card:hover{transform:translateY(-5px)}
+.mix-card:nth-child(1){background:var(--red);color:#fff;grid-row:span 2}
+.mix-card:nth-child(2){background:var(--ink);color:#fff}
+.mix-card:nth-child(3){background:#fff}
+.mix-card:nth-child(4){background:#c9c5bd}
+.mix-card:nth-child(5){background:var(--ink);color:#fff}
+.mix-card .number{font:10px var(--mono);opacity:.7}
+.mix-card h3{font:clamp(34px,4vw,57px)/.88 var(--display);letter-spacing:-.06em;text-transform:uppercase;margin:0;max-width:90%}
+.mix-card p{font-size:12px;line-height:1.7;max-width:250px;margin:12px 0 0;opacity:.75}
+.mix-card .symbol{position:absolute;right:20px;top:15px;font-size:38px;opacity:.5}
+.mix-card:nth-child(1) h3{font-size:clamp(56px,7vw,94px)}
 
-/* PURPOSE BLOCK */
-.purpose{
-background:#deddd8;
-padding:100px 0
-}
-.purpose-head{
-display:flex;
-justify-content:space-between;
-align-items:end;
-gap:30px;
-margin-bottom:45px
-}
-.purpose-head h2{
-font:clamp(60px,9vw,120px)/.82 var(--display);
-text-transform:uppercase;
-margin:17px 0 0
-}
-.purpose-head h2 span{color:var(--red)}
-.purpose-head p{
-max-width:270px;
-color:#666;
-font-size:13px;
-line-height:1.8
-}
-.purpose-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px
-}
-.purpose-card{
-padding:34px;
-background:var(--black);
-color:#fff;
-min-height:330px;
-position:relative;
-overflow:hidden
-}
-.purpose-card:first-child{background:var(--red)}
-.purpose-card .label{
-font:10px var(--mono);
-letter-spacing:1px
-}
-.purpose-card .index{
-position:absolute;
-right:28px;
-top:25px;
-font:12px var(--mono);
-opacity:.65
-}
-.purpose-card h3{
-font:clamp(48px,6vw,82px)/.82 var(--display);
-text-transform:uppercase;
-margin:80px 0 22px
-}
-.purpose-card p{
-max-width:500px;
-font-size:13px;
-line-height:1.9;
-color:#bbb;
-margin:0
-}
-.purpose-card:first-child p{color:#fff}
-.purpose-card:after{
-content:'✳';
-position:absolute;
-right:-25px;
-bottom:-75px;
-font-size:180px;
-line-height:1;
-color:rgba(255,255,255,.06)
-}
+/* PERSONALITY */
+.vibe{background:var(--red);color:#fff;padding:100px 0;position:relative;overflow:hidden}
+.vibe:after{content:'NOISE';position:absolute;right:-.05em;bottom:-.23em;font:clamp(170px,28vw,380px)/.8 var(--display);color:rgba(0,0,0,.09);pointer-events:none}
+.vibe-grid{display:grid;grid-template-columns:1fr 1fr;gap:8%;align-items:center;position:relative;z-index:1}
+.vibe h2{font:clamp(65px,10vw,135px)/.8 var(--display);letter-spacing:-.08em;text-transform:uppercase;margin:18px 0}
+.vibe h2 span{color:var(--ink)}
+.vibe-copy{font-size:16px;line-height:1.9;max-width:490px}
+.vibe-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}
+.vibe-tags span{border:1px solid rgba(255,255,255,.65);padding:10px 13px;font:10px var(--mono);text-transform:uppercase}
+.vibe-quote{border:2px solid #fff;padding:35px;transform:rotate(-2deg);background:var(--ink);box-shadow:12px 12px 0 rgba(0,0,0,.15)}
+.vibe-quote small{font:10px var(--mono);color:var(--red)}
+.vibe-quote p{font:clamp(30px,4vw,54px)/1.02 var(--display);letter-spacing:-.05em;text-transform:uppercase;margin:28px 0}
+.vibe-quote strong{font:10px var(--mono);letter-spacing:1px;color:#aaa}
+
+/* WHY */
+.why{padding:110px 0}
+.why-top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:45px}
+.why h2{font:clamp(58px,9vw,115px)/.82 var(--display);letter-spacing:-.07em;text-transform:uppercase;margin:16px 0 0}
+.why h2 span{color:var(--red)}
+.why-top p{max-width:300px;color:#666;font-size:13px;line-height:1.8}
+.why-list{border-top:2px solid var(--ink)}
+.why-row{display:grid;grid-template-columns:80px 1fr 1fr 30px;gap:20px;align-items:center;padding:23px 0;border-bottom:1px solid #bbb}
+.why-row .n{font:10px var(--mono);color:var(--red)}
+.why-row h3{font:clamp(28px,4vw,48px)/.9 var(--display);letter-spacing:-.05em;text-transform:uppercase;margin:0}
+.why-row p{font-size:12px;line-height:1.8;color:#666;margin:0}
+.why-row .arrow{color:var(--red);font-size:25px}
 
 /* FOUNDER */
-.founder{
-background:var(--black);
-color:#fff;
-padding:105px 0
-}
-.founder-head{
-display:flex;
-justify-content:space-between;
-align-items:end;
-gap:20px;
-margin-bottom:35px
-}
-.founder-head h2{
-font:clamp(65px,10vw,140px)/.8 var(--display);
-text-transform:uppercase;
-margin:16px 0 0
-}
-.founder-head h2 span{color:var(--red)}
-.founder-head .folio{
-font:10px/1.8 var(--mono);
-text-align:right;
-color:#888
-}
-.founder-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:7%;
-align-items:stretch
-}
-.founder-photo{
-min-height:590px;
-position:relative;
-background:#222;
-overflow:hidden
-}
-.founder-photo img{
-width:100%;
-height:100%;
-min-height:590px;
-object-fit:cover;
-object-position:center 18%;
-filter:grayscale(100%) contrast(1.05)
-}
-.founder-photo:after{
-content:'';
-position:absolute;
-inset:60% 0 0;
-background:linear-gradient(transparent,rgba(0,0,0,.75))
-}
-.photo-label{
-position:absolute;
-bottom:20px;
-left:20px;
-z-index:2;
-font:10px var(--mono);
-letter-spacing:1px
-}
-.founder-copy{
-padding:25px 0;
-display:flex;
-flex-direction:column;
-justify-content:center
-}
-.founder-copy h3{
-font:clamp(48px,6vw,82px)/.82 var(--display);
-text-transform:uppercase;
-margin:22px 0
-}
+.founder{background:var(--ink);color:#fff;padding:100px 0}
+.founder-top{display:flex;justify-content:space-between;align-items:end;margin-bottom:40px}
+.founder h2{font:clamp(58px,9vw,118px)/.82 var(--display);letter-spacing:-.07em;text-transform:uppercase;margin:16px 0 0}
+.founder h2 span{color:var(--red)}
+.founder-top p{font:10px var(--mono);color:#888;text-align:right;line-height:1.8}
+.founder-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:7%;align-items:center}
+.founder-image{height:560px;position:relative;background:#333;overflow:hidden}
+.founder-image img{width:100%;height:100%;object-fit:cover;object-position:center 18%;filter:grayscale(100%) contrast(1.08)}
+.founder-image:after{content:'THE PERSON BEHIND THE FREQUENCY';position:absolute;bottom:0;left:0;right:0;padding:18px;background:linear-gradient(transparent,rgba(0,0,0,.8));font:10px var(--mono);letter-spacing:1px}
+.founder-copy .role{display:inline-block;background:var(--red);padding:10px 13px;font:10px var(--mono);margin-bottom:22px}
+.founder-copy h3{font:clamp(42px,6vw,75px)/.86 var(--display);letter-spacing:-.06em;text-transform:uppercase;margin:0 0 24px}
 .founder-copy h3 span{color:var(--red)}
-.role{
-display:inline-block;
-align-self:flex-start;
-background:var(--red);
-padding:10px 13px;
-font:10px var(--mono);
-margin:0 0 24px
-}
-.founder-copy p{
-color:#aaa;
-font-size:13px;
-line-height:1.95;
-margin:0 0 15px
-}
-.founder-copy blockquote{
-border-left:3px solid var(--red);
-padding:15px 0 15px 20px;
-margin:17px 0 0;
-font-size:16px;
-line-height:1.7;
-font-weight:700
-}
-.founder-sign{
-font:10px var(--mono);
-letter-spacing:1px;
-color:var(--red);
-margin-top:24px
-}
+.founder-copy p{font-size:13px;line-height:1.95;color:#aaa;margin:0 0 15px}
+.founder-copy blockquote{border-left:3px solid var(--red);padding:12px 0 12px 18px;margin:24px 0 0;font-size:16px;line-height:1.6;font-weight:700}
 
-/* END */
-.end{
-background:var(--red);
-color:#fff;
-padding:90px 0 85px;
-position:relative;
-overflow:hidden
-}
-.end:after{
-content:'GO';
-position:absolute;
-right:-.02em;
-bottom:-.32em;
-font:clamp(250px,43vw,600px)/1 var(--display);
-color:rgba(0,0,0,.09)
-}
-.end-inner{
-position:relative;
-z-index:1;
-display:flex;
-align-items:end;
-justify-content:space-between;
-gap:35px
-}
-.end h2{
-font:clamp(75px,12vw,165px)/.78 var(--display);
-text-transform:uppercase;
-margin:22px 0
-}
-.end p{
-max-width:420px;
-font-size:14px;
-line-height:1.8;
-color:rgba(255,255,255,.9)
-}
-.end a{
-background:var(--black);
-color:#fff;
-padding:19px 22px;
-font:10px var(--mono);
-letter-spacing:1px;
-text-transform:uppercase;
-white-space:nowrap;
-transition:background .2s,color .2s
-}
-.end a:hover{background:#fff;color:var(--black)}
-
-/* FOOTER */
-footer{
-background:#080808;
-color:#888;
-padding:35px 0 22px
-}
-.footer-top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:30px;
-padding-bottom:28px;
-border-bottom:1px solid #333
-}
-.footer-top img{
-width:135px;
-height:60px;
-object-fit:contain
-}
-.footer-links{
-display:flex;
-gap:22px;
-flex-wrap:wrap
-}
-.footer-links a{
-font:10px var(--mono);
-text-transform:uppercase
-}
-.footer-links a:hover{color:#fff}
-.footer-bottom{
-display:flex;
-justify-content:space-between;
-gap:20px;
-padding-top:19px;
-font:9px var(--mono);
-letter-spacing:.8px
-}
-
-/* ANIMATIONS */
-.reveal{
-opacity:0;
-transform:translateY(22px);
-transition:opacity .6s ease,transform .6s ease
-}
-.reveal.show{opacity:1;transform:none}
-
-/* ACCESSIBILITY */
-@media(prefers-reduced-motion:reduce){
-*,*::before,*::after{
-scroll-behavior:auto!important;
-animation:none!important;
-transition:none!important
-}
-.reveal{opacity:1;transform:none}
-}
+/* CTA + FOOTER */
+.cta{background:var(--paper);padding:90px 0}
+.cta-inner{background:var(--ink);color:#fff;padding:55px;display:flex;align-items:end;justify-content:space-between;gap:30px;position:relative;overflow:hidden}
+.cta-inner:after{content:'✳';position:absolute;right:20%;top:-.6em;font-size:270px;color:rgba(237,28,36,.13)}
+.cta h2{font:clamp(62px,10vw,130px)/.8 var(--display);letter-spacing:-.08em;text-transform:uppercase;margin:18px 0;position:relative;z-index:1}
+.cta h2 span{color:var(--red)}
+.cta p{max-width:400px;color:#aaa;font-size:13px;line-height:1.8;position:relative;z-index:1}
+.cta .primary{position:relative;z-index:1;white-space:nowrap}
+footer{background:#090909;color:#fff;padding:38px 0 22px}
+.foot-top{display:flex;justify-content:space-between;align-items:center;gap:25px;padding-bottom:30px;border-bottom:1px solid #333}
+.foot-top img{width:135px;height:55px;object-fit:contain}
+.foot-links{display:flex;flex-wrap:wrap;gap:20px}
+.foot-links a{font:10px var(--mono);color:#aaa;text-transform:uppercase}
+.foot-links a:hover{color:var(--red)}
+.foot-bottom{display:flex;justify-content:space-between;gap:20px;padding-top:20px;color:#777;font:9px var(--mono);letter-spacing:.7px}
 
 /* TABLET */
-@media(max-width:980px){
-.navlinks{gap:13px}
-.navlinks a{font-size:9px}
-.hero-layout{min-height:540px}
-.hero h1{font-size:16vw}
-.services{grid-template-columns:repeat(3,1fr)}
-.service:nth-child(3){border-right:0}
-.service:nth-child(n+4){border-top:1px solid #444}
-.founder-grid{gap:5%}
+@media(max-width:900px){
+.links{gap:13px}
+.links a{font-size:9px}
+.hero-grid{grid-template-columns:1fr .8fr}
+.hero-visual{min-height:400px}
+.visual-frame{height:350px}
+.mix-grid{grid-template-columns:1fr 1fr;grid-template-rows:220px 220px 220px}
+.mix-card:nth-child(1){grid-row:span 2}
+.mix-card:nth-child(5){grid-column:span 2}
+.founder-grid{gap:4%}
+.founder-image{height:490px}
 }
 
 /* MOBILE */
-@media(max-width:700px){
-.wrap{width:88%}
-header{height:70px}
-.brand img{width:120px}
+@media(max-width:650px){
+header{height:68px}
+.logo img{width:120px;height:52px}
 .menu{display:block}
-.navlinks{
-display:none;
-position:absolute;
-top:70px;
-left:0;
-right:0;
-background:#101010;
-padding:18px 6%;
-flex-direction:column;
-align-items:stretch;
-gap:0
+.links{display:none;position:absolute;top:68px;left:0;right:0;background:#111;padding:20px 5%;flex-direction:column;align-items:stretch;border-top:1px solid #333}
+.links.open{display:flex}
+.links a{padding:12px 0;font-size:11px}
+.links .listen{text-align:center;padding:14px}
+.hero-grid{grid-template-columns:1fr;padding:48px 0 45px}
+.hero h1{font-size:clamp(76px,18vw,120px)}
+.hero-visual{min-height:330px;margin-top:20px}
+.visual-frame{height:290px;width:80%}
+.disc{width:160px;height:160px}
+.disc:before{width:45px;height:45px}
+.disc:after{font-size:55px}
+.sticker{width:82px;height:82px;font-size:8px}
+.hero-bottom{font-size:8px}
+.topline{font-size:8px}
+.intro{padding:75px 0}
+.intro-grid{grid-template-columns:1fr;gap:38px}
+.index strong{font-size:66px}
+.intro h2{font-size:clamp(47px,12vw,72px)}
+.intro-bottom{grid-template-columns:1fr;gap:16px}
+.mix{padding:75px 0}
+.mix-head,.why-top{display:block}
+.mix h2,.why h2{font-size:clamp(65px,15vw,95px)}
+.mix-head p,.why-top p{margin-top:20px}
+.mix-grid{grid-template-columns:1fr 1fr;grid-template-rows:210px 210px 210px;gap:9px}
+.mix-card{padding:17px}
+.mix-card:nth-child(1){grid-row:span 2}
+.mix-card h3{font-size:34px}
+.mix-card:nth-child(1) h3{font-size:58px}
+.mix-card p{font-size:10px}
+.mix-card .symbol{font-size:25px;right:12px;top:10px}
+.mix-card:nth-child(5){grid-column:span 2}
+.vibe{padding:75px 0}
+.vibe-grid{grid-template-columns:1fr;gap:40px}
+.vibe h2{font-size:clamp(70px,16vw,100px)}
+.vibe-quote{padding:25px}
+.vibe-quote p{font-size:38px}
+.why{padding:75px 0}
+.why-row{grid-template-columns:42px 1fr 20px;gap:12px;padding:20px 0}
+.why-row h3{font-size:30px}
+.why-row p{grid-column:2;grid-row:2}
+.why-row .arrow{grid-column:3;grid-row:1}
+.founder{padding:75px 0}
+.founder-top{display:block}
+.founder-top p{text-align:left;margin-top:20px}
+.founder-grid{grid-template-columns:1fr;gap:32px}
+.founder-image{height:430px}
+.founder-copy h3{font-size:clamp(46px,12vw,70px)}
+.cta{padding:55px 0}
+.cta-inner{padding:30px;display:block}
+.cta h2{font-size:clamp(65px,16vw,100px)}
+.cta .primary{margin-top:25px}
+.foot-top{display:block}
+.foot-links{margin-top:22px;gap:14px}
+.foot-bottom{display:block;line-height:2.2}
+.foot-bottom span{display:block}
 }
-.navlinks.open{display:flex}
-.navlinks a{
-padding:14px 0;
-border-bottom:1px solid #333;
-font-size:11px
-}
-.navlinks .listen{
-text-align:center;
-margin-top:14px
-}
-.hero{padding-top:22px}
-.hero-layout{
-grid-template-columns:1fr;
-min-height:0;
-padding:42px 0 34px;
-gap:35px
-}
-.hero h1{
-font-size:clamp(94px,22vw,150px);
-margin-bottom:24px
-}
-.hero-deck{font-size:14px}
-.hero-side{min-height:340px}
-.sticker{
-width:100px;
-height:100px;
-font-size:10px
-}
-.hero-art{
-min-height:260px;
-width:92%
-}
-.hero-foot{font-size:8px}
-.intro{
-padding:78px 0;
-grid-template-columns:1fr;
-gap:35px
-}
-.side-label b{font-size:70px}
-.intro-main h2{font-size:clamp(55px,13vw,82px)}
-.intro-copy{
-grid-template-columns:1fr;
-gap:18px
-}
-.what{padding:78px 0}
-.section-head{
-display:block;
-margin-bottom:35px
-}
-.section-head h2{font-size:clamp(62px,14vw,88px)}
-.section-head p{margin-top:22px}
-.services{grid-template-columns:1fr 1fr}
-.service{
-min-height:190px;
-padding:20px 14px;
-border-top:1px solid #444
-}
-.service:nth-child(odd){border-right:1px solid #444}
-.service:nth-child(even){border-right:0}
-.service:last-child{
-grid-column:1/-1;
-border-right:0
-}
-.service h3{
-font-size:30px;
-margin:50px 0 13px
-}
-.manifesto{padding:78px 0}
-.manifesto-top{
-grid-template-columns:1fr;
-gap:22px;
-margin-bottom:35px
-}
-.manifesto-top h2{font-size:clamp(68px,15vw,95px)}
-.manifesto-row{
-grid-template-columns:42px 1fr 24px;
-gap:12px;
-padding:22px 0
-}
-.manifesto-row h3{font-size:clamp(27px,7vw,38px)}
-.manifesto-row p{
-grid-column:2;
-grid-row:2;
-font-size:11px
-}
-.manifesto-row .arrow{
-grid-column:3;
-grid-row:1
-}
-.purpose{padding:78px 0}
-.purpose-head{display:block}
-.purpose-head h2{font-size:clamp(60px,13vw,88px)}
-.purpose-head p{margin-top:22px}
-.purpose-grid{grid-template-columns:1fr}
-.purpose-card{
-min-height:285px;
-padding:27px
-}
-.purpose-card h3{
-font-size:58px;
-margin-top:65px
-}
-.founder{padding:78px 0}
-.founder-head{display:block}
-.founder-head h2{font-size:clamp(66px,14vw,95px)}
-.founder-head .folio{
-text-align:left;
-margin-top:18px
-}
-.founder-grid{
-grid-template-columns:1fr;
-gap:36px
-}
-.founder-photo,.founder-photo img{min-height:430px}
-.founder-copy h3{font-size:clamp(48px,12vw,72px)}
-.end{padding:75px 0}
-.end-inner{display:block}
-.end h2{font-size:clamp(75px,17vw,112px)}
-.end a{
-display:inline-block;
-margin-top:26px
-}
-.footer-top{display:block}
-.footer-links{
-margin-top:24px;
-gap:15px
-}
-.footer-bottom{
-display:block;
-line-height:2
-}
-.footer-bottom span{display:block}
+
+@media(prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+.ticker-track{animation:none}
+*{transition:none!important}
 }
 </style>
 </head>
 
 <body>
 <header>
-<div class="wrap nav">
-<a class="brand" href="/" aria-label="KIZAZI RADIO home">
-<img src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
-</a>
-
-<button class="menu" id="menu" aria-label="Open navigation" aria-expanded="false">☰</button>
-
-<nav class="navlinks" id="navlinks" aria-label="Main navigation">
-<a href="/">Home</a>
-<a href="/#listen">Listen Live</a>
-<a href="/schedule/">Schedule</a>
-<a href="/shows/">Shows</a>
-<a href="/podcasts/">Podcasts</a>
-<a href="/news/">News</a>
-<a class="active" href="/about/">About Us</a>
-</nav>
-</div>
+  <div class="wrap nav">
+    <a class="logo" href="/" aria-label="KIZAZI RADIO home">
+      <img src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
+    </a>
+    <button class="menu" id="menu" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="links" id="links" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/#listen">Listen Live</a>
+      <a href="/schedule/">Schedule</a>
+      <a href="/shows/">Shows</a>
+      <a href="/podcasts/">Podcasts</a>
+      <a href="/news/">News</a>
+      <a class="active" href="/about/">About</a>
+    </nav>
+  </div>
 </header>
 
 <main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="topline">
+        <span>Independent digital radio</span>
+        <span>For the ones shaping what's next ↗</span>
+      </div>
 
-<section class="hero">
-<div class="wrap">
-<div class="hero-meta">
-<span>KIZAZI RADIO / INDEPENDENT DIGITAL RADIO</span>
-<span>THE CULTURE ISSUE — 001</span>
-</div>
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Hey, this is KIZAZI RADIO.</div>
+          <h1><span>THE NEXT</span><span class="outline">WAVE.</span></h1>
+          <p class="hero-copy"><strong>Not just another radio station.</strong> We're a digital home for fresh sounds, real conversations and everything moving culture forward. Tune in. Find your vibe. Be part of it.</p>
+          <div class="hero-actions">
+            <a class="primary" href="/#listen">Catch us live <span>↗</span></a>
+            <a class="secondary" href="/schedule/">See what's on</a>
+          </div>
+        </div>
 
-<div class="hero-layout">
-<div>
-<div class="kicker" style="color:#fff">A NEW WAVE IS HERE</div>
-<h1>
-<span>NEW</span>
-<span class="stroke">RULES.</span>
-<span>NEW</span>
-<span class="stroke">SOUND.</span>
-</h1>
-<p class="hero-deck">Not here to follow the noise. Here to move with a generation that creates it. Music, culture, ideas and voices — all on one frequency.</p>
-</div>
+        <div class="hero-visual">
+          <div class="sticker">NEW GEN<br>NEW SOUND<br>NO LIMITS ✳</div>
+          <div class="visual-frame"><div class="disc"></div></div>
+        </div>
+      </div>
 
-<div class="hero-side">
-<div class="sticker">NEW<br>GENERATION<br>NEW SOUND<br>✳</div>
-<div class="hero-art">
-<div class="art-bottom">
-<span>THE NEXT WAVE<br>IS ALREADY HERE</span>
-<strong>LIVE / LOUD</strong>
-</div>
-</div>
-</div>
-</div>
+      <div class="hero-bottom">
+        <span>Music • Culture • Ideas • People</span>
+        <span>Scroll. There's more ↓</span>
+      </div>
+    </div>
+  </section>
 
-<div class="hero-foot">
-<span>INDEPENDENT • DIGITAL • CONNECTED</span>
-<span>SCROLL TO GET THE FULL STORY ↓</span>
-</div>
-</div>
-</section>
+  <div class="ticker" aria-label="KIZAZI RADIO tagline">
+    <div class="ticker-track">
+      <span>NEW GENERATION <b>✳</b> NEW SOUND <b>✳</b> YOUR VIBE. YOUR VOICE. <b>✳</b> STAY CURIOUS <b>✳</b></span>
+      <span>NEW GENERATION <b>✳</b> NEW SOUND <b>✳</b> YOUR VIBE. YOUR VOICE. <b>✳</b> STAY CURIOUS <b>✳</b></span>
+    </div>
+  </div>
 
-<section class="intro">
-<div class="side-label">01 / THE INTRODUCTION
-<b>WHO<br>WE<br>ARE.</b>
-</div>
+  <section class="intro">
+    <div class="wrap intro-grid">
+      <div class="index">01 / So, who are we?
+        <strong>GOOD<br>VIBES.<br>REAL<br>VOICES.</strong>
+      </div>
+      <div>
+        <h2>WE GET THE<br>GENERATION.<br><em>WE GET THE SOUND.</em></h2>
+        <div class="intro-bottom">
+          <p>KIZAZI RADIO is an online radio station made for a generation that never stands still.</p>
+          <p>We bring music, entertainment, news, sports, lifestyle and podcasts together in one digital space. Whether you're working, chilling, commuting or discovering something new — there's a frequency for you.</p>
+          <p>We're curious about what's next, connected to what's happening now, and always open to new voices.</p>
+          <p>Basically? Good sound, fresh energy and conversations that actually mean something.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="intro-main">
-<h2>WE DON'T JUST<br>PLAY THE <em>SOUND.</em><br>WE MOVE WITH IT.</h2>
-<div class="intro-copy">
-<p>KIZAZI RADIO is an independent online radio station built for a generation that is constantly evolving, connecting, creating and shaping the future.</p>
-<p>We bring music, entertainment, information, sports, lifestyle and podcasts into one digital space — connecting audiences through sounds, ideas and conversations that matter.</p>
-<p>We believe radio should move with the times. It should reflect the culture, interests and everyday experiences of the people listening, wherever they are.</p>
-<p>More than a station to tune into, KIZAZI RADIO is a platform for discovery, expression and connection. A place where the next generation can find its sound and make its voice heard.</p>
-</div>
-</div>
-</section>
+  <section class="mix">
+    <div class="wrap">
+      <div class="mix-head">
+        <div>
+          <div class="index">02 / What's in the mix?</div>
+          <h2>A LITTLE BIT<br>OF <span>EVERYTHING.</span></h2>
+        </div>
+        <p>Different interests. Different moods. One place to tap into what you love.</p>
+      </div>
 
-<section class="what">
-<div class="wrap">
-<div class="section-head">
-<div>
-<div class="kicker">02 / THE FREQUENCY</div>
-<h2>WHAT'S<br><span>ON OUR</span><br>WAVELENGTH?</h2>
-</div>
-<p>Different moods. Different interests. One destination for the sounds and stories shaping a generation.</p>
-</div>
+      <div class="mix-grid">
+        <article class="mix-card">
+          <span class="number">01 — THE SOUND</span>
+          <span class="symbol">♫</span>
+          <div>
+            <h3>Music<br>on repeat.</h3>
+            <p>Fresh playlists, new discoveries and sounds from every corner of the culture.</p>
+          </div>
+        </article>
 
-<div class="services">
-<article class="service">
-<span class="num">01 / SOUND</span>
-<span class="symbol">✳</span>
-<h3>Music</h3>
-<p>Fresh selections, new discoveries and sounds from across scenes and generations.</p>
-</article>
+        <article class="mix-card">
+          <span class="number">02 — THE BUZZ</span>
+          <span class="symbol">↗</span>
+          <div>
+            <h3>Pop culture.</h3>
+            <p>What's trending, what's new and what everyone's talking about.</p>
+          </div>
+        </article>
 
-<article class="service">
-<span class="num">02 / CULTURE</span>
-<span class="symbol">↗</span>
-<h3>Entertainment</h3>
-<p>People, moments, trends and stories giving today's culture its energy.</p>
-</article>
+        <article class="mix-card">
+          <span class="number">03 — REAL TALK</span>
+          <span class="symbol">◉</span>
+          <div>
+            <h3>News &amp; talk.</h3>
+            <p>Stories, updates and conversations that keep you in the know.</p>
+          </div>
+        </article>
 
-<article class="service">
-<span class="num">03 / VOICES</span>
-<span class="symbol">◉</span>
-<h3>Information</h3>
-<p>Relevant updates and conversations that invite curiosity and fresh perspectives.</p>
-</article>
+        <article class="mix-card">
+          <span class="number">04 — GAME TIME</span>
+          <span class="symbol">＋</span>
+          <div>
+            <h3>Sports &amp; life.</h3>
+            <p>For the passions, people and moments that bring us together.</p>
+          </div>
+        </article>
 
-<article class="service">
-<span class="num">04 / EVERYDAY</span>
-<span class="symbol">＋</span>
-<h3>Sports & Lifestyle</h3>
-<p>The passions, interests and experiences that bring people together.</p>
-</article>
+        <article class="mix-card">
+          <span class="number">05 — PRESS PLAY</span>
+          <span class="symbol">▶</span>
+          <div>
+            <h3>Podcasts.</h3>
+            <p>More voices. More perspectives. Conversations worth staying for.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<article class="service">
-<span class="num">05 / ON DEMAND</span>
-<span class="symbol">▶</span>
-<h3>Podcasts</h3>
-<p>More room for voices, original ideas and conversations worth your time.</p>
-</article>
-</div>
-</div>
-</section>
+  <section class="vibe">
+    <div class="wrap vibe-grid">
+      <div>
+        <div class="eyebrow" style="color:#fff">03 / The KIZAZI energy</div>
+        <h2>WE KEEP<br>IT <span>REAL.</span></h2>
+        <p class="vibe-copy">We don't think young people need to be talked at. They deserve to be heard, represented and part of the conversation. That's the energy we bring — open-minded, creative, curious and always moving.</p>
+        <div class="vibe-tags">
+          <span>Fresh perspectives</span>
+          <span>Big energy</span>
+          <span>Open conversations</span>
+          <span>Global mindset</span>
+        </div>
+      </div>
 
-<section class="manifesto">
-<div class="wrap">
-<div class="manifesto-top">
-<div>
-<div class="kicker">03 / THE KIZAZI MINDSET</div>
-<h2>WE'RE HERE<br>FOR THE <span>NEXT.</span></h2>
-</div>
-<p>We believe every generation deserves media that listens, reflects its world and gives it room to shape what comes next.</p>
-</div>
+      <div class="vibe-quote">
+        <small>OUR THING / OUR PROMISE</small>
+        <p>“Your generation. Your culture. Your sound. There's room for all of it here.”</p>
+        <strong>KIZAZI RADIO — NEW GENERATION. NEW SOUND.</strong>
+      </div>
+    </div>
+  </section>
 
-<div class="manifesto-list">
-<article class="manifesto-row">
-<span class="no">01 / ENERGY</span>
-<h3>Stay curious.</h3>
-<p>Keep discovering new sounds, new ideas and new ways of looking at the world.</p>
-<span class="arrow">↗</span>
-</article>
+  <section class="why">
+    <div class="wrap">
+      <div class="why-top">
+        <div>
+          <div class="index">04 / What we stand for</div>
+          <h2>MORE THAN<br><span>JUST PLAY.</span></h2>
+        </div>
+        <p>We want to make digital radio feel relevant, welcoming and connected to real life.</p>
+      </div>
 
-<article class="manifesto-row">
-<span class="no">02 / EXPRESSION</span>
-<h3>Make some noise.</h3>
-<p>Give fresh perspectives, creative expression and emerging voices space to be heard.</p>
-<span class="arrow">↗</span>
-</article>
+      <div class="why-list">
+        <article class="why-row">
+          <span class="n">01 / WHY</span>
+          <h3>Entertain.</h3>
+          <p>Bring the energy with music, shows and content people genuinely enjoy.</p>
+          <span class="arrow">↗</span>
+        </article>
 
-<article class="manifesto-row">
-<span class="no">03 / CONNECTION</span>
-<h3>Move together.</h3>
-<p>Connect people, cultures and communities through the shared power of sound and storytelling.</p>
-<span class="arrow">↗</span>
-</article>
-</div>
-</div>
-</section>
+        <article class="why-row">
+          <span class="n">02 / WHY</span>
+          <h3>Inform.</h3>
+          <p>Make room for useful updates, different views and stories worth knowing.</p>
+          <span class="arrow">↗</span>
+        </article>
 
-<section class="purpose">
-<div class="wrap">
-<div class="purpose-head">
-<div>
-<div class="kicker">04 / THE BIG PICTURE</div>
-<h2>BUILT FOR<br><span>WHAT'S NEXT.</span></h2>
-</div>
-<p>Our mission keeps us moving. Our vision keeps us looking forward.</p>
-</div>
+        <article class="why-row">
+          <span class="n">03 / WHY</span>
+          <h3>Educate.</h3>
+          <p>Share ideas and knowledge that spark curiosity and help people grow.</p>
+          <span class="arrow">↗</span>
+        </article>
 
-<div class="purpose-grid">
-<article class="purpose-card">
-<span class="label">OUR MISSION / WHY WE EXIST</span>
-<span class="index">01</span>
-<h3>ENTERTAIN.<br>INFORM.<br>EDUCATE.</h3>
-<p>To entertain, inform and educate the new generation through relevant music, engaging programmes, meaningful conversations and accessible digital media experiences.</p>
-</article>
+        <article class="why-row">
+          <span class="n">04 / WHY</span>
+          <h3>Connect.</h3>
+          <p>Bring people, communities and cultures closer through sound and storytelling.</p>
+          <span class="arrow">↗</span>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<article class="purpose-card">
-<span class="label">OUR VISION / WHERE WE'RE GOING</span>
-<span class="index">02</span>
-<h3>A GLOBAL<br>YOUTH MEDIA<br>VOICE.</h3>
-<p>To grow into a distinctive global digital radio and youth media brand, connecting audiences, emerging voices and cultures through sound and storytelling.</p>
-</article>
-</div>
-</div>
-</section>
+  <section class="founder">
+    <div class="wrap">
+      <div class="founder-top">
+        <div>
+          <div class="eyebrow">05 / The human behind the idea</div>
+          <h2>MEET THE<br><span>FOUNDER.</span></h2>
+        </div>
+        <p>ONE IDEA. ONE FREQUENCY.<br>A WHOLE GENERATION OF POSSIBILITIES.</p>
+      </div>
 
-<section class="founder">
-<div class="wrap">
-<div class="founder-head">
-<div>
-<div class="kicker">05 / THE PERSON BEHIND THE PLATFORM</div>
-<h2>MEET THE<br><span>FOUNDER.</span></h2>
-</div>
-<div class="folio">KIZAZI RADIO / PEOPLE<br>FOUNDER PROFILE — 001</div>
-</div>
+      <div class="founder-grid">
+        <div class="founder-image">
+          <img src="/assets/founder-telesphory-mfumu.png" alt="Telesphory Deogratius Mfumu, Founder of KIZAZI RADIO" loading="lazy">
+        </div>
 
-<div class="founder-grid">
-<div class="founder-photo">
-<img src="/assets/founder-telesphory-mfumu.png" alt="Telesphory Deogratius Mfumu, Founder of KIZAZI RADIO" loading="lazy">
-<div class="photo-label">TELESPHORY DEOGRATIUS MFUMU / FOUNDER</div>
-</div>
+        <div class="founder-copy">
+          <span class="role">FOUNDER &amp; CREATIVE LEAD</span>
+          <h3>TELESPHORY<br>DEOGRATIUS<br><span>MFUMU.</span></h3>
+          <p>Telesphory Deogratius Mfumu is a creative and digital media professional whose work spans graphic design, digital marketing, social media and broadcasting.</p>
+          <p>He created KIZAZI RADIO around a simple idea: the next generation deserves a media space that feels current, sounds fresh and makes room for the things that matter to them.</p>
+          <p>Today, he leads the station's creative direction and development, bringing together sound, storytelling and digital experiences under one growing platform.</p>
+          <blockquote>“I wanted to build a space that moves with the generation — not one that asks the generation to catch up.”</blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="founder-copy">
-<div class="kicker">THE VISION BEHIND KIZAZI RADIO</div>
-<h3>TELESPHORY<br>DEOGRATIUS<br><span>MFUMU.</span></h3>
-<div class="role">CREATIVE & DIGITAL MEDIA PROFESSIONAL</div>
-<p>Telesphory Deogratius Mfumu is a creative and digital media professional with a background in graphic design, digital marketing, social media management and media content development.</p>
-<p>His experience across visual communication, broadcasting and digital media shaped the idea for a radio platform that brings contemporary sound together with the interests and perspectives of a new generation.</p>
-<p>He founded KIZAZI RADIO on the belief that the new generation deserves a digital media platform that reflects its identity, interests, culture and changing world. He leads the station's creative direction and development, bringing together media, branding and digital communication experience to build an independent online radio platform with a global outlook.</p>
-<blockquote>“KIZAZI RADIO is a platform for music, ideas, conversations and voices that deserve to be heard.”</blockquote>
-<div class="founder-sign">ONE VISION. MANY VOICES. A NEW GENERATION.</div>
-</div>
-</div>
-</div>
-</section>
-
-<section class="end">
-<div class="wrap end-inner">
-<div>
-<div class="kicker" style="color:#fff">06 / YOUR FREQUENCY IS WAITING</div>
-<h2>FIND YOUR<br>FREQUENCY.</h2>
-<p>Discover new sounds, find a fresh perspective and stay connected to the energy of a generation moving forward.</p>
-</div>
-<a href="/#listen">LISTEN TO KIZAZI RADIO ↗</a>
-</div>
-</section>
-
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-inner">
+        <div>
+          <div class="eyebrow">06 / You're part of the wave</div>
+          <h2>YOUR VIBE.<br><span>YOUR RADIO.</span></h2>
+          <p>Ready for something fresh? Jump in, turn it up and make KIZAZI RADIO part of your day.</p>
+        </div>
+        <a class="primary" href="/#listen">Listen live now <span>↗</span></a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
-<div class="wrap">
-<div class="footer-top">
-<a href="/" aria-label="KIZAZI RADIO home">
-<img src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
-</a>
-<nav class="footer-links">
-<a href="/">Home</a>
-<a href="/schedule/">Schedule</a>
-<a href="/shows/">Shows</a>
-<a href="/podcasts/">Podcasts</a>
-<a href="/news/">News</a>
-<a href="/about/">About Us</a>
-<a href="mailto:hello@kizaziradio.com">Contact</a>
-</nav>
-</div>
-
-<div class="footer-bottom">
-<span>© <span id="year"></span> KIZAZI RADIO. ALL RIGHTS RESERVED.</span>
-<span>NEW GENERATION. NEW SOUND.</span>
-</div>
-</div>
+  <div class="wrap">
+    <div class="foot-top">
+      <a href="/" aria-label="KIZAZI RADIO home">
+        <img src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
+      </a>
+      <nav class="foot-links">
+        <a href="/">Home</a>
+        <a href="/schedule/">Schedule</a>
+        <a href="/shows/">Shows</a>
+        <a href="/podcasts/">Podcasts</a>
+        <a href="/news/">News</a>
+        <a href="/about/">About</a>
+        <a href="mailto:hello@kizaziradio.com">Contact</a>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> KIZAZI RADIO. ALL RIGHTS RESERVED.</span>
+      <span>NEW GENERATION. NEW SOUND.</span>
+    </div>
+  </div>
 </footer>
 
 <script>
 const menu=document.getElementById('menu');
-const nav=document.getElementById('navlinks');
+const links=document.getElementById('links');
 
 menu.addEventListener('click',()=>{
-const open=nav.classList.toggle('open');
-menu.setAttribute('aria-expanded',String(open));
-menu.textContent=open?'×':'☰';
+  const open=links.classList.toggle('open');
+  menu.setAttribute('aria-expanded',String(open));
+  menu.textContent=open?'×':'☰';
 });
 
-nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-nav.classList.remove('open');
-menu.setAttribute('aria-expanded','false');
-menu.textContent='☰';
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  links.classList.remove('open');
+  menu.setAttribute('aria-expanded','false');
+  menu.textContent='☰';
 }));
 
 document.getElementById('year').textContent=new Date().getFullYear();
-
-const items=document.querySelectorAll('.reveal');
-
-if('IntersectionObserver'in window){
-const io=new IntersectionObserver((entries,observer)=>{
-entries.forEach(e=>{
-if(e.isIntersecting){
-e.target.classList.add('show');
-observer.unobserve(e.target);
-}
-});
-},{threshold:.12});
-items.forEach(el=>io.observe(el));
-}else{
-items.forEach(el=>el.classList.add('show'));
-}
 </script>
 </body>
 </html>
