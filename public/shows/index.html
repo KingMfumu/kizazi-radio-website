@@ -106,26 +106,41 @@ header{height:78px;position:sticky;top:0;z-index:100;background:#08080bf2;border
 .listen-copy small{display:block;color:#c2c2ca;font-size:10px;margin-top:5px}
 .listen-panel .listen-btn{white-space:nowrap}
 
-/* PRESENTER */
+/* PRESENTER — MODERN HOST SPOTLIGHT */
 
-.presenter-section{padding:78px 0;display:grid;grid-template-columns:.78fr 1.22fr;gap:55px;align-items:center}
-.presenter-art{position:relative;aspect-ratio:4/5;max-height:570px;overflow:hidden;border:1px solid #ffffff25;border-radius:13px;background:#17171c}
-.presenter-art img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block}
-.presenter-art:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#08080be8,transparent 60%)}
-.presenter-frame{position:absolute;inset:12px;border:1px solid #ffffff45;z-index:2}
-.presenter-photo-top{position:absolute;top:24px;left:24px;z-index:3;padding:10px 13px;background:#08080bd9;border:1px solid #ffffff35;font-size:9px;font-weight:900;letter-spacing:1.2px}
-.presenter-photo-top span{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);margin-right:8px}
-.presenter-photo-bottom{position:absolute;left:27px;bottom:25px;z-index:3}
-.presenter-photo-bottom small{font-size:9px;font-weight:900;letter-spacing:2px}
-.presenter-photo-bottom h3{font-size:clamp(42px,5vw,65px);line-height:.84;letter-spacing:-.08em;margin:10px 0}
+.presenter-section{position:relative;padding:100px 0;display:grid;grid-template-columns:minmax(340px,.82fr) minmax(0,1.18fr);gap:clamp(48px,7vw,110px);align-items:center;isolation:isolate}
+.presenter-section:before{content:"";position:absolute;z-index:-1;inset:8% -8vw;background:radial-gradient(ellipse at 18% 48%,rgba(255,158,38,.10),transparent 32%),radial-gradient(ellipse at 83% 45%,rgba(237,16,24,.10),transparent 38%);pointer-events:none}
+.presenter-art{position:relative;aspect-ratio:4/5;max-height:640px;overflow:hidden;border:1px solid rgba(255,255,255,.22);border-radius:5px;background:#17171c;box-shadow:0 30px 80px rgba(0,0,0,.42),12px 12px 0 rgba(237,16,24,.10);transform:translateY(0);transition:transform .45s ease,box-shadow .45s ease}
+.presenter-art:hover{transform:translateY(-6px);box-shadow:0 38px 90px rgba(0,0,0,.5),12px 12px 0 rgba(237,16,24,.18)}
+.presenter-art img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block;transition:transform .7s ease}
+.presenter-art:hover img{transform:scale(1.025)}
+.presenter-art:before{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(135deg,rgba(255,173,55,.12),transparent 38%),linear-gradient(0deg,rgba(5,5,8,.94) 0%,rgba(5,5,8,.10) 49%,rgba(5,5,8,.04) 100%);pointer-events:none}
+.presenter-art:after{content:"";position:absolute;z-index:2;inset:13px;border:1px solid rgba(255,255,255,.35);pointer-events:none}
+.presenter-frame{display:none}
+.presenter-photo-top{position:absolute;top:30px;left:30px;z-index:3;padding:11px 15px;background:rgba(8,8,11,.78);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(12px);font-size:9px;font-weight:900;letter-spacing:1.5px}
+.presenter-photo-top span{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 12px var(--red);margin-right:9px}
+.presenter-photo-bottom{position:absolute;left:34px;bottom:35px;z-index:3}
+.presenter-photo-bottom small{font-size:9px;font-weight:900;letter-spacing:2.2px;color:#f1f1f2}
+.presenter-photo-bottom h3{font-size:clamp(48px,5.5vw,76px);line-height:.82;letter-spacing:-.09em;margin:12px 0;text-transform:uppercase}
 .presenter-photo-bottom h3 span{display:block;color:var(--red)}
-.presenter-photo-bottom p{font-size:9px;font-weight:900;letter-spacing:1.8px}
-.presenter-copy h2{font-size:clamp(38px,5vw,64px);line-height:.93;letter-spacing:-.08em;margin:15px 0 22px}
-.presenter-copy h2 em{font-style:normal;color:var(--red)}
-.presenter-copy p{color:var(--muted);font-size:13px;line-height:1.9}
-.presenter-role{color:var(--red);font-size:10px;font-weight:900;letter-spacing:2px}
-.presenter-shows{display:flex;flex-wrap:wrap;gap:8px;margin-top:25px}
-.presenter-shows span{border:1px solid #ffffff25;padding:10px 12px;font-size:8px;font-weight:900;letter-spacing:.8px}
+.presenter-photo-bottom p{font-size:9px;font-weight:900;letter-spacing:2px;color:#f1f1f2}
+.presenter-copy{position:relative;padding:12px 0 12px 2px}
+.presenter-copy:before{content:"KIZAZI";position:absolute;z-index:-1;right:-35px;top:-78px;font-size:clamp(90px,13vw,190px);font-weight:900;letter-spacing:-.12em;color:rgba(255,255,255,.025);pointer-events:none}
+.presenter-copy .kicker{display:flex;align-items:center;gap:12px;margin-bottom:17px;color:var(--red);font-size:10px;letter-spacing:2.4px}
+.presenter-copy .kicker:before{content:"";width:28px;height:2px;background:var(--red)}
+.presenter-role{display:inline-block;color:#d0d0d6;font-size:9px;font-weight:900;letter-spacing:2px;border:1px solid rgba(255,255,255,.18);padding:9px 12px;margin-bottom:15px}
+.presenter-copy h2{font-size:clamp(42px,5.5vw,76px);line-height:.88;letter-spacing:-.085em;margin:0 0 24px;font-weight:900;text-transform:uppercase}
+.presenter-copy h2 .host-line{display:block;color:#f7f7f8}
+.presenter-copy h2 .vibe-line{display:block;color:var(--red)}
+.presenter-copy h2 .host-name{display:block;margin-top:14px;font-size:.48em;line-height:1;letter-spacing:-.045em;color:#fff}
+.presenter-copy p{max-width:680px;color:#aeb0ba;font-size:13px;line-height:1.95;margin:0 0 14px}
+.presenter-shows{display:flex;flex-wrap:wrap;gap:9px;margin-top:27px}
+.presenter-shows span{position:relative;border:1px solid rgba(255,255,255,.2);padding:12px 14px 12px 25px;font-size:8px;font-weight:900;letter-spacing:1px;background:rgba(255,255,255,.025);transition:transform .25s,border-color .25s,background .25s}
+.presenter-shows span:before{content:"";position:absolute;left:11px;top:50%;width:5px;height:5px;border-radius:50%;background:var(--show-accent,var(--red));transform:translateY(-50%)}
+.presenter-shows span:nth-child(1){--show-accent:var(--amber)}
+.presenter-shows span:nth-child(2){--show-accent:#ff343b}
+.presenter-shows span:nth-child(3){--show-accent:var(--purple)}
+.presenter-shows span:hover{transform:translateY(-3px);border-color:var(--show-accent);background:rgba(255,255,255,.06)}
 
 /* FOOTER */
 
@@ -137,7 +152,7 @@ footer{background:#070709;border-top:1px solid var(--line);padding:30px 0 20px}
 .links a:hover{color:#fff}
 .bottom{border-top:1px solid var(--line);padding-top:16px;color:#777;font-size:9px;display:flex;justify-content:space-between}
 
-/* TABLET */
+/* RESPONSIVE */
 
 @media(max-width:1050px){
 .programme-grid{grid-template-columns:1fr;gap:35px}
@@ -145,8 +160,6 @@ footer{background:#070709;border-top:1px solid var(--line);padding:30px 0 20px}
 .schedule-row{grid-template-columns:125px 34px minmax(0,1fr) 70px}
 .hero{min-height:460px}
 }
-
-/* MOBILE */
 
 @media(max-width:760px){
 header{height:68px}
@@ -212,6 +225,25 @@ header{height:68px}
 .hero-point b{font-size:17px}
 }
 
+@media(max-width:760px){
+.presenter-section{padding:65px 0 70px;grid-template-columns:1fr;gap:34px}
+.presenter-art{width:min(100%,470px);margin:0 auto;max-height:620px}
+.presenter-copy{padding:0}
+.presenter-copy:before{right:-5px;top:-35px;font-size:100px}
+.presenter-copy h2{font-size:clamp(43px,11vw,66px)}
+.presenter-copy p{font-size:12px}
+.presenter-photo-top{top:24px;left:24px}
+.presenter-photo-bottom{left:27px;bottom:28px}
+}
+
+@media(max-width:430px){
+.presenter-art{aspect-ratio:4/5}
+.presenter-photo-bottom h3{font-size:clamp(48px,13vw,64px)}
+.presenter-photo-top{top:20px;left:20px;font-size:8px}
+.presenter-photo-bottom{left:24px;bottom:24px}
+.presenter-shows span{font-size:7px;padding:11px 11px 11px 22px}
+}
+
 @media(prefers-reduced-motion:reduce){
 *,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
 }
@@ -222,7 +254,6 @@ header{height:68px}
 
 <header>
 <div class="head">
-
 <a href="/" aria-label="KIZAZI RADIO home">
 <img class="logo" src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
 </a>
@@ -243,7 +274,6 @@ header{height:68px}
 <div class="onair"><i></i>LIVE ON AIR</div>
 <a class="listen-btn" href="/#listen">▶ Listen Live</a>
 </div>
-
 </div>
 </header>
 
@@ -259,9 +289,7 @@ header{height:68px}
 
 <h1>THE SHOWS.<em>THE SCHEDULE.</em></h1>
 
-<p>
-Live shows, real conversations and the best music for a new generation, every weekday on KIZAZI RADIO.
-</p>
+<p>Live shows, real conversations and the best music for a new generation, every weekday on KIZAZI RADIO.</p>
 
 <div class="hero-points">
 <div class="hero-point"><b>◉</b> LIVE SHOWS</div>
@@ -270,9 +298,7 @@ Live shows, real conversations and the best music for a new generation, every we
 </div>
 </div>
 
-<div class="hero-stamp">
-<span>●</span> THE SOUND OF A NEW GENERATION
-</div>
+<div class="hero-stamp"><span>●</span> THE SOUND OF A NEW GENERATION</div>
 
 </div>
 </section>
@@ -282,10 +308,7 @@ Live shows, real conversations and the best music for a new generation, every we
 <section class="programme-section">
 <div class="wrap programme-grid">
 
-<!-- SHOW CARDS -->
-
 <div class="shows-column">
-
 <div class="column-head">
 <h2 class="column-title">THE SHOWS</h2>
 </div>
@@ -324,8 +347,6 @@ Live shows, real conversations and the best music for a new generation, every we
 
 </div>
 
-<!-- LISTEN LIVE PANEL -->
-
 <div class="listen-panel">
 <div class="listen-art">♫</div>
 <div class="listen-copy">
@@ -334,13 +355,9 @@ Live shows, real conversations and the best music for a new generation, every we
 </div>
 <a class="listen-btn" href="/#listen">▶ LISTEN LIVE</a>
 </div>
-
 </div>
 
-<!-- WEEKDAY SCHEDULE -->
-
 <div class="schedule-column" id="weekly-schedule">
-
 <div class="column-head">
 <h2 class="column-title">WEEKDAY PROGRAMME</h2>
 <div class="day-pill"><span>▦</span> MONDAY – FRIDAY</div>
@@ -420,7 +437,6 @@ Live shows, real conversations and the best music for a new generation, every we
 <div class="wrap presenter-section">
 
 <div class="presenter-art">
-
 <img
 src="/assets/king-mfumu-presenter.png"
 alt="King Mfumu, KIZAZI RADIO presenter"
@@ -439,16 +455,19 @@ KIZAZI RADIO PRESENTER
 <h3>KING <span>MFUMU.</span></h3>
 <p>THREE SHOWS. ONE VOICE.</p>
 </div>
-
 </div>
 
 <div class="presenter-copy">
 
-<div class="kicker">03 / THE VOICE BEHIND THE SHOWS</div>
+<div class="kicker">03 / MEET THE HOST</div>
 
-<div class="presenter-role">KIZAZI RADIO PRESENTER</div>
+<div class="presenter-role">KIZAZI RADIO · ON-AIR PERSONALITY</div>
 
-<h2>MEET<br>KING <em style="color:#e50909">MFUMU.</em></h2>
+<h2>
+<span class="host-line">ONE MAN.</span>
+<span class="vibe-line">THREE VIBES.</span>
+<span class="host-name">KING MFUMU.</span>
+</h2>
 
 <p>
 Meet King Mfumu, the voice bringing MORNING LINKUP, NO CAP and THE LOVE NIGHTS to life on KIZAZI RADIO.
@@ -480,7 +499,6 @@ Three shows. Different moods. One voice connecting you to music, ideas and conve
 <div class="wrap">
 
 <div class="foot">
-
 <a href="/">
 <img src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
 </a>
@@ -493,7 +511,6 @@ Three shows. Different moods. One voice connecting you to music, ideas and conve
 <a href="/about/">About Us</a>
 <a href="mailto:hello@kizaziradio.com">Contact</a>
 </nav>
-
 </div>
 
 <div class="bottom">
@@ -523,7 +540,7 @@ menu.textContent='☰';
 );
 
 const year=document.getElementById('year');
-if(year) year.textContent=new Date().getFullYear();
+if(year)year.textContent=new Date().getFullYear();
 </script>
 
 </body>
