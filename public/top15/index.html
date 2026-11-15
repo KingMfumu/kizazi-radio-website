@@ -209,6 +209,179 @@
     }
     @media(prefers-reduced-motion:reduce) { .chart-marquee-track { animation:none; } }
 
+    /* Ranking list — sharper editorial music countdown */
+    .ranking-list { gap: 12px; }
+    .ranking-card {
+      grid-template-columns: 78px 88px minmax(0,1fr) 132px;
+      gap: 20px;
+      min-height: 116px;
+      padding: 13px 18px 13px 12px;
+      border-radius: 5px;
+      background:
+        linear-gradient(100deg, rgba(255,255,255,.055), transparent 34%),
+        linear-gradient(115deg, #17171c, #101013 76%);
+      border: 1px solid rgba(255,255,255,.09);
+      box-shadow: 0 8px 24px rgba(0,0,0,.16);
+      overflow: hidden;
+    }
+    .ranking-card::after {
+      content: "";
+      position: absolute;
+      right: 145px;
+      top: 50%;
+      width: 105px;
+      height: 54px;
+      transform: translateY(-50%);
+      opacity: .10;
+      background: repeating-linear-gradient(90deg, #fff 0 3px, transparent 3px 8px);
+      clip-path: polygon(0 48%, 7% 48%, 12% 18%, 18% 75%, 24% 35%, 30% 62%, 37% 8%, 43% 88%, 50% 30%, 56% 68%, 63% 22%, 69% 78%, 76% 38%, 83% 60%, 90% 28%, 96% 50%, 100% 50%, 100% 54%, 0 54%);
+      pointer-events: none;
+    }
+    .ranking-card:hover {
+      transform: translateX(5px);
+      background:
+        linear-gradient(100deg, rgba(255,21,32,.10), transparent 42%),
+        linear-gradient(115deg, #1b1b21, #111114 76%);
+      border-color: rgba(255,21,32,.55);
+      box-shadow: 0 12px 32px rgba(0,0,0,.28);
+    }
+    .rank-number {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 84px;
+      color: #f4f4f5;
+      font-size: 34px;
+      font-style: normal;
+      font-weight: 1000;
+      letter-spacing: -2px;
+      line-height: 1;
+      border-right: 1px solid rgba(255,255,255,.10);
+    }
+    .rank-number small {
+      position: absolute;
+      top: 4px;
+      left: 0;
+      color: #777780;
+      font-size: 8px;
+      font-style: normal;
+      letter-spacing: 2px;
+    }
+    .rank-art {
+      position: relative;
+      width: 88px;
+      height: 88px;
+      border-radius: 3px;
+      box-shadow: 0 8px 22px rgba(0,0,0,.38);
+      outline: 1px solid rgba(255,255,255,.12);
+      outline-offset: -1px;
+    }
+    .rank-art img { transition: transform .45s ease; }
+    .ranking-card:hover .rank-art img { transform: scale(1.08); }
+    .rank-info { position: relative; z-index: 1; padding: 4px 0; }
+    .rank-info h3 {
+      max-width: 650px;
+      font-size: clamp(16px,1.55vw,21px);
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -.55px;
+    }
+    .rank-info p { color: #b7b7c0; font-size: 13px; margin-top: 7px; }
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 11px;
+      padding: 5px 8px;
+      color: #a5a5ae;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.08);
+      font-size: 8px;
+      letter-spacing: 1.5px;
+    }
+    .rank-badge::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 8px rgba(255,21,32,.8);
+    }
+    .rank-watch {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: 122px;
+      padding: 13px 12px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 3px;
+      background: rgba(255,255,255,.045);
+      color: #f5f5f6;
+      font-size: 9px;
+      font-weight: 950;
+      letter-spacing: 1.1px;
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+    .rank-watch::before {
+      content: "▶";
+      display: grid;
+      place-items: center;
+      width: 23px;
+      height: 23px;
+      border-radius: 50%;
+      background: var(--red);
+      color: #fff;
+      font-size: 8px;
+    }
+    .rank-watch:hover {
+      transform: translateY(-2px);
+      border-color: var(--red);
+      background: rgba(255,21,32,.14);
+      color: #fff;
+    }
+    .rank-watch.disabled {
+      color: #686870;
+      background: transparent;
+      border-color: rgba(255,255,255,.07);
+    }
+    .rank-watch.disabled::before { content: "–"; background: #34343a; }
+    .ranking-card:nth-child(1) .rank-number,
+    .ranking-card:nth-child(2) .rank-number,
+    .ranking-card:nth-child(3) .rank-number { color: #ff6269; }
+    .ranking-card:nth-child(1) .rank-art,
+    .ranking-card:nth-child(2) .rank-art,
+    .ranking-card:nth-child(3) .rank-art { outline-color: rgba(255,21,32,.38); }
+    @media(max-width:780px) {
+      .ranking-card { grid-template-columns: 58px 76px minmax(0,1fr) 112px; gap: 14px; }
+      .rank-number { font-size: 29px; }
+      .rank-art { width: 76px; height: 76px; }
+      .rank-watch { width: 106px; padding: 10px 8px; font-size: 8px; }
+    }
+    @media(max-width:560px) {
+      .ranking-list { gap: 9px; }
+      .ranking-card {
+        grid-template-columns: 42px 62px minmax(0,1fr);
+        gap: 11px;
+        min-height: 0;
+        padding: 10px;
+      }
+      .ranking-card::after { right: 10px; top: 30px; width: 65px; opacity: .07; }
+      .rank-number { min-height: 62px; font-size: 23px; letter-spacing: -1px; }
+      .rank-number small { top: 2px; font-size: 7px; }
+      .rank-art { width: 62px; height: 62px; }
+      .rank-info { padding: 2px 0; }
+      .rank-info h3 { font-size: 14px; line-height: 1.25; }
+      .rank-info p { margin-top: 4px; font-size: 11px; }
+      .rank-badge { margin-top: 7px; padding: 4px 6px; font-size: 7px; }
+      .rank-watch { grid-column: 3; justify-self: start; width: auto; min-width: 106px; margin-top: 1px; padding: 7px 9px; }
+      .rank-watch::before { width: 19px; height: 19px; }
+    }
+
   </style>
 </head>
 <body>
@@ -373,14 +546,14 @@
           const artwork = safeImageURL(song.artwork_url);
           return `
             <article class="ranking-card">
-              <div class="rank-number"><small>RANK</small>${String(Number(song.position)).padStart(2,"0")}</div>
+              <div class="rank-number"><small>RANK</small>#${String(Number(song.position)).padStart(2,"0")}</div>
               <div class="rank-art">${artwork ? `<img src="${escapeHTML(artwork)}" alt="${escapeHTML(song.song_title)} artwork" loading="lazy">` : `<div class="rank-art-placeholder">MUSIC</div>`}</div>
               <div class="rank-info">
                 <h3>${escapeHTML(song.song_title)}</h3>
                 <p>${escapeHTML(song.artist_name)}</p>
-                <span class="rank-badge">KIZAZI TOP 15</span>
+                <span class="rank-badge">KIZAZI TOP 15 · POSITION ${String(Number(song.position)).padStart(2,"0")}</span>
               </div>
-              ${youtube ? `<a class="rank-watch" href="${escapeHTML(youtube)}" target="_blank" rel="noopener noreferrer">WATCH ↗</a>` : `<span class="rank-watch disabled">NO VIDEO</span>`}
+              ${youtube ? `<a class="rank-watch" href="${escapeHTML(youtube)}" target="_blank" rel="noopener noreferrer">WATCH VIDEO</a>` : `<span class="rank-watch disabled">NO VIDEO</span>`}
             </article>`;
         }).join("") : `<p class="message">The number one track is currently the only active entry in the chart.</p>`;
       };
