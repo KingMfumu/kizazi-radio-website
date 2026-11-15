@@ -103,7 +103,7 @@ img{max-width:100%}
   cursor:pointer;
 }
 
-/* HERO — THE CULTURE STATEMENT */
+/* HERO */
 
 .hero{
   min-height:760px;
@@ -282,7 +282,7 @@ img{max-width:100%}
 }
 .muted{color:var(--grey)}
 
-/* INTRO — EDITORIAL COMPOSITION */
+/* ABOUT IDENTITY */
 
 .identity{
   position:relative;
@@ -370,9 +370,7 @@ img{max-width:100%}
   font-size:13px;
   line-height:2.05;
 }
-.identity-copy strong{
-  color:#fff;
-}
+.identity-copy strong{color:#fff}
 .identity-highlight{
   padding:6px 0 6px 17px;
   border-left:3px solid var(--red);
@@ -454,7 +452,7 @@ img{max-width:100%}
   transform:translate(3px,-3px);
 }
 
-/* OUR PHILOSOPHY */
+/* MISSION & VISION */
 
 .philosophy{
   background:#101010;
@@ -530,85 +528,217 @@ img{max-width:100%}
   opacity:.6;
 }
 
-/* FOUNDER */
+/* FOUNDER — GEN-Z WOW REDESIGN */
 
-.founder{
-  background:#080808;
+.founder-wow{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 12% 55%,rgba(240,24,37,.10),transparent 34%),
+    #080808;
+  padding:125px 0;
 }
-.founder-layout{
-  display:grid;
-  grid-template-columns:.9fr 1.1fr;
-  gap:90px;
+.founder-wow:after{
+  content:"KIZAZI";
+  position:absolute;
+  top:45%;
+  right:-95px;
+  transform:translateY(-50%) rotate(-90deg);
+  font:400 110px var(--display);
+  letter-spacing:-8px;
+  color:rgba(255,255,255,.025);
+  pointer-events:none;
+}
+.founder-topline{
+  display:flex;
+  justify-content:space-between;
   align-items:center;
-}
-.founder-photo{
-  position:relative;
-  max-width:510px;
-  margin:auto;
-}
-.founder-photo:before{
-  content:"";
-  position:absolute;
-  inset:20px -20px -20px 20px;
-  background:var(--red);
-}
-.founder-photo img{
-  position:relative;
-  z-index:1;
-  display:block;
-  width:100%;
-  height:auto;
-  max-height:670px;
-  object-fit:cover;
-  filter:grayscale(100%) contrast(1.08);
-  border:1px solid #444;
-}
-.photo-label{
-  position:absolute;
-  z-index:2;
-  top:22px;
-  left:-18px;
-  padding:12px 15px;
-  background:#fff;
-  color:#080808;
-  font:700 9px var(--mono);
-  letter-spacing:1.4px;
-  transform:rotate(-3deg);
-}
-.founder-copy .section-heading{
-  font-size:clamp(48px,6vw,80px);
-}
-.founder-role{
-  display:inline-block;
-  padding:10px 13px;
-  margin:5px 0 24px;
-  background:var(--red);
-  color:#fff;
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:1.2px;
-  text-transform:uppercase;
-}
-.founder-copy p{
-  color:#aaa;
-  font-size:13px;
-  line-height:2;
-  margin:0 0 17px;
-}
-.founder-quote{
-  margin-top:30px;
-  padding:20px 0 20px 22px;
-  border-left:3px solid var(--red);
-  color:#fff;
-  font-size:17px;
-  font-weight:800;
-  line-height:1.7;
-}
-.founder-signoff{
-  margin-top:22px;
+  gap:20px;
+  padding-bottom:20px;
+  margin-bottom:65px;
+  border-bottom:1px solid #383838;
   color:var(--red);
   font:700 10px var(--mono);
   letter-spacing:2px;
+}
+.founder-topline span:last-child{color:#777}
+.founder-wow-grid{
+  display:grid;
+  grid-template-columns:.88fr 1.12fr;
+  gap:85px;
+  align-items:center;
+  position:relative;
+  z-index:1;
+}
+
+/* FOUNDER PORTRAIT */
+
+.founder-wow-visual{
+  position:relative;
+  padding:0 22px 28px 0;
+}
+.founder-photo-frame{
+  position:relative;
+  z-index:1;
+  background:#222;
+  overflow:hidden;
+  border:1px solid #444;
+}
+.founder-photo-frame:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.25));
+  pointer-events:none;
+}
+.founder-photo-frame img{
+  display:block;
+  width:100%;
+  height:620px;
+  object-fit:cover;
+  object-position:center 25%;
+  filter:grayscale(100%) contrast(1.08);
+  transition:transform .7s ease;
+}
+.founder-wow-visual:hover .founder-photo-frame img{
+  transform:scale(1.035);
+}
+.founder-wow-visual:before{
+  content:"";
+  position:absolute;
+  top:20px;
+  right:0;
+  bottom:0;
+  left:25px;
+  background:var(--red);
+}
+.founder-photo-index{
+  position:absolute;
+  z-index:3;
+  top:24px;
+  left:-14px;
+  padding:13px 16px;
+  background:#fff;
+  color:#080808;
+  font:700 9px var(--mono);
+  letter-spacing:1.2px;
+  transform:rotate(-3deg);
+}
+.founder-photo-caption{
+  position:absolute;
+  z-index:3;
+  bottom:45px;
+  left:22px;
+  right:42px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  color:#fff;
+  font:700 8px var(--mono);
+  letter-spacing:1.4px;
+}
+.founder-visual-number{
+  position:absolute;
+  right:-5px;
+  bottom:-35px;
+  z-index:3;
+  color:var(--red);
+  font:400 65px var(--display);
+  letter-spacing:-6px;
+}
+
+/* FOUNDER CONTENT */
+
+.founder-mini-label{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#aaa;
+  font:700 9px var(--mono);
+  letter-spacing:1.7px;
+  margin-bottom:25px;
+}
+.founder-live-dot{
+  width:8px;
+  height:8px;
+  background:var(--red);
+  border-radius:50%;
+  box-shadow:0 0 0 5px rgba(240,24,37,.14);
+}
+.founder-name{
+  font:400 clamp(48px,6.4vw,91px)/.91 var(--display);
+  letter-spacing:-.085em;
+  text-transform:uppercase;
+  margin:0 0 27px;
+  overflow-wrap:anywhere;
+}
+.founder-name span{
+  display:block;
+  color:#fff;
+}
+.founder-name em{
+  display:block;
+  color:var(--red);
+  font-style:normal;
+}
+.founder-position{
+  display:inline-block;
+  background:var(--red);
+  color:#fff;
+  padding:12px 15px;
+  font:700 9px var(--mono);
+  letter-spacing:1px;
+  margin-bottom:28px;
+}
+.founder-bio{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 28px;
+}
+.founder-bio p{
+  color:#aaa;
+  font-size:12px;
+  line-height:2;
+  margin:0 0 18px;
+}
+.founder-bio p:last-child{
+  grid-column:1/-1;
+}
+
+/* FOUNDER QUOTE */
+
+.founder-quote-wow{
+  position:relative;
+  margin-top:22px;
+  padding:25px 0 22px 25px;
+  border-left:3px solid var(--red);
+  border-bottom:1px solid #333;
+}
+.founder-quote-wow .quote-mark{
+  display:block;
+  color:var(--red);
+  font:400 60px/.7 var(--display);
+}
+.founder-quote-wow blockquote{
+  margin:12px 0 18px;
+  color:#fff;
+  font-size:clamp(15px,1.7vw,21px);
+  font-weight:800;
+  line-height:1.55;
+}
+.founder-quote-wow .quote-credit{
+  color:#777;
+  font:700 9px var(--mono);
+  letter-spacing:1.5px;
+}
+.founder-bottom-line{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:24px;
+  color:var(--red);
+  font:700 9px var(--mono);
+  letter-spacing:1.6px;
 }
 
 /* CLOSING */
@@ -697,7 +827,9 @@ footer{
   .hero-graphic{right:-60px;opacity:.55}
   .identity-layout{gap:35px}
   .pillars{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .founder-layout{gap:50px}
+  .founder-wow-grid{gap:45px;grid-template-columns:.85fr 1.15fr}
+  .founder-photo-frame img{height:520px}
+  .founder-name{font-size:clamp(43px,6vw,70px)}
 }
 
 /* MOBILE */
@@ -708,6 +840,7 @@ footer{
   .brand-logo{width:145px;height:46px}
   .menu-toggle{display:block}
   .nav-cta{display:none}
+
   .nav-links{
     display:none;
     position:absolute;
@@ -723,6 +856,7 @@ footer{
   }
   .nav-links.open{display:flex}
   .nav-links a{font-size:11px}
+
   .hero{min-height:0}
   .hero-inner{padding:80px 0 85px}
   .hero h1{
@@ -742,6 +876,7 @@ footer{
   .graphic-center{inset:62px;font-size:8px}
   .hero-index{right:15px;bottom:15px}
   .marquee span{font-size:10px;padding:15px 18px}
+
   .section{padding:78px 0}
   .identity-head{
     display:block;
@@ -764,16 +899,51 @@ footer{
   .pillars{grid-template-columns:1fr 1fr;gap:8px}
   .pillar{min-height:165px;padding:17px 13px}
   .pillar h3{font-size:15px}
+
   .philosophy-top{display:block;margin-bottom:35px}
   .philosophy-top p{margin-top:22px}
   .philosophy-grid{grid-template-columns:1fr}
   .philosophy-card{min-height:290px;padding:27px}
   .philosophy-card h3{margin-top:60px;font-size:48px}
-  .founder-layout{grid-template-columns:1fr;gap:55px}
-  .founder-photo{max-width:420px}
-  .founder-photo:before{inset:12px -10px -10px 10px}
-  .photo-label{left:-7px}
-  .founder-copy .section-heading{font-size:clamp(46px,12vw,68px)}
+
+  /* FOUNDER MOBILE */
+  .founder-wow{padding:78px 0}
+  .founder-topline{
+    margin-bottom:42px;
+    font-size:8px;
+    letter-spacing:1px;
+  }
+  .founder-topline span:last-child{text-align:right}
+  .founder-wow-grid{
+    grid-template-columns:1fr;
+    gap:55px;
+  }
+  .founder-wow-visual{
+    max-width:460px;
+    margin:auto;
+    width:100%;
+  }
+  .founder-photo-frame img{
+    height:auto;
+    aspect-ratio:4/5;
+    object-position:center 25%;
+  }
+  .founder-name{font-size:clamp(47px,12vw,75px)}
+  .founder-bio{
+    grid-template-columns:1fr;
+    gap:0;
+  }
+  .founder-bio p:last-child{grid-column:auto}
+  .founder-position{
+    font-size:8px;
+    line-height:1.7;
+  }
+  .founder-bottom-line{
+    font-size:8px;
+    gap:8px;
+  }
+  .founder-visual-number{font-size:50px}
+
   .closing{padding:78px 0}
   .closing-inner{display:block}
   .closing h2{font-size:clamp(52px,13vw,78px)}
@@ -799,11 +969,16 @@ footer{
 <!-- NAVIGATION -->
 <header class="site-header">
   <div class="wrap nav">
+
     <a href="/" aria-label="KIZAZI RADIO home">
-      <img class="brand-logo" src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
+      <img class="brand-logo"
+           src="/assets/kizazi-radio-official-logo.png"
+           alt="KIZAZI RADIO">
     </a>
 
-    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <button class="menu-toggle"
+            aria-label="Open navigation"
+            aria-expanded="false">☰</button>
 
     <nav class="nav-links" aria-label="Main navigation">
       <a href="/">Home</a>
@@ -867,7 +1042,7 @@ footer{
   </div>
 </div>
 
-<!-- IDENTITY -->
+<!-- ABOUT IDENTITY -->
 <section class="section identity">
   <div class="wrap">
 
@@ -890,7 +1065,11 @@ footer{
 
       <div class="identity-statement">
         <div class="statement-number">OUR IDENTITY / 001</div>
-        <div class="statement-big">WE ARE<br>KIZAZI.</div>
+
+        <div class="statement-big">
+          WE ARE<br>KIZAZI.
+        </div>
+
         <div class="statement-foot">
           INDEPENDENT BY NATURE.<br>
           DIGITAL BY DESIGN.<br>
@@ -1029,57 +1208,101 @@ footer{
   </div>
 </section>
 
-<!-- FOUNDER -->
-<section class="section founder">
-  <div class="wrap founder-layout">
+<!-- FOUNDER — NEW GEN-Z DESIGN -->
+<section class="section founder-wow">
+  <div class="wrap">
 
-    <div class="founder-photo">
-      <div class="photo-label">THE PERSON BEHIND THE FREQUENCY</div>
-      <img
-        src="/assets/founder-telesphory-mfumu.png"
-        alt="Telesphory Deogratius Mfumu, Founder of KIZAZI RADIO"
-        loading="lazy">
+    <div class="founder-topline">
+      <span>03 / THE FOUNDER</span>
+      <span>THE PEOPLE BEHIND THE CULTURE — 001</span>
     </div>
 
-    <div class="founder-copy">
-      <div class="section-label">03 / THE FOUNDER</div>
+    <div class="founder-wow-grid">
 
-      <h2 class="section-heading">
-        THE HUMAN<br>
-        BEHIND THE<br>
-        <em>FREQUENCY.</em>
-      </h2>
+      <div class="founder-wow-visual">
 
-      <div class="founder-role">Creative &amp; Digital Media Professional</div>
+        <div class="founder-photo-index">
+          KZ / FOUNDER PROFILE
+        </div>
 
-      <p>
-        Telesphory Deogratius Mfumu is a creative and digital media professional
-        with a background in graphic design, digital marketing, social media
-        management and media content development.
-      </p>
+        <div class="founder-photo-frame">
+          <img
+            src="/assets/founder-telesphory-mfumu.png"
+            alt="Telesphory Deogratius Mfumu — Founder of KIZAZI RADIO"
+            loading="lazy">
+        </div>
 
-      <p>
-        His professional experience spans creative design, broadcasting and
-        digital media. He is interested in how media, technology and creativity
-        can be used to tell stories, connect audiences and create meaningful experiences.
-      </p>
+        <div class="founder-photo-caption">
+          <span>THE VISIONARY</span>
+          <span>EST. KIZAZI RADIO</span>
+        </div>
 
-      <p>
-        He founded KIZAZI RADIO on the belief that the new generation deserves
-        a digital radio platform that reflects its identity, interests, culture
-        and changing world. As founder, he leads the station's creative direction
-        and development, bringing together media, branding and digital communication
-        experience to build an independent online radio platform with a global outlook.
-      </p>
-
-      <div class="founder-quote">
-        “KIZAZI RADIO is more than a broadcasting project; it is a platform
-        for music, ideas, conversations and voices that deserve to be heard.”
+        <div class="founder-visual-number">001</div>
       </div>
 
-      <div class="founder-signoff">NEW GENERATION. NEW SOUND.</div>
-    </div>
+      <div class="founder-wow-content">
 
+        <div class="founder-mini-label">
+          <span class="founder-live-dot"></span>
+          FOUNDER / CREATIVE DIRECTION
+        </div>
+
+        <h2 class="founder-name">
+          TELESPHORY
+          <span>DEOGRATIUS</span>
+          <em>MFUMU.</em>
+        </h2>
+
+        <div class="founder-position">
+          FOUNDER &amp; CREATIVE DIRECTOR — KIZAZI RADIO
+        </div>
+
+        <div class="founder-bio">
+          <p>
+            Telesphory Deogratius Mfumu is a creative and digital media
+            professional with a background in graphic design, digital
+            marketing, social media management and media content development.
+          </p>
+
+          <p>
+            His professional experience spans creative design, broadcasting
+            and digital media. He is interested in how media, technology
+            and creativity can be used to tell stories, connect audiences
+            and create meaningful experiences.
+          </p>
+
+          <p>
+            He founded KIZAZI RADIO on the belief that the new generation
+            deserves a digital radio platform that reflects its identity,
+            interests, culture and changing world. As founder, he leads
+            the station's creative direction and development, bringing
+            together media, branding and digital communication experience
+            to build an independent online radio platform with a global outlook.
+          </p>
+        </div>
+
+        <div class="founder-quote-wow">
+          <span class="quote-mark">“</span>
+
+          <blockquote>
+            KIZAZI RADIO is more than a broadcasting project. It is a
+            platform for music, ideas, conversations and voices that
+            deserve to be heard.
+          </blockquote>
+
+          <span class="quote-credit">
+            THE IDEA BEHIND THE FREQUENCY
+          </span>
+        </div>
+
+        <div class="founder-bottom-line">
+          <span>NEW GENERATION.</span>
+          <span>NEW SOUND.</span>
+          <span>— KIZAZI RADIO</span>
+        </div>
+
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1089,11 +1312,13 @@ footer{
 
     <div>
       <div class="section-label">YOUR FREQUENCY. YOUR PEOPLE.</div>
+
       <h2>
         THE FUTURE<br>
         HAS A<br>
         FREQUENCY.
       </h2>
+
       <p>
         Be part of the music, ideas and conversations shaping what comes next.
       </p>
@@ -1111,7 +1336,11 @@ footer{
 <!-- FOOTER -->
 <footer>
   <div class="wrap footer-inner">
-    <div>© KIZAZI RADIO. ALL RIGHTS RESERVED. &nbsp; NEW GENERATION • NEW SOUND</div>
+
+    <div>
+      © KIZAZI RADIO. ALL RIGHTS RESERVED.
+      &nbsp; NEW GENERATION • NEW SOUND
+    </div>
 
     <div class="footer-links">
       <a href="/">HOME</a>
@@ -1120,6 +1349,7 @@ footer{
       <a href="/news/">NEWS</a>
       <a href="mailto:hello@kizaziradio.com">CONTACT</a>
     </div>
+
   </div>
 </footer>
 
@@ -1129,6 +1359,7 @@ const navLinks = document.querySelector('.nav-links');
 
 menuButton.addEventListener('click', () => {
   const isOpen = navLinks.classList.toggle('open');
+
   menuButton.setAttribute('aria-expanded', String(isOpen));
   menuButton.textContent = isOpen ? '×' : '☰';
 });
