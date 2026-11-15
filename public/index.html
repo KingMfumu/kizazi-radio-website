@@ -636,6 +636,42 @@ img{max-width:100%}
   .hero-sticker{animation:none}
 }
 
+
+/* HEADLINE READABILITY — keep each phrase together */
+.hero h1{
+  width:100%;
+  max-width:920px;
+  font-size:clamp(54px,6.8vw,108px);
+  line-height:.91;
+  letter-spacing:-.075em;
+  overflow:visible;
+}
+
+.hero h1 .headline-line{
+  display:block;
+  white-space:nowrap;
+}
+
+.hero h1 .headline-white{
+  color:var(--white);
+}
+
+.hero h1 em{
+  display:inline;
+  white-space:nowrap;
+}
+
+@media(max-width:700px){
+  .hero h1{
+    font-size:clamp(43px,10.8vw,68px);
+    line-height:.94;
+    letter-spacing:-.07em;
+  }
+  .hero h1 .headline-line{
+    white-space:nowrap;
+  }
+}
+
 /* QUICK STRIP */
 
 .info-strip{
@@ -3500,7 +3536,11 @@ img{max-width:100%}
   <div class="hero-content">
     <p class="eyebrow">Radio • Music • Culture</p>
 
-    <h1>THE SOUND<br>OF <em>WHAT'S<br>NEXT.</em></h1>
+    <h1 aria-label="The sound of what's next.">
+      <span class="headline-line">THE SOUND</span>
+      <span class="headline-line"><span class="headline-white">OF</span> <em>WHAT'S</em></span>
+      <span class="headline-line"><em>NEXT.</em></span>
+    </h1>
 
     <p class="hero-description">
       Welcome to <strong>KiZaZi Radio</strong> — Your Home for the Sounds, Stories, and Voices of a New Generation.
