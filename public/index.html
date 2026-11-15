@@ -4616,6 +4616,241 @@ document.addEventListener("DOMContentLoaded", () => {
       margin-top: 30px;
     }
 
+    /* KIZAZI NEWS — EDITORIAL CULTURE GRID */
+    .kizazi-news {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(72px, 8vw, 112px) 0;
+      background: #0b0b0e;
+    }
+
+    .kizazi-news::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: min(34vw, 470px);
+      height: 2px;
+      background: #ed171f;
+    }
+
+    .kizazi-news .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .kizazi-news .section-head .num {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: #f4f4f5;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    .kizazi-news .section-head .num::after {
+      content: "";
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: #ed171f;
+    }
+
+    .kizazi-news .eyebrow {
+      margin: 0 0 12px;
+      color: #a3a3ad;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    .kizazi-news .section-title {
+      margin: 0;
+      color: #f7f7f8;
+      font-size: clamp(38px, 5.1vw, 66px);
+      line-height: .94;
+      letter-spacing: -.075em;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .kizazi-news .section-title em {
+      color: #ed171f;
+      font-style: normal;
+    }
+
+    .kizazi-news .news-grid {
+      display: grid;
+      grid-template-columns: 1.12fr 1fr 1fr;
+      align-items: stretch;
+      gap: 18px;
+    }
+
+    .kizazi-news .news-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #151519;
+      border: 1px solid #29292f;
+      transition: transform .28s ease, border-color .28s ease, background .28s ease;
+    }
+
+    .kizazi-news .news-card::before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: #ed171f;
+      transition: width .28s ease;
+    }
+
+    .kizazi-news .news-card:hover {
+      transform: translateY(-6px);
+      border-color: #ed171f;
+      background: #19191e;
+    }
+
+    .kizazi-news .news-card:hover::before { width: 100%; }
+
+    .kizazi-news .news-image {
+      position: relative;
+      flex: 0 0 auto;
+      height: clamp(190px, 17vw, 250px);
+      background: #202026;
+    }
+
+    .kizazi-news .news-card:first-child .news-image {
+      height: clamp(230px, 20vw, 290px);
+    }
+
+    .kizazi-news .news-image::after {
+      content: "";
+      position: absolute;
+      inset: 45% 0 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,.36));
+    }
+
+    .kizazi-news .news-image img {
+      filter: saturate(.88);
+      transition: transform .55s ease, filter .35s ease;
+    }
+
+    .kizazi-news .news-card:hover .news-image img {
+      transform: scale(1.055);
+      filter: saturate(1.08);
+    }
+
+    .kizazi-news .news-content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 22px 22px 24px;
+    }
+
+    .kizazi-news .news-meta {
+      width: 100%;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .kizazi-news .news-meta span {
+      max-width: 78%;
+      color: #ff343b;
+      font-size: 9px;
+      line-height: 1.55;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .kizazi-news .news-meta small {
+      flex: 0 0 auto;
+      color: #85858e;
+      font-size: 9px;
+      line-height: 1.5;
+    }
+
+    .kizazi-news .news-content h3 {
+      margin: 0 0 13px;
+      color: #f5f5f6;
+      font-size: clamp(19px, 1.55vw, 25px);
+      line-height: 1.16;
+      letter-spacing: -.045em;
+      font-weight: 850;
+    }
+
+    .kizazi-news .news-card:first-child .news-content h3 {
+      font-size: clamp(22px, 1.8vw, 29px);
+    }
+
+    .kizazi-news .news-title-button { transition: color .2s ease; }
+    .kizazi-news .news-title-button:hover { color: #ff343b; }
+
+    .kizazi-news .news-content p {
+      margin: 0 0 22px;
+      color: #a2a2ab;
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    .kizazi-news .news-read {
+      margin-top: auto;
+      padding: 0 0 8px;
+      border-bottom-color: #414149;
+      color: #f5f5f6;
+      font-size: 9px;
+      letter-spacing: .16em;
+      transition: border-color .2s ease;
+    }
+
+    .kizazi-news .news-read:hover { border-color: #ed171f; }
+    .kizazi-news .news-read span { color: #ed171f; }
+
+    .kizazi-news .news-footer { margin-top: 28px; }
+    .kizazi-news .news-footer .secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: #f5f5f6;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .kizazi-news .news-footer .secondary:hover { color: #ed171f; }
+
+    @media (max-width: 900px) {
+      .kizazi-news .news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .kizazi-news .news-card:first-child { grid-column: 1 / -1; }
+      .kizazi-news .news-card:first-child .news-image { height: 300px; }
+    }
+
+    @media (max-width: 600px) {
+      .kizazi-news { padding: 64px 0; }
+      .kizazi-news .section-head { margin-bottom: 25px; }
+      .kizazi-news .news-grid { grid-template-columns: 1fr; gap: 14px; }
+      .kizazi-news .news-card:first-child { grid-column: auto; }
+      .kizazi-news .news-image,
+      .kizazi-news .news-card:first-child .news-image { height: 225px; }
+      .kizazi-news .news-content { padding: 19px; }
+      .kizazi-news .news-content h3,
+      .kizazi-news .news-card:first-child .news-content h3 { font-size: 22px; }
+      .kizazi-news .news-footer { margin-top: 22px; }
+    }
+
     .news-loading,
     .news-message {
       color: #aaa;
