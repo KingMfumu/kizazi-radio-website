@@ -10,104 +10,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
 <style>
 :root{--bg:#08080b;--panel:#121217;--line:#292930;--red:#ed1018;--muted:#a5a5af;--white:#f7f7f8;--amber:#ffb43d;--purple:#d18bff}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-.wrap{width:min(1380px,92%);margin:auto}
-
-header{height:78px;position:sticky;top:0;z-index:100;background:#08080bf2;border-bottom:1px solid #ffffff17;backdrop-filter:blur(18px)}
-.head{height:100%;width:92%;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.logo{width:136px;height:62px;object-fit:contain;object-position:left}
-.nav{display:flex;align-items:center;gap:27px}
-.nav a{font-size:11px;font-weight:800;color:#c8c8ce;transition:.2s}
-.nav a:hover,.nav a.current{color:var(--red)}
-.nav a.current:after{content:"";display:block;height:2px;background:var(--red);margin-top:7px}
-.head-actions{display:flex;align-items:center;gap:10px}
-.onair,.listen-btn{font-size:10px;font-weight:900;letter-spacing:.7px;border-radius:30px;padding:13px 18px}
-.onair{border:1px solid #ed101866;color:#fff}
-.onair i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red);margin-right:7px}
-.listen-btn{background:var(--red);padding-inline:22px;transition:.2s}
-.listen-btn:hover{background:#bd0008;transform:translateY(-2px)}
-.menu{display:none;background:none;border:0;color:#fff;font-size:26px}
-
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}.wrap{width:min(1380px,92%);margin:auto}
+header{height:78px;position:sticky;top:0;z-index:100;background:#08080bf2;border-bottom:1px solid #ffffff17;backdrop-filter:blur(18px)}.head{height:100%;width:92%;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px}.logo{width:136px;height:62px;object-fit:contain;object-position:left}.nav{display:flex;align-items:center;gap:27px}.nav a{font-size:11px;font-weight:800;color:#c8c8ce;transition:.2s}.nav a:hover,.nav a.current{color:var(--red)}.nav a.current:after{content:"";display:block;height:2px;background:var(--red);margin-top:7px}.head-actions{display:flex;align-items:center;gap:10px}.onair,.listen-btn{font-size:10px;font-weight:900;letter-spacing:.7px;border-radius:30px;padding:13px 18px}.onair{border:1px solid #ed101866;color:#fff}.onair i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red);margin-right:7px}.listen-btn{background:var(--red);padding-inline:22px;transition:.2s}.listen-btn:hover{background:#bd0008;transform:translateY(-2px)}.menu{display:none;background:none;border:0;color:#fff;font-size:26px}
 /* CINEMATIC BROADCAST HERO */
-
-.hero{position:relative;isolation:isolate;min-height:500px;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid #ffffff18;background:linear-gradient(90deg,rgba(5,5,8,.97) 0%,rgba(5,5,8,.88) 38%,rgba(5,5,8,.48) 72%,rgba(5,5,8,.56) 100%),linear-gradient(0deg,rgba(5,5,8,.4),transparent),url('/assets/kizazi-radio-studio-bg.png') center right/cover no-repeat,#09090b}
-.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 78% 50%,#ed10182c,transparent 38%),linear-gradient(110deg,transparent 45%,#ed101812 60%,transparent 75%);pointer-events:none}
-.hero-inner{padding:75px 0 70px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:35px}
-.eyebrow,.kicker{color:var(--red);font-size:10px;font-weight:900;letter-spacing:2.3px;text-transform:uppercase}
-.hero h1{font-size:clamp(58px,7.1vw,102px);line-height:.86;letter-spacing:-.09em;margin:24px 0 22px;font-weight:900;text-transform:uppercase}
-.hero h1 em{display:block;color:var(--red);font-style:italic}
-.hero-copy>p:not(.eyebrow){max-width:610px;color:#d0d0d5;font-size:15px;line-height:1.8}
-.hero-points{display:flex;flex-wrap:wrap;gap:0;margin-top:28px}
-.hero-point{display:flex;align-items:center;gap:10px;padding:0 22px;border-right:1px solid #ffffff2b;font-size:11px;font-weight:900;text-transform:uppercase}
-.hero-point:first-child{padding-left:0}
-.hero-point:last-child{border:0}
-.hero-point b{font-size:23px;color:var(--red)}
-.hero-stamp{justify-self:end;align-self:end;padding:14px 18px;border:1px solid #ffffff30;background:#09090bbd;backdrop-filter:blur(10px);font-size:10px;font-weight:900;letter-spacing:1.4px}
-.hero-stamp span{color:var(--red)}
-
+.hero{position:relative;isolation:isolate;min-height:500px;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid #ffffff18;background:linear-gradient(90deg,rgba(5,5,8,.97) 0%,rgba(5,5,8,.88) 38%,rgba(5,5,8,.48) 72%,rgba(5,5,8,.56) 100%),linear-gradient(0deg,rgba(5,5,8,.4),transparent),url('/assets/kizazi-radio-studio-bg.png') center right/cover no-repeat,#09090b}.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 78% 50%,#ed10182c,transparent 38%),linear-gradient(110deg,transparent 45%,#ed101812 60%,transparent 75%);pointer-events:none}.hero-inner{padding:75px 0 70px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:35px}.eyebrow,.kicker{color:var(--red);font-size:10px;font-weight:900;letter-spacing:2.3px;text-transform:uppercase}.hero h1{font-size:clamp(58px,7.1vw,102px);line-height:.86;letter-spacing:-.09em;margin:24px 0 22px;font-weight:900;text-transform:uppercase}.hero h1 em{display:block;color:var(--red);font-style:italic}.hero-copy>p:not(.eyebrow){max-width:610px;color:#d0d0d5;font-size:15px;line-height:1.8}.hero-points{display:flex;flex-wrap:wrap;gap:0;margin-top:28px}.hero-point{display:flex;align-items:center;gap:10px;padding:0 22px;border-right:1px solid #ffffff2b;font-size:11px;font-weight:900;text-transform:uppercase}.hero-point:first-child{padding-left:0}.hero-point:last-child{border:0}.hero-point b{font-size:23px;color:var(--red)}.hero-stamp{justify-self:end;align-self:end;padding:14px 18px;border:1px solid #ffffff30;background:#09090bbd;backdrop-filter:blur(10px);font-size:10px;font-weight:900;letter-spacing:1.4px}.hero-stamp span{color:var(--red)}
 /* HYBRID SHOWS + SCHEDULE LAYOUT */
-
-.programme-section{padding:42px 0 72px;position:relative;background:radial-gradient(ellipse at 90% 0%,#ed10180d,transparent 42%),linear-gradient(120deg,#0a0a0e,#0d0b10 65%,#10090d)}
-.programme-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(440px,.88fr);gap:26px;align-items:start}
-.column-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px;min-height:34px}
-.column-title{margin:0;font-size:clamp(20px,2vw,27px);font-weight:900;letter-spacing:-1.1px;text-transform:uppercase;font-style:italic}
-.column-title:before{content:"";display:inline-block;width:5px;height:25px;background:var(--red);transform:skew(-24deg);margin-right:13px;vertical-align:-5px}
-.day-pill{border:1px solid #ffffff2c;border-radius:30px;padding:10px 14px;font-size:9px;font-weight:900;letter-spacing:1px;white-space:nowrap;color:#ddd}
-.day-pill span{color:var(--red);margin-right:6px}
-
-.show-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
-.show-card{--accent:var(--amber);position:relative;min-width:0;min-height:310px;border:1px solid color-mix(in srgb,var(--accent) 70%,transparent);border-radius:13px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;background:#141419;isolation:isolate;box-shadow:0 12px 35px #0005;transition:transform .3s,border-color .3s,box-shadow .3s}
-.show-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px #0009,0 0 22px color-mix(in srgb,var(--accent) 18%,transparent)}
-.show-card.morning{--accent:var(--amber)}
-.show-card.nocap{--accent:#ff343b}
-.show-card.love{--accent:#d18bff}
-.show-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;z-index:-2;transition:transform .6s}
-.show-card:hover img{transform:scale(1.05)}
-.show-card:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#08080b08 0%,#08080b12 30%,#08080bd9 72%,#08080bf7 100%)}
-.show-card-content{padding:16px 15px 15px}
-.show-live{display:inline-flex;align-items:center;gap:6px;border-radius:20px;background:var(--red);padding:6px 9px;font-size:8px;font-weight:900;letter-spacing:.7px;margin-bottom:12px}
-.show-live:before{content:"";width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff}
-.show-card h3{font-size:clamp(17px,1.65vw,23px);line-height:.98;letter-spacing:-1px;margin:0 0 8px;font-weight:900}
-.show-card p{font-size:10px;color:#e1e1e5;line-height:1.5;margin:0 0 12px;min-height:30px}
-.show-time{border-top:1px solid #ffffff42;padding-top:11px;font-size:10px;font-weight:900;white-space:nowrap}
-.show-time span{color:var(--accent);margin-right:5px}
-
-/* WEEKDAY SCHEDULE */
-
-.schedule-list{display:flex;flex-direction:column;gap:7px}
-.schedule-row{--accent:#8d8d98;position:relative;display:grid;grid-template-columns:105px 30px minmax(0,1fr) 66px;align-items:center;gap:12px;min-height:64px;padding:9px 12px 9px 15px;border:1px solid #ffffff17;border-radius:9px;background:linear-gradient(100deg,#ffffff0c,#ffffff04);overflow:hidden;transition:transform .22s,border-color .22s,background .22s}
-.schedule-row:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--accent);box-shadow:0 0 18px var(--accent)}
-.schedule-row:hover{transform:translateX(3px);border-color:color-mix(in srgb,var(--accent) 65%,transparent);background:linear-gradient(100deg,color-mix(in srgb,var(--accent) 12%,#141419),#ffffff07)}
-.schedule-row.morning{--accent:var(--amber)}
-.schedule-row.nocap{--accent:#ff343b}
-.schedule-row.love{--accent:#d18bff}
-.schedule-row.playlist{--accent:#8c8f9a;background:linear-gradient(100deg,#ffffff0a,#ffffff03)}
-.schedule-time{font-size:10px;line-height:1.35;font-weight:900;color:#e8e8eb}
-.schedule-icon{font-size:20px;color:var(--accent);text-align:center}
-.schedule-info{min-width:0}
-.schedule-name{font-size:14px;font-weight:900;letter-spacing:-.45px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.schedule-desc{font-size:9px;color:#b6b6c0;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.status{justify-self:end;min-width:61px;text-align:center;border-radius:20px;padding:7px 8px;font-size:8px;font-weight:900;letter-spacing:.8px;background:#ffffff12;color:#c8c8cf}
-.status.live{background:var(--red);color:white;box-shadow:0 0 16px #ed101844}
-
-/* LISTEN LIVE PANEL */
-
-.listen-panel{position:relative;display:flex;align-items:center;gap:17px;margin-top:18px;padding:17px 18px;border:1px solid #ffffff28;border-radius:12px;overflow:hidden;background:radial-gradient(ellipse at 0% 100%,#ed101832,transparent 48%),linear-gradient(110deg,#171116,#100d12)}
-.listen-art{font-size:38px;color:#f33;filter:drop-shadow(0 0 13px #ed101866)}
-.listen-copy{flex:1;min-width:0}
-.listen-copy strong{font-size:clamp(16px,2vw,23px);font-style:italic;font-weight:900;letter-spacing:-.8px}
-.listen-copy strong em{color:var(--red);font-style:normal}
-.listen-copy small{display:block;color:#c2c2ca;font-size:10px;margin-top:5px}
-.listen-panel .listen-btn{white-space:nowrap}
-
+.programme-section{padding:42px 0 72px;position:relative;background:radial-gradient(ellipse at 90% 0%,#ed10180d,transparent 42%),linear-gradient(120deg,#0a0a0e,#0d0b10 65%,#10090d)}.programme-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(440px,.88fr);gap:26px;align-items:start}.column-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px;min-height:34px}.column-title{margin:0;font-size:clamp(20px,2vw,27px);font-weight:900;letter-spacing:-1.1px;text-transform:uppercase;font-style:italic}.column-title:before{content:"";display:inline-block;width:5px;height:25px;background:var(--red);transform:skew(-24deg);margin-right:13px;vertical-align:-5px}.day-pill{border:1px solid #ffffff2c;border-radius:30px;padding:10px 14px;font-size:9px;font-weight:900;letter-spacing:1px;white-space:nowrap;color:#ddd}.day-pill span{color:var(--red);margin-right:6px}
+.show-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.show-card{--accent:var(--amber);position:relative;min-width:0;min-height:310px;border:1px solid color-mix(in srgb,var(--accent) 70%,transparent);border-radius:13px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;background:#141419;isolation:isolate;box-shadow:0 12px 35px #0005;transition:transform .3s,border-color .3s,box-shadow .3s}.show-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px #0009,0 0 22px color-mix(in srgb,var(--accent) 18%,transparent)}.show-card.morning{--accent:var(--amber)}.show-card.nocap{--accent:#ff343b}.show-card.love{--accent:#d18bff}.show-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;z-index:-2;transition:transform .6s}.show-card:hover img{transform:scale(1.05)}.show-card:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#08080b08 0%,#08080b12 30%,#08080bd9 72%,#08080bf7 100%)}.show-card-content{padding:16px 15px 15px}.show-live{display:inline-flex;align-items:center;gap:6px;border-radius:20px;background:var(--red);padding:6px 9px;font-size:8px;font-weight:900;letter-spacing:.7px;margin-bottom:12px}.show-live:before{content:"";width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff}.show-card h3{font-size:clamp(17px,1.65vw,23px);line-height:.98;letter-spacing:-1px;margin:0 0 8px;font-weight:900}.show-card p{font-size:10px;color:#e1e1e5;line-height:1.5;margin:0 0 12px;min-height:30px}.show-time{border-top:1px solid #ffffff42;padding-top:11px;font-size:10px;font-weight:900;white-space:nowrap}.show-time span{color:var(--accent);margin-right:5px}
+.schedule-list{display:flex;flex-direction:column;gap:7px}.schedule-row{--accent:#8d8d98;position:relative;display:grid;grid-template-columns:105px 30px minmax(0,1fr) 66px;align-items:center;gap:12px;min-height:64px;padding:9px 12px 9px 15px;border:1px solid #ffffff17;border-radius:9px;background:linear-gradient(100deg,#ffffff0c,#ffffff04);overflow:hidden;transition:transform .22s,border-color .22s,background .22s}.schedule-row:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--accent);box-shadow:0 0 18px var(--accent)}.schedule-row:hover{transform:translateX(3px);border-color:color-mix(in srgb,var(--accent) 65%,transparent);background:linear-gradient(100deg,color-mix(in srgb,var(--accent) 12%,#141419),#ffffff07)}.schedule-row.morning{--accent:var(--amber)}.schedule-row.nocap{--accent:#ff343b}.schedule-row.love{--accent:#d18bff}.schedule-row.playlist{--accent:#8c8f9a;background:linear-gradient(100deg,#ffffff0a,#ffffff03)}.schedule-time{font-size:10px;line-height:1.35;font-weight:900;color:#e8e8eb}.schedule-icon{font-size:20px;color:var(--accent);text-align:center}.schedule-info{min-width:0}.schedule-name{font-size:14px;font-weight:900;letter-spacing:-.45px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.schedule-desc{font-size:9px;color:#b6b6c0;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.status{justify-self:end;min-width:61px;text-align:center;border-radius:20px;padding:7px 8px;font-size:8px;font-weight:900;letter-spacing:.8px;background:#ffffff12;color:#c8c8cf}.status.live{background:var(--red);color:white;box-shadow:0 0 16px #ed101844}.listen-panel{position:relative;display:flex;align-items:center;gap:17px;margin-top:18px;padding:17px 18px;border:1px solid #ffffff28;border-radius:12px;overflow:hidden;background:radial-gradient(ellipse at 0% 100%,#ed101832,transparent 48%),linear-gradient(110deg,#171116,#100d12)}.listen-art{font-size:38px;color:#f33;filter:drop-shadow(0 0 13px #ed101866)}.listen-copy{flex:1;min-width:0}.listen-copy strong{font-size:clamp(16px,2vw,23px);font-style:italic;font-weight:900;letter-spacing:-.8px}.listen-copy strong em{color:var(--red);font-style:normal}.listen-copy small{display:block;color:#c2c2ca;font-size:10px;margin-top:5px}.listen-panel .listen-btn{white-space:nowrap}
 /* PRESENTER — MODERN HOST SPOTLIGHT */
-
 .presenter-section{position:relative;padding:100px 0;display:grid;grid-template-columns:minmax(340px,.82fr) minmax(0,1.18fr);gap:clamp(48px,7vw,110px);align-items:center;isolation:isolate}
 .presenter-section:before{content:"";position:absolute;z-index:-1;inset:8% -8vw;background:radial-gradient(ellipse at 18% 48%,rgba(255,158,38,.10),transparent 32%),radial-gradient(ellipse at 83% 45%,rgba(237,16,24,.10),transparent 38%);pointer-events:none}
 .presenter-art{position:relative;aspect-ratio:4/5;max-height:640px;overflow:hidden;border:1px solid rgba(255,255,255,.22);border-radius:5px;background:#17171c;box-shadow:0 30px 80px rgba(0,0,0,.42),12px 12px 0 rgba(237,16,24,.10);transform:translateY(0);transition:transform .45s ease,box-shadow .45s ease}
@@ -141,302 +54,55 @@ header{height:78px;position:sticky;top:0;z-index:100;background:#08080bf2;border
 .presenter-shows span:nth-child(2){--show-accent:#ff343b}
 .presenter-shows span:nth-child(3){--show-accent:var(--purple)}
 .presenter-shows span:hover{transform:translateY(-3px);border-color:var(--show-accent);background:rgba(255,255,255,.06)}
+footer{background:#070709;border-top:1px solid var(--line);padding:30px 0 20px}.foot{display:flex;justify-content:space-between;align-items:center;gap:25px;padding-bottom:22px}.foot img{width:125px;height:58px;object-fit:contain}.links{display:flex;gap:20px;flex-wrap:wrap}.links a{font-size:10px;color:#aaa}.links a:hover{color:#fff}.bottom{border-top:1px solid var(--line);padding-top:16px;color:#777;font-size:9px;display:flex;justify-content:space-between}
+@media(max-width:1050px){.programme-grid{grid-template-columns:1fr;gap:35px}.show-card{min-height:360px}.schedule-row{grid-template-columns:125px 34px minmax(0,1fr) 70px}.hero{min-height:460px}}
+@media(max-width:760px){header{height:68px}.head{width:90%}.logo{width:110px}.menu{display:block}.head-actions .onair{display:none}.nav{display:none;position:absolute;top:67px;left:0;right:0;padding:22px 6%;background:#101014;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:18px}.nav.open{display:flex}.nav a{font-size:12px}.wrap{width:90%}.hero{min-height:0;background-position:62% center}.hero-inner{grid-template-columns:1fr;padding:72px 0 45px;gap:20px}.hero h1{font-size:clamp(54px,12vw,82px)}.hero-copy>p:not(.eyebrow){font-size:13px}.hero-stamp{justify-self:start}.hero-point{padding:0 12px;font-size:9px}.hero-point b{font-size:19px}.programme-section{padding:35px 0 55px}.programme-grid{gap:34px}.column-head{align-items:flex-start}.column-title{font-size:20px}.show-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.show-card{min-height:260px;border-radius:9px}.show-card-content{padding:11px 9px}.show-card h3{font-size:clamp(13px,3.2vw,19px)}.show-card p{font-size:9px;min-height:40px}.show-time{font-size:8px}.show-live{font-size:7px;padding:5px 7px;margin-bottom:8px}.schedule-row{grid-template-columns:94px 25px minmax(0,1fr) 58px;gap:8px;min-height:62px;padding:8px 8px 8px 12px}.schedule-time{font-size:9px}.schedule-icon{font-size:17px}.schedule-name{font-size:12px}.schedule-desc{font-size:8px}.status{min-width:53px;font-size:7px;padding:7px 5px}.listen-panel{gap:10px;padding:14px 12px}.listen-art{font-size:28px}.listen-copy strong{font-size:16px}.listen-copy small{font-size:8px}.listen-panel .listen-btn{font-size:8px;padding:11px 12px}.presenter-section{grid-template-columns:1fr;gap:30px;padding:58px 0}.presenter-art{max-height:540px}.presenter-copy h2{font-size:45px}.foot,.bottom{display:block}.links{margin-top:18px}.bottom span{display:block;margin-top:8px}}
+@media(max-width:430px){.show-grid{grid-template-columns:1fr}.show-card{min-height:390px}.show-card-content{padding:17px}.show-card h3{font-size:23px}.show-card p{font-size:10px;min-height:0}.show-time{font-size:10px}.schedule-row{grid-template-columns:78px 20px minmax(0,1fr) 49px;gap:6px;padding-left:10px}.schedule-time{font-size:8px}.schedule-name{font-size:11px}.schedule-desc{font-size:7px}.status{min-width:46px;font-size:6px}.day-pill{font-size:8px;padding:9px 10px}.hero-point{padding:0 8px}.hero-point b{font-size:17px}}
+@media(max-width:760px){.presenter-section{padding:65px 0 70px;grid-template-columns:1fr;gap:34px}.presenter-art{width:min(100%,470px);margin:0 auto;max-height:620px}.presenter-copy{padding:0}.presenter-copy:before{right:-5px;top:-35px;font-size:100px}.presenter-copy h2{font-size:clamp(43px,11vw,66px)}.presenter-copy p{font-size:12px}.presenter-photo-top{top:24px;left:24px}.presenter-photo-bottom{left:27px;bottom:28px}}
+@media(max-width:430px){.presenter-art{aspect-ratio:4/5}.presenter-photo-bottom h3{font-size:clamp(48px,13vw,64px)}.presenter-photo-top{top:20px;left:20px;font-size:8px}.presenter-photo-bottom{left:24px;bottom:24px}.presenter-shows span{font-size:7px;padding:11px 11px 11px 22px}}
 
-/* FOOTER */
-
-footer{background:#070709;border-top:1px solid var(--line);padding:30px 0 20px}
-.foot{display:flex;justify-content:space-between;align-items:center;gap:25px;padding-bottom:22px}
-.foot img{width:125px;height:58px;object-fit:contain}
-.links{display:flex;gap:20px;flex-wrap:wrap}
-.links a{font-size:10px;color:#aaa}
-.links a:hover{color:#fff}
-.bottom{border-top:1px solid var(--line);padding-top:16px;color:#777;font-size:9px;display:flex;justify-content:space-between}
-
-/* RESPONSIVE */
-
-@media(max-width:1050px){
-.programme-grid{grid-template-columns:1fr;gap:35px}
-.show-card{min-height:360px}
-.schedule-row{grid-template-columns:125px 34px minmax(0,1fr) 70px}
-.hero{min-height:460px}
-}
-
-@media(max-width:760px){
-header{height:68px}
-.head{width:90%}
-.logo{width:110px}
-.menu{display:block}
-.head-actions .onair{display:none}
-.nav{display:none;position:absolute;top:67px;left:0;right:0;padding:22px 6%;background:#101014;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:18px}
-.nav.open{display:flex}
-.nav a{font-size:12px}
-.wrap{width:90%}
-.hero{min-height:0;background-position:62% center}
-.hero-inner{grid-template-columns:1fr;padding:72px 0 45px;gap:20px}
-.hero h1{font-size:clamp(54px,12vw,82px)}
-.hero-copy>p:not(.eyebrow){font-size:13px}
-.hero-stamp{justify-self:start}
-.hero-point{padding:0 12px;font-size:9px}
-.hero-point b{font-size:19px}
-.programme-section{padding:35px 0 55px}
-.programme-grid{gap:34px}
-.column-head{align-items:flex-start}
-.column-title{font-size:20px}
-.show-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.show-card{min-height:260px;border-radius:9px}
-.show-card-content{padding:11px 9px}
-.show-card h3{font-size:clamp(13px,3.2vw,19px)}
-.show-card p{font-size:9px;min-height:40px}
-.show-time{font-size:8px}
-.show-live{font-size:7px;padding:5px 7px;margin-bottom:8px}
-.schedule-row{grid-template-columns:94px 25px minmax(0,1fr) 58px;gap:8px;min-height:62px;padding:8px 8px 8px 12px}
-.schedule-time{font-size:9px}
-.schedule-icon{font-size:17px}
-.schedule-name{font-size:12px}
-.schedule-desc{font-size:8px}
-.status{min-width:53px;font-size:7px;padding:7px 5px}
-.listen-panel{gap:10px;padding:14px 12px}
-.listen-art{font-size:28px}
-.listen-copy strong{font-size:16px}
-.listen-copy small{font-size:8px}
-.listen-panel .listen-btn{font-size:8px;padding:11px 12px}
-.presenter-section{grid-template-columns:1fr;gap:30px;padding:58px 0}
-.presenter-art{max-height:540px}
-.presenter-copy h2{font-size:45px}
-.foot,.bottom{display:block}
-.links{margin-top:18px}
-.bottom span{display:block;margin-top:8px}
-}
-
-@media(max-width:430px){
-.show-grid{grid-template-columns:1fr}
-.show-card{min-height:390px}
-.show-card-content{padding:17px}
-.show-card h3{font-size:23px}
-.show-card p{font-size:10px;min-height:0}
-.show-time{font-size:10px}
-.schedule-row{grid-template-columns:78px 20px minmax(0,1fr) 49px;gap:6px;padding-left:10px}
-.schedule-time{font-size:8px}
-.schedule-name{font-size:11px}
-.schedule-desc{font-size:7px}
-.status{min-width:46px;font-size:6px}
-.day-pill{font-size:8px;padding:9px 10px}
-.hero-point{padding:0 8px}
-.hero-point b{font-size:17px}
-}
-
-@media(max-width:760px){
-.presenter-section{padding:65px 0 70px;grid-template-columns:1fr;gap:34px}
-.presenter-art{width:min(100%,470px);margin:0 auto;max-height:620px}
-.presenter-copy{padding:0}
-.presenter-copy:before{right:-5px;top:-35px;font-size:100px}
-.presenter-copy h2{font-size:clamp(43px,11vw,66px)}
-.presenter-copy p{font-size:12px}
-.presenter-photo-top{top:24px;left:24px}
-.presenter-photo-bottom{left:27px;bottom:28px}
-}
-
-@media(max-width:430px){
-.presenter-art{aspect-ratio:4/5}
-.presenter-photo-bottom h3{font-size:clamp(48px,13vw,64px)}
-.presenter-photo-top{top:20px;left:20px;font-size:8px}
-.presenter-photo-bottom{left:24px;bottom:24px}
-.presenter-shows span{font-size:7px;padding:11px 11px 11px 22px}
-}
-
-@media(prefers-reduced-motion:reduce){
-*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
-}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>
 </head>
-
 <body>
-
-<header>
-<div class="head">
-<a href="/" aria-label="KIZAZI RADIO home">
-<img class="logo" src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
-</a>
-
+<header><div class="head">
+<a href="/" aria-label="KIZAZI RADIO home"><img class="logo" src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO"></a>
 <button class="menu" aria-label="Open navigation" aria-expanded="false">☰</button>
-
-<nav class="nav">
-<a href="/">Home</a>
-<a href="/#listen">Listen Live</a>
-<a href="/#schedule">Schedule</a>
-<a class="current" href="/shows/">Shows</a>
-<a href="/#podcasts">Podcasts</a>
-<a href="/news/">News</a>
-<a href="/about/">About Us</a>
-</nav>
-
-<div class="head-actions">
-<div class="onair"><i></i>LIVE ON AIR</div>
-<a class="listen-btn" href="/#listen">▶ Listen Live</a>
-</div>
-</div>
-</header>
-
+<nav class="nav"><a href="/">Home</a><a href="/#listen">Listen Live</a><a href="/#schedule">Schedule</a><a class="current" href="/shows/">Shows</a><a href="/#podcasts">Podcasts</a><a href="/news/">News</a><a href="/about/">About Us</a></nav>
+<div class="head-actions"><div class="onair"><i></i>LIVE ON AIR</div><a class="listen-btn" href="/#listen">▶ Listen Live</a></div>
+</div></header>
 <main>
-
-<!-- CINEMATIC HERO -->
-
-<section class="hero">
-<div class="wrap hero-inner">
-
-<div class="hero-copy">
-<p class="eyebrow">KIZAZI RADIO PROGRAMMING</p>
-
-<h1>THE SHOWS.<em>THE SCHEDULE.</em></h1>
-
-<p>Live shows, real conversations and the best music for a new generation, every weekday on KIZAZI RADIO.</p>
-
-<div class="hero-points">
-<div class="hero-point"><b>◉</b> LIVE SHOWS</div>
-<div class="hero-point"><b>♫</b> CURATED PLAYLISTS</div>
-<div class="hero-point"><b>▦</b> MONDAY – FRIDAY</div>
-</div>
-</div>
-
+<section class="hero"><div class="wrap hero-inner">
+<div class="hero-copy"><p class="eyebrow">KIZAZI RADIO PROGRAMMING</p><h1>THE SHOWS.<em>THE SCHEDULE.</em></h1><p>Live shows, real conversations and the best music for a new generation, every weekday on KIZAZI RADIO.</p>
+<div class="hero-points"><div class="hero-point"><b>◉</b> LIVE SHOWS</div><div class="hero-point"><b>♫</b> CURATED PLAYLISTS</div><div class="hero-point"><b>▦</b> MONDAY – FRIDAY</div></div></div>
 <div class="hero-stamp"><span>●</span> THE SOUND OF A NEW GENERATION</div>
-
-</div>
-</section>
-
-<!-- SHOWS + WEEKDAY PROGRAMME -->
-
-<section class="programme-section">
-<div class="wrap programme-grid">
-
-<div class="shows-column">
-<div class="column-head">
-<h2 class="column-title">THE SHOWS</h2>
-</div>
-
+</div></section>
+<section class="programme-section"><div class="wrap programme-grid">
+<div class="shows-column"><div class="column-head"><h2 class="column-title">THE SHOWS</h2></div>
 <div class="show-grid">
-
-<article class="show-card morning">
-<img src="/assets/morning-linkup-king-mfumu.png" alt="King Mfumu presenting Morning LinkUp" loading="lazy">
-<div class="show-card-content">
-<span class="show-live">LIVE</span>
-<h3>MORNING LINKUP</h3>
-<p>Start Your Day Connected.</p>
-<div class="show-time"><span>▦</span> 10:00 AM – 12:00 PM</div>
+<article class="show-card morning"><img src="/assets/morning-linkup-king-mfumu.png" alt="King Mfumu presenting Morning LinkUp" loading="lazy"><div class="show-card-content"><span class="show-live">LIVE</span><h3>MORNING LINKUP</h3><p>Start Your Day Connected.</p><div class="show-time"><span>▦</span> 10:00 AM – 12:00 PM</div></div></article>
+<article class="show-card nocap"><img src="/assets/no-cap-king-mfumu.png" alt="King Mfumu presenting No Cap" loading="lazy"><div class="show-card-content"><span class="show-live">LIVE</span><h3>NO CAP</h3><p>Real Talk. No Filter.</p><div class="show-time"><span>▦</span> 3:00 PM – 6:00 PM</div></div></article>
+<article class="show-card love"><img src="/assets/the-love-nights-king-mfumu.png" alt="King Mfumu presenting The Love Nights" loading="lazy"><div class="show-card-content"><span class="show-live">LIVE</span><h3>THE LOVE NIGHTS</h3><p>Where Love Meets Music.</p><div class="show-time"><span>▦</span> 8:00 PM – 11:00 PM</div></div></article>
 </div>
-</article>
-
-<article class="show-card nocap">
-<img src="/assets/no-cap-king-mfumu.png" alt="King Mfumu presenting No Cap" loading="lazy">
-<div class="show-card-content">
-<span class="show-live">LIVE</span>
-<h3>NO CAP</h3>
-<p>Real Talk. No Filter.</p>
-<div class="show-time"><span>▦</span> 3:00 PM – 6:00 PM</div>
+<div class="listen-panel"><div class="listen-art">♫</div><div class="listen-copy"><strong>LISTEN LIVE <em>NOW</em></strong><small>Catch your favourite shows on KIZAZI RADIO.</small></div><a class="listen-btn" href="/#listen">▶ LISTEN LIVE</a></div>
 </div>
-</article>
-
-<article class="show-card love">
-<img src="/assets/the-love-nights-king-mfumu.png" alt="King Mfumu presenting The Love Nights" loading="lazy">
-<div class="show-card-content">
-<span class="show-live">LIVE</span>
-<h3>THE LOVE NIGHTS</h3>
-<p>Where Love Meets Music.</p>
-<div class="show-time"><span>▦</span> 8:00 PM – 11:00 PM</div>
-</div>
-</article>
-
-</div>
-
-<div class="listen-panel">
-<div class="listen-art">♫</div>
-<div class="listen-copy">
-<strong>LISTEN LIVE <em>NOW</em></strong>
-<small>Catch your favourite shows on KIZAZI RADIO.</small>
-</div>
-<a class="listen-btn" href="/#listen">▶ LISTEN LIVE</a>
-</div>
-</div>
-
-<div class="schedule-column" id="weekly-schedule">
-<div class="column-head">
-<h2 class="column-title">WEEKDAY PROGRAMME</h2>
-<div class="day-pill"><span>▦</span> MONDAY – FRIDAY</div>
-</div>
-
+<div class="schedule-column" id="weekly-schedule"><div class="column-head"><h2 class="column-title">WEEKDAY PROGRAMME</h2><div class="day-pill"><span>▦</span> MONDAY – FRIDAY</div></div>
 <div class="schedule-list">
-
-<div class="schedule-row morning">
-<div class="schedule-time">10:00 AM –<br>12:00 PM</div>
-<div class="schedule-icon">♩</div>
-<div class="schedule-info">
-<div class="schedule-name">Morning LinkUp</div>
-<div class="schedule-desc">Start Your Day Connected · With King Mfumu</div>
-</div>
-<div class="status live">● LIVE</div>
-</div>
-
-<div class="schedule-row playlist">
-<div class="schedule-time">12:00 PM –<br>3:00 PM</div>
-<div class="schedule-icon">♫</div>
-<div class="schedule-info">
-<div class="schedule-name">Kizazi Playlist</div>
-<div class="schedule-desc">Your soundtrack through the day</div>
-</div>
-<div class="status">MUSIC</div>
-</div>
-
-<div class="schedule-row nocap">
-<div class="schedule-time">3:00 PM –<br>6:00 PM</div>
-<div class="schedule-icon">♩</div>
-<div class="schedule-info">
-<div class="schedule-name">No Cap</div>
-<div class="schedule-desc">Real Talk. No Filter · With King Mfumu</div>
-</div>
-<div class="status live">● LIVE</div>
-</div>
-
-<div class="schedule-row playlist">
-<div class="schedule-time">6:00 PM –<br>8:00 PM</div>
-<div class="schedule-icon">♫</div>
-<div class="schedule-info">
-<div class="schedule-name">Kizazi Playlist</div>
-<div class="schedule-desc">Music for your evening</div>
-</div>
-<div class="status">MUSIC</div>
-</div>
-
-<div class="schedule-row love">
-<div class="schedule-time">8:00 PM –<br>11:00 PM</div>
-<div class="schedule-icon">♩</div>
-<div class="schedule-info">
-<div class="schedule-name">The Love Nights</div>
-<div class="schedule-desc">Where Love Meets Music · With King Mfumu</div>
-</div>
-<div class="status live">● LIVE</div>
-</div>
-
-<div class="schedule-row playlist">
-<div class="schedule-time">11:00 PM –<br>10:00 AM</div>
-<div class="schedule-icon">♫</div>
-<div class="schedule-info">
-<div class="schedule-name">Kizazi Playlist</div>
-<div class="schedule-desc">Overnight music selection</div>
-</div>
-<div class="status">MUSIC</div>
-</div>
-
-</div>
-</div>
-
-</div>
-</section>
-
+<div class="schedule-row morning"><div class="schedule-time">10:00 AM –<br>12:00 PM</div><div class="schedule-icon">♩</div><div class="schedule-info"><div class="schedule-name">Morning LinkUp</div><div class="schedule-desc">Start Your Day Connected · With King Mfumu</div></div><div class="status live">● LIVE</div></div>
+<div class="schedule-row playlist"><div class="schedule-time">12:00 PM –<br>3:00 PM</div><div class="schedule-icon">♫</div><div class="schedule-info"><div class="schedule-name">Kizazi Playlist</div><div class="schedule-desc">Your soundtrack through the day</div></div><div class="status">MUSIC</div></div>
+<div class="schedule-row nocap"><div class="schedule-time">3:00 PM –<br>6:00 PM</div><div class="schedule-icon">♩</div><div class="schedule-info"><div class="schedule-name">No Cap</div><div class="schedule-desc">Real Talk. No Filter · With King Mfumu</div></div><div class="status live">● LIVE</div></div>
+<div class="schedule-row playlist"><div class="schedule-time">6:00 PM –<br>8:00 PM</div><div class="schedule-icon">♫</div><div class="schedule-info"><div class="schedule-name">Kizazi Playlist</div><div class="schedule-desc">Music for your evening</div></div><div class="status">MUSIC</div></div>
+<div class="schedule-row love"><div class="schedule-time">8:00 PM –<br>11:00 PM</div><div class="schedule-icon">♩</div><div class="schedule-info"><div class="schedule-name">The Love Nights</div><div class="schedule-desc">Where Love Meets Music · With King Mfumu</div></div><div class="status live">● LIVE</div></div>
+<div class="schedule-row playlist"><div class="schedule-time">11:00 PM –<br>10:00 AM</div><div class="schedule-icon">♫</div><div class="schedule-info"><div class="schedule-name">Kizazi Playlist</div><div class="schedule-desc">Overnight music selection</div></div><div class="status">MUSIC</div></div>
+</div></div>
+</div></section>
 <!-- PRESENTER PROFILE -->
 
 <section class="content">
 <div class="wrap presenter-section">
 
 <div class="presenter-art">
+
 <img
 src="/assets/king-mfumu-presenter.png"
 alt="King Mfumu, KIZAZI RADIO presenter"
@@ -455,6 +121,7 @@ KIZAZI RADIO PRESENTER
 <h3>KING <span>MFUMU.</span></h3>
 <p>THREE SHOWS. ONE VOICE.</p>
 </div>
+
 </div>
 
 <div class="presenter-copy">
@@ -463,11 +130,7 @@ KIZAZI RADIO PRESENTER
 
 <div class="presenter-role">KIZAZI RADIO · ON-AIR PERSONALITY</div>
 
-<h2>
-<span class="host-line">ONE MAN.</span>
-<span class="vibe-line">THREE VIBES.</span>
-<span class="host-name">KING MFUMU.</span>
-</h2>
+<h2><span class="host-line">ONE MAN.</span><span class="vibe-line">THREE VIBES.</span><span class="host-name">KING MFUMU.</span></h2>
 
 <p>
 Meet King Mfumu, the voice bringing MORNING LINKUP, NO CAP and THE LOVE NIGHTS to life on KIZAZI RADIO.
@@ -488,17 +151,19 @@ Three shows. Different moods. One voice connecting you to music, ideas and conve
 </div>
 
 </div>
+
 </div>
 </section>
 
-</main>
 
+</main>
 <!-- FOOTER -->
 
 <footer>
 <div class="wrap">
 
 <div class="foot">
+
 <a href="/">
 <img src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
 </a>
@@ -511,6 +176,7 @@ Three shows. Different moods. One voice connecting you to music, ideas and conve
 <a href="/about/">About Us</a>
 <a href="mailto:hello@kizaziradio.com">Contact</a>
 </nav>
+
 </div>
 
 <div class="bottom">
@@ -521,27 +187,11 @@ Three shows. Different moods. One voice connecting you to music, ideas and conve
 </div>
 </footer>
 
+
 <script>
-const menu=document.querySelector('.menu');
-const nav=document.querySelector('.nav');
-
-menu.addEventListener('click',()=>{
-const open=nav.classList.toggle('open');
-menu.setAttribute('aria-expanded',String(open));
-menu.textContent=open?'×':'☰';
-});
-
-nav.querySelectorAll('a').forEach(link=>
-link.addEventListener('click',()=>{
-nav.classList.remove('open');
-menu.setAttribute('aria-expanded','false');
-menu.textContent='☰';
-})
-);
-
-const year=document.getElementById('year');
-if(year)year.textContent=new Date().getFullYear();
+const menu=document.querySelector('.menu');const nav=document.querySelector('.nav');
+menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'×':'☰';});
+nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰';}));
+const year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();
 </script>
-
-</body>
-</html>
+</body></html>
