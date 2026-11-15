@@ -453,6 +453,189 @@ img{max-width:100%}
   background:var(--red);
 }
 
+
+/* CREATIVE GEN-Z DETAILS — HERO ONLY */
+
+.hero{
+  --hero-red: #ed171f;
+}
+
+.hero .hero-content{
+  max-width: 780px;
+}
+
+.hero-content .eyebrow{
+  transform:rotate(-1.5deg);
+  box-shadow:4px 4px 0 var(--hero-red);
+}
+
+.hero h1{
+  position:relative;
+  width:max-content;
+  max-width:100%;
+  text-wrap:balance;
+  text-shadow:
+    4px 4px 0 rgba(237,23,31,.22),
+    0 12px 36px rgba(0,0,0,.25);
+}
+
+.hero h1 em{
+  display:inline-block;
+  transform:skewX(-4deg);
+  text-shadow:5px 5px 0 rgba(255,255,255,.12);
+}
+
+.hero-description{
+  border-left:3px solid var(--hero-red);
+  padding-left:15px;
+  max-width:430px;
+}
+
+.hero-sticker{
+  position:absolute;
+  z-index:4;
+  right:7.5%;
+  top:17%;
+  width:142px;
+  height:142px;
+  border-radius:50%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#09090b;
+  background:#fff;
+  border:7px solid var(--hero-red);
+  outline:1px solid rgba(255,255,255,.7);
+  box-shadow:7px 7px 0 rgba(0,0,0,.45);
+  transform:rotate(10deg);
+  pointer-events:none;
+  animation:sticker-float 5s ease-in-out infinite;
+}
+
+.hero-sticker:before,
+.hero-sticker:after{
+  content:"";
+  position:absolute;
+  inset:-13px;
+  border:1px dashed rgba(255,255,255,.62);
+  border-radius:50%;
+}
+
+.hero-sticker:after{
+  inset:8px;
+  border:1px solid rgba(9,9,11,.16);
+}
+
+.sticker-top,
+.sticker-bottom{
+  position:relative;
+  z-index:1;
+  font-size:7px;
+  font-weight:1000;
+  letter-spacing:1.4px;
+}
+
+.sticker-top{
+  color:var(--hero-red);
+  margin-bottom:5px;
+}
+
+.hero-sticker strong{
+  position:relative;
+  z-index:1;
+  font-family:"Barlow Condensed",Impact,sans-serif;
+  font-size:28px;
+  line-height:.78;
+  letter-spacing:-.5px;
+  font-weight:900;
+}
+
+.sticker-bottom{
+  margin-top:7px;
+  font-size:5.5px;
+  letter-spacing:1px;
+}
+
+@keyframes sticker-float{
+  0%,100%{transform:rotate(10deg) translateY(0)}
+  50%{transform:rotate(6deg) translateY(-9px)}
+}
+
+.hero-actions{
+  gap:30px;
+}
+
+.primary-button{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+}
+
+.primary-button:before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  top:-60%;
+  left:-35%;
+  width:25%;
+  height:220%;
+  background:rgba(255,255,255,.22);
+  transform:rotate(22deg);
+  transition:left .45s ease;
+}
+
+.primary-button:hover:before{
+  left:120%;
+}
+
+.hero-secondary:after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:28px;
+  height:2px;
+  background:#fff;
+  transition:width .25s ease;
+}
+
+.hero-secondary:hover:after{
+  width:100%;
+}
+
+.hero-side-note{
+  right:2.7%;
+  bottom:42px;
+  padding:12px 8px;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(8,8,11,.55);
+}
+
+@media(max-width:700px){
+  .hero-sticker{
+    width:92px;
+    height:92px;
+    border-width:5px;
+    right:8%;
+    top:14%;
+    opacity:.95;
+  }
+
+  .hero-sticker:before{inset:-8px}
+  .hero-sticker:after{inset:5px}
+  .sticker-top{font-size:5px;margin-bottom:3px}
+  .hero-sticker strong{font-size:19px}
+  .sticker-bottom{font-size:4px;margin-top:5px}
+  .hero h1 em{transform:skewX(-2deg)}
+  .hero-description{padding-left:11px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-sticker{animation:none}
+}
+
 /* QUICK STRIP */
 
 .info-strip{
@@ -3307,6 +3490,12 @@ img{max-width:100%}
   <div class="hero-overlay"></div>
 
   <div class="hero-side-note" aria-hidden="true">NEW GENERATION. NEW SOUND.</div>
+
+  <div class="hero-sticker" aria-hidden="true">
+    <span class="sticker-top">KIZAZI RADIO</span>
+    <strong>FRESH<br>FREQUENCY</strong>
+    <span class="sticker-bottom">NO SKIPS. JUST VIBES.</span>
+  </div>
 
   <div class="hero-content">
     <p class="eyebrow">Radio • Music • Culture</p>
