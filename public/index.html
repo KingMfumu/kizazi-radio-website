@@ -4068,23 +4068,19 @@ img{max-width:100%}
 .experience-item-copy small{color:#888891;font-size:10px}
 .experience-arrow{width:32px;height:32px;display:grid;place-items:center;border:1px solid #42424a;border-radius:50%;color:var(--red);transition:background .2s,border-color .2s}
 .experience-item:hover .experience-arrow{background:var(--red);border-color:var(--red);color:#fff}
-.connected-section{position:relative;overflow:hidden;padding:95px 0 105px;background:#131317;border-top:1px solid #29292f;border-bottom:1px solid #29292f}
+.connected-section{position:relative;overflow:hidden;padding:95px 0 105px;background:radial-gradient(ellipse at 24% 50%,rgba(255,0,20,.12),transparent 37%),linear-gradient(115deg,#050506 0%,#100407 48%,#050506 100%);border-top:1px solid rgba(255,25,35,.24);border-bottom:1px solid rgba(255,25,35,.24)}
 .connected-layout{display:grid;grid-template-columns:1fr 1fr;gap:76px;align-items:center}
-.connected-visual{min-height:410px;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at center,rgba(229,9,9,.12),transparent 48%)}
-.frequency-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:42px 42px;mask-image:radial-gradient(ellipse at center,#000 10%,transparent 72%);opacity:.55}
-.frequency-ring{position:absolute;border:1px solid rgba(255,255,255,.11);border-radius:50%;aspect-ratio:1;animation:frequencyBreathe 9s ease-in-out infinite}
+.connected-visual{min-height:410px;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at center,rgba(255,0,25,.24),rgba(120,0,12,.10) 34%,transparent 68%)}
+.frequency-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,20,35,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,20,35,.055) 1px,transparent 1px);background-size:42px 42px;mask-image:radial-gradient(ellipse at center,#000 10%,transparent 72%);opacity:.7}
+.frequency-ring{position:absolute;border:1px solid rgba(255,25,40,.32);border-radius:50%;aspect-ratio:1;box-shadow:0 0 28px rgba(255,0,25,.09),inset 0 0 24px rgba(255,0,25,.035);animation:frequencyBreathe 9s ease-in-out infinite}
 .frequency-ring.ring-a{width:230px}
 .frequency-ring.ring-b{width:330px;border-style:dashed;opacity:.6;animation-delay:-3s}
 .frequency-ring.ring-c{width:410px;opacity:.3;animation-delay:-6s}
 @keyframes frequencyBreathe{0%,100%{transform:scale(.9);opacity:.22}50%{transform:scale(1.08);opacity:.75}}
-.frequency-core{position:relative;z-index:2;width:174px;height:174px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 25%,#303036,#101014 62%);border:1px solid #55555d;box-shadow:0 0 0 10px rgba(255,255,255,.025),0 0 65px rgba(229,9,9,.16),inset 0 0 28px rgba(0,0,0,.8)}
-.frequency-core:before{content:"";position:absolute;inset:9px;border:1px solid rgba(229,9,9,.38);border-radius:50%}
-.frequency-core .core-live{font-size:8px;font-weight:950;letter-spacing:2px;color:#c6c6cc;display:flex;align-items:center;gap:7px}
-.core-live i{width:6px;height:6px;border-radius:50%;background:var(--red);box-shadow:0 0 12px var(--red)}
-.core-name{margin-top:13px;font-size:19px;font-weight:1000;letter-spacing:-.8px;line-height:.95;text-align:center}
-.core-name span{color:var(--red)}
+.frequency-core{position:relative;z-index:2;width:174px;height:174px;border-radius:50%;background:radial-gradient(circle at 50% 50%,#260006 0%,#100003 54%,#050506 76%);border:1px solid rgba(255,35,48,.72);box-shadow:0 0 0 10px rgba(255,0,20,.045),0 0 28px rgba(255,0,20,.34),0 0 90px rgba(255,0,20,.28),inset 0 0 38px rgba(255,0,20,.18)}
+.frequency-core:before{content:"";position:absolute;inset:9px;border:1px solid rgba(255,35,48,.52);border-radius:50%;box-shadow:inset 0 0 25px rgba(255,0,20,.13),0 0 18px rgba(255,0,20,.14)}
 .frequency-wave{position:absolute;z-index:3;left:7%;right:7%;top:50%;height:70px;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;gap:5px;pointer-events:none}
-.frequency-wave i{display:block;width:3px;height:12px;border-radius:4px;background:var(--red);box-shadow:0 0 10px rgba(229,9,9,.4);animation:frequencyWave .9s ease-in-out infinite alternate}
+.frequency-wave i{display:block;width:3px;height:12px;border-radius:4px;background:#ff1728;box-shadow:0 0 8px #ff1728,0 0 18px rgba(255,0,25,.75);animation:frequencyWave .9s ease-in-out infinite alternate}
 .frequency-wave i:nth-child(3n){animation-duration:.65s}.frequency-wave i:nth-child(4n){animation-delay:-.45s}.frequency-wave i:nth-child(5n){animation-delay:-.7s}
 @keyframes frequencyWave{from{height:5px;opacity:.45}to{height:58px;opacity:1}}
 .frequency-label{position:absolute;z-index:4;display:flex;align-items:center;gap:9px;color:#a6a6ae;font-size:8px;font-weight:950;letter-spacing:2px}
@@ -4505,10 +4501,7 @@ img{max-width:100%}
       <div class="frequency-ring ring-a"></div>
       <div class="frequency-ring ring-b"></div>
       <div class="frequency-ring ring-c"></div>
-      <div class="frequency-core">
-        <span class="core-live"><i></i> LIVE WORLDWIDE</span>
-        <div class="core-name">KIZAZI<br><span>RADIO</span></div>
-      </div>
+      <div class="frequency-core" aria-hidden="true"></div>
       <div class="frequency-wave">
         <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
         <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
