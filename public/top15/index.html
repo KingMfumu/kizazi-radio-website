@@ -1,530 +1,284 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Explore the official KIZAZI RADIO TOP 15 Music Chart. Discover the hottest songs across all genres.">
+  <meta name="theme-color" content="#080809">
   <title>TOP 15 Music Chart | KIZAZI RADIO</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root {
+      --bg: #080809;
+      --panel: #111114;
+      --panel-2: #17171b;
+      --line: rgba(255,255,255,.12);
+      --muted: #9999a2;
+      --red: #ed1018;
+      --white: #f7f7f8;
+      --max: 1420px;
     }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--white); font-family: Arial, Helvetica, sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
 
-    html {
-      scroll-behavior: smooth;
+    .site-header {
+      min-height: 96px; padding: 12px 5%; display: flex; align-items: center;
+      justify-content: space-between; gap: 28px; background: rgba(8,8,9,.96);
+      border-bottom: 1px solid var(--line); position: relative; z-index: 20;
     }
+    .logo img { width: 125px; height: auto; display: block; }
+    .nav { display: flex; align-items: center; gap: clamp(16px,2.1vw,32px); }
+    .nav a { color: #bdbdc4; font-size: 13px; font-weight: 800; transition: color .2s; }
+    .nav a:hover, .nav a.active { color: #fff; }
+    .nav a.active { position: relative; }
+    .nav a.active::after { content: ""; position: absolute; height: 2px; left: 0; right: 0; bottom: -12px; background: var(--red); }
+    .listen-live { border: 1px solid #45454b; padding: 15px 19px; font-size: 11px; font-weight: 900; letter-spacing: 1px; white-space: nowrap; transition: border-color .2s, background .2s; }
+    .listen-live:hover { border-color: var(--red); background: rgba(237,16,24,.08); }
+    .live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--red); margin-right: 8px; box-shadow: 0 0 12px rgba(237,16,24,.7); }
+    .menu { display: none; border: 0; background: none; color: #fff; font-size: 28px; cursor: pointer; }
 
-    body {
-      background: #090909;
-      color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
+    .container { width: min(var(--max), 90%); margin: 0 auto; }
+    .chart-hero { position: relative; overflow: hidden; padding: 82px 0 48px; border-bottom: 1px solid var(--line); }
+    .chart-hero::before { content: "15"; position: absolute; right: 3%; top: -105px; color: rgba(255,255,255,.025); font-size: clamp(300px,42vw,620px); font-weight: 1000; line-height: 1; letter-spacing: -.09em; pointer-events: none; }
+    .hero-inner { position: relative; z-index: 1; }
+    .eyebrow { color: #b5b5bd; font-size: 11px; font-weight: 900; letter-spacing: 2.4px; margin-bottom: 19px; text-transform: uppercase; }
+    .eyebrow::before { content: ""; display: inline-block; width: 27px; height: 3px; background: var(--red); margin: 0 12px 3px 0; }
+    .hero-kicker { color: var(--red); font-size: 12px; font-weight: 900; letter-spacing: 1.5px; margin-bottom: 15px; }
+    .chart-title { max-width: 1000px; font-size: clamp(48px,7.3vw,104px); font-weight: 1000; letter-spacing: -.075em; line-height: .91; text-transform: uppercase; }
+    .chart-title span { color: var(--red); }
+    .hero-bottom { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-top: 28px; }
+    .chart-description { max-width: 620px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+    .chart-count { color: #f1f1f2; font-size: 11px; font-weight: 900; letter-spacing: 1.6px; white-space: nowrap; }
+
+    .section { padding: 55px 0 75px; }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 25px; margin-bottom: 25px; }
+    .section-label { color: var(--red); font-size: 11px; font-weight: 900; letter-spacing: 1.8px; margin-bottom: 10px; }
+    .section-title { font-size: clamp(27px,4vw,43px); line-height: 1; letter-spacing: -1.8px; text-transform: uppercase; font-weight: 950; }
+    .section-title span { color: var(--red); }
+    .section-note { color: var(--muted); font-size: 12px; line-height: 1.6; text-align: right; }
+
+    .featured { display: grid; grid-template-columns: minmax(280px,.95fr) 1.05fr; min-height: 390px; background: linear-gradient(115deg,#19191d,#0e0e10 75%); border: 1px solid rgba(237,16,24,.42); overflow: hidden; position: relative; }
+    .featured-art { position: relative; min-height: 390px; background: #19191d; overflow: hidden; }
+    .featured-art img { width: 100%; height: 100%; min-height: 390px; object-fit: cover; display: block; }
+    .featured-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg,transparent 60%,rgba(10,10,12,.55)),linear-gradient(0deg,rgba(0,0,0,.38),transparent 45%); }
+    .featured-rank { position: absolute; z-index: 2; top: 22px; left: 22px; color: #fff; background: var(--red); padding: 12px 15px; font-size: 13px; font-weight: 1000; letter-spacing: 1px; }
+    .featured-placeholder { min-height: 390px; height: 100%; display: grid; place-content: center; text-align: center; background: radial-gradient(circle at 50% 40%,#3b1115,#151519 65%); }
+    .featured-placeholder span { font-size: 11px; letter-spacing: 5px; color: #bbb; }
+    .featured-placeholder strong { font-size: 52px; color: var(--red); letter-spacing: -3px; }
+    .featured-info { padding: clamp(28px,5vw,66px); display: flex; flex-direction: column; justify-content: center; position: relative; }
+    .featured-tag { color: var(--red); font-size: 11px; font-weight: 900; letter-spacing: 2px; margin-bottom: 20px; }
+    .featured-info h3 { font-size: clamp(30px,4vw,54px); line-height: 1.02; letter-spacing: -2px; overflow-wrap: anywhere; }
+    .featured-artist { color: #b5b5bd; font-size: 16px; margin-top: 13px; }
+    .featured-meta { display: flex; align-items: center; gap: 13px; margin-top: 28px; color: #85858e; font-size: 10px; font-weight: 900; letter-spacing: 1.4px; }
+    .featured-meta::before { content: ""; width: 28px; height: 2px; background: var(--red); }
+    .watch-featured { display: inline-flex; align-items: center; gap: 11px; align-self: flex-start; margin-top: 30px; padding: 15px 19px; background: var(--red); color: #fff; font-size: 11px; font-weight: 950; letter-spacing: 1px; transition: transform .2s, background .2s; }
+    .watch-featured:hover { transform: translateY(-2px); background: #ff252d; }
+    .watch-featured.disabled { background: #333; color: #aaa; pointer-events: none; }
+
+    .ranking-section { padding-top: 75px; }
+    .ranking-list { display: grid; gap: 10px; }
+    .ranking-card { display: grid; grid-template-columns: 62px 82px minmax(0,1fr) auto; align-items: center; gap: 20px; padding: 13px 18px 13px 14px; background: var(--panel); border: 1px solid rgba(255,255,255,.075); transition: background .2s,border-color .2s,transform .2s; min-width: 0; }
+    .ranking-card:hover { background: #17171b; border-color: rgba(237,16,24,.55); transform: translateX(4px); }
+    .rank-number { color: #777780; font-size: 25px; font-weight: 1000; letter-spacing: -1px; text-align: center; }
+    .rank-number small { display: block; color: #686870; font-size: 8px; letter-spacing: 1.5px; }
+    .rank-art { width: 82px; height: 82px; background: #222228; overflow: hidden; }
+    .rank-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .rank-art-placeholder { width: 100%; height: 100%; display: grid; place-content: center; background: linear-gradient(135deg,#28282e,#111); color: var(--red); font-size: 11px; font-weight: 1000; }
+    .rank-info { min-width: 0; }
+    .rank-info h3 { color: #f5f5f6; font-size: 17px; line-height: 1.35; overflow-wrap: anywhere; }
+    .rank-info p { color: var(--muted); font-size: 13px; margin-top: 6px; overflow-wrap: anywhere; }
+    .rank-badge { display: inline-block; color: #777780; font-size: 9px; font-weight: 900; letter-spacing: 1.4px; margin-top: 9px; }
+    .rank-watch { border: 1px solid #45454b; padding: 12px 15px; color: #fff; font-size: 10px; font-weight: 900; letter-spacing: 1px; white-space: nowrap; transition: border-color .2s,color .2s; }
+    .rank-watch:hover { border-color: var(--red); color: #ff454b; }
+    .rank-watch.disabled { color: #666; border-color: #29292d; pointer-events: none; }
+    .message { grid-column: 1 / -1; padding: 32px 25px; color: var(--muted); border: 1px dashed #414148; font-size: 14px; line-height: 1.8; text-align: center; }
+
+    .chart-bottom { border-top: 1px solid var(--line); margin-top: 65px; padding: 28px 0 42px; display: flex; justify-content: space-between; align-items: center; gap: 20px; color: #777780; font-size: 10px; font-weight: 900; letter-spacing: 1.6px; }
+    .back-home { color: #fff; font-size: 10px; letter-spacing: 1px; transition: color .2s; }
+    .back-home:hover { color: var(--red); }
+    footer { border-top: 1px solid var(--line); padding: 26px 5%; color: #707078; font-size: 10px; letter-spacing: 1px; text-align: center; }
+
+    @media(max-width: 1050px) {
+      .nav { gap: 16px; }
+      .nav a { font-size: 12px; }
+      .listen-live { padding: 13px 14px; }
+      .featured { grid-template-columns: 1fr 1fr; }
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+    @media(max-width: 780px) {
+      .site-header { min-height: 80px; padding: 10px 5%; }
+      .logo img { width: 105px; }
+      .menu { display: block; }
+      .listen-live { display: none; }
+      .nav { display: none; position: absolute; top: 79px; left: 0; right: 0; padding: 24px 5% 28px; background: #101012; border-bottom: 1px solid #333; flex-direction: column; align-items: flex-start; gap: 22px; }
+      .nav.open { display: flex; }
+      .nav a.active::after { bottom: -6px; }
+      .chart-hero { padding: 58px 0 35px; }
+      .hero-bottom { align-items: flex-start; flex-direction: column; gap: 16px; }
+      .section-heading { align-items: flex-start; flex-direction: column; }
+      .section-note { text-align: left; }
+      .featured { grid-template-columns: 1fr; }
+      .featured-art, .featured-art img, .featured-placeholder { min-height: 320px; max-height: 420px; }
+      .featured-info { padding: 30px; }
     }
-
-    .header {
-      min-height: 98px;
-      padding: 12px 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-      background: #090909;
-      border-bottom: 1px solid #292929;
+    @media(max-width: 560px) {
+      .container { width: 92%; }
+      .chart-title { letter-spacing: -.055em; }
+      .chart-description { font-size: 13px; }
+      .section { padding: 42px 0 55px; }
+      .featured-art, .featured-art img, .featured-placeholder { min-height: 270px; }
+      .ranking-card { grid-template-columns: 42px 64px minmax(0,1fr); gap: 12px; padding: 11px; }
+      .rank-number { font-size: 21px; }
+      .rank-art { width: 64px; height: 64px; }
+      .rank-info h3 { font-size: 14px; }
+      .rank-info p { font-size: 12px; }
+      .rank-watch { grid-column: 3; justify-self: start; padding: 9px 11px; margin-top: -2px; }
+      .chart-bottom { align-items: flex-start; flex-direction: column; }
     }
-
-    .logo img {
-      width: 125px;
-      height: auto;
-      display: block;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .nav a {
-      color: #c4c4ca;
-      font-size: 13px;
-      font-weight: 700;
-      transition: color .2s;
-    }
-
-    .nav a:hover,
-    .nav a.active {
-      color: #fff;
-    }
-
-    .listen-live {
-      border: 1px solid #444;
-      padding: 15px 20px;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      white-space: nowrap;
-    }
-
-    .listen-live span {
-      color: #e50909;
-      margin-right: 7px;
-    }
-
-    .menu {
-      display: none;
-      border: 0;
-      background: none;
-      color: white;
-      font-size: 28px;
-      cursor: pointer;
-    }
-
-    .container {
-      width: min(1430px, 90%);
-      margin: auto;
-    }
-
-    .chart-hero {
-      padding: 65px 0 35px;
-    }
-
-    .eyebrow {
-      color: #aaa;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin-bottom: 18px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      display: inline-block;
-      width: 25px;
-      height: 3px;
-      background: #e50909;
-      margin: 0 12px 3px 0;
-    }
-
-    .chart-title {
-      font-size: clamp(42px, 6vw, 68px);
-      font-weight: 950;
-      letter-spacing: -3px;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    .chart-title span {
-      color: #e50909;
-    }
-
-    .chart-description {
-      color: #999;
-      font-size: 15px;
-      line-height: 1.8;
-      margin-top: 12px;
-    }
-
-    .chart-count {
-      color: #777;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      margin-top: 25px;
-    }
-
-    .chart-grid {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 22px;
-      padding: 15px 0 70px;
-    }
-
-    .chart-card {
-      min-width: 0;
-      background: #151515;
-      border: 1px solid #292929;
-      transition: transform .25s, border-color .25s;
-    }
-
-    .chart-card:hover {
-      transform: translateY(-5px);
-      border-color: #e50909;
-    }
-
-    .artwork {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 1;
-      overflow: hidden;
-      background: #202026;
-    }
-
-    .artwork img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-    }
-
-    .position {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      min-width: 43px;
-      padding: 9px;
-      background: #e50909;
-      color: #fff;
-      font-size: 14px;
-      font-weight: 900;
-      text-align: center;
-    }
-
-    .placeholder {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #24242a, #111114);
-    }
-
-    .placeholder span {
-      color: #aaa;
-      font-size: 10px;
-      letter-spacing: 4px;
-    }
-
-    .placeholder strong {
-      color: #e50909;
-      font-size: 30px;
-    }
-
-    .song-info {
-      padding: 18px;
-    }
-
-    .song-info h2 {
-      color: #fff;
-      font-size: 17px;
-      line-height: 1.4;
-      overflow-wrap: anywhere;
-    }
-
-    .artist {
-      color: #999;
-      font-size: 13px;
-      line-height: 1.6;
-      margin-top: 7px;
-      min-height: 40px;
-      overflow-wrap: anywhere;
-    }
-
-    .watch-link {
-      display: inline-block;
-      margin-top: 17px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #e50909;
-      color: #fff;
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 1px;
-    }
-
-    .watch-link:hover {
-      color: #ff3030;
-    }
-
-    .unavailable {
-      display: inline-block;
-      margin-top: 17px;
-      color: #777;
-      font-size: 10px;
-      letter-spacing: 1px;
-    }
-
-    .message {
-      grid-column: 1 / -1;
-      color: #aaa;
-      font-size: 14px;
-      line-height: 1.8;
-      padding: 30px 0;
-    }
-
-    .chart-bottom {
-      border-top: 1px solid #292929;
-      padding: 25px 0 45px;
-      color: #777;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-    }
-
-    .back-home {
-      display: inline-block;
-      margin-top: 20px;
-      color: #fff;
-      font-size: 11px;
-      letter-spacing: 1px;
-    }
-
-    .back-home:hover {
-      color: #e50909;
-    }
-
-    footer {
-      border-top: 1px solid #292929;
-      padding: 28px 5%;
-      color: #777;
-      font-size: 11px;
-      text-align: center;
-    }
-
-    @media(max-width: 1100px) {
-      .chart-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .nav {
-        gap: 17px;
-      }
-    }
-
-    @media(max-width: 750px) {
-      .header {
-        min-height: 80px;
-        position: relative;
-      }
-
-      .logo img {
-        width: 105px;
-      }
-
-      .menu {
-        display: block;
-      }
-
-      .listen-live {
-        display: none;
-      }
-
-      .nav {
-        display: none;
-        position: absolute;
-        z-index: 10;
-        top: 79px;
-        left: 0;
-        right: 0;
-        padding: 25px 5%;
-        background: #111;
-        border-bottom: 1px solid #333;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav.open {
-        display: flex;
-      }
-
-      .chart-hero {
-        padding-top: 45px;
-      }
-
-      .chart-title {
-        letter-spacing: -2px;
-      }
-    }
-
-    @media(max-width: 600px) {
-      .container {
-        width: 92%;
-      }
-
-      .chart-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .song-info {
-        padding: 12px;
-      }
-
-      .song-info h2 {
-        font-size: 14px;
-      }
-
-      .artist {
-        font-size: 11px;
-      }
-
-      .chart-description {
-        font-size: 13px;
-      }
-    }
+    @media(prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
   </style>
 </head>
-
 <body>
-
-  <header class="header">
-
+  <header class="site-header">
     <a href="/" class="logo" aria-label="KIZAZI RADIO Homepage">
-      <img
-        src="/assets/kizazi-radio-official-logo.png"
-        alt="KIZAZI RADIO">
+      <img src="/assets/kizazi-radio-official-logo.png" alt="KIZAZI RADIO">
     </a>
-
-    <button class="menu"
-            type="button"
-            aria-label="Open navigation"
-            aria-expanded="false">☰</button>
-
-    <nav class="nav">
+    <button class="menu" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Main navigation">
       <a href="/#listen">Listen Live</a>
       <a href="/#schedule">Schedule</a>
-      <a href="/#shows">Shows</a>
+      <a href="/shows/">Shows</a>
       <a href="/#podcasts">Podcasts</a>
       <a href="/news/">News</a>
-      <a href="/top15/" class="active">TOP 15</a>
-      <a href="/#about">About</a>
+      <a href="/top15/" class="active" aria-current="page">TOP 15</a>
+      <a href="/about/">About</a>
     </nav>
-
-    <a href="/#listen" class="listen-live">
-      <span>●</span> LISTEN LIVE ↗
-    </a>
-
+    <a href="/#listen" class="listen-live"><span class="live-dot"></span>LISTEN LIVE ↗</a>
   </header>
 
   <main>
-
     <section class="chart-hero">
-      <div class="container">
-
-        <p class="eyebrow">THE OFFICIAL MUSIC COUNTDOWN</p>
-
-        <h1 class="chart-title">
-          TOP 15 <span>MUSIC CHART.</span>
-        </h1>
-
-        <p class="chart-description">
-          Discover the songs making waves on KIZAZI RADIO.
-          One chart. All genres. Fifteen positions.
-        </p>
-
-        <p class="chart-count" id="chartCount">
-          LOADING OFFICIAL CHART...
-        </p>
-
+      <div class="container hero-inner">
+        <p class="hero-kicker">04 / THE OFFICIAL COUNTDOWN</p>
+        <p class="eyebrow">MUSIC. CULTURE. WHAT'S MOVING.</p>
+        <h1 class="chart-title">THE KIZAZI <span>TOP 15.</span></h1>
+        <div class="hero-bottom">
+          <p class="chart-description">Fifteen tracks. All genres. One chart. Discover the songs moving the culture and shaping the sound of a new generation on KIZAZI RADIO.</p>
+          <p class="chart-count" id="chartCount">LOADING OFFICIAL CHART...</p>
+        </div>
       </div>
     </section>
 
-    <section class="container">
+    <section class="container section" aria-labelledby="numberOneHeading">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">THE CHART LEADER</p>
+          <h2 class="section-title" id="numberOneHeading">NUMBER <span>ONE.</span></h2>
+        </div>
+        <p class="section-note">The track currently holding the top spot<br>on the KIZAZI RADIO countdown.</p>
+      </div>
+      <div id="featuredSong" class="featured">
+        <div class="featured-art"><div class="featured-placeholder"><span>KIZAZI RADIO</span><strong>TOP 15</strong></div></div>
+        <div class="featured-info"><p class="featured-tag">#1 — CURRENT CHART LEADER</p><h3>Loading the number one track...</h3><p class="featured-artist">Please wait while we load the official chart.</p><div class="featured-meta">THE OFFICIAL KIZAZI COUNTDOWN</div></div>
+      </div>
+    </section>
 
-      <div class="chart-grid" id="fullChart">
+    <section class="container ranking-section section" aria-labelledby="rankingHeading">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">THE FULL COUNTDOWN</p>
+          <h2 class="section-title" id="rankingHeading">THE TOP <span>15.</span></h2>
+        </div>
+        <p class="section-note">Every position. Every sound.<br>Explore this week's chart.</p>
+      </div>
+      <div class="ranking-list" id="fullChart">
         <p class="message">Loading TOP 15 Music Chart...</p>
       </div>
-
       <div class="chart-bottom">
-        THE OFFICIAL KIZAZI RADIO TOP 15
-        <br>
+        <span>THE OFFICIAL KIZAZI RADIO TOP 15</span>
         <a href="/" class="back-home">← BACK TO HOMEPAGE</a>
       </div>
-
     </section>
-
   </main>
 
-  <footer>
-    © <span id="year"></span> KIZAZI RADIO. ALL RIGHTS RESERVED.
-  </footer>
+  <footer>© <span id="year"></span> KIZAZI RADIO. ALL RIGHTS RESERVED.</footer>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-
       const grid = document.getElementById("fullChart");
+      const featured = document.getElementById("featuredSong");
       const count = document.getElementById("chartCount");
       const menu = document.querySelector(".menu");
       const nav = document.querySelector(".nav");
 
-      document.getElementById("year").textContent =
-        new Date().getFullYear();
+      document.getElementById("year").textContent = new Date().getFullYear();
 
       if (menu && nav) {
         menu.addEventListener("click", () => {
           const open = nav.classList.toggle("open");
           menu.setAttribute("aria-expanded", String(open));
+          menu.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
           menu.textContent = open ? "×" : "☰";
         });
-
-        nav.querySelectorAll("a").forEach(link => {
-          link.addEventListener("click", () => {
-            nav.classList.remove("open");
-            menu.setAttribute("aria-expanded", "false");
-            menu.textContent = "☰";
-          });
-        });
+        nav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+          nav.classList.remove("open");
+          menu.setAttribute("aria-expanded", "false");
+          menu.setAttribute("aria-label", "Open navigation");
+          menu.textContent = "☰";
+        }));
       }
 
-      const escapeHTML = value =>
-        String(value ?? "").replace(/[&<>"']/g, character => ({
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#39;"
-        })[character]);
+      const escapeHTML = value => String(value ?? "").replace(/[&<>"']/g, character => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      })[character]);
 
       const safeImageURL = value => {
         if (!value) return "";
-
         try {
           const url = new URL(value, window.location.origin);
-
-          return ["https:", "http:"].includes(url.protocol)
-            ? url.href
-            : "";
-        } catch {
-          return "";
-        }
+          return ["https:", "http:"].includes(url.protocol) ? url.href : "";
+        } catch { return ""; }
       };
 
       const safeYouTubeURL = value => {
         if (!value) return "";
-
         try {
           const url = new URL(value);
-          const hosts = [
-            "youtube.com",
-            "www.youtube.com",
-            "youtu.be",
-            "m.youtube.com"
-          ];
-
-          return hosts.includes(url.hostname) &&
-            ["https:", "http:"].includes(url.protocol)
-            ? url.href
-            : "";
-        } catch {
-          return "";
-        }
+          const hosts = ["youtube.com", "www.youtube.com", "youtu.be", "m.youtube.com"];
+          return hosts.includes(url.hostname) && ["https:", "http:"].includes(url.protocol) ? url.href : "";
+        } catch { return ""; }
       };
 
-      const displayChart = songs => {
-        if (!Array.isArray(songs) || songs.length === 0) {
-          grid.innerHTML = `
-            <p class="message">
-              The TOP 15 Music Chart is coming soon.
-              Check back for the latest music countdown.
-            </p>
-          `;
+      const artworkMarkup = (song, className) => {
+        const artwork = safeImageURL(song.artwork_url);
+        return artwork
+          ? `<img class="${className}" src="${escapeHTML(artwork)}" alt="${escapeHTML(song.song_title)} artwork" loading="lazy">`
+          : `<div class="${className === "featured-image" ? "featured-placeholder" : "rank-art-placeholder"}"><span>KIZAZI</span><strong>${className === "featured-image" ? "TOP 15" : "MUSIC"}</strong></div>`;
+      };
 
+      const renderFeatured = song => {
+        const artwork = safeImageURL(song.artwork_url);
+        const youtube = safeYouTubeURL(song.youtube_url);
+        featured.innerHTML = `
+          <div class="featured-art">
+            ${artwork ? `<img src="${escapeHTML(artwork)}" alt="${escapeHTML(song.song_title)} artwork" loading="eager">` : `<div class="featured-placeholder"><span>KIZAZI RADIO</span><strong>TOP 15</strong></div>`}
+            <span class="featured-rank">#01</span>
+          </div>
+          <div class="featured-info">
+            <p class="featured-tag">#1 — CURRENT CHART LEADER</p>
+            <h3>${escapeHTML(song.song_title)}</h3>
+            <p class="featured-artist">${escapeHTML(song.artist_name)}</p>
+            <div class="featured-meta">THE OFFICIAL KIZAZI COUNTDOWN</div>
+            ${youtube ? `<a class="watch-featured" href="${escapeHTML(youtube)}" target="_blank" rel="noopener noreferrer"><span>▶</span> WATCH TRACK ON YOUTUBE ↗</a>` : `<span class="watch-featured disabled">VIDEO UNAVAILABLE</span>`}
+          </div>`;
+      };
+
+      const renderRanking = songs => {
+        if (!Array.isArray(songs) || songs.length === 0) {
+          grid.innerHTML = `<p class="message">The TOP 15 Music Chart is coming soon. Check back for the latest music countdown.</p>`;
+          featured.innerHTML = `<div class="featured-art"><div class="featured-placeholder"><span>KIZAZI RADIO</span><strong>TOP 15</strong></div></div><div class="featured-info"><p class="featured-tag">OFFICIAL MUSIC COUNTDOWN</p><h3>Chart coming soon.</h3><p class="featured-artist">There are no active tracks to display right now.</p></div>`;
           count.textContent = "NO ACTIVE SONGS AVAILABLE";
           return;
         }
@@ -533,105 +287,48 @@
           .sort((a, b) => Number(a.position) - Number(b.position))
           .slice(0, 15);
 
-        count.textContent =
-          `${sorted.length} SONG${sorted.length === 1 ? "" : "S"} · 15 POSITIONS`;
+        count.textContent = `${sorted.length} TRACK${sorted.length === 1 ? "" : "S"} · ${15 - sorted.length} POSITION${15 - sorted.length === 1 ? "" : "S"} OPEN`;
+        renderFeatured(sorted[0]);
 
-        grid.innerHTML = sorted.map(song => {
-          const artwork = safeImageURL(song.artwork_url);
+        const remaining = sorted.slice(1);
+        grid.innerHTML = remaining.length ? remaining.map(song => {
           const youtube = safeYouTubeURL(song.youtube_url);
-
+          const artwork = safeImageURL(song.artwork_url);
           return `
-            <article class="chart-card">
-
-              <div class="artwork">
-
-                ${
-                  artwork
-                    ? `<img
-                         src="${escapeHTML(artwork)}"
-                         alt="${escapeHTML(song.song_title)} artwork"
-                         loading="lazy">`
-                    : `<div class="placeholder">
-                         <span>KIZAZI</span>
-                         <strong>MUSIC</strong>
-                       </div>`
-                }
-
-                <span class="position">
-                  #${escapeHTML(song.position)}
-                </span>
-
+            <article class="ranking-card">
+              <div class="rank-number"><small>RANK</small>${String(Number(song.position)).padStart(2,"0")}</div>
+              <div class="rank-art">${artwork ? `<img src="${escapeHTML(artwork)}" alt="${escapeHTML(song.song_title)} artwork" loading="lazy">` : `<div class="rank-art-placeholder">MUSIC</div>`}</div>
+              <div class="rank-info">
+                <h3>${escapeHTML(song.song_title)}</h3>
+                <p>${escapeHTML(song.artist_name)}</p>
+                <span class="rank-badge">KIZAZI TOP 15</span>
               </div>
-
-              <div class="song-info">
-
-                <h2>${escapeHTML(song.song_title)}</h2>
-
-                <p class="artist">
-                  ${escapeHTML(song.artist_name)}
-                </p>
-
-                ${
-                  youtube
-                    ? `<a
-                         class="watch-link"
-                         href="${escapeHTML(youtube)}"
-                         target="_blank"
-                         rel="noopener noreferrer">
-                         WATCH ON YOUTUBE ↗
-                       </a>`
-                    : `<span class="unavailable">
-                         VIDEO UNAVAILABLE
-                       </span>`
-                }
-
-              </div>
-
-            </article>
-          `;
-        }).join("");
+              ${youtube ? `<a class="rank-watch" href="${escapeHTML(youtube)}" target="_blank" rel="noopener noreferrer">WATCH ↗</a>` : `<span class="rank-watch disabled">NO VIDEO</span>`}
+            </article>`;
+        }).join("") : `<p class="message">The number one track is currently the only active entry in the chart.</p>`;
       };
 
       const loadChart = async () => {
         try {
           const response = await fetch("/api/music-chart", {
             method: "GET",
-            headers: {
-              "Accept": "application/json"
-            },
+            headers: { "Accept": "application/json" },
             cache: "no-store"
           });
-
-          if (!response.ok) {
-            throw new Error("Chart could not be loaded.");
-          }
-
+          if (!response.ok) throw new Error("Chart could not be loaded.");
           const data = await response.json();
-
-          if (!data.success || !Array.isArray(data.chart)) {
-            throw new Error("Invalid chart response.");
-          }
-
-          displayChart(data.chart);
-
+          if (!data.success || !Array.isArray(data.chart)) throw new Error("Invalid chart response.");
+          renderRanking(data.chart);
         } catch (error) {
           console.error("KIZAZI RADIO Chart Error:", error);
-
-          grid.innerHTML = `
-            <p class="message">
-              We're unable to load the music chart right now.
-              Please check again later.
-            </p>
-          `;
-
+          grid.innerHTML = `<p class="message">We're unable to load the music chart right now. Please check again later.</p>`;
+          featured.innerHTML = `<div class="featured-art"><div class="featured-placeholder"><span>KIZAZI RADIO</span><strong>TOP 15</strong></div></div><div class="featured-info"><p class="featured-tag">OFFICIAL MUSIC COUNTDOWN</p><h3>Chart temporarily unavailable.</h3><p class="featured-artist">Please refresh the page or try again later.</p></div>`;
           count.textContent = "CHART TEMPORARILY UNAVAILABLE";
         }
       };
 
       loadChart();
-
     });
   </script>
-
 </body>
 </html>
