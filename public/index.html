@@ -1376,6 +1376,12 @@ img{max-width:100%}
   overflow:hidden;
 }
 
+/* Solo-host artwork for the Maybe I Don't Know homepage card */
+.show-portraits.single-host .show-portrait{
+  flex:1 1 100%;
+  width:100%;
+}
+
 .show-portrait img{
   width:100%;
   height:100%;
@@ -3795,16 +3801,7 @@ img{max-width:100%}
           <div class="schedule-time">KIZAZI ORIGINAL</div>
           <div>
             <strong>Maybe I Don't Know</strong>
-            <small>Real conversations with Terry &amp; Lucy.</small>
-          </div>
-          <div class="schedule-status">PODCAST ↗</div>
-        </a>
-
-        <a class="schedule-row" data-index="03" href="/shuganalucy/" aria-label="Explore ShugaNaLucy podcast">
-          <div class="schedule-time">KIZAZI ORIGINAL</div>
-          <div>
-            <strong>ShugaNaLucy</strong>
-            <small>Health, life and honest conversations with Lucy.</small>
+            <small>Honest conversations with King Mfumu.</small>
           </div>
           <div class="schedule-status">PODCAST ↗</div>
         </a>
@@ -3841,16 +3838,12 @@ img{max-width:100%}
 
           <h3>MAYBE<br><em>I DON'T</em><br>KNOW <span>?</span></h3>
 
-          <span class="show-host">WITH TERRY &amp; LUCY</span>
+          <span class="show-host">WITH KING MFUMU</span>
 
-          <div class="show-portraits" aria-label="Podcast hosts Terry and Lucy">
+          <div class="show-portraits single-host" aria-label="King Mfumu, host of Maybe I Don't Know">
             <figure class="show-portrait">
-              <img src="/assets/terry-mfumu.jpg" alt="Terry, co-host of Maybe I Don't Know" loading="lazy">
-              <figcaption>Terry</figcaption>
-            </figure>
-            <figure class="show-portrait">
-              <img src="/assets/lucy-johnbosco.jpg" alt="Lucy, co-host of Maybe I Don't Know" loading="lazy">
-              <figcaption>Lucy</figcaption>
+              <img src="/assets/king-mfumu-presenter.png" alt="King Mfumu, host of Maybe I Don't Know" loading="lazy">
+              <figcaption>King Mfumu</figcaption>
             </figure>
           </div>
         </div>
@@ -3860,35 +3853,6 @@ img{max-width:100%}
             <h3>Maybe I Don't Know</h3>
             <p>
               Honest conversations, different perspectives and questions worth asking.
-            </p>
-          </div>
-          <span class="round-arrow">↗</span>
-        </div>
-
-      </a>
-
-      <a class="show-card" href="/shuganalucy/" aria-label="Open ShugaNaLucy podcast page">
-
-        <div class="show-art shuga">
-          <span class="show-label">KIZAZI ORIGINAL / PODCAST</span>
-
-          <h3>SHUGA <span>NA</span><br>LUCY.</h3>
-
-          <span class="show-host">WITH LUCY</span>
-
-          <div class="show-portraits" aria-label="Podcast host Lucy">
-            <figure class="show-portrait">
-              <img src="/assets/lucy-johnbosco.jpg" alt="Lucy, host of ShugaNaLucy" loading="lazy">
-              <figcaption>Lucy</figcaption>
-            </figure>
-          </div>
-        </div>
-
-        <div class="show-description">
-          <div>
-            <h3>ShugaNaLucy</h3>
-            <p>
-              Everyday stories, lifestyle and conversations with Lucy.
             </p>
           </div>
           <span class="round-arrow">↗</span>
@@ -5814,7 +5778,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
-
 
 
 
