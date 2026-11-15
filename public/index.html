@@ -4069,32 +4069,30 @@ img{max-width:100%}
 .experience-arrow{width:32px;height:32px;display:grid;place-items:center;border:1px solid #42424a;border-radius:50%;color:var(--red);transition:background .2s,border-color .2s}
 .experience-item:hover .experience-arrow{background:var(--red);border-color:var(--red);color:#fff}
 .connected-section{position:relative;overflow:hidden;padding:95px 0 105px;background:#131317;border-top:1px solid #29292f;border-bottom:1px solid #29292f}
-.connected-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
-.connected-visual{min-height:360px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(ellipse at center,rgba(255,255,255,.055),transparent 65%)}
-.connected-orbit{position:absolute;width:300px;height:300px;border:1px solid rgba(255,255,255,.09);border-radius:50%;transform:scale(.88);animation:connectedOrbitPulse 8s ease-in-out infinite}
-.orbit-two{width:390px;height:390px;border-style:dashed;opacity:.45;animation-delay:-4s}
-@keyframes connectedOrbitPulse{0%,100%{transform:scale(.88);opacity:.28}50%{transform:scale(1.09);opacity:.72}}
-.connected-device{position:absolute;filter:drop-shadow(0 25px 30px rgba(0,0,0,.5))}
-.laptop-device{width:280px;left:8%;top:78px}
-.laptop-screen{height:190px;padding:13px 16px;border:7px solid #34343b;border-bottom-width:11px;border-radius:10px 10px 4px 4px;background:linear-gradient(145deg,#19191e,#08080b);position:relative;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.035),inset 0 18px 35px rgba(255,255,255,.018)}
-.laptop-screen:after{content:"";position:absolute;inset:0;background:linear-gradient(118deg,rgba(255,255,255,.075),transparent 25%,transparent 70%,rgba(255,255,255,.025));pointer-events:none}
-.device-topline{display:flex;gap:5px}.device-topline span{width:5px;height:5px;border-radius:50%;background:#555}.device-topline span:first-child{background:var(--red)}
-.device-equalizer{height:38px;display:flex;justify-content:center;align-items:center;gap:4px;margin-top:9px}
-.device-equalizer i{width:4px;height:12px;background:var(--red);border-radius:3px;box-shadow:0 0 9px rgba(229,9,9,.35);animation:deviceSoundPlay .85s ease-in-out infinite alternate;transform-origin:center}
-.device-equalizer i:nth-child(2n){animation-duration:.62s}.device-equalizer i:nth-child(3n){animation-duration:1.05s}.device-equalizer i:nth-child(4n){animation-delay:-.35s}.device-equalizer i:nth-child(5n){animation-delay:-.6s}
-@keyframes deviceSoundPlay{0%{height:5px;opacity:.62}100%{height:30px;opacity:1}}
-.device-live{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:9px;color:#aaa;font-size:7px;font-weight:900;letter-spacing:1.5px}
-.device-live b,.phone-live i{width:6px;height:6px;border-radius:50%;background:var(--red);display:inline-block}
-.laptop-base{width:305px;height:13px;margin-left:-12px;background:linear-gradient(90deg,#24242a,#77777e 48%,#303037);clip-path:polygon(4% 0,96% 0,100% 78%,0 78%);border-radius:0 0 8px 8px;box-shadow:0 7px 12px rgba(0,0,0,.35)}
-.phone-device{z-index:3;width:118px;height:225px;right:8%;bottom:45px;padding:7px;border:3px solid #666;border-right-color:#333;border-bottom-color:#333;border-radius:22px;background:linear-gradient(115deg,#777 0%,#161619 9%,#08080b 85%);transform:rotate(8deg);box-shadow:inset 1px 0 2px rgba(255,255,255,.2),0 22px 34px rgba(0,0,0,.48)}
-.phone-speaker{position:absolute;z-index:2;top:9px;left:43px;width:27px;height:4px;border-radius:4px;background:#555}
-.phone-screen{height:100%;padding:30px 9px 10px;border-radius:14px;display:flex;flex-direction:column;align-items:center;background:linear-gradient(145deg,rgba(255,255,255,.045),transparent 30%),radial-gradient(circle at 50% 38%,rgba(229,9,9,.2),transparent 48%),#151519;box-shadow:inset 0 0 0 1px rgba(255,255,255,.035)}
-.phone-live{display:flex;align-items:center;gap:5px;color:#ccc;font-size:7px;font-weight:900;letter-spacing:1px}
-.phone-play{width:43px;height:43px;display:grid;place-items:center;margin:22px 0 12px;border-radius:50%;background:var(--red);font-size:14px;padding-left:3px}
-.phone-screen strong{font-size:13px;line-height:.9;text-align:center;letter-spacing:-.6px}
-.phone-screen small{margin-top:8px;color:#888;font-size:5px;line-height:1.5;text-align:center;letter-spacing:.7px}
-.phone-progress{width:75%;height:3px;margin-top:13px;background:#444}.phone-progress i{display:block;width:48%;height:100%;background:var(--red)}
-.connected-stamp{position:absolute;left:7%;bottom:23px;z-index:4;width:82px;height:82px;display:grid;place-content:center;text-align:center;border-radius:50%;background:var(--red);color:#fff;font-size:9px;font-weight:1000;line-height:1.15;letter-spacing:.8px;transform:rotate(-10deg);box-shadow:5px 5px 0 #fff}
+.connected-layout{display:grid;grid-template-columns:1fr 1fr;gap:76px;align-items:center}
+.connected-visual{min-height:410px;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at center,rgba(229,9,9,.12),transparent 48%)}
+.frequency-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:42px 42px;mask-image:radial-gradient(ellipse at center,#000 10%,transparent 72%);opacity:.55}
+.frequency-ring{position:absolute;border:1px solid rgba(255,255,255,.11);border-radius:50%;aspect-ratio:1;animation:frequencyBreathe 9s ease-in-out infinite}
+.frequency-ring.ring-a{width:230px}
+.frequency-ring.ring-b{width:330px;border-style:dashed;opacity:.6;animation-delay:-3s}
+.frequency-ring.ring-c{width:410px;opacity:.3;animation-delay:-6s}
+@keyframes frequencyBreathe{0%,100%{transform:scale(.9);opacity:.22}50%{transform:scale(1.08);opacity:.75}}
+.frequency-core{position:relative;z-index:2;width:174px;height:174px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 25%,#303036,#101014 62%);border:1px solid #55555d;box-shadow:0 0 0 10px rgba(255,255,255,.025),0 0 65px rgba(229,9,9,.16),inset 0 0 28px rgba(0,0,0,.8)}
+.frequency-core:before{content:"";position:absolute;inset:9px;border:1px solid rgba(229,9,9,.38);border-radius:50%}
+.frequency-core .core-live{font-size:8px;font-weight:950;letter-spacing:2px;color:#c6c6cc;display:flex;align-items:center;gap:7px}
+.core-live i{width:6px;height:6px;border-radius:50%;background:var(--red);box-shadow:0 0 12px var(--red)}
+.core-name{margin-top:13px;font-size:19px;font-weight:1000;letter-spacing:-.8px;line-height:.95;text-align:center}
+.core-name span{color:var(--red)}
+.frequency-wave{position:absolute;z-index:3;left:7%;right:7%;top:50%;height:70px;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;gap:5px;pointer-events:none}
+.frequency-wave i{display:block;width:3px;height:12px;border-radius:4px;background:var(--red);box-shadow:0 0 10px rgba(229,9,9,.4);animation:frequencyWave .9s ease-in-out infinite alternate}
+.frequency-wave i:nth-child(3n){animation-duration:.65s}.frequency-wave i:nth-child(4n){animation-delay:-.45s}.frequency-wave i:nth-child(5n){animation-delay:-.7s}
+@keyframes frequencyWave{from{height:5px;opacity:.45}to{height:58px;opacity:1}}
+.frequency-label{position:absolute;z-index:4;display:flex;align-items:center;gap:9px;color:#a6a6ae;font-size:8px;font-weight:950;letter-spacing:2px}
+.frequency-label:before{content:"";width:22px;height:2px;background:var(--red)}
+.frequency-label.label-top{top:32px;left:7%}
+.frequency-label.label-bottom{bottom:30px;right:7%;font-size:7px;letter-spacing:1.5px}
+.frequency-label.label-bottom:before{width:7px;height:7px;border-radius:50%;box-shadow:0 0 0 5px rgba(229,9,9,.12)}
+.connected-stamp{position:absolute;z-index:5;left:10%;bottom:75px;width:76px;height:76px;display:grid;place-content:center;text-align:center;border-radius:50%;background:var(--red);color:#fff;font-size:8px;font-weight:1000;line-height:1.2;letter-spacing:.8px;transform:rotate(-10deg);box-shadow:4px 5px 0 #f4f4f4}
 .connected-copy .eyebrow{margin-bottom:18px}
 .connected-title{margin:0;font-size:clamp(42px,5.2vw,68px);line-height:.91;letter-spacing:-.075em;font-weight:1000}
 .connected-title em{color:var(--red);font-style:normal}
@@ -4103,12 +4101,10 @@ img{max-width:100%}
 .connected-actions .primary-button{box-shadow:none}
 .connected-note{display:inline-flex;align-items:center;gap:8px;color:#8c8c95;font-size:8px;font-weight:900;letter-spacing:1.3px}
 .connected-note i{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(229,9,9,.12)}
-@media(max-width:900px){.experience-heading{gap:28px}.connected-layout{gap:35px}.laptop-device{left:2%;transform:scale(.9);transform-origin:left center}.phone-device{right:3%}}
+@media(max-width:900px){.connected-layout{gap:35px}.frequency-ring.ring-c{width:350px}}
 @media(max-width:700px){
-.experience-section{padding:72px 0 78px}.experience-heading{grid-template-columns:1fr;gap:20px;margin-bottom:28px}.experience-title{font-size:clamp(52px,13vw,76px)}.experience-intro{font-size:12px;max-width:500px}
-.experience-stage{grid-template-columns:1fr}.experience-signal{min-height:235px}.signal-word{font-size:58px}.experience-list{padding:8px 18px}.experience-item{min-height:69px;grid-template-columns:28px 1fr 32px}.experience-item-copy strong{font-size:12px}.experience-item-copy small{font-size:9px}
-.connected-section{padding:70px 0 78px}.connected-layout{grid-template-columns:1fr;gap:22px}.connected-visual{min-height:300px;order:2}.connected-copy{order:1}.connected-title{font-size:clamp(42px,11vw,62px)}.connected-copy>p:not(.eyebrow){font-size:12px}
-.laptop-device{left:7%;top:64px;transform:scale(.82);transform-origin:left top}.phone-device{right:8%;bottom:25px;transform:scale(.9) rotate(8deg);transform-origin:right bottom}.connected-stamp{left:4%;bottom:12px;width:70px;height:70px;font-size:8px}
+.connected-section{padding:70px 0 78px}.connected-layout{grid-template-columns:1fr;gap:24px}.connected-visual{min-height:320px;order:2}.connected-copy{order:1}.connected-title{font-size:clamp(42px,11vw,62px)}.connected-copy>p:not(.eyebrow){font-size:12px}
+.frequency-ring.ring-a{width:180px}.frequency-ring.ring-b{width:255px}.frequency-ring.ring-c{width:310px}.frequency-core{width:142px;height:142px}.core-name{font-size:16px}.frequency-wave{left:3%;right:3%;gap:4px}.frequency-wave i{width:2px}.frequency-label.label-top{top:20px;left:4%}.frequency-label.label-bottom{bottom:18px;right:4%}.connected-stamp{left:6%;bottom:54px;width:66px;height:66px;font-size:7px}
 }
 @media(prefers-reduced-motion:reduce){.experience-item,.experience-arrow{transition:none}.connected-orbit,.device-equalizer i{animation:none}}
 
@@ -4505,29 +4501,22 @@ img{max-width:100%}
 <section class="connected-section" id="connected">
   <div class="wrap connected-layout">
     <div class="connected-visual" aria-hidden="true">
-      <div class="connected-orbit orbit-one"></div>
-      <div class="connected-orbit orbit-two"></div>
-      <div class="connected-device laptop-device">
-        <div class="laptop-screen">
-          <div class="device-topline"><span></span><span></span><span></span></div>
-          <div class="device-equalizer">
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-          </div>
-          <div class="device-live"><b></b> LIVE RADIO</div>
-        </div>
-        <div class="laptop-base"></div>
+      <div class="frequency-grid"></div>
+      <div class="frequency-ring ring-a"></div>
+      <div class="frequency-ring ring-b"></div>
+      <div class="frequency-ring ring-c"></div>
+      <div class="frequency-core">
+        <span class="core-live"><i></i> LIVE WORLDWIDE</span>
+        <div class="core-name">KIZAZI<br><span>RADIO</span></div>
       </div>
-      <div class="connected-device phone-device">
-        <div class="phone-speaker"></div>
-        <div class="phone-screen">
-          <span class="phone-live"><i></i> ON AIR</span>
-          <div class="phone-play">▶</div>
-          <strong>KIZAZI<br>RADIO</strong>
-          <small>NEW GENERATION.<br>NEW SOUND.</small>
-          <div class="phone-progress"><i></i></div>
-        </div>
+      <div class="frequency-wave">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
       </div>
+      <span class="frequency-label label-top">ONE SIGNAL. EVERYWHERE.</span>
+      <span class="frequency-label label-bottom">YOUR WORLD. YOUR FREQUENCY.</span>
       <span class="connected-stamp">YOUR<br>RADIO.<br>ANYWHERE.</span>
     </div>
 
