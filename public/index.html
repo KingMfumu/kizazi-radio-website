@@ -2187,6 +2187,354 @@ img{max-width:100%}
 }
 @media(prefers-reduced-motion:reduce){.sound-bars i{animation:none}}
 
+
+
+/* =========================================================
+   KIZAZI LIVE — GEN Z FREQUENCY TAKEOVER / V2
+   Visual re-composition only. Caster.fm embed is untouched.
+   ========================================================= */
+.live-section{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  padding:clamp(74px,9vw,128px) 0 clamp(78px,9vw,118px);
+  background:
+    radial-gradient(ellipse at 5% 48%,rgba(255,25,38,.17),transparent 31%),
+    radial-gradient(ellipse at 95% 12%,rgba(255,25,38,.10),transparent 28%),
+    #070708;
+}
+.live-section:before{
+  content:"FREQUENCY 001";
+  position:absolute;
+  z-index:-1;
+  top:110px;
+  right:-55px;
+  transform:rotate(90deg);
+  transform-origin:center;
+  color:rgba(255,255,255,.035);
+  font:900 12px "DM Sans",Arial,sans-serif;
+  letter-spacing:8px;
+}
+.live-section .section-heading{margin-bottom:36px}
+.live-section .section-number{
+  color:#ff3440;
+  font-size:11px;
+  letter-spacing:2px;
+  font-weight:1000;
+}
+.live-section .section-number:after{
+  content:" / 24—7 SOUND";
+  border:0;
+  padding:0;
+  margin-left:7px;
+  background:none;
+  color:#777780;
+  font-size:9px;
+}
+.live-section .eyebrow{
+  margin:14px 0 13px;
+  color:#c9c9ce;
+  letter-spacing:3px;
+  font-size:10px;
+}
+.live-section .eyebrow:before{background:#ff2632}
+.live-section .section-title{
+  font-family:"Barlow Condensed",Impact,sans-serif;
+  font-size:clamp(58px,9vw,116px);
+  line-height:.78;
+  letter-spacing:-.045em;
+  font-weight:1000;
+}
+.live-section .section-title em{
+  color:#ff1725;
+  font-style:normal;
+  text-shadow:0 0 34px rgba(255,23,37,.16);
+}
+.live-card{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1.12fr) minmax(390px,.88fr);
+  gap:0;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.17);
+  border-radius:3px;
+  background:#0d0d10;
+  box-shadow:0 35px 100px rgba(0,0,0,.55),0 0 90px rgba(255,18,31,.08);
+}
+.live-card:after{
+  content:"";
+  position:absolute;
+  pointer-events:none;
+  inset:0;
+  border:1px solid rgba(255,255,255,.045);
+  z-index:5;
+}
+.live-visual{
+  min-height:590px;
+  padding:clamp(30px,4.5vw,66px);
+  justify-content:flex-start;
+  background:
+    linear-gradient(110deg,rgba(8,8,10,.96) 0%,rgba(12,12,15,.88) 48%,rgba(18,8,11,.72) 100%),
+    radial-gradient(circle at 80% 44%,rgba(255,19,31,.42),transparent 38%),
+    #111115;
+}
+.live-visual:before{
+  content:"ON";
+  position:absolute;
+  z-index:-1;
+  right:-18px;
+  bottom:-110px;
+  color:rgba(255,255,255,.045);
+  font-family:"Barlow Condensed",Impact,sans-serif;
+  font-size:clamp(300px,38vw,560px);
+  font-weight:1000;
+  line-height:.8;
+  letter-spacing:-.09em;
+  transform:skewX(-8deg);
+}
+.live-visual:after{
+  width:430px;
+  height:430px;
+  right:-160px;
+  top:70px;
+  border:1px solid rgba(255,255,255,.11);
+  box-shadow:0 0 0 22px rgba(255,255,255,.025),
+             0 0 0 48px rgba(255,255,255,.018),
+             0 0 100px rgba(255,18,31,.18);
+}
+.live-label{
+  align-self:flex-start;
+  padding:10px 14px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:2px;
+  background:rgba(0,0,0,.35);
+  font-size:9px;
+  letter-spacing:2px;
+}
+.live-label .live-dot{
+  width:8px;height:8px;
+  box-shadow:0 0 0 5px rgba(255,38,50,.13),0 0 15px #ff2632;
+}
+.sound-bars{
+  top:48px;
+  right:clamp(28px,4vw,58px);
+  height:52px;
+  gap:5px;
+}
+.sound-bars i{
+  width:4px;
+  height:14px;
+  border-radius:0;
+  background:#ff2632;
+  box-shadow:0 0 14px rgba(255,38,50,.7);
+  animation:freqPulse .68s ease-in-out infinite alternate;
+}
+.sound-bars i:nth-child(3n){animation-delay:.13s}
+.sound-bars i:nth-child(4n){animation-delay:.27s}
+@keyframes freqPulse{
+  from{transform:scaleY(.35);opacity:.55}
+  to{transform:scaleY(2.8);opacity:1}
+}
+.live-kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:clamp(55px,7vw,92px);
+  color:#a6a6af;
+  font-size:9px;
+  font-weight:1000;
+  letter-spacing:2.6px;
+}
+.live-kicker span{
+  color:#ff2632;
+  font-size:19px;
+  animation:spinMark 8s linear infinite;
+}
+@keyframes spinMark{to{transform:rotate(360deg)}}
+.live-visual h3{
+  position:relative;
+  z-index:2;
+  max-width:700px;
+  margin:19px 0 22px;
+  font-family:"Barlow Condensed",Impact,sans-serif;
+  font-size:clamp(72px,8vw,118px);
+  font-weight:1000;
+  line-height:.76;
+  letter-spacing:-.045em;
+  text-transform:uppercase;
+  text-shadow:0 8px 35px rgba(0,0,0,.4);
+}
+.live-visual h3 em{
+  color:#ff1725;
+  font-style:normal;
+  text-shadow:0 0 35px rgba(255,18,31,.23);
+}
+.live-visual p{
+  max-width:365px;
+  color:#b9b9c2;
+  font-size:13px;
+  line-height:1.8;
+}
+.live-bottom{
+  position:relative;
+  z-index:2;
+  margin-top:auto;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.16);
+}
+.live-bottom span{
+  color:#bcbcc4;
+  font-size:9px;
+  letter-spacing:2px;
+}
+.live-bottom strong{
+  font-family:"Barlow Condensed",Impact,sans-serif;
+  font-size:42px;
+  line-height:1;
+}
+.player-panel{
+  position:relative;
+  min-width:0;
+  padding:clamp(25px,3.3vw,48px);
+  justify-content:center;
+  background:
+    radial-gradient(ellipse at 100% 15%,rgba(255,27,40,.16),transparent 38%),
+    linear-gradient(155deg,#1a1a20,#101014 70%);
+}
+.player-panel:before{
+  content:"KIZAZI RADIO / LIVE STREAM";
+  position:absolute;
+  top:25px;
+  right:25px;
+  color:rgba(255,255,255,.25);
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:2px;
+  writing-mode:vertical-rl;
+}
+.player-heading{margin-bottom:24px}
+.player-heading small{
+  display:block;
+  color:#ff3541;
+  font-size:9px;
+  font-weight:1000;
+  letter-spacing:2.1px;
+}
+.player-live-mark{
+  display:inline-block;
+  margin-left:9px;
+  color:#9999a3;
+  font-size:8px;
+  letter-spacing:1.1px;
+}
+.player-heading h3{
+  margin-top:13px;
+  font-family:"Barlow Condensed",Impact,sans-serif;
+  font-size:clamp(42px,4.2vw,62px);
+  font-weight:1000;
+  line-height:.82;
+  letter-spacing:-.025em;
+  text-transform:uppercase;
+}
+.player-heading h3 em{color:#ff2632;font-style:normal}
+.caster-player{
+  min-height:290px;
+  padding:10px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:3px;
+  background:#08080a;
+  box-shadow:0 22px 55px rgba(0,0,0,.4),0 0 35px rgba(255,24,36,.09);
+}
+.caster-player .cstrEmbed{
+  position:relative;
+  z-index:2;
+  width:100%;
+  min-width:0;
+}
+.caster-player iframe{
+  display:block;
+  width:100%;
+  max-width:100%;
+  border:0;
+  border-radius:2px;
+}
+.player-note{
+  margin-top:17px;
+  color:#aaaab3;
+  font-size:11px;
+  line-height:1.7;
+}
+.player-note:before{
+  content:"↳";
+  display:inline-block;
+  margin-right:8px;
+  color:#ff2632;
+  font-weight:1000;
+}
+.now-playing{
+  position:relative;
+  min-height:100px;
+  margin-top:14px;
+  padding:17px 24px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:3px;
+  background:linear-gradient(90deg,rgba(255,28,41,.17),rgba(255,255,255,.025) 55%),#101014;
+  overflow:hidden;
+}
+.now-playing:before{
+  content:"NOW IN THE MIX";
+  position:absolute;
+  right:22px;
+  top:50%;
+  transform:translateY(-50%);
+  color:rgba(255,255,255,.045);
+  font:1000 clamp(25px,4vw,48px) "Barlow Condensed",Impact,sans-serif;
+  letter-spacing:1px;
+  pointer-events:none;
+}
+.now-art{
+  width:62px;height:62px;
+  border:1px solid rgba(255,38,50,.5);
+  border-radius:2px;
+  background:linear-gradient(145deg,#481017,#141419);
+  color:#ff3340;
+  box-shadow:0 0 30px rgba(255,24,38,.15);
+}
+.now-details{position:relative;z-index:1}
+.now-details small{color:#ff4852;letter-spacing:2px}
+.now-details strong{font-size:15px;letter-spacing:.2px}
+.now-details strong span{color:#ff2632}
+.now-details p{font-size:9px;letter-spacing:1px;color:#aaaab3}
+
+@media(max-width:900px){
+  .live-card{grid-template-columns:1fr}
+  .live-visual{min-height:520px}
+  .live-visual h3{font-size:clamp(76px,12vw,112px)}
+  .player-panel{padding:34px}
+}
+@media(max-width:600px){
+  .live-section{padding:65px 0}
+  .live-section .section-title{font-size:clamp(54px,13vw,78px)}
+  .live-visual{min-height:455px;padding:26px 22px}
+  .live-kicker{margin-top:66px;font-size:8px}
+  .live-visual h3{margin:18px 0 20px;font-size:clamp(66px,16vw,92px);line-height:.78}
+  .live-visual p{font-size:12px;max-width:300px}
+  .sound-bars{top:30px;right:22px}
+  .live-bottom{margin-top:34px}
+  .live-bottom span{font-size:7px;letter-spacing:1px}
+  .live-bottom strong{font-size:32px}
+  .player-panel{padding:27px 17px}
+  .player-heading h3{font-size:48px}
+  .caster-player{min-height:230px;padding:7px}
+  .now-playing{padding:13px;gap:11px}
+  .now-art{width:52px;height:52px}
+  .now-details p{max-width:220px;line-height:1.5}
+  .now-playing:before{font-size:26px;right:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .sound-bars i,.live-kicker span{animation:none}
+}
+
 </style>
 </head>
 
@@ -2310,8 +2658,8 @@ img{max-width:100%}
     <div class="section-heading">
       <div>
         <div class="section-number">01 / LIVE RADIO</div>
-        <p class="eyebrow">Your frequency. Your generation.</p>
-        <h2 class="section-title">TUNE IN. <em>TURN UP.</em></h2>
+        <p class="eyebrow">YOUR FREQUENCY. YOUR GENERATION.</p>
+        <h2 class="section-title">KIZAZI <em>IS ON.</em></h2>
       </div>
     </div>
 
@@ -2329,10 +2677,11 @@ img{max-width:100%}
           KIZAZI RADIO <span>• ON AIR</span>
         </div>
 
-        <h3>FEEL THE<br>BEAT. LIVE THE<br><em>GENERATION.</em></h3>
+        <div class="live-kicker">THE SOUNDTRACK STARTS HERE <span>✳</span></div>
+        <h3>PRESS PLAY.<br>FIND YOUR<br><em>FREQUENCY.</em></h3>
 
         <p>
-          Your home for the freshest sounds, bold voices and the culture shaping tomorrow.
+          Fresh sounds. Real energy. No waiting for the next wave — we are the new wave.
         </p>
 
         <div class="live-bottom">
@@ -2345,8 +2694,8 @@ img{max-width:100%}
       <div class="player-panel">
 
         <div class="player-heading">
-          <small>NOW BROADCASTING</small>
-          <h3>Listen to KIZAZI RADIO</h3>
+          <small>YOUR DAILY SOUND FIX <span class="player-live-mark">● STREAM PLAYER</span></small>
+          <h3>THIS IS YOUR<br><em>FREQUENCY.</em></h3>
         </div>
 
         <div class="caster-player">
@@ -2368,7 +2717,7 @@ img{max-width:100%}
         </div>
 
         <p class="player-note">
-          Press play and enjoy the sound. KIZAZI RADIO is ready to keep you connected.
+          Hit play. Lock in. Let KIZAZI RADIO take it from here.
         </p>
 
       </div>
@@ -2382,9 +2731,9 @@ img{max-width:100%}
       <div class="now-art">♫</div>
 
       <div class="now-details">
-        <small>ON AIR NOW</small>
-        <strong>KIZAZI RADIO LIVE</strong>
-        <p>Streaming music and entertainment around the clock.</p>
+        <small>YOU ARE LISTENING TO</small>
+        <strong>KIZAZI RADIO <span>✳</span></strong>
+        <p>NEW GENERATION. NEW SOUND. · MUSIC / CULTURE / CONVERSATION</p>
       </div>
 
     </div>
