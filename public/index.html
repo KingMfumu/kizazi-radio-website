@@ -4266,6 +4266,106 @@ img{max-width:100%}
 }
 
 </style>
+<style>
+
+/* KIZAZI RADIO — AZURACAST STICKY PLAYER */
+body{
+  padding-bottom:190px;
+}
+.caster-player-placeholder{
+  min-height:92px;
+  padding:20px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#101014;
+  color:#b9b9c2;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1px;
+  text-align:center;
+}
+.caster-player-placeholder .live-dot,
+.kizazi-sticky-player__live-dot{
+  width:8px;
+  height:8px;
+  display:inline-block;
+  flex:0 0 8px;
+  border-radius:50%;
+  background:#ba1c1c;
+  box-shadow:0 0 12px rgba(186,28,28,.8);
+}
+.caster-player-placeholder a{
+  color:#fff;
+  background:#ba1c1c;
+  padding:10px 14px;
+  border-radius:4px;
+}
+.kizazi-sticky-player{
+  position:fixed;
+  z-index:99999;
+  left:0;
+  right:0;
+  bottom:0;
+  min-height:166px;
+  padding:8px max(16px, calc((100vw - 1200px)/2));
+  display:grid;
+  grid-template-columns:150px minmax(0,1fr);
+  align-items:center;
+  gap:14px;
+  background:#000;
+  border-top:2px solid #ba1c1c;
+  box-shadow:0 -8px 30px rgba(0,0,0,.55);
+}
+.kizazi-sticky-player__label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#fff;
+  white-space:nowrap;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+.kizazi-sticky-player__live{color:#ba1c1c}
+.kizazi-sticky-player__embed{
+  width:100%;
+  min-width:0;
+  height:150px;
+}
+.kizazi-sticky-player__embed iframe{
+  display:block;
+  width:100%;
+  height:150px;
+  min-height:150px;
+  border:0;
+  background:#000;
+}
+@media(max-width:640px){
+  body{padding-bottom:190px}
+  .kizazi-sticky-player{
+    min-height:174px;
+    padding:7px 8px 9px;
+    grid-template-columns:1fr;
+    gap:2px;
+  }
+  .kizazi-sticky-player__label{
+    justify-content:center;
+    min-height:18px;
+    font-size:10px;
+  }
+  .kizazi-sticky-player__embed,
+  .kizazi-sticky-player__embed iframe{
+    height:150px;
+    min-height:150px;
+  }
+}
+
+</style>
 </head>
 
 <body>
@@ -4467,22 +4567,10 @@ img{max-width:100%}
           <h3>LOCK IN.<br><em>LISTEN UP.</em></h3>
         </div>
 
-        <div class="caster-player">
-
-          <div class="cstrEmbed"
-               data-type="newStreamPlayer"
-               data-publicToken="2c2de7f0-f72e-4a5b-a7e7-35d9713b63d3"
-               data-theme="dark"
-               data-color="FF0000"
-               data-channelId=""
-               data-rendered="false">
-
-            <a href="https://www.caster.fm">Shoutcast Hosting</a>
-            <a href="https://www.caster.fm">Stream Hosting</a>
-            <a href="https://www.caster.fm">Radio Server Hosting</a>
-
-          </div>
-
+        <div class="caster-player-placeholder">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>THE LIVE PLAYER IS NOW FIXED AT THE BOTTOM OF THIS PAGE.</span>
+          <a href="#kizazi-radio-player">LISTEN LIVE ↓</a>
         </div>
 
         <p class="player-note">
@@ -4831,7 +4919,6 @@ img{max-width:100%}
   </div>
 </footer>
 
-<script src="//cdn.cloud.caster.fm//widgets/embed.js"></script>
 
 <script>
 
@@ -6573,6 +6660,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 </script>
+
+
+<!-- KIZAZI RADIO: AZURACAST STICKY PLAYER -->
+<div class="kizazi-sticky-player" id="kizazi-radio-player" role="region" aria-label="KIZAZI RADIO live player">
+  <div class="kizazi-sticky-player__label">
+    <span class="kizazi-sticky-player__live-dot" aria-hidden="true"></span>
+    <span class="kizazi-sticky-player__station">KIZAZI RADIO</span>
+    <span class="kizazi-sticky-player__live">LIVE</span>
+  </div>
+  <div class="kizazi-sticky-player__embed">
+    <iframe
+      src="https://a4.asurahosting.com/public/kizazi_radio/embed?theme=dark&amp;primary_color=ba1c1c&amp;bg_color=000000&amp;text_color=ffffff&amp;rounded=1&amp;continuous=1"
+      title="KIZAZI RADIO live stream player"
+      frameborder="0"
+      allow="autoplay"
+      allowtransparency="true">
+    </iframe>
+  </div>
+</div>
 
 </body>
 </html>
