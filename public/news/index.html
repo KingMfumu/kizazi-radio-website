@@ -551,6 +551,19 @@
       }
     }
   </style>
+<style>
+
+/* KIZAZI RADIO — AZURACAST STICKY PLAYER */
+body{padding-bottom:184px}
+.kizazi-sticky-player{position:fixed;z-index:99999;left:0;right:0;bottom:0;min-height:166px;padding:8px max(16px,calc((100vw - 1200px)/2));display:grid;grid-template-columns:150px minmax(0,1fr);align-items:center;gap:14px;background:#000;border-top:2px solid #ba1c1c;box-shadow:0 -8px 30px rgba(0,0,0,.55)}
+.kizazi-sticky-player__label{display:flex;align-items:center;gap:8px;color:#fff;white-space:nowrap;font-size:11px;font-weight:900;letter-spacing:1px}
+.kizazi-sticky-player__live-dot{width:8px;height:8px;display:inline-block;flex:0 0 8px;border-radius:50%;background:#ba1c1c;box-shadow:0 0 12px rgba(186,28,28,.8)}
+.kizazi-sticky-player__live{color:#ba1c1c}
+.kizazi-sticky-player__embed{width:100%;min-width:0;height:150px}
+.kizazi-sticky-player__embed iframe{display:block;width:100%;height:150px;min-height:150px;border:0;background:#000}
+@media(max-width:640px){body{padding-bottom:190px}.kizazi-sticky-player{min-height:174px;padding:7px 8px 9px;grid-template-columns:1fr;gap:2px}.kizazi-sticky-player__label{justify-content:center;min-height:18px;font-size:10px}.kizazi-sticky-player__embed,.kizazi-sticky-player__embed iframe{height:150px;min-height:150px}}
+
+</style>
 </head>
 
 <body>
@@ -1129,6 +1142,19 @@
 
     });
   </script>
+
+
+<!-- KIZAZI RADIO: AZURACAST STICKY PLAYER -->
+<div class="kizazi-sticky-player" id="kizazi-radio-player" role="region" aria-label="KIZAZI RADIO live player">
+  <div class="kizazi-sticky-player__label">
+    <span class="kizazi-sticky-player__live-dot" aria-hidden="true"></span>
+    <span class="kizazi-sticky-player__station">KIZAZI RADIO</span>
+    <span class="kizazi-sticky-player__live">LIVE</span>
+  </div>
+  <div class="kizazi-sticky-player__embed">
+    <iframe src="https://a4.asurahosting.com/public/kizazi_radio/embed?theme=dark&amp;primary_color=ba1c1c&amp;bg_color=000000&amp;text_color=ffffff&amp;rounded=1&amp;continuous=1" title="KIZAZI RADIO live stream player" frameborder="0" allow="autoplay" allowtransparency="true"></iframe>
+  </div>
+</div>
 
 </body>
 </html>
