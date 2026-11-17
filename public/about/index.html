@@ -435,6 +435,27 @@ main > .section:not(.direction):not(.founder) .pillar:hover p{
     transition-duration:.01ms!important;
   }
 }
+
+/* FIX: keep the About page values ticker at its intended single-line height */
+.ticker{height:auto!important;min-height:0!important;overflow:hidden!important}
+.ticker-track{display:flex!important;flex-direction:row!important;align-items:center!important;width:max-content!important}
+.ticker-track > span{
+  display:block!important;flex:0 0 auto!important;
+  padding:17px 28px!important;margin:0!important;
+  font:700 12px var(--mono)!important;letter-spacing:2px!important;
+  line-height:1.4!important;white-space:nowrap!important;
+}
+.ticker-track b{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  width:1.1em!important;height:1.1em!important;margin:0 16px!important;
+  padding:0!important;vertical-align:middle!important;font-size:18px!important;
+}
+.ticker-track .kz-brand-mark{
+  display:inline-block!important;flex:0 0 auto!important;
+  width:1.05em!important;height:1.05em!important;min-width:12px!important;min-height:12px!important;
+  margin:0!important;padding:0!important;line-height:1!important;
+}
+
 </style>
 <style>
 
