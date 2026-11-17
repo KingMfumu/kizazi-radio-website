@@ -6,6 +6,12 @@
 
 
 
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2601,10 +2607,8 @@ img{max-width:100%}
 }
 
 .player-note:before{
-  content:"✦";
-  flex:0 0 auto;
-  color:var(--red);
-  font-size:12px;
+  content:""; flex:0 0 12px; width:12px; height:12px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ed171f' d='M50 2 60 29 85 12 75 40 99 50 75 60 88 88 60 75 50 99 40 75 12 88 25 60 1 50 25 40 12 12 40 25Z'/%3E%3C/svg%3E") center/contain no-repeat;
 }
 
 .now-playing{
@@ -2859,7 +2863,7 @@ img{max-width:100%}
 .caster-player .cstrEmbed{width:100%;min-width:0;position:relative;z-index:1}
 .caster-player iframe{display:block;width:100%;max-width:100%;border:0;border-radius:4px}
 .player-note{margin-top:18px;color:#9999a3;font-size:11px;line-height:1.75}
-.player-note:before{content:"✦";color:#ff2632}
+.player-note:before{content:"";color:#ff2632}
 .now-playing{
   min-height:112px;margin-top:18px;padding:19px 23px;
   border:1px solid rgba(255,255,255,.13);border-radius:8px;
@@ -4586,6 +4590,7 @@ body{
 }
 
 </style>
+  <link rel="stylesheet" href="/design-system.css?v=1">
 </head>
 
 <body>
@@ -4697,7 +4702,7 @@ body{
         <strong>NEW SOUND.</strong>
       </span>
       <span class="info-marquee-item">
-        <span class="marquee-star">✳</span>
+        <span class="marquee-star"><span class="kz-brand-mark" aria-hidden="true"></span></span>
         REAL VOICES. FRESH VIBES.
       </span>
       <span class="info-marquee-item">
@@ -4707,7 +4712,7 @@ body{
         YOUR CULTURE. YOUR FREQUENCY.
       </span>
       <span class="info-marquee-item">
-        <span class="marquee-star">✳</span>
+        <span class="marquee-star"><span class="kz-brand-mark" aria-hidden="true"></span></span>
         MUSIC • CULTURE • CONVERSATION
       </span>
     </div>
@@ -4722,7 +4727,7 @@ body{
         <strong>NEW SOUND.</strong>
       </span>
       <span class="info-marquee-item">
-        <span class="marquee-star">✳</span>
+        <span class="marquee-star"><span class="kz-brand-mark" aria-hidden="true"></span></span>
         REAL VOICES. FRESH VIBES.
       </span>
       <span class="info-marquee-item">
@@ -4732,7 +4737,7 @@ body{
         YOUR CULTURE. YOUR FREQUENCY.
       </span>
       <span class="info-marquee-item">
-        <span class="marquee-star">✳</span>
+        <span class="marquee-star"><span class="kz-brand-mark" aria-hidden="true"></span></span>
         MUSIC • CULTURE • CONVERSATION
       </span>
     </div>
@@ -4767,7 +4772,7 @@ body{
           KIZAZI RADIO <span>• ON AIR</span>
         </div>
 
-        <div class="live-kicker">NOT JUST RADIO. IT’S A WHOLE FREQUENCY <span>✳</span></div>
+        <div class="live-kicker">NOT JUST RADIO. IT’S A WHOLE FREQUENCY <span><span class="kz-brand-mark" aria-hidden="true"></span></span></div>
         <h3>TUNE IN.<br>TURN UP.<br><em>LIVE KIZAZI.</em></h3>
 
         <p>
@@ -4825,7 +4830,7 @@ body{
           </a>
         </div>
 
-        <p class="radar-footer-note"><span>✳</span> ONE STATION. A WHOLE GENERATION.</p>
+        <p class="radar-footer-note"><span><span class="kz-brand-mark" aria-hidden="true"></span></span> ONE STATION. A WHOLE GENERATION.</p>
 
       </div>
 
@@ -4839,7 +4844,7 @@ body{
 
       <div class="now-details">
         <small>YOUR FREQUENCY RIGHT NOW</small>
-        <strong>KIZAZI RADIO <span>✳</span></strong>
+        <strong>KIZAZI RADIO <span><span class="kz-brand-mark" aria-hidden="true"></span></span></strong>
         <p>NEW GENERATION. NEW SOUND. · MUSIC / CULTURE / CONVERSATION</p>
       </div>
 
@@ -4869,7 +4874,7 @@ body{
       </p>
 
       <div class="lineup-foot">
-        <span class="lineup-cross">✳</span>
+        <span class="lineup-cross"><span class="kz-brand-mark" aria-hidden="true"></span></span>
         <span>NO STATIC. ALL CULTURE.</span>
       </div>
 
@@ -4918,7 +4923,7 @@ body{
         </div>
       </a>
 
-      <p class="lineup-note"><span>✳</span> New episodes, fresh sounds. Always something to tap into.</p>
+      <p class="lineup-note"><span><span class="kz-brand-mark" aria-hidden="true"></span></span> New episodes, fresh sounds. Always something to tap into.</p>
     </div>
 
   </div>
@@ -6932,3 +6937,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
+
+
+
