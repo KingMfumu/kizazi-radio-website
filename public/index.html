@@ -4365,6 +4365,226 @@ body{
   }
 }
 
+
+
+/* =========================================================
+   KIZAZI CULTURE RADAR — replacement for the former embed panel
+   ========================================================= */
+.culture-radar{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  justify-content:flex-start;
+  gap:0;
+  padding:clamp(25px,3.2vw,42px);
+  background:
+    radial-gradient(ellipse at 100% 8%,rgba(237,23,31,.19),transparent 43%),
+    radial-gradient(ellipse at 5% 100%,rgba(237,23,31,.08),transparent 38%),
+    linear-gradient(145deg,#19191e 0%,#111115 62%,#0b0b0e 100%);
+}
+.culture-radar:after{
+  content:"KIZAZI";
+  position:absolute;
+  z-index:-1;
+  right:-18px;
+  bottom:28px;
+  color:rgba(255,255,255,.025);
+  font:1000 clamp(76px,10vw,132px)/.8 Inter,Arial,sans-serif;
+  letter-spacing:-.095em;
+  pointer-events:none;
+}
+.radar-topline{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:clamp(20px,2.5vw,31px);
+}
+.radar-topline>span:first-child{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:#ff3540;
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:2px;
+}
+.radar-topline>span:first-child i{
+  width:7px;height:7px;border-radius:50%;
+  background:#ff2632;box-shadow:0 0 12px #ff2632;
+}
+.radar-edition{
+  padding:7px 9px;
+  color:#111115;
+  background:#f7f7f8;
+  font-size:7px;
+  font-weight:1000;
+  letter-spacing:1.4px;
+  transform:rotate(2deg);
+}
+.radar-headline{position:relative;z-index:1}
+.radar-kicker{
+  margin:0 0 10px;
+  color:#a9a9b2;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+.radar-headline h3{
+  margin:0;
+  color:#f7f7f8;
+  font:1000 clamp(34px,4vw,51px)/.88 Inter,Arial,sans-serif;
+  letter-spacing:-.075em;
+}
+.radar-headline h3 em{
+  color:#ff2632;
+  font-style:normal;
+  text-shadow:4px 4px 0 rgba(255,255,255,.06);
+}
+.radar-intro{
+  max-width:390px;
+  margin:13px 0 20px;
+  color:#b5b5bd;
+  font-size:11px;
+  line-height:1.7;
+}
+.radar-feature{
+  position:relative;
+  display:grid;
+  grid-template-columns:1.08fr .92fr;
+  min-height:190px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.13);
+  background:#0b0b0e;
+  box-shadow:0 15px 38px rgba(0,0,0,.24);
+}
+.radar-feature-art{
+  position:relative;
+  min-height:190px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 52% 48%,rgba(255,36,48,.35),transparent 34%),
+    linear-gradient(135deg,#301116,#151519 62%,#09090b);
+}
+.radar-art-index,.radar-art-caption{
+  position:absolute;z-index:3;left:15px;
+  color:rgba(255,255,255,.7);
+  font-size:7px;font-weight:900;letter-spacing:1.6px;
+}
+.radar-art-index{top:14px}
+.radar-art-caption{bottom:13px}
+.radar-orbit{
+  position:absolute;left:50%;top:50%;
+  width:155px;height:155px;border:1px solid rgba(255,255,255,.2);
+  border-radius:50%;transform:translate(-50%,-50%);
+}
+.orbit-two{
+  width:112px;height:112px;border-color:rgba(255,39,51,.65);
+  box-shadow:0 0 0 14px rgba(255,39,51,.045),0 0 0 29px rgba(255,255,255,.025);
+}
+.radar-disc{
+  position:absolute;left:50%;top:50%;
+  width:72px;height:72px;border-radius:50%;
+  transform:translate(-50%,-50%);
+  background:repeating-radial-gradient(circle,#17171c 0 3px,#303037 4px 5px);
+  border:5px solid #17171c;
+  box-shadow:0 0 28px rgba(255,28,42,.28);
+}
+.radar-disc:after{
+  content:"";position:absolute;left:50%;top:50%;
+  width:15px;height:15px;border-radius:50%;
+  background:#ff2632;transform:translate(-50%,-50%);
+}
+.radar-art-word{
+  position:absolute;z-index:2;left:15px;bottom:35px;
+  color:#fff;font-size:13px;font-weight:1000;line-height:.9;
+  letter-spacing:-.7px;text-shadow:0 2px 10px #000;
+}
+.radar-art-word b{color:#ff303b}
+.radar-equalizer{
+  position:absolute;right:14px;top:14px;height:28px;
+  display:flex;align-items:center;gap:3px;
+}
+.radar-equalizer i{
+  display:block;width:3px;height:9px;border-radius:4px;
+  background:#ff303b;animation:radar-wave .8s ease-in-out infinite alternate;
+}
+.radar-equalizer i:nth-child(3n){height:20px;animation-delay:.2s}
+.radar-equalizer i:nth-child(2n){height:14px;animation-delay:.4s}
+@keyframes radar-wave{to{transform:scaleY(.45)}}
+.radar-feature-copy{
+  display:flex;flex-direction:column;justify-content:center;
+  align-items:flex-start;gap:10px;padding:17px;
+}
+.radar-label{
+  color:#ff3540;font-size:7px;font-weight:950;letter-spacing:1.5px;
+}
+.radar-feature-copy strong{
+  max-width:170px;color:#f5f5f6;
+  font-size:clamp(15px,1.6vw,20px);line-height:1.08;
+  letter-spacing:-.7px;
+}
+.radar-feature-copy a{
+  margin-top:4px;padding-bottom:6px;
+  border-bottom:1px solid #ff303b;
+  color:#fff;font-size:7px;font-weight:950;letter-spacing:1px;
+}
+.radar-feature-copy a span{color:#ff303b;margin-left:5px}
+.radar-shortcuts{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px;
+}
+.radar-shortcut{
+  position:relative;min-height:88px;padding:13px 14px;
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+  gap:5px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.025);
+  transition:transform .2s,border-color .2s,background .2s;
+}
+.radar-shortcut:hover{
+  transform:translateY(-3px);border-color:#ff303b;background:rgba(255,38,50,.07);
+}
+.radar-shortcut-index{
+  color:#ff3a45;font-size:7px;font-weight:950;letter-spacing:1.4px;
+}
+.radar-shortcut strong{
+  color:#f7f7f8;font-size:clamp(17px,2vw,23px);
+  line-height:1;letter-spacing:-1px;
+}
+.radar-shortcut small{
+  color:#9c9ca5;font-size:7px;font-weight:800;letter-spacing:1px;
+}
+.radar-shortcut-arrow{
+  position:absolute;right:12px;bottom:12px;color:#ff3540;font-size:15px;
+}
+.radar-shortcut-red{
+  background:linear-gradient(120deg,rgba(237,23,31,.16),rgba(255,255,255,.02));
+}
+.radar-footer-note{
+  display:flex;align-items:center;gap:8px;
+  margin:13px 0 0;color:#777780;
+  font-size:7px;font-weight:900;letter-spacing:1.5px;
+}
+.radar-footer-note span{color:#ff303b;font-size:14px}
+@media(max-width:900px){
+  .culture-radar{min-height:unset}
+  .radar-headline h3{font-size:clamp(38px,7vw,54px)}
+}
+@media(max-width:600px){
+  .culture-radar{padding:24px 17px}
+  .radar-topline{margin-bottom:22px}
+  .radar-headline h3{font-size:clamp(36px,10vw,48px)}
+  .radar-feature{grid-template-columns:1fr 1fr;min-height:175px}
+  .radar-feature-art{min-height:175px}
+  .radar-feature-copy{padding:12px}
+  .radar-feature-copy strong{font-size:16px}
+  .radar-shortcut{min-height:82px;padding:11px}
+}
+@media(prefers-reduced-motion:reduce){
+  .radar-equalizer i{animation:none}
+  .radar-shortcut{transition:none}
+}
+
 </style>
 </head>
 
@@ -4560,22 +4780,52 @@ body{
 
       </div>
 
-      <div class="player-panel">
+      <div class="player-panel culture-radar">
 
-        <div class="player-heading">
-          <small>LIVE STREAM <span class="player-live-mark">● CONNECTED TO THE CULTURE</span></small>
-          <h3>LOCK IN.<br><em>LISTEN UP.</em></h3>
+        <div class="radar-topline">
+          <span><i></i> 02 / CULTURE RADAR</span>
+          <span class="radar-edition">KIZAZI ORIGINAL</span>
         </div>
 
-        <div class="caster-player-placeholder">
-          <span class="live-dot" aria-hidden="true"></span>
-          <span>THE LIVE PLAYER IS NOW FIXED AT THE BOTTOM OF THIS PAGE.</span>
-          <a href="#kizazi-radio-player">LISTEN LIVE ↓</a>
+        <div class="radar-headline">
+          <p class="radar-kicker">MUSIC · PEOPLE · THE CONVERSATION</p>
+          <h3>THE CULTURE<br>DOESN’T <em>STAND STILL.</em></h3>
+          <p class="radar-intro">Fresh sounds. New perspectives. The stories and voices moving the next generation.</p>
         </div>
 
-        <p class="player-note">
-          One tap from the sound, stories and voices shaping what’s next.
-        </p>
+        <div class="radar-feature">
+          <div class="radar-feature-art" aria-hidden="true">
+            <span class="radar-art-index">KR / 001</span>
+            <span class="radar-orbit orbit-one"></span>
+            <span class="radar-orbit orbit-two"></span>
+            <span class="radar-disc"></span>
+            <span class="radar-art-word">CULTURE<br><b>IN MOTION.</b></span>
+            <span class="radar-equalizer"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="radar-art-caption">SOUND • STYLE • STORIES</span>
+          </div>
+          <div class="radar-feature-copy">
+            <span class="radar-label">THE KIZAZI FREQUENCY</span>
+            <strong>Always tuned in to what’s next.</strong>
+            <a href="/news/">EXPLORE THE LATEST <span>↗</span></a>
+          </div>
+        </div>
+
+        <div class="radar-shortcuts">
+          <a class="radar-shortcut" href="/shows/">
+            <span class="radar-shortcut-index">01 / ON THE MIC</span>
+            <strong>NO CAP.</strong>
+            <small>MON–FRI · 3 PM–6 PM</small>
+            <span class="radar-shortcut-arrow">↗</span>
+          </a>
+          <a class="radar-shortcut radar-shortcut-red" href="/top15/">
+            <span class="radar-shortcut-index">02 / ON THE CHART</span>
+            <strong>TOP 15.</strong>
+            <small>THE TRACKS MOVING NOW</small>
+            <span class="radar-shortcut-arrow">↗</span>
+          </a>
+        </div>
+
+        <p class="radar-footer-note"><span>✳</span> ONE STATION. A WHOLE GENERATION.</p>
 
       </div>
 
