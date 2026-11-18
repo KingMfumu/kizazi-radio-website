@@ -4855,6 +4855,40 @@ body { padding-bottom: 0 !important; }
 }
 </style>
 
+
+<style id="kizazi-playlist-vinyl-animation">
+/* Clean rotating vinyl artwork */
+.playlist-promo-art { perspective:600px; }
+.promo-disc {
+  width:170px; height:170px;
+  background:
+    radial-gradient(circle at 50% 50%, #111 0 9%, transparent 9.5%),
+    repeating-radial-gradient(circle at 50% 50%, #25252c 0 2px, #111116 3px 5px);
+  border:1px solid #55555d;
+  box-shadow:0 0 0 9px #ffffff08,0 0 0 20px #ffffff05,0 0 30px #e5090920;
+  animation:kizazi-vinyl-spin 7s linear infinite;
+  will-change:transform;
+}
+.promo-disc:before {
+  content:""; position:absolute; inset:8px; border-radius:50%;
+  background:conic-gradient(from 0deg, transparent 0 12%, #ffffff18 14%, transparent 17% 42%, #ffffff12 45%, transparent 49% 76%, #ffffff16 79%, transparent 83% 100%);
+}
+.promo-disc:after {
+  width:24px; height:24px; background:var(--red);
+  border:5px solid #f7f7f8; box-shadow:0 0 0 3px #111;
+}
+@keyframes kizazi-vinyl-spin {
+  from { transform:rotate(0deg); }
+  to { transform:rotate(360deg); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .promo-disc { animation:none; }
+}
+@media(max-width:600px) {
+  .promo-disc { width:112px; height:112px; }
+}
+</style>
+
 </head>
 
 <body>
@@ -4950,8 +4984,6 @@ body { padding-bottom: 0 !important; }
         </div>
         <div class="playlist-promo-art" aria-hidden="true">
           <span class="promo-disc"></span>
-          <span class="promo-word">KZ<br>PLAY</span>
-          <span class="promo-equalizer"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
         </div>
       </a>
     </div>
