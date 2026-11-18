@@ -4606,8 +4606,11 @@ body { padding-bottom: 0 !important; }
 .homepage-player-label .live-dot { flex:0 0 8px; }
 .homepage-player-label strong { display:block; font-size:12px; font-weight:900; letter-spacing:.8px; }
 .homepage-player-label small { display:block; margin-top:5px; color:#a1a1aa; font-size:9px; font-weight:800; letter-spacing:1px; }
-.homepage-player-frame { min-width:0; height:104px; overflow:hidden; }
-.homepage-player-frame iframe { width:100%; height:104px; display:block; border:0; background:#000; }
+.homepage-player-frame { min-width:0; height:190px; overflow:visible; }
+.homepage-player-frame iframe {
+  width:100%; height:190px; min-height:190px;
+  display:block; border:0; background:#000;
+}
 .home-discovery {
   width:min(1200px,92%); margin:54px auto 65px; display:grid;
   grid-template-columns:minmax(0,1.25fr) minmax(340px,.9fr); gap:24px; align-items:start;
@@ -4707,7 +4710,8 @@ body { padding-bottom: 0 !important; }
   .homepage-refresh .hero h1 { font-size:clamp(43px,11vw,68px); }
   .homepage-player { width:100%; grid-template-columns:1fr; gap:8px; padding:10px 12px; }
   .homepage-player-label { justify-content:center; }
-  .homepage-player-frame, .homepage-player-frame iframe { height:110px; }
+  .homepage-player-frame { height:190px; overflow:visible; }
+  .homepage-player-frame iframe { height:190px; min-height:190px; }
   .home-discovery { width:92%; margin:38px auto 46px; gap:30px; }
   .compact-section-heading { align-items:flex-end; }
   .compact-section-heading h2 { font-size:30px; }
@@ -4719,6 +4723,135 @@ body { padding-bottom: 0 !important; }
   .home-chart .chart-song-info h3 { font-size:11px; }
   .homepage-refresh .news-section { padding:34px 0 55px; }
   .homepage-refresh .news-grid { grid-template-columns:1fr; }
+}
+</style>
+
+
+<style id="kizazi-homepage-polish">
+/* Show-area feature card */
+.playlist-promo {
+  position:relative; min-height:230px; margin-top:18px; padding:25px 24px;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  overflow:hidden; color:#fff; text-decoration:none;
+  border:1px solid #34343b;
+  background:
+    radial-gradient(circle at 82% 48%,rgba(229,9,9,.22),transparent 33%),
+    linear-gradient(115deg,#17171c 0%,#0b0b0e 72%);
+}
+.playlist-promo:before {
+  content:""; position:absolute; inset:0 auto 0 0; width:4px; background:var(--red);
+}
+.playlist-promo-copy { position:relative; z-index:2; max-width:390px; }
+.playlist-promo-copy .eyebrow { margin-bottom:10px; font-size:8px; }
+.playlist-promo-copy h3 {
+  margin:0; color:#fff; font-size:clamp(30px,3.5vw,46px);
+  line-height:.88; letter-spacing:-.07em; font-weight:950;
+}
+.playlist-promo-copy h3 em { color:var(--red); font-style:normal; }
+.playlist-promo-copy > p:not(.eyebrow) {
+  max-width:330px; margin:12px 0 15px; color:#b5b5bd; font-size:11px; line-height:1.65;
+}
+.playlist-promo-cta {
+  display:inline-flex; padding:10px 13px; background:var(--red); color:#fff;
+  font-size:8px; font-weight:950; letter-spacing:1px;
+}
+.playlist-promo-art {
+  position:relative; flex:0 0 175px; height:175px; display:grid; place-items:center;
+}
+.promo-disc {
+  position:absolute; width:145px; height:145px; border-radius:50%;
+  border:1px solid #ffffff45;
+  background:repeating-radial-gradient(circle,#17171c 0 4px,#24242b 5px 6px);
+  box-shadow:0 0 0 9px #ffffff08,0 0 0 20px #ffffff05;
+}
+.promo-disc:after {
+  content:""; position:absolute; width:28px; height:28px; border-radius:50%;
+  left:50%; top:50%; transform:translate(-50%,-50%);
+  background:var(--red); border:5px solid #111;
+}
+.promo-word {
+  position:relative; z-index:2; color:#fff; font-size:37px; line-height:.75;
+  font-weight:1000; letter-spacing:-4px; transform:rotate(-12deg);
+  text-shadow:3px 3px 0 var(--red);
+}
+.promo-equalizer {
+  position:absolute; z-index:3; right:0; bottom:13px; height:38px;
+  display:flex; align-items:center; gap:4px;
+}
+.promo-equalizer i { display:block; width:4px; height:14px; background:var(--red); border-radius:4px; }
+.promo-equalizer i:nth-child(2n) { height:28px; }
+.promo-equalizer i:nth-child(3n) { height:20px; }
+
+/* Compact TOP 15 card inspired by the supplied reference */
+.home-chart {
+  padding:18px 18px 14px; border:1px solid #303037; border-radius:12px;
+  background:linear-gradient(145deg,#17171b 0%,#09090b 100%);
+  box-shadow:0 16px 42px rgba(0,0,0,.32);
+}
+.home-chart .chart-heading { margin-bottom:12px; align-items:center; }
+.home-chart .compact-section-heading h2 { font-size:clamp(26px,2.7vw,36px); }
+.home-chart .chart-grid { display:flex; flex-direction:column; gap:0; }
+.home-chart .chart-card {
+  width:100%; min-height:62px; padding:8px 0;
+  display:grid; grid-template-columns:38px 48px minmax(0,1fr) 30px;
+  align-items:center; gap:10px; border:0; border-bottom:1px solid #36363c;
+  border-radius:0; background:transparent; box-shadow:none;
+}
+.home-chart .chart-card:last-child { border-bottom:0; }
+.home-chart .chart-position {
+  position:static; width:34px; height:30px; display:grid; place-items:center;
+  border:0; border-radius:7px; background:#ffdf00; color:#080808;
+}
+.home-chart .chart-position strong { font-size:14px; line-height:1; font-weight:1000; }
+.home-chart .chart-artwork {
+  width:48px; height:48px; min-height:48px; overflow:hidden;
+  border-radius:5px; background:#24242a;
+}
+.home-chart .chart-artwork img { width:100%; height:100%; object-fit:cover; display:block; }
+.home-chart .chart-placeholder {
+  width:100%; height:100%; display:flex; flex-direction:column;
+  justify-content:center; align-items:center; color:#fff; background:#292930;
+  font-size:7px; font-weight:900;
+}
+.home-chart .chart-placeholder strong { color:var(--red); font-size:11px; }
+.home-chart .chart-song-info { min-width:0; padding:0; }
+.home-chart .chart-song-info h3 {
+  margin:0; color:#fff; font-size:11px; line-height:1.3;
+  font-weight:900; white-space:normal; overflow-wrap:anywhere;
+}
+.home-chart .chart-song-info p {
+  margin:4px 0 0; color:#a7a7b0; font-size:9px; line-height:1.3;
+  white-space:normal; overflow-wrap:anywhere;
+}
+.home-chart .chart-play-button {
+  width:27px; height:27px; display:grid; place-items:center;
+  border:0; border-radius:50%; background:#fff; color:#09090b;
+  font-size:11px; text-decoration:none; font-weight:900;
+  transition:transform .18s,background .18s,color .18s;
+}
+.home-chart a.chart-play-button:hover {
+  transform:scale(1.08); background:var(--red); color:#fff;
+}
+.home-chart .chart-play-disabled { opacity:.35; }
+.home-chart .chart-footer {
+  margin-top:9px; padding-top:12px; border-top:1px solid #36363c;
+}
+.home-chart .chart-footer span { font-size:7px; letter-spacing:.7px; }
+.home-chart .chart-view-all {
+  padding:9px 11px; background:var(--red); color:#fff; font-size:8px;
+}
+.home-chart .chart-view-all:hover { background:#fff; color:#09090b; }
+@media(max-width:900px) {
+  .playlist-promo { min-height:205px; }
+}
+@media(max-width:600px) {
+  .playlist-promo { min-height:190px; padding:20px 16px; }
+  .playlist-promo-art { flex-basis:105px; height:125px; }
+  .promo-disc { width:100px; height:100px; }
+  .promo-word { font-size:28px; }
+  .promo-equalizer { right:-5px; bottom:5px; }
+  .playlist-promo-copy h3 { font-size:31px; }
+  .home-chart { border-radius:9px; }
 }
 </style>
 
@@ -4738,6 +4871,8 @@ body { padding-bottom: 0 !important; }
       <a href="/top15/">TOP 15</a>
       <a href="/maybe-i-dont-know/">Podcast</a>
       <a href="/about/">About</a>
+      <a href="/contact/">Contact Us</a>
+      <a href="/donate/">Donate</a>
     </nav>
     <a class="header-live" href="#listen"><span class="live-dot"></span> LISTEN LIVE ↗</a>
   </div>
@@ -4805,6 +4940,20 @@ body { padding-bottom: 0 !important; }
           <span class="home-show-arrow">↗</span>
         </a>
       </div>
+
+      <a class="playlist-promo" href="#listen">
+        <div class="playlist-promo-copy">
+          <p class="eyebrow">WHEN THE SHOWS TAKE A BREAK</p>
+          <h3>KEEP THE<br><em>VIBE ALIVE.</em></h3>
+          <p>Non-stop sounds, fresh discoveries and the music moving the next generation — all day, every day.</p>
+          <span class="playlist-promo-cta">▶ LISTEN TO KIZAZI PLAYLIST</span>
+        </div>
+        <div class="playlist-promo-art" aria-hidden="true">
+          <span class="promo-disc"></span>
+          <span class="promo-word">KZ<br>PLAY</span>
+          <span class="promo-equalizer"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        </div>
+      </a>
     </div>
 
     <section class="home-chart" id="top15">
@@ -5090,57 +5239,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
       return `
         <article class="chart-card ${Number(song.position) === 1 ? "chart-card-leader" : ""}">
-
+          <span class="chart-position"><strong>${escapeHTML(song.position)}</strong></span>
           <div class="chart-artwork">
-
             ${
               artwork
-                ? `<img
-                     src="${escapeHTML(artwork)}"
+                ? `<img src="${escapeHTML(artwork)}"
                      alt="${escapeHTML(song.song_title)} by ${escapeHTML(song.artist_name)}"
                      loading="lazy">`
-                : `<div class="chart-placeholder">
-                     <span>KIZAZI</span>
-                     <strong>MUSIC</strong>
-                   </div>`
+                : `<div class="chart-placeholder"><span>KIZAZI</span><strong>MUSIC</strong></div>`
             }
-
-            <span class="chart-position">
-              <small>NO.</small>
-              <strong>${escapeHTML(song.position)}</strong>
-            </span>
-
-            <span class="chart-watermark">KIZAZI TOP 15</span>
-            ${Number(song.position) === 1 ? `<span class="chart-leader-tag">★ CHART LEADER</span>` : ""}
-
           </div>
-
           <div class="chart-song-info">
-
             <h3>${escapeHTML(song.song_title)}</h3>
-
             <p>${escapeHTML(song.artist_name)}</p>
-
-            <div class="chart-card-footer">
-              <span>POSITION #${escapeHTML(song.position)}</span>
-
-              ${
-                youtube
-                  ? `<a
-                       href="${escapeHTML(youtube)}"
-                       class="chart-listen"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                       <span>▶</span> WATCH
-                     </a>`
-                  : `<span class="chart-unavailable">
-                       VIDEO UNAVAILABLE
-                     </span>`
-              }
-            </div>
-
           </div>
-
+          ${
+            youtube
+              ? `<a href="${escapeHTML(youtube)}" class="chart-listen chart-play-button"
+                   target="_blank" rel="noopener noreferrer" aria-label="Watch ${escapeHTML(song.song_title)}">▶</a>`
+              : `<span class="chart-play-button chart-play-disabled" aria-label="Video unavailable">▶</span>`
+          }
         </article>
       `;
     }).join("");
