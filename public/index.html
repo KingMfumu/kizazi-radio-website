@@ -2601,8 +2601,10 @@ img{max-width:100%}
 }
 
 .player-note:before{
-  content:""; flex:0 0 12px; width:12px; height:12px;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ed171f' d='M50 2 60 29 85 12 75 40 99 50 75 60 88 88 60 75 50 99 40 75 12 88 25 60 1 50 25 40 12 12 40 25Z'/%3E%3C/svg%3E") center/contain no-repeat;
+  content:"✦";
+  flex:0 0 auto;
+  color:var(--red);
+  font-size:12px;
 }
 
 .now-playing{
@@ -2857,7 +2859,7 @@ img{max-width:100%}
 .caster-player .cstrEmbed{width:100%;min-width:0;position:relative;z-index:1}
 .caster-player iframe{display:block;width:100%;max-width:100%;border:0;border-radius:4px}
 .player-note{margin-top:18px;color:#9999a3;font-size:11px;line-height:1.75}
-.player-note:before{content:"";color:#ff2632}
+.player-note:before{content:"✦";color:#ff2632}
 .now-playing{
   min-height:112px;margin-top:18px;padding:19px 23px;
   border:1px solid rgba(255,255,255,.13);border-radius:8px;
@@ -4266,757 +4268,521 @@ img{max-width:100%}
 </style>
 <style>
 
-/* KIZAZI RADIO — AZURACAST STICKY PLAYER */
-body{
-  padding-bottom:190px;
-}
-.caster-player-placeholder{
-  min-height:92px;
-  padding:20px;
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-  border:1px solid var(--line);
-  border-radius:8px;
-  background:#101014;
-  color:#b9b9c2;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:1px;
-  text-align:center;
-}
-.caster-player-placeholder .live-dot,
-.kizazi-sticky-player__live-dot{
-  width:8px;
-  height:8px;
-  display:inline-block;
-  flex:0 0 8px;
-  border-radius:50%;
-  background:#ba1c1c;
-  box-shadow:0 0 12px rgba(186,28,28,.8);
-}
-.caster-player-placeholder a{
-  color:#fff;
-  background:#ba1c1c;
-  padding:10px 14px;
-  border-radius:4px;
-}
-.kizazi-sticky-player{
-  position:fixed;
-  z-index:99999;
-  left:0;
-  right:0;
-  bottom:0;
-  min-height:166px;
-  padding:8px max(16px, calc((100vw - 1200px)/2));
-  display:grid;
-  grid-template-columns:150px minmax(0,1fr);
-  align-items:center;
-  gap:14px;
-  background:#000;
-  border-top:2px solid #ba1c1c;
-  box-shadow:0 -8px 30px rgba(0,0,0,.55);
-}
-.kizazi-sticky-player__label{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  color:#fff;
-  white-space:nowrap;
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:1px;
-}
-.kizazi-sticky-player__live{color:#ba1c1c}
-.kizazi-sticky-player__embed{
-  width:100%;
-  min-width:0;
-  height:150px;
-}
-.kizazi-sticky-player__embed iframe{
-  display:block;
-  width:100%;
-  height:150px;
-  min-height:150px;
-  border:0;
-  background:#000;
-}
-@media(max-width:640px){
-  body{padding-bottom:190px}
-  .kizazi-sticky-player{
-    min-height:174px;
-    padding:7px 8px 9px;
-    grid-template-columns:1fr;
-    gap:2px;
-  }
-  .kizazi-sticky-player__label{
-    justify-content:center;
-    min-height:18px;
-    font-size:10px;
-  }
-  .kizazi-sticky-player__embed,
-  .kizazi-sticky-player__embed iframe{
-    height:150px;
-    min-height:150px;
-  }
-}
-
-
-
-/* =========================================================
-   KIZAZI CULTURE RADAR — replacement for the former embed panel
-   ========================================================= */
-.culture-radar{
-  position:relative;
-  isolation:isolate;
-  overflow:hidden;
-  justify-content:flex-start;
-  gap:0;
-  padding:clamp(25px,3.2vw,42px);
-  background:
-    radial-gradient(ellipse at 100% 8%,rgba(237,23,31,.19),transparent 43%),
-    radial-gradient(ellipse at 5% 100%,rgba(237,23,31,.08),transparent 38%),
-    linear-gradient(145deg,#19191e 0%,#111115 62%,#0b0b0e 100%);
-}
-.culture-radar:after{
-  content:"KIZAZI";
-  position:absolute;
-  z-index:-1;
-  right:-18px;
-  bottom:28px;
-  color:rgba(255,255,255,.025);
-  font:1000 clamp(76px,10vw,132px)/.8 Inter,Arial,sans-serif;
-  letter-spacing:-.095em;
-  pointer-events:none;
-}
-.radar-topline{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:clamp(20px,2.5vw,31px);
-}
-.radar-topline>span:first-child{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  color:#ff3540;
-  font-size:9px;
-  font-weight:950;
-  letter-spacing:2px;
-}
-.radar-topline>span:first-child i{
-  width:7px;height:7px;border-radius:50%;
-  background:#ff2632;box-shadow:0 0 12px #ff2632;
-}
-.radar-edition{
-  padding:7px 9px;
-  color:#111115;
-  background:#f7f7f8;
-  font-size:7px;
-  font-weight:1000;
-  letter-spacing:1.4px;
-  transform:rotate(2deg);
-}
-.radar-headline{position:relative;z-index:1}
-.radar-kicker{
-  margin:0 0 10px;
-  color:#a9a9b2;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:2px;
-}
-.radar-headline h3{
-  margin:0;
-  color:#f7f7f8;
-  font:1000 clamp(34px,4vw,51px)/.88 Inter,Arial,sans-serif;
-  letter-spacing:-.075em;
-}
-.radar-headline h3 em{
-  color:#ff2632;
-  font-style:normal;
-  text-shadow:4px 4px 0 rgba(255,255,255,.06);
-}
-.radar-intro{
-  max-width:390px;
-  margin:13px 0 20px;
-  color:#b5b5bd;
-  font-size:11px;
-  line-height:1.7;
-}
-.radar-feature{
-  position:relative;
-  display:grid;
-  grid-template-columns:1.08fr .92fr;
-  min-height:190px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.13);
-  background:#0b0b0e;
-  box-shadow:0 15px 38px rgba(0,0,0,.24);
-}
-.radar-feature-art{
-  position:relative;
-  min-height:190px;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 52% 48%,rgba(255,36,48,.35),transparent 34%),
-    linear-gradient(135deg,#301116,#151519 62%,#09090b);
-}
-.radar-art-index,.radar-art-caption{
-  position:absolute;z-index:3;left:15px;
-  color:rgba(255,255,255,.7);
-  font-size:7px;font-weight:900;letter-spacing:1.6px;
-}
-.radar-art-index{top:14px}
-.radar-art-caption{bottom:13px}
-.radar-orbit{
-  position:absolute;left:50%;top:50%;
-  width:155px;height:155px;border:1px solid rgba(255,255,255,.2);
-  border-radius:50%;transform:translate(-50%,-50%);
-}
-.orbit-two{
-  width:112px;height:112px;border-color:rgba(255,39,51,.65);
-  box-shadow:0 0 0 14px rgba(255,39,51,.045),0 0 0 29px rgba(255,255,255,.025);
-}
-.radar-disc{
-  position:absolute;left:50%;top:50%;
-  width:72px;height:72px;border-radius:50%;
-  transform:translate(-50%,-50%);
-  background:repeating-radial-gradient(circle,#17171c 0 3px,#303037 4px 5px);
-  border:5px solid #17171c;
-  box-shadow:0 0 28px rgba(255,28,42,.28);
-}
-.radar-disc:after{
-  content:"";position:absolute;left:50%;top:50%;
-  width:15px;height:15px;border-radius:50%;
-  background:#ff2632;transform:translate(-50%,-50%);
-}
-.radar-art-word{
-  position:absolute;z-index:2;left:15px;bottom:35px;
-  color:#fff;font-size:13px;font-weight:1000;line-height:.9;
-  letter-spacing:-.7px;text-shadow:0 2px 10px #000;
-}
-.radar-art-word b{color:#ff303b}
-.radar-equalizer{
-  position:absolute;right:14px;top:14px;height:28px;
-  display:flex;align-items:center;gap:3px;
-}
-.radar-equalizer i{
-  display:block;width:3px;height:9px;border-radius:4px;
-  background:#ff303b;animation:radar-wave .8s ease-in-out infinite alternate;
-}
-.radar-equalizer i:nth-child(3n){height:20px;animation-delay:.2s}
-.radar-equalizer i:nth-child(2n){height:14px;animation-delay:.4s}
-@keyframes radar-wave{to{transform:scaleY(.45)}}
-.radar-feature-copy{
-  display:flex;flex-direction:column;justify-content:center;
-  align-items:flex-start;gap:10px;padding:17px;
-}
-.radar-label{
-  color:#ff3540;font-size:7px;font-weight:950;letter-spacing:1.5px;
-}
-.radar-feature-copy strong{
-  max-width:170px;color:#f5f5f6;
-  font-size:clamp(15px,1.6vw,20px);line-height:1.08;
-  letter-spacing:-.7px;
-}
-.radar-feature-copy a{
-  margin-top:4px;padding-bottom:6px;
-  border-bottom:1px solid #ff303b;
-  color:#fff;font-size:7px;font-weight:950;letter-spacing:1px;
-}
-.radar-feature-copy a span{color:#ff303b;margin-left:5px}
-.radar-shortcuts{
-  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px;
-}
-.radar-shortcut{
-  position:relative;min-height:88px;padding:13px 14px;
-  display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
-  gap:5px;overflow:hidden;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.025);
-  transition:transform .2s,border-color .2s,background .2s;
-}
-.radar-shortcut:hover{
-  transform:translateY(-3px);border-color:#ff303b;background:rgba(255,38,50,.07);
-}
-.radar-shortcut-index{
-  color:#ff3a45;font-size:7px;font-weight:950;letter-spacing:1.4px;
-}
-.radar-shortcut strong{
-  color:#f7f7f8;font-size:clamp(17px,2vw,23px);
-  line-height:1;letter-spacing:-1px;
-}
-.radar-shortcut small{
-  color:#9c9ca5;font-size:7px;font-weight:800;letter-spacing:1px;
-}
-.radar-shortcut-arrow{
-  position:absolute;right:12px;bottom:12px;color:#ff3540;font-size:15px;
-}
-.radar-shortcut-red{
-  background:linear-gradient(120deg,rgba(237,23,31,.16),rgba(255,255,255,.02));
-}
-.radar-footer-note{
-  display:flex;align-items:center;gap:8px;
-  margin:13px 0 0;color:#777780;
-  font-size:7px;font-weight:900;letter-spacing:1.5px;
-}
-.radar-footer-note span{color:#ff303b;font-size:14px}
-@media(max-width:900px){
-  .culture-radar{min-height:unset}
-  .radar-headline h3{font-size:clamp(38px,7vw,54px)}
-}
-@media(max-width:600px){
-  .culture-radar{padding:24px 17px}
-  .radar-topline{margin-bottom:22px}
-  .radar-headline h3{font-size:clamp(36px,10vw,48px)}
-  .radar-feature{grid-template-columns:1fr 1fr;min-height:175px}
-  .radar-feature-art{min-height:175px}
-  .radar-feature-copy{padding:12px}
-  .radar-feature-copy strong{font-size:16px}
-  .radar-shortcut{min-height:82px;padding:11px}
-}
-@media(prefers-reduced-motion:reduce){
-  .radar-equalizer i{animation:none}
-  .radar-shortcut{transition:none}
-}
+/* KIZAZI RADIO — CUSTOM STICKY PLAYER (ARTWORK-FREE) */
+body{padding-bottom:112px;}
+.kizazi-sticky-player{position:fixed;z-index:99999;left:0;right:0;bottom:0;min-height:92px;padding:14px max(18px,calc((100vw - 1200px)/2));display:grid;grid-template-columns:minmax(220px,1fr) minmax(280px,2fr);align-items:center;gap:24px;background:#050505;border-top:2px solid #ba1c1c;box-shadow:0 -8px 30px rgba(0,0,0,.55);color:#fff;}
+.kizazi-sticky-player__meta{min-width:0;display:flex;flex-direction:column;gap:5px;}
+.kizazi-sticky-player__song{font-size:16px;font-weight:800;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#fff;}
+.kizazi-sticky-player__artist{font-size:13px;color:#a6a6a6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.kizazi-sticky-player__stationline{display:flex;align-items:center;gap:8px;margin-top:2px;font-size:10px;font-weight:900;letter-spacing:1.2px;color:#aaa;}
+.kizazi-sticky-player__live-dot{width:8px;height:8px;display:inline-block;flex:0 0 8px;border-radius:50%;background:#ba1c1c;box-shadow:0 0 12px rgba(186,28,28,.8);}
+.kizazi-sticky-player__live{color:#ba1c1c;}
+.kizazi-sticky-player__controls{display:flex;align-items:center;gap:18px;min-width:0;}
+.kizazi-player-toggle{width:46px;height:46px;flex:0 0 46px;border:0;border-radius:50%;background:#fff;color:#050505;display:grid;place-items:center;font-size:19px;font-weight:900;cursor:pointer;transition:transform .15s,background .15s;}
+.kizazi-player-toggle:hover{transform:scale(1.04);background:#eee;}
+.kizazi-player-status{font-size:11px;color:#999;min-width:65px;}
+.kizazi-player-volume{display:flex;align-items:center;gap:10px;margin-left:auto;color:#aaa;}
+.kizazi-player-volume input{width:130px;accent-color:#ba1c1c;cursor:pointer;}
+.kizazi-player-audio{display:none;}
+@media(max-width:640px){body{padding-bottom:128px;}.kizazi-sticky-player{min-height:112px;padding:10px 14px;grid-template-columns:1fr;gap:9px;}.kizazi-sticky-player__song{font-size:14px;}.kizazi-sticky-player__artist{font-size:12px;}.kizazi-sticky-player__controls{gap:12px;}.kizazi-player-toggle{width:40px;height:40px;flex-basis:40px;}.kizazi-player-volume input{width:95px;}}
 
 </style>
-  <link rel="stylesheet" href="/design-system.css?v=1">
-
-<style id="kizazi-homepage-layout-refresh">
-/* Homepage layout refresh — preserve existing black, red and white identity */
-body { padding-bottom: 0 !important; }
-.homepage-refresh .hero { min-height: 500px; height: min(620px, 58vw); }
-.homepage-refresh .hero:after,
-.homepage-refresh .hero-side-note,
-.homepage-refresh .hero-sticker { display:none !important; }
-.homepage-refresh .hero-content { margin-left:max(5%,calc((100% - 1200px)/2)); }
-.homepage-refresh .hero h1 { font-size:clamp(52px,7vw,94px); }
-.homepage-player {
-  width:min(1200px,92%); margin:-1px auto 0; position:relative; z-index:5;
-  min-height:132px; padding:14px 20px; display:grid;
-  grid-template-columns:190px minmax(0,1fr); align-items:center; gap:18px;
-  background:#09090b; border:1px solid #29292f; border-top:3px solid #e50909;
-  box-shadow:0 18px 45px rgba(0,0,0,.25);
-}
-.homepage-player-label { display:flex; align-items:center; gap:11px; color:#fff; }
-.homepage-player-label .live-dot { flex:0 0 8px; }
-.homepage-player-label strong { display:block; font-size:12px; font-weight:900; letter-spacing:.8px; }
-.homepage-player-label small { display:block; margin-top:5px; color:#a1a1aa; font-size:9px; font-weight:800; letter-spacing:1px; }
-.homepage-player-frame { min-width:0; height:190px; overflow:visible; }
-.homepage-player-frame iframe {
-  width:100%; height:190px; min-height:190px;
-  display:block; border:0; background:#000;
-}
-.home-discovery {
-  width:min(1200px,92%); margin:54px auto 65px; display:grid;
-  grid-template-columns:minmax(0,1.25fr) minmax(340px,.9fr); gap:24px; align-items:start;
-}
-.home-shows, .home-chart { min-width:0; }
-.compact-section-heading {
-  display:flex; justify-content:space-between; align-items:end; gap:14px;
-  margin:0 0 18px;
-}
-.compact-section-heading .eyebrow { margin:0 0 8px; font-size:9px; }
-.compact-section-heading h2 {
-  margin:0; font-size:clamp(27px,3vw,39px); line-height:.95;
-  letter-spacing:-.06em; font-weight:950; color:#f7f7f8;
-}
-.compact-section-heading h2 em { color:var(--red); font-style:normal; }
-.compact-section-heading .text-link { font-size:9px; white-space:nowrap; }
-.home-show-list { display:grid; gap:11px; }
-.home-show-card {
-  position:relative; min-height:112px; padding:17px 52px 16px 20px;
-  display:flex; flex-direction:column; justify-content:center; overflow:hidden;
-  border:1px solid #29292f; background:linear-gradient(105deg,#18181d,#101014);
-  transition:transform .2s,border-color .2s,background .2s;
-}
-.home-show-card:before {
-  content:""; position:absolute; inset:0 auto 0 0; width:4px; background:#e50909;
-}
-.home-show-card:hover { transform:translateY(-2px); border-color:#e50909; }
-.home-show-featured { background:linear-gradient(105deg,#291013,#111115 75%); }
-.home-show-time { color:#d5d5da; font-size:9px; font-weight:900; letter-spacing:1.1px; }
-.home-show-time i { margin-left:8px; color:#8e8e98; font-style:normal; }
-.home-show-title { margin-top:8px; color:#fff; font-size:clamp(20px,2.2vw,29px); line-height:1; font-weight:950; letter-spacing:-1.1px; }
-.home-show-title em { color:var(--red); font-style:normal; }
-.home-show-host { margin-top:7px; color:#9d9da6; font-size:8px; font-weight:900; letter-spacing:1.4px; }
-.home-show-arrow {
-  position:absolute; right:18px; top:50%; transform:translateY(-50%);
-  width:34px; height:34px; display:grid; place-items:center;
-  border:1px solid #48484f; border-radius:50%; color:#fff; font-size:17px;
-}
-.home-chart {
-  padding:20px; border:1px solid #29292f; background:#111115;
-  box-shadow:0 16px 45px rgba(0,0,0,.22);
-}
-.chart-heading { align-items:center; margin-bottom:14px; }
-.chart-week-label {
-  padding:6px 8px; background:var(--red); color:#fff; font-size:8px;
-  font-weight:950; letter-spacing:1px; white-space:nowrap;
-}
-.home-chart .chart-grid { display:grid; grid-template-columns:1fr; gap:0; }
-.home-chart .chart-card {
-  min-width:0; display:grid; grid-template-columns:46px 54px minmax(0,1fr);
-  align-items:center; gap:11px; padding:10px 0;
-  border:0; border-bottom:1px solid #303037; border-radius:0;
-  background:transparent; box-shadow:none;
-}
-.home-chart .chart-card:last-child { border-bottom:0; }
-.home-chart .chart-artwork {
-  width:54px; height:54px; min-height:54px; position:relative;
-  overflow:hidden; border-radius:3px;
-}
-.home-chart .chart-artwork img { width:100%; height:100%; object-fit:cover; }
-.home-chart .chart-position {
-  position:static; width:40px; height:36px; display:grid; place-items:center;
-  border:0; border-radius:3px; background:var(--red); color:#fff;
-}
-.home-chart .chart-position small, .home-chart .chart-watermark,
-.home-chart .chart-leader-tag { display:none; }
-.home-chart .chart-position strong { font-size:17px; line-height:1; }
-.home-chart .chart-song-info { min-width:0; padding:0; }
-.home-chart .chart-song-info h3 {
-  margin:0; color:#fff; font-size:12px; line-height:1.35; font-weight:850;
-}
-.home-chart .chart-song-info p { margin:4px 0 0; color:#a3a3ac; font-size:10px; }
-.home-chart .chart-card-footer { margin-top:5px; display:flex; align-items:center; justify-content:space-between; gap:8px; }
-.home-chart .chart-card-footer > span { color:#777781; font-size:8px; letter-spacing:.6px; }
-.home-chart .chart-listen { padding:4px 7px; border:1px solid #44444b; color:#fff; font-size:8px; }
-.home-chart .chart-listen:hover { background:var(--red); border-color:var(--red); }
-.home-chart .chart-footer {
-  display:flex; justify-content:space-between; align-items:center; gap:10px;
-  padding-top:13px; margin-top:7px; border-top:1px solid #303037;
-}
-.home-chart .chart-footer span { color:#85858e; font-size:8px; font-weight:900; letter-spacing:.8px; }
-.home-chart .chart-view-all { color:#fff; font-size:9px; font-weight:900; white-space:nowrap; }
-.home-chart .chart-view-all:hover { color:var(--red); }
-.home-chart .chart-message, .home-chart .chart-loading { color:#aaaab3; font-size:11px; line-height:1.7; }
-.homepage-refresh .news-section { padding:38px 0 80px; border-top:1px solid #29292f; }
-.homepage-refresh .news-section .section-heading { margin-bottom:24px; }
-.homepage-refresh .news-section .section-title { font-size:clamp(34px,4vw,48px); }
-.homepage-refresh .news-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
-@media(max-width:900px) {
-  .home-discovery { grid-template-columns:1fr; }
-  .home-chart { order:2; }
-  .home-shows { order:1; }
-}
-@media(max-width:700px) {
-  .homepage-refresh .hero { min-height:520px; height:570px; }
-  .homepage-refresh .hero-content { width:88%; margin-left:6%; }
-  .homepage-refresh .hero h1 { font-size:clamp(43px,11vw,68px); }
-  .homepage-player { width:100%; grid-template-columns:1fr; gap:8px; padding:10px 12px; }
-  .homepage-player-label { justify-content:center; }
-  .homepage-player-frame { height:190px; overflow:visible; }
-  .homepage-player-frame iframe { height:190px; min-height:190px; }
-  .home-discovery { width:92%; margin:38px auto 46px; gap:30px; }
-  .compact-section-heading { align-items:flex-end; }
-  .compact-section-heading h2 { font-size:30px; }
-  .home-show-card { min-height:102px; }
-  .home-chart { padding:16px 13px; }
-  .home-chart .chart-card { grid-template-columns:38px 48px minmax(0,1fr); gap:8px; }
-  .home-chart .chart-position { width:34px; height:32px; }
-  .home-chart .chart-artwork { width:48px; height:48px; min-height:48px; }
-  .home-chart .chart-song-info h3 { font-size:11px; }
-  .homepage-refresh .news-section { padding:34px 0 55px; }
-  .homepage-refresh .news-grid { grid-template-columns:1fr; }
-}
-</style>
-
-
-<style id="kizazi-homepage-polish">
-/* Show-area feature card */
-.playlist-promo {
-  position:relative; min-height:230px; margin-top:18px; padding:25px 24px;
-  display:flex; align-items:center; justify-content:space-between; gap:12px;
-  overflow:hidden; color:#fff; text-decoration:none;
-  border:1px solid #34343b;
-  background:
-    radial-gradient(circle at 82% 48%,rgba(229,9,9,.22),transparent 33%),
-    linear-gradient(115deg,#17171c 0%,#0b0b0e 72%);
-}
-.playlist-promo:before {
-  content:""; position:absolute; inset:0 auto 0 0; width:4px; background:var(--red);
-}
-.playlist-promo-copy { position:relative; z-index:2; max-width:390px; }
-.playlist-promo-copy .eyebrow { margin-bottom:10px; font-size:8px; }
-.playlist-promo-copy h3 {
-  margin:0; color:#fff; font-size:clamp(30px,3.5vw,46px);
-  line-height:.88; letter-spacing:-.07em; font-weight:950;
-}
-.playlist-promo-copy h3 em { color:var(--red); font-style:normal; }
-.playlist-promo-copy > p:not(.eyebrow) {
-  max-width:330px; margin:12px 0 15px; color:#b5b5bd; font-size:11px; line-height:1.65;
-}
-.playlist-promo-cta {
-  display:inline-flex; padding:10px 13px; background:var(--red); color:#fff;
-  font-size:8px; font-weight:950; letter-spacing:1px;
-}
-.playlist-promo-art {
-  position:relative; flex:0 0 175px; height:175px; display:grid; place-items:center;
-}
-.promo-disc {
-  position:absolute; width:145px; height:145px; border-radius:50%;
-  border:1px solid #ffffff45;
-  background:repeating-radial-gradient(circle,#17171c 0 4px,#24242b 5px 6px);
-  box-shadow:0 0 0 9px #ffffff08,0 0 0 20px #ffffff05;
-}
-.promo-disc:after {
-  content:""; position:absolute; width:28px; height:28px; border-radius:50%;
-  left:50%; top:50%; transform:translate(-50%,-50%);
-  background:var(--red); border:5px solid #111;
-}
-.promo-word {
-  position:relative; z-index:2; color:#fff; font-size:37px; line-height:.75;
-  font-weight:1000; letter-spacing:-4px; transform:rotate(-12deg);
-  text-shadow:3px 3px 0 var(--red);
-}
-.promo-equalizer {
-  position:absolute; z-index:3; right:0; bottom:13px; height:38px;
-  display:flex; align-items:center; gap:4px;
-}
-.promo-equalizer i { display:block; width:4px; height:14px; background:var(--red); border-radius:4px; }
-.promo-equalizer i:nth-child(2n) { height:28px; }
-.promo-equalizer i:nth-child(3n) { height:20px; }
-
-/* Compact TOP 15 card inspired by the supplied reference */
-.home-chart {
-  padding:18px 18px 14px; border:1px solid #303037; border-radius:12px;
-  background:linear-gradient(145deg,#17171b 0%,#09090b 100%);
-  box-shadow:0 16px 42px rgba(0,0,0,.32);
-}
-.home-chart .chart-heading { margin-bottom:12px; align-items:center; }
-.home-chart .compact-section-heading h2 { font-size:clamp(26px,2.7vw,36px); }
-.home-chart .chart-grid { display:flex; flex-direction:column; gap:0; }
-.home-chart .chart-card {
-  width:100%; min-height:62px; padding:8px 0;
-  display:grid; grid-template-columns:38px 48px minmax(0,1fr) 30px;
-  align-items:center; gap:10px; border:0; border-bottom:1px solid #36363c;
-  border-radius:0; background:transparent; box-shadow:none;
-}
-.home-chart .chart-card:last-child { border-bottom:0; }
-.home-chart .chart-position {
-  position:static; width:34px; height:30px; display:grid; place-items:center;
-  border:0; border-radius:7px; background:#ffdf00; color:#080808;
-}
-.home-chart .chart-position strong { font-size:14px; line-height:1; font-weight:1000; }
-.home-chart .chart-artwork {
-  width:48px; height:48px; min-height:48px; overflow:hidden;
-  border-radius:5px; background:#24242a;
-}
-.home-chart .chart-artwork img { width:100%; height:100%; object-fit:cover; display:block; }
-.home-chart .chart-placeholder {
-  width:100%; height:100%; display:flex; flex-direction:column;
-  justify-content:center; align-items:center; color:#fff; background:#292930;
-  font-size:7px; font-weight:900;
-}
-.home-chart .chart-placeholder strong { color:var(--red); font-size:11px; }
-.home-chart .chart-song-info { min-width:0; padding:0; }
-.home-chart .chart-song-info h3 {
-  margin:0; color:#fff; font-size:11px; line-height:1.3;
-  font-weight:900; white-space:normal; overflow-wrap:anywhere;
-}
-.home-chart .chart-song-info p {
-  margin:4px 0 0; color:#a7a7b0; font-size:9px; line-height:1.3;
-  white-space:normal; overflow-wrap:anywhere;
-}
-.home-chart .chart-play-button {
-  width:27px; height:27px; display:grid; place-items:center;
-  border:0; border-radius:50%; background:#fff; color:#09090b;
-  font-size:11px; text-decoration:none; font-weight:900;
-  transition:transform .18s,background .18s,color .18s;
-}
-.home-chart a.chart-play-button:hover {
-  transform:scale(1.08); background:var(--red); color:#fff;
-}
-.home-chart .chart-play-disabled { opacity:.35; }
-.home-chart .chart-footer {
-  margin-top:9px; padding-top:12px; border-top:1px solid #36363c;
-}
-.home-chart .chart-footer span { font-size:7px; letter-spacing:.7px; }
-.home-chart .chart-view-all {
-  padding:9px 11px; background:var(--red); color:#fff; font-size:8px;
-}
-.home-chart .chart-view-all:hover { background:#fff; color:#09090b; }
-@media(max-width:900px) {
-  .playlist-promo { min-height:205px; }
-}
-@media(max-width:600px) {
-  .playlist-promo { min-height:190px; padding:20px 16px; }
-  .playlist-promo-art { flex-basis:105px; height:125px; }
-  .promo-disc { width:100px; height:100px; }
-  .promo-word { font-size:28px; }
-  .promo-equalizer { right:-5px; bottom:5px; }
-  .playlist-promo-copy h3 { font-size:31px; }
-  .home-chart { border-radius:9px; }
-}
-</style>
-
-
-<style id="kizazi-playlist-vinyl-animation">
-/* Clean rotating vinyl artwork */
-.playlist-promo-art { perspective:600px; }
-.promo-disc {
-  width:170px; height:170px;
-  background:
-    radial-gradient(circle at 50% 50%, #111 0 9%, transparent 9.5%),
-    repeating-radial-gradient(circle at 50% 50%, #25252c 0 2px, #111116 3px 5px);
-  border:1px solid #55555d;
-  box-shadow:0 0 0 9px #ffffff08,0 0 0 20px #ffffff05,0 0 30px #e5090920;
-  animation:kizazi-vinyl-spin 7s linear infinite;
-  will-change:transform;
-}
-.promo-disc:before {
-  content:""; position:absolute; inset:8px; border-radius:50%;
-  background:conic-gradient(from 0deg, transparent 0 12%, #ffffff18 14%, transparent 17% 42%, #ffffff12 45%, transparent 49% 76%, #ffffff16 79%, transparent 83% 100%);
-}
-.promo-disc:after {
-  width:24px; height:24px; background:var(--red);
-  border:5px solid #f7f7f8; box-shadow:0 0 0 3px #111;
-}
-@keyframes kizazi-vinyl-spin {
-  from { transform:rotate(0deg); }
-  to { transform:rotate(360deg); }
-}
-@media(prefers-reduced-motion:reduce) {
-  .promo-disc { animation:none; }
-}
-@media(max-width:600px) {
-  .promo-disc { width:112px; height:112px; }
-}
-</style>
-
 </head>
 
 <body>
+
 <header class="header" id="top">
   <div class="header-inner">
+
     <a href="/" aria-label="KIZAZI RADIO home">
       <img class="brand-logo" data-official-logo alt="KIZAZI RADIO official logo">
     </a>
+
     <button class="menu" aria-label="Open navigation" aria-expanded="false">☰</button>
+
     <nav class="nav" aria-label="Main navigation">
-      <a href="/">Home</a>
+      <a href="/#listen">Listen Live</a>
+      <a href="/#schedule">Schedule</a>
       <a href="/shows/">Shows</a>
-      <a href="/news/">News</a>
-      <a href="/top15/">TOP 15</a>
       <a href="/maybe-i-dont-know/">Podcast</a>
+      <a href="/top15/">TOP 15</a>
+      <a href="/news/">News</a>
       <a href="/about/">About</a>
       <a href="/contact/">Contact Us</a>
+      <a href="/donate/">Donate</a>
+
+      <div class="social-links header-socials" aria-label="KIZAZI RADIO social media">
+
+        <a href="https://www.instagram.com/kizaziradio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8zm4.2 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.2-3.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/>
+          </svg>
+        </a>
+
+        <a href="https://x.com/KiZaZiRadio" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-7.2L5.7 22H2.5l7.3-8.4L1.8 2h6.5l4.4 6.6L18.9 2zm-1.1 18h1.7L7.3 3.9H5.5L17.8 20z"/>
+          </svg>
+        </a>
+
+        <a href="https://www.youtube.com/@KiZaZiRadio" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg class="youtube-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/>
+          </svg>
+        </a>
+
+      </div>
     </nav>
-    <a class="header-live" href="/donate/"><span class="live-dot"></span> DONATE ↗</a>
+
+    <a class="header-live" href="/#listen">
+      <span class="live-dot"></span>
+      LISTEN LIVE ↗
+    </a>
+
   </div>
 </header>
 
-<main class="homepage-refresh">
-  <section class="hero">
-    <img class="hero-image" src="/assets/kizazi-radio-hero.webp" alt="KIZAZI RADIO" fetchpriority="high">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="eyebrow">RADIO • MUSIC • CULTURE</p>
-      <h1 aria-label="The sound of what's next.">
-        <span class="headline-line">THE SOUND</span>
-        <span class="headline-line"><span class="headline-white">OF</span> <em>WHAT'S</em></span>
-        <span class="headline-line"><em>NEXT.</em></span>
-      </h1>
-      <p class="hero-description">Welcome to <strong>KiZaZi Radio</strong> — your home for the sounds, stories and voices of a new generation.</p>
-      <div class="hero-actions">
-        <a class="primary-button" href="#listen">▶ LISTEN LIVE</a>
-        <a class="hero-secondary" href="/shows/">EXPLORE OUR SHOWS ↘</a>
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <img class="hero-image"
+       src="/assets/kizazi-radio-hero.webp"
+       alt="KIZAZI RADIO">
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-side-note" aria-hidden="true">NEW GENERATION. NEW SOUND.</div>
+
+  <div class="hero-sticker" aria-hidden="true">
+    <span class="sticker-top">KIZAZI RADIO</span>
+    <strong>FRESH<br>FREQUENCY</strong>
+    <span class="sticker-bottom">NO SKIPS. JUST VIBES.</span>
+  </div>
+
+  <div class="hero-content">
+    <p class="eyebrow">Radio • Music • Culture</p>
+
+    <h1 aria-label="The sound of what's next.">
+      <span class="headline-line">THE SOUND</span>
+      <span class="headline-line"><span class="headline-white">OF</span> <em>WHAT'S</em></span>
+      <span class="headline-line"><em>NEXT.</em></span>
+    </h1>
+
+    <p class="hero-description">
+      Welcome to <strong>KiZaZi Radio</strong> — Your Home for the Sounds, Stories, and Voices of a New Generation.
+    </p>
+
+    <div class="hero-actions">
+      <a class="primary-button" href="/#listen">▶ LISTEN LIVE</a>
+      <a class="hero-secondary" href="/shows/">EXPLORE KIZAZI ↘</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- KIZAZI MOVING WELCOME MARQUEE -->
+
+<section class="info-strip" aria-label="Welcome to KIZAZI RADIO">
+  <div class="info-strip-inner">
+
+    <div class="info-marquee-group">
+      <span class="info-marquee-item">
+        <span class="marquee-tag">WELCOME TO</span>
+        <strong>KIZAZI RADIO</strong>
+      </span>
+      <span class="info-marquee-item">
+        <strong class="red-word">NEW GENERATION.</strong>
+        <strong>NEW SOUND.</strong>
+      </span>
+      <span class="info-marquee-item">
+        <span class="marquee-star">✳</span>
+        REAL VOICES. FRESH VIBES.
+      </span>
+      <span class="info-marquee-item">
+        NON-STOP MUSIC.
+      </span>
+      <span class="info-marquee-item">
+        YOUR CULTURE. YOUR FREQUENCY.
+      </span>
+      <span class="info-marquee-item">
+        <span class="marquee-star">✳</span>
+        MUSIC • CULTURE • CONVERSATION
+      </span>
+    </div>
+
+    <div class="info-marquee-group" aria-hidden="true">
+      <span class="info-marquee-item">
+        <span class="marquee-tag">WELCOME TO</span>
+        <strong>KIZAZI RADIO</strong>
+      </span>
+      <span class="info-marquee-item">
+        <strong class="red-word">NEW GENERATION.</strong>
+        <strong>NEW SOUND.</strong>
+      </span>
+      <span class="info-marquee-item">
+        <span class="marquee-star">✳</span>
+        REAL VOICES. FRESH VIBES.
+      </span>
+      <span class="info-marquee-item">
+        NON-STOP MUSIC.
+      </span>
+      <span class="info-marquee-item">
+        YOUR CULTURE. YOUR FREQUENCY.
+      </span>
+      <span class="info-marquee-item">
+        <span class="marquee-star">✳</span>
+        MUSIC • CULTURE • CONVERSATION
+      </span>
+    </div>
+
+  </div>
+</section>
+
+<!-- LIVE RADIO -->
+
+<section class="live-section" id="listen">
+  <div class="wrap">
+
+    <div class="section-heading">
+      <div>
+        <div class="section-number">01 / LIVE RADIO</div>
+        <p class="eyebrow">MUSIC CHANNEL ENERGY · UNDERGROUND SOUL · ALWAYS ON</p>
+        <h2 class="section-title">THIS IS <em>KIZAZI.</em></h2>
       </div>
     </div>
-  </section>
 
-  <section class="homepage-player" id="listen" aria-label="KIZAZI RADIO live player">
-    <div class="homepage-player-label">
-      <span class="live-dot"></span>
-      <div><strong>KIZAZI RADIO</strong><small>LIVE STREAM · ON AIR 24/7</small></div>
-    </div>
-    <div class="homepage-player-frame">
-      <iframe
-        src="https://a4.asurahosting.com/public/kizazi_radio/embed?primary_color=ba1c1c&amp;bg_color=000000&amp;text_color=ffffff&amp;continuous=1"
-        title="KIZAZI RADIO live stream player"
-        frameborder="0"
-        allow="autoplay"
-        allowtransparency="true">
-      </iframe>
-    </div>
-  </section>
+    <div class="live-card">
 
-  <section class="home-discovery" aria-label="KIZAZI shows and music chart">
-    <div class="home-shows">
-      <div class="compact-section-heading">
-        <div><p class="eyebrow">WHAT'S ON KIZAZI</p><h2>OUR <em>SHOWS.</em></h2></div>
-        <a href="/shows/" class="text-link">VIEW ALL SHOWS <span>↗</span></a>
-      </div>
+      <div class="live-visual">
 
-      <div class="home-show-list">
-        <a class="home-show-card" href="/shows/">
-          <span class="home-show-time">10 AM — 12 PM <i>MON–FRI</i></span>
-          <span class="home-show-title">MORNING <em>LINKUP</em></span>
-          <span class="home-show-host">WITH KING MFUMU</span>
-          <span class="home-show-arrow">↗</span>
-        </a>
-        <a class="home-show-card home-show-featured" href="/shows/">
-          <span class="home-show-time">3 PM — 6 PM <i>MON–FRI</i></span>
-          <span class="home-show-title">NO <em>CAP.</em></span>
-          <span class="home-show-host">WITH KING MFUMU</span>
-          <span class="home-show-arrow">↗</span>
-        </a>
-        <a class="home-show-card" href="/shows/">
-          <span class="home-show-time">8 PM — 11 PM <i>MON–FRI</i></span>
-          <span class="home-show-title">THE LOVE <em>NIGHTS.</em></span>
-          <span class="home-show-host">WITH KING MFUMU</span>
-          <span class="home-show-arrow">↗</span>
-        </a>
-      </div>
-
-      <a class="playlist-promo" href="#listen">
-        <div class="playlist-promo-copy">
-          <p class="eyebrow">WHEN THE SHOWS TAKE A BREAK</p>
-          <h3>KEEP THE<br><em>VIBE ALIVE.</em></h3>
-          <p>Non-stop sounds, fresh discoveries and the music moving the next generation — all day, every day.</p>
-          <span class="playlist-promo-cta">▶ LISTEN TO KIZAZI PLAYLIST</span>
+        <div class="sound-bars" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i>
         </div>
-        <div class="playlist-promo-art" aria-hidden="true">
-          <span class="promo-disc"></span>
+
+        <div class="live-label">
+          <span class="live-dot"></span>
+          KIZAZI RADIO <span>• ON AIR</span>
         </div>
+
+        <div class="live-kicker">NOT JUST RADIO. IT’S A WHOLE FREQUENCY <span>✳</span></div>
+        <h3>TUNE IN.<br>TURN UP.<br><em>LIVE KIZAZI.</em></h3>
+
+        <p>
+          From underground energy to global hits. Fresh sounds, fearless voices and the culture moving a new generation.
+        </p>
+
+        <div class="live-bottom">
+          <span>MUSIC • CULTURE • CONVERSATION</span>
+        </div>
+
+      </div>
+
+      <div class="player-panel">
+
+        <div class="player-heading">
+          <small>LIVE STREAM <span class="player-live-mark">● CONNECTED TO THE CULTURE</span></small>
+          <h3>LOCK IN.<br><em>LISTEN UP.</em></h3>
+        </div>
+
+        <div class="caster-player-placeholder">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>THE LIVE PLAYER IS NOW FIXED AT THE BOTTOM OF THIS PAGE.</span>
+          <a href="#kizazi-radio-player">LISTEN LIVE ↓</a>
+        </div>
+
+        <p class="player-note">
+          One tap from the sound, stories and voices shaping what’s next.
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- NOW PLAYING DISPLAY -->
+
+    <div class="now-playing">
+
+      <div class="now-art">♫</div>
+
+      <div class="now-details">
+        <small>YOUR FREQUENCY RIGHT NOW</small>
+        <strong>KIZAZI RADIO <span>✳</span></strong>
+        <p>NEW GENERATION. NEW SOUND. · MUSIC / CULTURE / CONVERSATION</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- KIZAZI PROGRAMMING / THE LINEUP -->
+
+<section class="schedule-section lineup-section" id="schedule">
+  <div class="wrap lineup-layout">
+
+    <div class="lineup-intro">
+      <div class="section-number">02 / THE LINEUP</div>
+      <p class="eyebrow">WHAT'S ON KIZAZI</p>
+
+      <h2 class="lineup-title">
+        YOUR SOUND.<br>
+        <span>YOUR</span><br>
+        PEOPLE<span class="lineup-period">.</span>
+      </h2>
+
+      <p class="lineup-description">
+        Your daily dose of music, culture and real conversations.
+        Find your frequency. Catch your people. Stay in the mix.
+      </p>
+
+      <div class="lineup-foot">
+        <span class="lineup-cross">✳</span>
+        <span>NO STATIC. ALL CULTURE.</span>
+      </div>
+
+      <div class="lineup-sticker" aria-hidden="true">
+        <span>FRESH</span>
+        <strong>VIBE<br>ONLY</strong>
+        <span>EST. KIZAZI</span>
+      </div>
+    </div>
+
+    <div class="lineup-cards">
+
+      <a class="lineup-card lineup-live" href="#listen" aria-label="Listen to KIZAZI RADIO live">
+        <div class="lineup-card-top">
+          <span class="lineup-status"><i></i> ON AIR / 24-7 SOUND</span>
+          <span class="lineup-index">01</span>
+        </div>
+
+        <div class="lineup-card-content">
+          <div>
+            <span class="lineup-card-kicker">THE SOUNDTRACK TO WHAT'S NEXT</span>
+            <h3>KIZAZI RADIO <em>LIVE.</em></h3>
+            <p>Music, entertainment and the sound of a new generation.</p>
+          </div>
+          <span class="lineup-cta">TUNE IN <b>↗</b></span>
+        </div>
+
+        <div class="lineup-equalizer" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </a>
+
+      <a class="lineup-card lineup-podcast" href="/maybe-i-dont-know/" aria-label="Explore Maybe I Don't Know podcast hosted by King Mfumu">
+        <div class="lineup-podcast-copy">
+          <span class="lineup-status"><i></i> KIZAZI ORIGINAL / PODCAST</span>
+          <span class="lineup-card-kicker">REAL TALK. OPEN MINDS.</span>
+          <h3>MAYBE I DON'T<br><em>KNOW?</em></h3>
+          <p>Honest conversations with <strong>King Mfumu.</strong></p>
+          <span class="lineup-cta lineup-cta-dark">GET INTO IT <b>↗</b></span>
+        </div>
+
+        <div class="lineup-host-visual">
+          <span class="lineup-index">02</span>
+          <img src="/assets/king-mfumu-presenter.png" alt="King Mfumu, host of Maybe I Don't Know" loading="lazy">
+          <span class="lineup-host-name">KING MFUMU <i>THE HOST</i></span>
+        </div>
+      </a>
+
+      <p class="lineup-note"><span>✳</span> New episodes, fresh sounds. Always something to tap into.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- THE KIZAZI EXPERIENCE -->
+
+<section class="experience-section" id="experience">
+  <div class="wrap">
+    <div class="experience-heading">
+      <div>
+        <p class="experience-kicker">03 / THE KIZAZI EXPERIENCE</p>
+        <p class="eyebrow">More than a playlist</p>
+        <h2 class="experience-title">CULTURE<br>IN <em>EVERY</em><br>FREQUENCY.</h2>
+      </div>
+      <p class="experience-intro">
+        From the sounds that move you to the stories that shape the moment,
+        KIZAZI RADIO brings the energy, ideas and conversations of a new
+        generation into one listening experience.
+      </p>
+    </div>
+
+    <div class="experience-stage">
+      <div class="experience-signal" aria-hidden="true">
+        <span class="signal-word">KIZAZI<br>RADIO</span>
+        <div class="signal-bars">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <span class="signal-caption">NEW GENERATION. NEW SOUND.</span>
+      </div>
+
+      <div class="experience-list">
+        <a class="experience-item" href="/#listen">
+          <span class="experience-index">01</span>
+          <span class="experience-item-copy">
+            <strong>LIVE RADIO</strong>
+            <small>Always on. Always moving.</small>
+          </span>
+          <span class="experience-arrow">↗</span>
+        </a>
+
+        <a class="experience-item" href="/shows/">
+          <span class="experience-index">02</span>
+          <span class="experience-item-copy">
+            <strong>SHOWS &amp; CULTURE</strong>
+            <small>Fresh voices. Real conversations.</small>
+          </span>
+          <span class="experience-arrow">↗</span>
+        </a>
+
+        <a class="experience-item" href="/news/">
+          <span class="experience-index">03</span>
+          <span class="experience-item-copy">
+            <strong>NEWS &amp; DISCOVERY</strong>
+            <small>What matters. What's next.</small>
+          </span>
+          <span class="experience-arrow">↗</span>
+        </a>
+
+        <a class="experience-item" href="/top15/">
+          <span class="experience-index">04</span>
+          <span class="experience-item-copy">
+            <strong>THE SOUNDTRACK</strong>
+            <small>New music. Standout sounds.</small>
+          </span>
+          <span class="experience-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALWAYS CONNECTED -->
+
+<section class="connected-section" id="connected">
+  <div class="wrap connected-layout">
+    <div class="connected-visual" aria-hidden="true">
+      <div class="frequency-grid"></div>
+      <div class="frequency-ring ring-a"></div>
+      <div class="frequency-ring ring-b"></div>
+      <div class="frequency-ring ring-c"></div>
+      <div class="frequency-core" aria-hidden="true"></div>
+      <div class="frequency-wave">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <span class="frequency-label label-top">ONE SIGNAL. EVERYWHERE.</span>
+      <span class="frequency-label label-bottom">YOUR WORLD. YOUR FREQUENCY.</span>
+      <span class="connected-stamp">YOUR<br>RADIO.<br>ANYWHERE.</span>
+    </div>
+
+    <div class="connected-copy">
+      <p class="eyebrow">Your frequency travels</p>
+      <h2 class="connected-title">ALWAYS<br>CONNECTED.<br><em>ALWAYS KIZAZI.</em></h2>
+      <p>
+        Wherever life takes you, your sound goes with you. Tune in to KIZAZI
+        RADIO from your phone, tablet or computer and stay close to the music,
+        voices and moments moving a new generation.
+      </p>
+      <div class="connected-actions">
+        <a class="primary-button" href="/#listen">TUNE IN. STAY CONNECTED ↗</a>
+        <span class="connected-note"><i></i> LISTEN LIVE • WORLDWIDE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+
+<section class="news-section" id="news">
+  <div class="wrap">
+
+    <div class="section-heading">
+      <div>
+        <div class="section-number">04 / THE LATEST</div>
+        <p class="eyebrow">What's happening</p>
+        <h2 class="section-title">NEWS <em>&amp; CULTURE.</em></h2>
+      </div>
+
+      <a class="text-link"
+         href="mailto:editor@kizaziradio.com?subject=News%20Submission%20-%20KIZAZI%20RADIO">
+        SUBMIT NEWS <span>↗</span>
       </a>
     </div>
 
-    <section class="home-chart" id="top15">
-      <div class="compact-section-heading chart-heading">
-        <div><p class="eyebrow">THE TRACKS MOVING NOW</p><h2>TOP 15 <em>CHART.</em></h2></div>
-        <span class="chart-week-label">THIS WEEK</span>
-      </div>
-      <div class="chart-grid" id="homepageChart">
-        <p class="chart-loading">Loading TOP 15 Music Chart...</p>
-      </div>
-      <div class="chart-footer">
-        <span>THE OFFICIAL KIZAZI RADIO TOP 15</span>
-        <a href="/top15/" class="chart-view-all">VIEW FULL CHART ↗</a>
-      </div>
-    </section>
-  </section>
+    <div class="news-grid">
 
-  <section class="news-section" id="news">
-    <div class="wrap">
-      <div class="section-heading">
-        <div>
-          <div class="section-number">02 / THE LATEST</div>
-          <p class="eyebrow">MUSIC • ENTERTAINMENT • CULTURE</p>
-          <h2 class="section-title">LATEST <em>NEWS.</em></h2>
-        </div>
-        <a class="text-link" href="/news/">VIEW ALL NEWS <span>↗</span></a>
+      <div class="news-placeholder">
+        <strong>THE LATEST FROM KIZAZI RADIO</strong>
+        Music news, entertainment stories, culture and the latest happenings will appear here.
+        <br>
+        New updates coming soon.
       </div>
-      <div class="news-grid" id="newsGrid">
-        <p class="news-loading">Loading latest stories...</p>
-      </div>
+
     </div>
-  </section>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section class="about-section" id="about">
+  <div class="wrap about-grid">
+
+    <div class="about-intro">
+      <p class="eyebrow">Music. Culture. Conversation.</p>
+      <h2 class="section-title">WE ARE<br><em>KIZAZI.</em></h2>
+    </div>
+
+    <div class="about-copy">
+      <p>
+        More than a radio station. KIZAZI is where fresh sounds, fearless voices and new perspectives come together. We entertain, inform and connect a generation moving to its own rhythm.
+      </p>
+
+      <a class="outline-button" href="/about/">
+        ABOUT US <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+
+<section class="community-section">
+  <div class="wrap">
+
+    <div class="community-box">
+
+      <div class="community-copy">
+        <p class="eyebrow">This is your space</p>
+
+        <h2>DON'T JUST<br><span>FOLLOW THE CULTURE.</span></h2>
+
+        <p>
+          Got a track, a story, an event or something worth putting on the radar? Bring it to KIZAZI. Let's make some noise together.
+        </p>
+      </div>
+
+      <a class="primary-button"
+         href="/contact/">
+        CONTACT US ↗
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
 </main>
 
 <!-- FOOTER -->
@@ -5270,26 +5036,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
       return `
         <article class="chart-card ${Number(song.position) === 1 ? "chart-card-leader" : ""}">
-          <span class="chart-position"><strong>${escapeHTML(song.position)}</strong></span>
+
           <div class="chart-artwork">
+
             ${
               artwork
-                ? `<img src="${escapeHTML(artwork)}"
+                ? `<img
+                     src="${escapeHTML(artwork)}"
                      alt="${escapeHTML(song.song_title)} by ${escapeHTML(song.artist_name)}"
                      loading="lazy">`
-                : `<div class="chart-placeholder"><span>KIZAZI</span><strong>MUSIC</strong></div>`
+                : `<div class="chart-placeholder">
+                     <span>KIZAZI</span>
+                     <strong>MUSIC</strong>
+                   </div>`
             }
+
+            <span class="chart-position">
+              <small>NO.</small>
+              <strong>${escapeHTML(song.position)}</strong>
+            </span>
+
+            <span class="chart-watermark">KIZAZI TOP 15</span>
+            ${Number(song.position) === 1 ? `<span class="chart-leader-tag">★ CHART LEADER</span>` : ""}
+
           </div>
+
           <div class="chart-song-info">
+
             <h3>${escapeHTML(song.song_title)}</h3>
+
             <p>${escapeHTML(song.artist_name)}</p>
+
+            <div class="chart-card-footer">
+              <span>POSITION #${escapeHTML(song.position)}</span>
+
+              ${
+                youtube
+                  ? `<a
+                       href="${escapeHTML(youtube)}"
+                       class="chart-listen"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                       <span>▶</span> WATCH
+                     </a>`
+                  : `<span class="chart-unavailable">
+                       VIDEO UNAVAILABLE
+                     </span>`
+              }
+            </div>
+
           </div>
-          ${
-            youtube
-              ? `<a href="${escapeHTML(youtube)}" class="chart-listen chart-play-button"
-                   target="_blank" rel="noopener noreferrer" aria-label="Watch ${escapeHTML(song.song_title)}">▶</a>`
-              : `<span class="chart-play-button chart-play-disabled" aria-label="Video unavailable">▶</span>`
-          }
+
         </article>
       `;
     }).join("");
@@ -6785,161 +6582,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </script>
 
-<style id="kizazi-top15-final-fix">
-/* TOP 15: keep rank badge beside (never over) artwork */
-.home-chart .chart-card {
-  display:grid !important;
-  grid-template-columns:52px 86px minmax(0,1fr) 42px !important;
-  align-items:center !important;
-  gap:14px !important;
-  min-height:88px !important;
-  padding:12px 0 !important;
-  overflow:visible !important;
-}
-.home-chart .chart-position {
-  position:static !important;
-  inset:auto !important;
-  grid-column:1 !important;
-  grid-row:1 !important;
-  width:48px !important;
-  min-width:48px !important;
-  height:48px !important;
-  min-height:48px !important;
-  padding:0 !important;
-  margin:0 !important;
-  display:grid !important;
-  place-items:center !important;
-  border-radius:10px !important;
-  background:#ffdf00 !important;
-  color:#080808 !important;
-  box-shadow:none !important;
-  transform:none !important;
-  z-index:1 !important;
-}
-.home-chart .chart-card-leader .chart-position {
-  width:48px !important;
-  min-width:48px !important;
-  height:48px !important;
-  background:#ffdf00 !important;
-}
-.home-chart .chart-position strong {
-  color:#080808 !important;
-  font-size:22px !important;
-  line-height:1 !important;
-  font-weight:1000 !important;
-}
-.home-chart .chart-artwork {
-  grid-column:2 !important;
-  grid-row:1 !important;
-  position:relative !important;
-  width:86px !important;
-  min-width:86px !important;
-  height:86px !important;
-  min-height:86px !important;
-  margin:0 !important;
-  overflow:hidden !important;
-  border-radius:7px !important;
-  z-index:0 !important;
-}
-.home-chart .chart-artwork img {
-  display:block !important;
-  width:100% !important;
-  height:100% !important;
-  object-fit:cover !important;
-}
-.home-chart .chart-song-info {
-  grid-column:3 !important;
-  grid-row:1 !important;
-  min-width:0 !important;
-  width:auto !important;
-  padding:0 4px !important;
-  margin:0 !important;
-  align-self:center !important;
-}
-.home-chart .chart-song-info h3 {
-  min-height:0 !important;
-  margin:0 0 8px !important;
-  padding:0 !important;
-  color:#fff !important;
-  font-size:17px !important;
-  line-height:1.3 !important;
-  font-weight:900 !important;
-  white-space:normal !important;
-  overflow-wrap:break-word !important;
-  word-break:normal !important;
-}
-.home-chart .chart-song-info p {
-  min-height:0 !important;
-  margin:0 !important;
-  padding:0 !important;
-  color:#a7a7b0 !important;
-  font-size:13px !important;
-  line-height:1.5 !important;
-  white-space:normal !important;
-  overflow-wrap:break-word !important;
-  word-break:normal !important;
-}
-.home-chart .chart-play-button {
-  grid-column:4 !important;
-  grid-row:1 !important;
-  position:static !important;
-  inset:auto !important;
-  display:grid !important;
-  place-items:center !important;
-  width:36px !important;
-  min-width:36px !important;
-  max-width:36px !important;
-  height:36px !important;
-  min-height:36px !important;
-  max-height:36px !important;
-  padding:0 !important;
-  margin:0 !important;
-  border:0 !important;
-  border-radius:50% !important;
-  clip-path:none !important;
-  background:#fff !important;
-  color:#09090b !important;
-  font-size:14px !important;
-  line-height:1 !important;
-  text-align:center !important;
-  text-decoration:none !important;
-  box-shadow:none !important;
-  overflow:visible !important;
-  transform:none !important;
-}
-.home-chart a.chart-play-button:hover {
-  background:var(--red) !important;
-  color:#fff !important;
-}
-.home-chart .chart-play-disabled { opacity:.35 !important; }
-@media(max-width:600px) {
-  .home-chart .chart-card {
-    grid-template-columns:38px 62px minmax(0,1fr) 32px !important;
-    gap:8px !important;
-    min-height:70px !important;
-    padding:9px 0 !important;
+
+<!-- KIZAZI RADIO: CUSTOM ARTWORK-FREE STICKY PLAYER -->
+<div class="kizazi-sticky-player" id="kizazi-radio-player" role="region" aria-label="KIZAZI RADIO live player">
+  <div class="kizazi-sticky-player__meta">
+    <div class="kizazi-sticky-player__song" id="kizazi-current-song">KIZAZI RADIO LIVE STREAM</div>
+    <div class="kizazi-sticky-player__artist" id="kizazi-current-artist">New Generation. New Sound.</div>
+    <div class="kizazi-sticky-player__stationline"><span class="kizazi-sticky-player__live-dot" aria-hidden="true"></span><span>KIZAZI RADIO</span><span class="kizazi-sticky-player__live">LIVE</span></div>
+  </div>
+  <div class="kizazi-sticky-player__controls">
+    <button class="kizazi-player-toggle" id="kizazi-player-toggle" type="button" aria-label="Play radio">▶</button>
+    <span class="kizazi-player-status" id="kizazi-player-status">Ready</span>
+    <div class="kizazi-player-volume"><span aria-hidden="true">🔊</span><input id="kizazi-player-volume" type="range" min="0" max="1" step="0.05" value="0.75" aria-label="Volume"></div>
+    <audio class="kizazi-player-audio" id="kizazi-player-audio" preload="none" src="https://a4.asurahosting.com:8430/radio.mp3"></audio>
+  </div>
+</div>
+<script>
+(() => {
+  const audio=document.getElementById('kizazi-player-audio');
+  const button=document.getElementById('kizazi-player-toggle');
+  const status=document.getElementById('kizazi-player-status');
+  const volume=document.getElementById('kizazi-player-volume');
+  const song=document.getElementById('kizazi-current-song');
+  const artist=document.getElementById('kizazi-current-artist');
+  if(!audio||!button||!status||!volume)return;
+  audio.volume=Number(volume.value);
+  button.addEventListener('click',async()=>{
+    if(audio.paused){status.textContent='Connecting…';try{await audio.play();button.textContent='❚❚';button.setAttribute('aria-label','Pause radio');status.textContent='Playing live';}catch(e){status.textContent='Unable to connect';}}
+    else{audio.pause();button.textContent='▶';button.setAttribute('aria-label','Play radio');status.textContent='Paused';}
+  });
+  volume.addEventListener('input',()=>audio.volume=Number(volume.value));
+  audio.addEventListener('playing',()=>{status.textContent='Playing live';button.textContent='❚❚';});
+  audio.addEventListener('pause',()=>{if(!audio.ended){button.textContent='▶';}});
+  audio.addEventListener('error',()=>{status.textContent='Stream unavailable';button.textContent='▶';});
+  async function refreshNowPlaying(){
+    try{
+      const res=await fetch('https://a4.asurahosting.com/api/nowplaying/kizazi_radio',{cache:'no-store'});
+      if(!res.ok)return;
+      const data=await res.json();
+      const current=data?.now_playing?.song;
+      if(current){song.textContent=current.title||'KIZAZI RADIO LIVE';artist.textContent=current.artist||'New Generation. New Sound.';}
+    }catch(e){/* Keep the live player usable if song metadata is unavailable. */}
   }
-  .home-chart .chart-position,
-  .home-chart .chart-card-leader .chart-position {
-    width:36px !important; min-width:36px !important;
-    height:36px !important; min-height:36px !important;
-    border-radius:7px !important;
-  }
-  .home-chart .chart-position strong { font-size:17px !important; }
-  .home-chart .chart-artwork {
-    width:62px !important; min-width:62px !important;
-    height:62px !important; min-height:62px !important;
-  }
-  .home-chart .chart-song-info h3 { font-size:14px !important; margin-bottom:5px !important; }
-  .home-chart .chart-song-info p { font-size:11px !important; }
-  .home-chart .chart-play-button {
-    width:30px !important; min-width:30px !important;
-    height:30px !important; min-height:30px !important;
-    max-width:30px !important; max-height:30px !important;
-    font-size:12px !important;
-  }
-}
-</style>
+  refreshNowPlaying();setInterval(refreshNowPlaying,30000);
+})();
+</script>
 
 </body>
 </html>
