@@ -94,9 +94,6 @@ main{padding:24px 16px}
 .form-grid{grid-template-columns:1fr}
 .login-card{padding:24px}
 }
-.media-embed-panel{margin:20px 0;padding:18px;border:1px solid #333;border-radius:10px;background:#111}
-.media-embed-panel h3{margin:0 0 8px;color:#e50909;font-size:14px;letter-spacing:1px}
-.media-embed-panel .note{margin-bottom:14px}
 </style>
   <link rel="stylesheet" href="/design-system.css?v=1">
 </head>
@@ -187,12 +184,21 @@ main{padding:24px 16px}
           <label for="articleContent">ARTICLE CONTENT *</label>
           <textarea id="articleContent" required placeholder="Write the full article here..."></textarea>
 
-          <div class="media-embed-panel">
-            <h3>MEDIA EMBED (OPTIONAL)</h3>
-            <p class="note">Add a YouTube video, Spotify/SoundCloud link, or direct audio URL.</p>
-            <div class="form-grid">
-              <div><label for="articleMediaType">MEDIA TYPE</label><select id="articleMediaType"><option value="">No media</option><option value="youtube">YouTube Video</option><option value="spotify">Spotify</option><option value="soundcloud">SoundCloud</option><option value="audio">Direct Audio (MP3/Audio URL)</option></select></div>
-              <div><label for="articleMediaUrl">MEDIA URL</label><input id="articleMediaUrl" type="url" maxlength="2000" placeholder="Paste video/audio link"></div>
+
+          <div class="form-grid">
+            <div>
+              <label for="articleMediaType">MEDIA TYPE (OPTIONAL)</label>
+              <select id="articleMediaType">
+                <option value="">No media</option>
+                <option value="youtube">YouTube Video</option>
+                <option value="spotify">Spotify</option>
+                <option value="soundcloud">SoundCloud</option>
+                <option value="audio">Direct Audio</option>
+              </select>
+            </div>
+            <div>
+              <label for="articleMediaUrl">MEDIA LINK (OPTIONAL)</label>
+              <input id="articleMediaUrl" type="url" placeholder="Paste video, track or audio URL">
             </div>
           </div>
 
