@@ -6,6 +6,11 @@
 
 
 
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -4613,7 +4618,7 @@ body { padding-bottom: 0 !important; }
 }
 /* Custom KIZAZI RADIO player — player-only styling change */
 .kizazi-custom-player{height:auto!important;min-height:0!important;overflow:visible!important}
-.kcp-controls{display:grid;grid-template-columns:58px minmax(170px,1fr) minmax(90px,150px) minmax(110px,180px) auto;align-items:center;gap:16px;min-height:82px;padding:14px 18px;background:#09090b;border:1px solid #29292f;border-radius:999px;color:#fff}
+.kcp-controls{display:grid;grid-template-columns:58px minmax(170px,1fr) minmax(90px,150px) minmax(110px,180px);align-items:center;gap:16px;min-height:82px;padding:14px 18px;background:#09090b;border:1px solid #29292f;border-radius:999px;color:#fff}
 .kcp-play{width:52px;height:52px;border:0;border-radius:50%;background:#fff;color:#09090b;font-size:20px;font-weight:900;cursor:pointer;transition:transform .15s ease,background .15s ease}
 .kcp-play:hover{transform:scale(1.05);background:#e50909;color:#fff}
 .kcp-track-info{min-width:0;display:flex;flex-direction:column;gap:6px}
@@ -4910,7 +4915,7 @@ body { padding-bottom: 0 !important; }
 
 <style id="kizazi-custom-player-styles">
 .kizazi-custom-player{height:auto!important;min-height:0!important;overflow:visible!important;width:100%}
-.kcp-controls{display:grid;grid-template-columns:58px minmax(170px,1fr) minmax(90px,150px) minmax(110px,180px) auto;align-items:center;gap:16px;min-height:82px;padding:14px 18px;background:#09090b;border:1px solid #29292f;border-radius:999px;color:#fff}
+.kcp-controls{display:grid;grid-template-columns:58px minmax(170px,1fr) minmax(90px,150px) minmax(110px,180px);align-items:center;gap:16px;min-height:82px;padding:14px 18px;background:#09090b;border:1px solid #29292f;border-radius:999px;color:#fff}
 .kcp-play{width:52px;height:52px;border:0;border-radius:50%;background:#fff;color:#09090b;font-size:20px;font-weight:900;cursor:pointer;transition:transform .15s ease,background .15s ease}.kcp-play:hover{transform:scale(1.05);background:#e50909;color:#fff}
 .kcp-track-info{min-width:0;display:flex;flex-direction:column;gap:6px}.kcp-track-info strong{font-size:13px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.kcp-track-info span{font-size:10px;color:#b7b7be;letter-spacing:.4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .kcp-live-dot{display:inline-block;width:7px;height:7px;margin:0 5px;border-radius:50%;background:#e50909;box-shadow:0 0 9px rgba(229,9,9,.65)}.kcp-wave{height:28px;display:flex;align-items:center;justify-content:center;gap:3px}.kcp-wave span{width:3px;height:6px;border-radius:3px;background:#e50909}.kcp-wave span:nth-child(3n){height:16px}.kcp-wave span:nth-child(4n){height:22px}.kcp-wave span:nth-child(5n){height:11px}.kcp-controls-playing .kcp-wave span{animation:kcp-wave .8s ease-in-out infinite alternate}.kcp-wave span:nth-child(2n){animation-delay:.12s}.kcp-wave span:nth-child(3n){animation-delay:.22s}.kcp-wave span:nth-child(4n){animation-delay:.3s}@keyframes kcp-wave{from{transform:scaleY(.45)}to{transform:scaleY(1.6)}}
@@ -4970,10 +4975,8 @@ body { padding-bottom: 0 !important; }
         <div class="kcp-track-info"><strong id="kizazi-song-title">KIZAZI RADIO</strong><span id="kizazi-song-artist">Live Stream <i class="kcp-live-dot"></i> ON AIR NOW · LIVE 24/7</span></div>
         <div class="kcp-wave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
         <label class="kcp-volume" aria-label="Volume">🔊 <input id="kizazi-player-volume" type="range" min="0" max="1" step="0.01" value="0.75"></label>
-        <span class="kcp-status" id="kizazi-player-status">READY TO PLAY</span>
+        <span class="kcp-status" id="kizazi-player-status"></span>
       </div>
-    <label class="kcp-volume" aria-label="Volume">🔊 <input id="kizazi-player-volume" type="range" min="0" max="1" step="0.01" value="0.75"></label>
-    <span class="kcp-status" id="kizazi-player-status">READY TO PLAY</span>
   </div>
 </div></div>
   </section>
@@ -6993,3 +6996,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
+
+
+
