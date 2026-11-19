@@ -75,6 +75,24 @@ body{padding-bottom:184px}
 
 </style>
   <link rel="stylesheet" href="/design-system.css?v=1">
+<style id="kizazi-custom-player-styles">
+.kizazi-custom-player{height:auto!important;min-height:0!important;overflow:visible!important;width:100%}
+.kcp-controls{display:grid;grid-template-columns:58px minmax(170px,1fr) minmax(90px,150px) minmax(110px,180px) auto;align-items:center;gap:16px;min-height:82px;padding:14px 18px;background:#09090b;border:1px solid #29292f;border-radius:999px;color:#fff}
+.kcp-play{width:52px;height:52px;border:0;border-radius:50%;background:#fff;color:#09090b;font-size:20px;font-weight:900;cursor:pointer;transition:transform .15s ease,background .15s ease}.kcp-play:hover{transform:scale(1.05);background:#e50909;color:#fff}
+.kcp-track-info{min-width:0;display:flex;flex-direction:column;gap:6px}.kcp-track-info strong{font-size:13px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.kcp-track-info span{font-size:10px;color:#b7b7be;letter-spacing:.4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kcp-live-dot{display:inline-block;width:7px;height:7px;margin:0 5px;border-radius:50%;background:#e50909;box-shadow:0 0 9px rgba(229,9,9,.65)}.kcp-wave{height:28px;display:flex;align-items:center;justify-content:center;gap:3px}.kcp-wave span{width:3px;height:6px;border-radius:3px;background:#e50909}.kcp-wave span:nth-child(3n){height:16px}.kcp-wave span:nth-child(4n){height:22px}.kcp-wave span:nth-child(5n){height:11px}.kcp-controls-playing .kcp-wave span{animation:kcp-wave .8s ease-in-out infinite alternate}.kcp-wave span:nth-child(2n){animation-delay:.12s}.kcp-wave span:nth-child(3n){animation-delay:.22s}.kcp-wave span:nth-child(4n){animation-delay:.3s}@keyframes kcp-wave{from{transform:scaleY(.45)}to{transform:scaleY(1.6)}}
+.kcp-volume{display:flex;align-items:center;gap:9px;font-size:17px}.kcp-volume input{width:100%;accent-color:#e50909;cursor:pointer}.kcp-status{font-size:9px;font-weight:900;letter-spacing:1px;color:#e50909;white-space:nowrap}
+@media(max-width:720px){.kcp-controls{grid-template-columns:48px minmax(0,1fr) minmax(90px,130px);gap:10px;padding:12px;border-radius:16px}.kcp-play{width:44px;height:44px}.kcp-wave{display:none}.kcp-status{grid-column:2/4;text-align:center}}
+
+/* Homepage-inspired player, adapted for fixed bottom placement on inner pages */
+.kizazi-sticky-player.kizazi-home-player{min-height:112px;padding:12px max(16px, calc((100vw - 1200px)/2));grid-template-columns:145px minmax(0,1fr);gap:14px;}
+.kizazi-home-player .kcp-controls{grid-template-columns:58px minmax(170px,1fr) minmax(90px,150px) minmax(110px,180px);min-height:74px;border-radius:18px;}
+.kizazi-home-player .kcp-track-info{grid-column:2;}
+.kizazi-home-player .kcp-status{font-size:9px;font-weight:900;letter-spacing:1px;color:#e50909;white-space:nowrap;}
+.kizazi-home-player .kcp-wave{grid-column:3;}
+.kizazi-home-player .kcp-volume{grid-column:4;}
+@media(max-width:720px){.kizazi-sticky-player.kizazi-home-player{min-height:150px;padding:8px;grid-template-columns:1fr;gap:4px}.kizazi-home-player .kcp-controls{grid-template-columns:48px minmax(0,1fr) minmax(90px,130px);gap:10px;padding:12px;border-radius:16px}.kizazi-home-player .kcp-play{width:44px;height:44px}.kizazi-home-player .kcp-wave{display:none}.kizazi-home-player .kcp-track-info{grid-column:2}.kizazi-home-player .kcp-volume{grid-column:3}.kizazi-home-player .kcp-status{grid-column:2/4;text-align:left}}
+</style>
 </head>
 <body>
 <header><div class="head">
@@ -207,16 +225,34 @@ nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{nav.c
 const year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();
 </script>
 
-<!-- KIZAZI RADIO: AZURACAST STICKY PLAYER -->
-<div class="kizazi-sticky-player" id="kizazi-radio-player" role="region" aria-label="KIZAZI RADIO live player">
+<div class="kizazi-sticky-player kizazi-home-player" id="kizazi-radio-player" role="region" aria-label="KIZAZI RADIO live player">
   <div class="kizazi-sticky-player__label">
     <span class="kizazi-sticky-player__live-dot" aria-hidden="true"></span>
     <span class="kizazi-sticky-player__station">KIZAZI RADIO</span>
     <span class="kizazi-sticky-player__live">LIVE</span>
   </div>
-  <div class="kizazi-sticky-player__embed">
-    <iframe src="https://a4.asurahosting.com/public/kizazi_radio/embed?primary_color=ba1c1c&amp;bg_color=000000&amp;text_color=ffffff&amp;continuous=1" title="KIZAZI RADIO live stream player" frameborder="0" allow="autoplay" allowtransparency="true"></iframe>
+  <div class="kizazi-custom-player">
+    <audio id="kizazi-live-audio" preload="none" src="https://a4.asurahosting.com:8430/radio.mp3"></audio>
+    <div class="kcp-controls">
+      <button class="kcp-play" id="kizazi-player-toggle" type="button" aria-label="Play KIZAZI RADIO">▶</button>
+      <div class="kcp-track-info"><strong id="kizazi-song-title">KIZAZI RADIO</strong><span id="kizazi-song-artist">Live Stream <i class="kcp-live-dot"></i> ON AIR NOW · LIVE 24/7</span><span class="kcp-status" id="kizazi-player-status">PAUSED</span></div>
+      <div class="kcp-wave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <label class="kcp-volume" aria-label="Volume">🔊 <input id="kizazi-player-volume" type="range" min="0" max="1" step="0.01" value="0.75"></label>
+    </div>
   </div>
 </div>
-
+<script id="kizazi-custom-player-script">
+(function(){
+ const audio=document.getElementById('kizazi-live-audio'),btn=document.getElementById('kizazi-player-toggle'),volume=document.getElementById('kizazi-player-volume'),status=document.getElementById('kizazi-player-status'),wrap=document.querySelector('.kcp-controls'),title=document.getElementById('kizazi-song-title'),artist=document.getElementById('kizazi-song-artist');
+ if(!audio||!btn||!volume||!status||!wrap)return;
+ audio.volume=Number(volume.value);
+ btn.addEventListener('click',async()=>{if(audio.paused){status.textContent='CONNECTING…';try{await audio.play()}catch(e){status.textContent='STREAM UNAVAILABLE — TRY AGAIN'}}else audio.pause()});
+ volume.addEventListener('input',()=>audio.volume=Number(volume.value));
+ audio.addEventListener('playing',()=>{btn.textContent='Ⅱ';btn.setAttribute('aria-label','Pause KIZAZI RADIO');status.textContent='PLAYING LIVE';wrap.classList.add('kcp-controls-playing')});
+ audio.addEventListener('pause',()=>{btn.textContent='▶';btn.setAttribute('aria-label','Play KIZAZI RADIO');status.textContent='PAUSED';wrap.classList.remove('kcp-controls-playing')});audio.addEventListener('waiting',()=>status.textContent='BUFFERING…');audio.addEventListener('error',()=>status.textContent='STREAM ERROR — CHECK CONNECTION');
+ // Metadata endpoint is attempted; if it is unavailable, station fallback labels remain visible.
+ async function updateMetadata(){try{const r=await fetch('https://a4.asurahosting.com/api/nowplaying/kizazi_radio',{cache:'no-store'});if(!r.ok)return;const d=await r.json();const song=d.now_playing?.song||d.song||{};const t=song.title||d.title;const a=song.artist||d.artist;if(t&&title)title.textContent=t;if(a&&artist)artist.textContent=a+'  •  ON AIR NOW · LIVE 24/7'}catch(e){}}
+ updateMetadata();setInterval(updateMetadata,15000);
+})();
+</script>
 </body></html>
