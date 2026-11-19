@@ -289,7 +289,7 @@ img{max-width:100%}
 }
 
 .hero:after{
-  content:"KIZAZI / LIVE";
+  content:"KZ / LIVE";
   position:absolute;
   z-index:2;
   right:26px;
@@ -1710,7 +1710,7 @@ img{max-width:100%}
 }
 
 .community-box:after{
-  content:"KIZAZI / COMMUNITY";
+  content:"KZ / COMMUNITY";
   position:absolute;
   top:20px;
   right:22px;
@@ -2778,7 +2778,7 @@ img{max-width:100%}
     linear-gradient(140deg,#1b1b21 0%,#111115 48%,#09090c 100%);
 }
 .live-visual:before{
-  content:"KIZAZI";right:-25px;bottom:-90px;
+  content:"KZ";right:-25px;bottom:-90px;
   color:rgba(255,255,255,.035);font-size:clamp(230px,29vw,430px);
   font-weight:1000;letter-spacing:-.14em;transform:skewX(-8deg);
 }
@@ -3305,7 +3305,7 @@ img{max-width:100%}
   box-shadow:0 32px 100px rgba(0,0,0,.62),0 0 70px rgba(255,25,40,.09);
 }
 .live-card:before{
-  content:"KIZAZI / LIVE";
+  content:"KZ / LIVE";
   position:absolute;
   z-index:8;
   top:18px;
@@ -3548,7 +3548,7 @@ img{max-width:100%}
 }
 
 .lineup-section:before{
-  content:"KIZAZI / 02";
+  content:"KZ / 02";
   position:absolute;
   z-index:-1;
   right:-22px;
@@ -4105,187 +4105,25 @@ img{max-width:100%}
 @media(prefers-reduced-motion:reduce){.experience-item,.experience-arrow{transition:none}.connected-orbit,.device-equalizer i{animation:none}}
 
 
-/* =========================================================
-   MOBILE RESPONSIVENESS FIX — HOMEPAGE
-   Keeps the existing desktop design and radio player intact.
-   ========================================================= */
-@media (max-width: 700px) {
-  html, body {
-    max-width: 100%;
-    overflow-x: clip;
-  }
-
-  .experience-section,
-  .experience-section .wrap,
-  .experience-heading,
-  .experience-stage,
-  .experience-signal,
-  .experience-list {
-    min-width: 0;
-    max-width: 100%;
-  }
-
-  /* Stack the section title and introduction instead of
-     squeezing them into two narrow columns. */
-  .experience-heading {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 22px;
-    align-items: start;
-    margin-bottom: 28px;
-  }
-
-  .experience-heading > div,
-  .experience-intro {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-  }
-
-  .experience-kicker {
-    font-size: 9px;
-    line-height: 1.5;
-    letter-spacing: 1.45px;
-    overflow-wrap: anywhere;
-  }
-
-  .experience-title {
-    max-width: 100%;
-    font-size: clamp(43px, 12.2vw, 62px);
-    line-height: .9;
-    letter-spacing: -.075em;
-    overflow-wrap: normal;
-  }
-
-  .experience-intro {
-    margin: 0;
-    font-size: 13px;
-    line-height: 1.8;
-    overflow-wrap: anywhere;
-  }
-
-  /* Stack the visual panel above the links and keep both
-     columns fully inside the phone viewport. */
-  .experience-stage {
-    grid-template-columns: minmax(0, 1fr);
-    min-height: 0;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .experience-signal {
-    width: 100%;
-    min-height: 225px;
-  }
-
-  .signal-word {
-    max-width: 100%;
-    font-size: clamp(46px, 13vw, 64px);
-  }
-
-  .signal-bars {
-    gap: 4px;
-    max-width: 100%;
-    overflow: hidden;
-  }
-
-  .signal-bars i {
-    width: 3px;
-  }
-
-  .signal-caption {
-    max-width: calc(100% - 24px);
-    text-align: center;
-    font-size: 7px;
-    letter-spacing: 1.6px;
-  }
-
-  .experience-list {
-    width: 100%;
-    padding: 8px 16px;
-  }
-
-  .experience-item {
-    width: 100%;
-    min-width: 0;
-    grid-template-columns: 25px minmax(0, 1fr) 32px;
-    gap: 10px;
-    min-height: 78px;
-    padding: 12px 0;
-  }
-
-  .experience-item-copy {
-    min-width: 0;
-  }
-
-  .experience-item-copy strong {
-    font-size: 14px;
-    line-height: 1.25;
-    overflow-wrap: anywhere;
-  }
-
-  .experience-item-copy small {
-    font-size: 11px;
-    line-height: 1.45;
-    overflow-wrap: anywhere;
-  }
-
-  .experience-arrow {
-    width: 30px;
-    height: 30px;
-  }
-
-  .experience-item:hover {
-    padding-left: 0;
-  }
-}
-
-/* Narrow phones: prevent decorative headline elements
-   from forcing the hero wider than the viewport. */
-@media (max-width: 390px) {
-  .hero-content {
-    width: 88%;
-    margin-left: 6%;
-  }
-
-  .hero h1 {
-    font-size: clamp(43px, 11.2vw, 54px);
-    letter-spacing: -.075em;
-  }
-
-  .hero-content .eyebrow {
-    max-width: calc(100% - 8px);
-    font-size: 7px;
-    letter-spacing: 1.15px;
-  }
-
-  .hero-actions {
-    column-gap: 14px;
-    row-gap: 18px;
-  }
-}
-
-</style>
-<style>
-
-/* KIZAZI RADIO — CUSTOM STICKY PLAYER (ARTWORK-FREE) */
-body{padding-bottom:112px;}
-.kizazi-sticky-player{position:fixed;z-index:99999;left:0;right:0;bottom:0;min-height:92px;padding:14px max(18px,calc((100vw - 1200px)/2));display:grid;grid-template-columns:minmax(220px,1fr) minmax(280px,2fr);align-items:center;gap:24px;background:#050505;border-top:2px solid #ba1c1c;box-shadow:0 -8px 30px rgba(0,0,0,.55);color:#fff;}
-.kizazi-sticky-player__meta{min-width:0;display:flex;flex-direction:column;gap:5px;}
-.kizazi-sticky-player__song{font-size:16px;font-weight:800;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#fff;}
-.kizazi-sticky-player__artist{font-size:13px;color:#a6a6a6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.kizazi-sticky-player__stationline{display:flex;align-items:center;gap:8px;margin-top:2px;font-size:10px;font-weight:900;letter-spacing:1.2px;color:#aaa;}
-.kizazi-sticky-player__live-dot{width:8px;height:8px;display:inline-block;flex:0 0 8px;border-radius:50%;background:#ba1c1c;box-shadow:0 0 12px rgba(186,28,28,.8);}
-.kizazi-sticky-player__live{color:#ba1c1c;}
-.kizazi-sticky-player__controls{display:flex;align-items:center;gap:18px;min-width:0;}
-.kizazi-player-toggle{width:46px;height:46px;flex:0 0 46px;border:0;border-radius:50%;background:#fff;color:#050505;display:grid;place-items:center;font-size:19px;font-weight:900;cursor:pointer;transition:transform .15s,background .15s;}
-.kizazi-player-toggle:hover{transform:scale(1.04);background:#eee;}
-.kizazi-player-status{font-size:11px;color:#999;min-width:65px;}
-.kizazi-player-volume{display:flex;align-items:center;gap:10px;margin-left:auto;color:#aaa;}
-.kizazi-player-volume input{width:130px;accent-color:#ba1c1c;cursor:pointer;}
-.kizazi-player-audio{display:none;}
-@media(max-width:640px){body{padding-bottom:128px;}.kizazi-sticky-player{min-height:112px;padding:10px 14px;grid-template-columns:1fr;gap:9px;}.kizazi-sticky-player__song{font-size:14px;}.kizazi-sticky-player__artist{font-size:12px;}.kizazi-sticky-player__controls{gap:12px;}.kizazi-player-toggle{width:40px;height:40px;flex-basis:40px;}.kizazi-player-volume input{width:95px;}}
-
+/* KIZAZI RADIO — RESTORED HOMEPAGE / CUSTOM STICKY PLAYER (player-only addition) */
+.kizazi-sticky-player{position:fixed;z-index:99999;left:0;right:0;bottom:0;min-height:82px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:22px;padding:12px 24px;background:rgba(7,7,9,.97);border-top:1px solid rgba(255,38,50,.55);box-shadow:0 -12px 38px rgba(0,0,0,.38);backdrop-filter:blur(12px);color:#f7f7f8;font-family:Inter,Arial,sans-serif}
+.kizazi-sticky-player__song{font-size:15px;font-weight:800;letter-spacing:.15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kizazi-sticky-player__artist{margin-top:4px;color:#a1a1aa;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kizazi-sticky-player__stationline{display:flex;align-items:center;gap:8px;margin-top:7px;color:#aaa;font-size:9px;font-weight:900;letter-spacing:1.5px}
+.kizazi-sticky-player__live-dot{width:7px;height:7px;border-radius:50%;background:#e50909;box-shadow:0 0 10px rgba(229,9,9,.55)}
+.kizazi-sticky-player__live{color:#e50909}
+.kizazi-sticky-player__controls{display:flex;align-items:center;gap:16px;min-width:0}
+.kizazi-player-toggle{width:44px;height:44px;flex:0 0 44px;border:0;border-radius:50%;background:#f7f7f8;color:#09090b;display:grid;place-items:center;font-size:17px;font-weight:900;cursor:pointer}
+.kizazi-player-toggle:hover{background:#e50909;color:#fff}
+.kizazi-player-status{min-width:70px;color:#a1a1aa;font-size:11px}
+.kizazi-player-volume{display:flex;align-items:center;gap:9px;color:#aaa}
+.kizazi-player-volume input{width:120px;accent-color:#e50909;cursor:pointer}
+.kizazi-player-audio{display:none}
+.kizazi-player-section-note{display:flex;flex-direction:column;justify-content:center;gap:15px}
+.kizazi-player-section-note p{color:#a1a1aa;font-size:12px;line-height:1.7;margin:0}
+.kizazi-section-player-label{font-size:14px;font-weight:900;letter-spacing:2px;color:#f7f7f8}
+.kizazi-section-player-label span{color:#e50909}
+@media(max-width:640px){body{padding-bottom:126px}.kizazi-sticky-player{grid-template-columns:1fr;gap:9px;padding:10px 14px;min-height:116px}.kizazi-sticky-player__song{font-size:13px}.kizazi-sticky-player__artist{font-size:11px}.kizazi-sticky-player__controls{gap:12px}.kizazi-player-toggle{width:38px;height:38px;flex-basis:38px}.kizazi-player-volume{margin-left:auto}.kizazi-player-volume input{width:95px}}
 </style>
 </head>
 
@@ -4308,8 +4146,6 @@ body{padding-bottom:112px;}
       <a href="/top15/">TOP 15</a>
       <a href="/news/">News</a>
       <a href="/about/">About</a>
-      <a href="/contact/">Contact Us</a>
-      <a href="/donate/">Donate</a>
 
       <div class="social-links header-socials" aria-label="KIZAZI RADIO social media">
 
@@ -4488,10 +4324,9 @@ body{padding-bottom:112px;}
           <h3>LOCK IN.<br><em>LISTEN UP.</em></h3>
         </div>
 
-        <div class="caster-player-placeholder">
-          <span class="live-dot" aria-hidden="true"></span>
-          <span>THE LIVE PLAYER IS NOW FIXED AT THE BOTTOM OF THIS PAGE.</span>
-          <a href="#kizazi-radio-player">LISTEN LIVE ↓</a>
+        <div class="caster-player kizazi-player-section-note">
+          <div class="kizazi-section-player-label">KIZAZI RADIO <span>LIVE</span></div>
+          <p>Use the live player at the bottom of your screen to tune in.</p>
         </div>
 
         <p class="player-note">
@@ -4748,8 +4583,8 @@ body{padding-bottom:112px;}
         More than a radio station. KIZAZI is where fresh sounds, fearless voices and new perspectives come together. We entertain, inform and connect a generation moving to its own rhythm.
       </p>
 
-      <a class="outline-button" href="/about/">
-        ABOUT US <span aria-hidden="true">↗</span>
+      <a class="outline-button" href="/contact/">
+        CONTACT KIZAZI <span aria-hidden="true">↗</span>
       </a>
     </div>
 
@@ -4805,7 +4640,6 @@ body{padding-bottom:112px;}
         <a href="/news/">News</a>
         <a href="/about/">About</a>
         <a href="/contact/">Contact</a>
-        <a href="/donate/">Donate</a>
       </div>
 
       <div class="social-links footer-socials" aria-label="Follow KIZAZI RADIO">
@@ -4839,6 +4673,7 @@ body{padding-bottom:112px;}
 
   </div>
 </footer>
+
 
 
 <script>
@@ -6583,7 +6418,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 
-<!-- KIZAZI RADIO: CUSTOM ARTWORK-FREE STICKY PLAYER -->
+<!-- KIZAZI RADIO ARTWORK-FREE STICKY PLAYER -->
 <div class="kizazi-sticky-player" id="kizazi-radio-player" role="region" aria-label="KIZAZI RADIO live player">
   <div class="kizazi-sticky-player__meta">
     <div class="kizazi-sticky-player__song" id="kizazi-current-song">KIZAZI RADIO LIVE STREAM</div>
@@ -6598,35 +6433,17 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 </div>
 <script>
-(() => {
-  const audio=document.getElementById('kizazi-player-audio');
-  const button=document.getElementById('kizazi-player-toggle');
-  const status=document.getElementById('kizazi-player-status');
-  const volume=document.getElementById('kizazi-player-volume');
-  const song=document.getElementById('kizazi-current-song');
-  const artist=document.getElementById('kizazi-current-artist');
-  if(!audio||!button||!status||!volume)return;
-  audio.volume=Number(volume.value);
-  button.addEventListener('click',async()=>{
-    if(audio.paused){status.textContent='Connecting…';try{await audio.play();button.textContent='❚❚';button.setAttribute('aria-label','Pause radio');status.textContent='Playing live';}catch(e){status.textContent='Unable to connect';}}
-    else{audio.pause();button.textContent='▶';button.setAttribute('aria-label','Play radio');status.textContent='Paused';}
-  });
-  volume.addEventListener('input',()=>audio.volume=Number(volume.value));
-  audio.addEventListener('playing',()=>{status.textContent='Playing live';button.textContent='❚❚';});
-  audio.addEventListener('pause',()=>{if(!audio.ended){button.textContent='▶';}});
-  audio.addEventListener('error',()=>{status.textContent='Stream unavailable';button.textContent='▶';});
-  async function refreshNowPlaying(){
-    try{
-      const res=await fetch('https://a4.asurahosting.com/api/nowplaying/kizazi_radio',{cache:'no-store'});
-      if(!res.ok)return;
-      const data=await res.json();
-      const current=data?.now_playing?.song;
-      if(current){song.textContent=current.title||'KIZAZI RADIO LIVE';artist.textContent=current.artist||'New Generation. New Sound.';}
-    }catch(e){/* Keep the live player usable if song metadata is unavailable. */}
-  }
-  refreshNowPlaying();setInterval(refreshNowPlaying,30000);
+(()=>{
+ const audio=document.getElementById('kizazi-player-audio'),btn=document.getElementById('kizazi-player-toggle'),status=document.getElementById('kizazi-player-status'),volume=document.getElementById('kizazi-player-volume');
+ if(!audio||!btn||!status||!volume)return;audio.volume=Number(volume.value);
+ btn.addEventListener('click',async()=>{if(audio.paused){status.textContent='Connecting…';try{await audio.play();btn.textContent='❚❚';btn.setAttribute('aria-label','Pause radio');status.textContent='Playing live'}catch(e){status.textContent='Unable to connect'}}else{audio.pause();btn.textContent='▶';btn.setAttribute('aria-label','Play radio');status.textContent='Paused'}});
+ volume.addEventListener('input',()=>audio.volume=Number(volume.value));
+ audio.addEventListener('playing',()=>{status.textContent='Playing live';btn.textContent='❚❚'});
+ audio.addEventListener('pause',()=>{if(!audio.ended)btn.textContent='▶'});
+ audio.addEventListener('error',()=>{status.textContent='Stream unavailable';btn.textContent='▶'});
 })();
 </script>
-
 </body>
 </html>
+
+
