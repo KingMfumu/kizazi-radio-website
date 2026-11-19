@@ -550,6 +550,12 @@
         padding: 25px 20px;
       }
     }
+    .article-media-embed{width:100%;margin:24px 0;overflow:hidden;background:#000;border:1px solid #29292f}
+    .article-media-video{aspect-ratio:16/9}
+    .article-media-embed iframe{display:block;width:100%;height:100%;min-height:0;border:0}
+    .article-media-audio iframe{height:166px}
+    .article-media-direct{padding:16px}
+    .article-media-direct audio{display:block;width:100%}
   </style>
 <style>
 
@@ -766,6 +772,49 @@ body{padding-bottom:184px}
         });
       };
 
+  const articleMediaEmbed = article => {
+    const type = String(article.media_type || "").toLowerCase();
+    const raw = String(article.media_url || "").trim();
+    if (!type || !raw) return "";
+    let url;
+    try { url = new URL(raw); } catch { return ""; }
+    if (url.protocol !== "https:") return "";
+    const esc = value => escapeHTML(value);
+    if (type === "youtube") {
+      let id = "";
+      if (url.hostname === "youtu.be") id = url.pathname.slice(1).split("/")[0];
+      else if (["youtube.com","www.youtube.com","m.youtube.com"].includes(url.hostname)) {
+        id = url.searchParams.get("v") || (url.pathname.match(/\/(?:embed|shorts)\/([^/?]+)/)?.[1] || "");
+      }
+      if (!/^[A-Za-z0-9_-]{6,20}$/.test(id)) return "";
+      return `<div class="article-media-embed article-media-video"><iframe src="https://www.youtube-nocookie.com/embed/${esc(id)}" title="Article video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`;
+    }
+    if (type === "spotify") {
+      if (!/^(open\.spotify\.com|spotify\.com)$/.test(url.hostname)) return "";
+      const parts = url.pathname.split("/").filter(Boolean);
+      if (parts[0] === "embed") parts.shift();
+      if (!parts.length) return "";
+      return `<div class="article-media-embed article-media-audio"><iframe src="https://open.spotify.com/embed/${esc(parts.join("/"))}" title="Spotify media" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+    }
+    if (type === "soundcloud") {
+      if (!/^(soundcloud\.com|www\.soundcloud\.com|m\.soundcloud\.com)$/.test(url.hostname)) return "";
+      return `<div class="article-media-embed article-media-audio"><iframe src="https://w.soundcloud.com/player/?url=${encodeURIComponent(url.href)}&auto_play=false&visual=false" title="SoundCloud audio" loading="lazy" allow="autoplay"></iframe></div>`;
+    }
+    if (type === "audio") {
+      if (!/\.(mp3|m4a|ogg|wav|aac)(?:$|\?)/i.test(url.href)) return "";
+      return `<div class="article-media-embed article-media-direct"><audio controls preload="none" src="${esc(url.href)}">Your browser does not support audio playback.</audio></div>`;
+    }
+    return "";
+  };
+  const articleMediaStyles = `
+    .article-media-embed{width:100%;margin:24px 0;overflow:hidden;background:#000;border:1px solid #29292f}
+    .article-media-video{aspect-ratio:16/9}
+    .article-media-embed iframe{display:block;width:100%;height:100%;min-height:0;border:0}
+    .article-media-audio iframe{height:166px}
+    .article-media-direct{padding:16px}
+    .article-media-direct audio{display:block;width:100%}
+  `;
+
       // OPEN ARTICLE
       const openArticle = article => {
 
@@ -809,6 +858,7 @@ body{padding-bottom:184px}
                 : ""
             }
 
+            ${articleMediaEmbed(article)}
             <div class="article-modal-text"></div>
 
             <div class="article-modal-footer">
