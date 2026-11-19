@@ -170,24 +170,48 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  const buildArticleMedia = article => {
+  const articleMediaEmbed = article => {
     const type = String(article.media_type || "").toLowerCase();
     const raw = String(article.media_url || "").trim();
-    if (!raw || !["youtube","spotify","soundcloud","audio"].includes(type)) return "";
-    let url; try { url = new URL(raw); } catch { return ""; }
-    if (!["https:","http:"].includes(url.protocol)) return "";
-    let src = "";
+    if (!type || !raw) return "";
+    let url;
+    try { url = new URL(raw); } catch { return ""; }
+    if (url.protocol !== "https:") return "";
+    const esc = value => escapeHTML(value);
     if (type === "youtube") {
       let id = "";
       if (url.hostname === "youtu.be") id = url.pathname.slice(1).split("/")[0];
-      else if (["youtube.com","www.youtube.com","m.youtube.com"].includes(url.hostname)) { id = url.searchParams.get("v") || url.pathname.split("/").filter(Boolean).pop() || ""; if (url.pathname.startsWith("/shorts/")) id = url.pathname.split("/")[2] || ""; }
+      else if (["youtube.com","www.youtube.com","m.youtube.com"].includes(url.hostname)) {
+        id = url.searchParams.get("v") || (url.pathname.match(/\/(?:embed|shorts)\/([^/?]+)/)?.[1] || "");
+      }
       if (!/^[A-Za-z0-9_-]{6,20}$/.test(id)) return "";
-      src = `https://www.youtube-nocookie.com/embed/${id}`;
-    } else if (type === "spotify") { if (!["open.spotify.com","spotify.com","www.spotify.com"].includes(url.hostname)) return ""; src = url.href.replace("open.spotify.com/", "open.spotify.com/embed/"); }
-    else if (type === "soundcloud") { if (!["soundcloud.com","www.soundcloud.com"].includes(url.hostname)) return ""; src = `https://w.soundcloud.com/player/?url=${encodeURIComponent(url.href)}&auto_play=false`; }
-    else if (type === "audio") return `<div class="news-embedded-media"><audio controls preload="none" src="${escapeHTML(url.href)}">Your browser does not support audio.</audio></div>`;
-    return `<div class="news-embedded-media"><iframe src="${escapeHTML(src)}" title="Embedded ${escapeHTML(type)} media" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+      return `<div class="article-media-embed article-media-video"><iframe src="https://www.youtube-nocookie.com/embed/${esc(id)}" title="Article video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`;
+    }
+    if (type === "spotify") {
+      if (!/^(open\.spotify\.com|spotify\.com)$/.test(url.hostname)) return "";
+      const parts = url.pathname.split("/").filter(Boolean);
+      if (parts[0] === "embed") parts.shift();
+      if (!parts.length) return "";
+      return `<div class="article-media-embed article-media-audio"><iframe src="https://open.spotify.com/embed/${esc(parts.join("/"))}" title="Spotify media" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+    }
+    if (type === "soundcloud") {
+      if (!/^(soundcloud\.com|www\.soundcloud\.com|m\.soundcloud\.com)$/.test(url.hostname)) return "";
+      return `<div class="article-media-embed article-media-audio"><iframe src="https://w.soundcloud.com/player/?url=${encodeURIComponent(url.href)}&auto_play=false&visual=false" title="SoundCloud audio" loading="lazy" allow="autoplay"></iframe></div>`;
+    }
+    if (type === "audio") {
+      if (!/\.(mp3|m4a|ogg|wav|aac)(?:$|\?)/i.test(url.href)) return "";
+      return `<div class="article-media-embed article-media-direct"><audio controls preload="none" src="${esc(url.href)}">Your browser does not support audio playback.</audio></div>`;
+    }
+    return "";
   };
+  const articleMediaStyles = `
+    .article-media-embed{width:100%;margin:24px 0;overflow:hidden;background:#000;border:1px solid #29292f}
+    .article-media-video{aspect-ratio:16/9}
+    .article-media-embed iframe{display:block;width:100%;height:100%;min-height:0;border:0}
+    .article-media-audio iframe{height:166px}
+    .article-media-direct{padding:16px}
+    .article-media-direct audio{display:block;width:100%}
+  `;
 
   const openArticle = article => {
     const image = safeImageURL(article.image_url);
@@ -224,8 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
             : ""
         }
 
-        ${buildArticleMedia(article)}
-
+        ${articleMediaEmbed(article)}
         <div class="modal-article-text">${escapeHTML(
           article.content || ""
         )}</div>
@@ -603,9 +626,6 @@ document.addEventListener("DOMContentLoaded", () => {
       margin-bottom: 25px;
     }
 
-    .news-embedded-media{margin:22px 0;width:100%;background:#090909;border:1px solid #29292f;border-radius:10px;overflow:hidden}
-    .news-embedded-media iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
-    .news-embedded-media audio{display:block;width:100%;padding:12px;box-sizing:border-box}
     .modal-article-text {
       color: #c3c3ca;
       font-size: 14px;
@@ -657,6 +677,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   `;
 
+  newsStyles.textContent += articleMediaStyles;
   document.head.appendChild(newsStyles);
 
   // 10. ADD NEWS TO NAVIGATION
