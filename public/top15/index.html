@@ -1048,41 +1048,43 @@ document.addEventListener("DOMContentLoaded", () => {
        rel="noopener noreferrer">${label}</a>`;
   };
 
-  /* CHART MOVEMENT: use only explicit previous-week fields supplied by API */
+  /* CHART MOVEMENT: populated by the dedicated movement endpoint */
   const previousPosition = song => {
     const keys = ["previous_position", "last_week_position", "prev_position", "previousPosition", "lastWeekPosition"];
     for (const key of keys) if (Object.prototype.hasOwnProperty.call(song, key)) return song[key];
     return undefined;
   };
-  const isNewEntry = song => {
-    const explicit = song.is_new === true || song.new_entry === true || song.newEntry === true;
-    const previous = previousPosition(song);
-    return explicit || (previous === null || previous === "" || previous === 0 || previous === "0");
-  };
+  const isNewEntry = song => song.movement === "NEW" || song.is_new === true || song.new_entry === true || song.newEntry === true;
   const movementHTML = song => {
-    if (isNewEntry(song)) return '<span class="chart-movement new">NEW</span>';
+    if (song.movement === "NEW" || isNewEntry(song)) return '<span class="chart-movement new">NEW</span>';
     const previous = previousPosition(song);
-    if (previous === undefined || !Number.isFinite(Number(previous)) || Number(previous) < 1) return '<span class="chart-movement same">— NO HISTORY</span>';
+    if (previous === undefined || previous === null || previous === "" || !Number.isFinite(Number(previous)) || Number(previous) < 1) return '<span class="chart-movement same">— NO HISTORY</span>';
     const current = Number(song.position), old = Number(previous), delta = old - current;
-    if (delta > 0) return `<span class="chart-movement up">▲ ${delta} ${delta === 1 ? 'PLACE' : 'PLACES'}</span>`;
-    if (delta < 0) return `<span class="chart-movement down">▼ ${Math.abs(delta)} ${Math.abs(delta) === 1 ? 'PLACE' : 'PLACES'}</span>`;
+    if (song.movement === "UP" || delta > 0) return `<span class="chart-movement up">▲ ${Math.abs(song.change ?? delta)} ${Math.abs(song.change ?? delta) === 1 ? 'PLACE' : 'PLACES'}</span>`;
+    if (song.movement === "DOWN" || delta < 0) return `<span class="chart-movement down">▼ ${Math.abs(song.change ?? delta)} ${Math.abs(song.change ?? delta) === 1 ? 'PLACE' : 'PLACES'}</span>`;
     return '<span class="chart-movement same">— SAME</span>';
   };
-  const renderStats = songs => {
-    const history = songs.filter(song => {
-      const p = previousPosition(song);
-      return p !== undefined && p !== null && p !== "" && Number.isFinite(Number(p)) && Number(p) > 0;
-    });
-    const newEntries = songs.filter(isNewEntry);
-    const movers = history.map(song => ({song, delta: Number(previousPosition(song)) - Number(song.position)}));
-    const climber = movers.filter(x => x.delta > 0).sort((a,b) => b.delta-a.delta)[0];
-    const drop = movers.filter(x => x.delta < 0).sort((a,b) => a.delta-b.delta)[0];
+  const renderStats = (songs, movementData) => {
+    const stats = movementData?.stats;
+    const newEntries = stats?.has_previous_snapshot ? (stats.new_entries ?? songs.filter(isNewEntry).length) : null;
+    const climber = stats?.biggest_climber;
+    const drop = stats?.biggest_drop;
+    const historyCount = stats?.tracks_with_history;
+    const outCount = stats?.tracks_out;
+    const hasHistory = stats?.has_previous_snapshot;
     const stat = (label,value,detail) => `<article class="chart-insight"><div class="chart-insight-label">${label}</div><div class="chart-insight-value">${value}</div><div class="chart-insight-detail">${detail}</div></article>`;
     chartStats.innerHTML =
-      stat('New Entries', newEntries.length, newEntries.length ? newEntries.map(x=>escapeHTML(x.song_title)).join(', ') : 'No new entries identified from available fields') +
-      stat('Biggest Climber', climber ? `▲ ${climber.delta}` : '—', climber ? `${escapeHTML(climber.song.song_title)} · ${climber.song.position} (was ${previousPosition(climber.song)})` : 'No upward movement data') +
-      stat('Biggest Drop', drop ? `▼ ${Math.abs(drop.delta)}` : '—', drop ? `${escapeHTML(drop.song.song_title)} · ${drop.song.position} (was ${previousPosition(drop.song)})` : 'No downward movement data') +
-      stat('Tracks With History', `${history.length}/${songs.length}`, history.length ? 'Previous-week positions available' : 'API history fields not detected');
+      stat('New Entries', newEntries === null ? '—' : newEntries, movementData?.stats?.has_previous_snapshot ? (newEntries ? `${newEntries} new track${newEntries===1?'':'s'} this week` : 'No new entries this week') : 'Previous-week chart not available yet') +
+      stat('Biggest Climber', climber ? `▲ ${Math.abs(climber.change)}` : '—', climber ? `${escapeHTML(climber.song_title)} · #${climber.to} (was #${climber.from})` : 'No upward movement') +
+      stat('Biggest Drop', drop ? `▼ ${Math.abs(drop.change)}` : '—', drop ? `${escapeHTML(drop.song_title)} · #${drop.to} (was #${drop.from})` : 'No downward movement') +
+      stat('Tracks With History', historyCount !== undefined ? `${historyCount}/${songs.length}` : `0/${songs.length}`, hasHistory ? `${outCount ?? 0} track${outCount===1?'':'s'} outside this week's chart` : 'No previous snapshot available yet');
+  };
+
+  const applyMovement = (songs, movementData) => {
+    if (!movementData || !Array.isArray(movementData.chart)) return songs;
+    const keyFor = song => `${String(song.song_title||'').trim().toLowerCase()}::${String(song.artist_name||'').trim().toLowerCase()}`;
+    const movementMap = new Map(movementData.chart.map(song => [keyFor(song), song]));
+    return songs.map(song => ({...song, ...(movementMap.get(keyFor(song)) || {})}));
   };
 
   /* NUMBER ONE SPOTLIGHT */
@@ -1237,10 +1239,24 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error("Invalid chart response.");
       }
 
-      const songs = data.chart
+      let movementData = null;
+      try {
+        const movementResponse = await fetch("/api/music-chart/movement", {
+          method: "GET", headers: { "Accept": "application/json" }, cache: "no-store"
+        });
+        if (movementResponse.ok) {
+          const candidate = await movementResponse.json();
+          if (candidate.success && Array.isArray(candidate.chart)) movementData = candidate;
+        }
+      } catch (movementError) {
+        console.warn("KIZAZI TOP 15 movement history unavailable:", movementError);
+      }
+
+      const baseSongs = data.chart
         .filter(song => song && song.song_title && song.artist_name)
         .sort((a, b) => Number(a.position) - Number(b.position))
         .slice(0, 15);
+      const songs = applyMovement(baseSongs, movementData?.stats?.has_previous_snapshot ? movementData : null);
 
       if (!songs.length) {
         renderEmpty();
@@ -1250,7 +1266,11 @@ document.addEventListener("DOMContentLoaded", () => {
       chartCount.textContent =
         `${songs.length} TRACKS · OFFICIAL COUNTDOWN`;
 
-      renderStats(songs);
+      renderStats(songs, movementData);
+      const snapshotSubtitle = document.querySelector("#chartInsights .section-subtitle");
+      if (snapshotSubtitle && movementData?.stats?.compared_week) {
+        snapshotSubtitle.innerHTML = `COMPARED WITH ${escapeHTML(movementData.stats.compared_week)}<br>MOVEMENT &amp; MOMENTUM`;
+      }
       renderFeatured(songs[0]);
       renderPodium(songs);
       renderChartList(songs);
