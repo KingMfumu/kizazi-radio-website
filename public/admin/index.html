@@ -76,6 +76,7 @@ td{color:#ddd}
 .chart-artwork{width:55px;height:55px;object-fit:cover;border-radius:5px;background:#222}
 .chart-position{font-weight:bold;color:#fff;font-size:16px}
 .chart-description{color:#888;font-size:12px;margin-top:5px}
+.chart-new-entry{display:inline-block;background:#b89128;color:#111;font-size:10px;font-weight:800;letter-spacing:.5px;padding:3px 6px;border-radius:4px;margin-left:7px;vertical-align:middle}
 .footer{text-align:center;color:#555;font-size:11px;padding:25px}
 .note{color:#888;font-size:13px;line-height:1.6;margin:0 0 18px}
 @media(max-width:800px){
@@ -296,31 +297,11 @@ main{padding:24px 16px}
             </div>
           </div>
 
-          <label for="entryType">ENTRY TYPE</label>
-          <select id="entryType">
-            <option value="returning">RETURNING ENTRY</option>
-            <option value="new_entry">NEW ENTRY</option>
+          <label for="chartNewEntry">ENTRY TYPE</label>
+          <select id="chartNewEntry">
+            <option value="0">Regular chart entry</option>
+            <option value="1">NEW ENTRY</option>
           </select>
-
-          <label for="lastWeekPosition">LAST WEEK'S POSITION</label>
-          <select id="lastWeekPosition">
-            <option value="">Select previous position</option>
-            <option value="1">#1</option>
-                <option value="2">#2</option>
-                <option value="3">#3</option>
-                <option value="4">#4</option>
-                <option value="5">#5</option>
-                <option value="6">#6</option>
-                <option value="7">#7</option>
-                <option value="8">#8</option>
-                <option value="9">#9</option>
-                <option value="10">#10</option>
-                <option value="11">#11</option>
-                <option value="12">#12</option>
-                <option value="13">#13</option>
-                <option value="14">#14</option>
-                <option value="15">#15</option>
-              </select>
 
           <label for="songTitle">SONG TITLE *</label>
           <input id="songTitle" maxlength="250" required placeholder="Enter song title">
@@ -732,7 +713,7 @@ function renderChart() {
           <td><span class="chart-position">#${Number(song.position)}</span></td>
           <td>${artwork}</td>
           <td>
-            <span class="article-title">${escapeHTML(song.song_title)}</span>
+            <span class="article-title">${escapeHTML(song.song_title)}</span>${song.new_entry ? '<span class="chart-new-entry">NEW ENTRY</span>' : ''}
             <div class="chart-description">${escapeHTML(song.artist_name)}</div>
           </td>
           <td>${status}</td>
@@ -752,12 +733,11 @@ function openSongEditor(song = null) {
   $("chartEditorTitle").textContent = song ? "Edit TOP 15 Song" : "Add Song to TOP 15";
 
   $("chartPosition").value = song ? String(song.position) : "1";
-  $("entryType").value = song?.entry_type === "new_entry" ? "new_entry" : "returning";
-  $("lastWeekPosition").value = song?.last_week_position == null ? "" : String(song.last_week_position);
   $("songTitle").value = song?.song_title || "";
   $("artistName").value = song?.artist_name || "";
   $("youtubeUrl").value = song?.youtube_url || "";
   $("chartStatus").value = song?.status || "active";
+  $("chartNewEntry").value = song?.new_entry ? "1" : "0";
 
   editingChartArtworkUrl = song?.artwork_url || "";
   $("chartArtworkUrl").value = editingChartArtworkUrl;
@@ -839,23 +819,14 @@ $("chartForm").addEventListener("submit", async event => {
 
     const id = $("chartSongId").value;
 
-    const entryType = $("entryType").value;
-    const isNewEntry = entryType === "new_entry";
-    const previousPositionValue = $("lastWeekPosition").value.trim();
-    const previousPosition = isNewEntry || previousPositionValue === "" ? null : Number(previousPositionValue);
-    if (previousPosition !== null && (!Number.isInteger(previousPosition) || previousPosition < 1 || previousPosition > 15)) {
-      throw new Error("Last week's position must be between 1 and 15, or choose NEW ENTRY.");
-    }
-
     const song = {
       position: Number($("chartPosition").value),
-      last_week_position: previousPosition,
-      entry_type: isNewEntry ? "new_entry" : "returning",
       song_title: $("songTitle").value.trim(),
       artist_name: $("artistName").value.trim(),
       youtube_url: $("youtubeUrl").value.trim(),
       artwork_url: artworkUrl,
-      status: $("chartStatus").value
+      status: $("chartStatus").value,
+      new_entry: $("chartNewEntry").value === "1"
     };
 
     await api(id ? `/api/admin/music-chart/${id}` : "/api/admin/music-chart", {
