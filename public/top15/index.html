@@ -1062,7 +1062,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   const isNewEntry = song => song.movement === "NEW" || song.is_new === true || song.new_entry === true || song.newEntry === true;
   const movementHTML = song => {
-    if (song.movement === "NEW" || isNewEntry(song)) return '<span class="chart-movement new">NEW</span>';
+    if (song.movement === "NEW" || isNewEntry(song)) return '<span class="chart-movement new">NEW ENTRY</span>';
     const previous = previousPosition(song);
     if (previous === undefined || previous === null || previous === "" || !Number.isFinite(Number(previous)) || Number(previous) < 1) return '<span class="chart-movement same">— NO HISTORY</span>';
     const current = Number(song.position), old = Number(previous), delta = old - current;
