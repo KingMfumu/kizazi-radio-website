@@ -288,6 +288,10 @@ main{padding:24px 16px}
               </select>
             </div>
             <div>
+              <label for="lastWeekPosition">LAST WEEK'S POSITION (OPTIONAL)</label>
+              <input id="lastWeekPosition" type="number" min="1" max="15" step="1" placeholder="Enter previous position (1–15)">
+            </div>
+            <div>
               <label for="chartStatus">STATUS</label>
               <select id="chartStatus">
                 <option value="active">Active – Show on website</option>
@@ -726,6 +730,7 @@ function openSongEditor(song = null) {
   $("chartEditorTitle").textContent = song ? "Edit TOP 15 Song" : "Add Song to TOP 15";
 
   $("chartPosition").value = song ? String(song.position) : "1";
+  $("lastWeekPosition").value = song?.last_week_position ?? "";
   $("songTitle").value = song?.song_title || "";
   $("artistName").value = song?.artist_name || "";
   $("youtubeUrl").value = song?.youtube_url || "";
@@ -811,8 +816,15 @@ $("chartForm").addEventListener("submit", async event => {
 
     const id = $("chartSongId").value;
 
+    const previousPositionValue = $("lastWeekPosition").value.trim();
+    const previousPosition = previousPositionValue === "" ? null : Number(previousPositionValue);
+    if (previousPosition !== null && (!Number.isInteger(previousPosition) || previousPosition < 1 || previousPosition > 15)) {
+      throw new Error("Last week's position must be between 1 and 15, or left blank.");
+    }
+
     const song = {
       position: Number($("chartPosition").value),
+      last_week_position: previousPosition,
       song_title: $("songTitle").value.trim(),
       artist_name: $("artistName").value.trim(),
       youtube_url: $("youtubeUrl").value.trim(),
