@@ -289,6 +289,10 @@ main{padding:24px 16px}
               </select>
             </div>
             <div>
+              <label for="chartPreviousPosition">LAST WEEK'S POSITION (OPTIONAL)</label>
+              <input id="chartPreviousPosition" type="number" min="1" max="15" placeholder="Enter previous position (1–15)">
+            </div>
+            <div>
               <label for="chartStatus">STATUS</label>
               <select id="chartStatus">
                 <option value="active">Active – Show on website</option>
@@ -297,10 +301,11 @@ main{padding:24px 16px}
             </div>
           </div>
 
-          <label for="chartNewEntry">ENTRY TYPE</label>
-          <select id="chartNewEntry">
-            <option value="0">Regular chart entry</option>
-            <option value="1">NEW ENTRY</option>
+          <label for="chartMovement">CHART MOVEMENT</label>
+          <select id="chartMovement">
+            <option value="AUTO">Automatic — compare positions</option>
+            <option value="NEW">NEW ENTRY — first time on chart</option>
+            <option value="SAME">SAME — unchanged position</option>
           </select>
 
           <label for="songTitle">SONG TITLE *</label>
@@ -713,8 +718,8 @@ function renderChart() {
           <td><span class="chart-position">#${Number(song.position)}</span></td>
           <td>${artwork}</td>
           <td>
-            <span class="article-title">${escapeHTML(song.song_title)}</span>${song.new_entry ? '<span class="chart-new-entry">NEW ENTRY</span>' : ''}
-            <div class="chart-description">${escapeHTML(song.artist_name)}</div>
+            <span class="article-title">${escapeHTML(song.song_title)}</span>${song.chart_movement === "NEW" || song.new_entry ? '<span class="chart-new-entry">NEW ENTRY</span>' : ''}
+            <div class="chart-description">${escapeHTML(song.artist_name)}${song.previous_position != null && song.previous_position !== "" ? ` · Last week #${Number(song.previous_position)}` : ""}${song.chart_movement ? ` · ${escapeHTML(song.chart_movement)}` : ""}</div>
           </td>
           <td>${status}</td>
           <td>
@@ -733,11 +738,12 @@ function openSongEditor(song = null) {
   $("chartEditorTitle").textContent = song ? "Edit TOP 15 Song" : "Add Song to TOP 15";
 
   $("chartPosition").value = song ? String(song.position) : "1";
+  $("chartPreviousPosition").value = song?.previous_position ?? song?.last_week_position ?? "";
+  $("chartMovement").value = song?.chart_movement || (song?.new_entry ? "NEW" : "AUTO");
   $("songTitle").value = song?.song_title || "";
   $("artistName").value = song?.artist_name || "";
   $("youtubeUrl").value = song?.youtube_url || "";
   $("chartStatus").value = song?.status || "active";
-  $("chartNewEntry").value = song?.new_entry ? "1" : "0";
 
   editingChartArtworkUrl = song?.artwork_url || "";
   $("chartArtworkUrl").value = editingChartArtworkUrl;
@@ -818,15 +824,33 @@ $("chartForm").addEventListener("submit", async event => {
     );
 
     const id = $("chartSongId").value;
+    const currentPosition = Number($("chartPosition").value);
+    const previousPositionRaw = $("chartPreviousPosition").value.trim();
+    let previousPosition = previousPositionRaw === "" ? null : Number(previousPositionRaw);
+    const chosenMovement = $("chartMovement").value;
+    if (previousPosition !== null && (!Number.isInteger(previousPosition) || previousPosition < 1 || previousPosition > 15)) {
+      throw new Error("Last week's position must be between 1 and 15.");
+    }
+    if (chosenMovement === "SAME" && previousPosition !== null && previousPosition !== currentPosition) {
+      throw new Error("SAME requires this week's position to match last week's position.");
+    }
+    if (chosenMovement === "SAME" && previousPosition === null) {
+      previousPosition = currentPosition;
+      $("chartPreviousPosition").value = String(currentPosition);
+    }
+    const calculatedMovement = chosenMovement === "NEW" ? "NEW" : chosenMovement === "SAME" ? "SAME" : (previousPosition === null ? "NO_HISTORY" : currentPosition < previousPosition ? "UP" : currentPosition > previousPosition ? "DOWN" : "SAME");
 
     const song = {
-      position: Number($("chartPosition").value),
+      position: currentPosition,
+      previous_position: previousPosition,
+      chart_movement: calculatedMovement,
       song_title: $("songTitle").value.trim(),
       artist_name: $("artistName").value.trim(),
       youtube_url: $("youtubeUrl").value.trim(),
       artwork_url: artworkUrl,
       status: $("chartStatus").value,
-      new_entry: $("chartNewEntry").value === "1"
+      new_entry: chosenMovement === "NEW",
+      movement: calculatedMovement
     };
 
     await api(id ? `/api/admin/music-chart/${id}` : "/api/admin/music-chart", {
