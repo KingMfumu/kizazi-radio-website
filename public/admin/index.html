@@ -288,11 +288,24 @@ main{padding:24px 16px}
               </select>
             </div>
             <div>
-              <label for="lastWeekPosition">LAST WEEK'S POSITION</label>
-              <select id="lastWeekPosition">
-                <option value="">Select previous position</option>
-                <option value="new_entry">NEW ENTRY</option>
-                <option value="1">#1</option>
+              <label for="chartStatus">STATUS</label>
+              <select id="chartStatus">
+                <option value="active">Active – Show on website</option>
+                <option value="inactive">Inactive – Hide from website</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="entryType">ENTRY TYPE</label>
+          <select id="entryType">
+            <option value="returning">RETURNING ENTRY</option>
+            <option value="new_entry">NEW ENTRY</option>
+          </select>
+
+          <label for="lastWeekPosition">LAST WEEK'S POSITION</label>
+          <select id="lastWeekPosition">
+            <option value="">Select previous position</option>
+            <option value="1">#1</option>
                 <option value="2">#2</option>
                 <option value="3">#3</option>
                 <option value="4">#4</option>
@@ -308,15 +321,6 @@ main{padding:24px 16px}
                 <option value="14">#14</option>
                 <option value="15">#15</option>
               </select>
-            </div>
-            <div>
-              <label for="chartStatus">STATUS</label>
-              <select id="chartStatus">
-                <option value="active">Active – Show on website</option>
-                <option value="inactive">Inactive – Hide from website</option>
-              </select>
-            </div>
-          </div>
 
           <label for="songTitle">SONG TITLE *</label>
           <input id="songTitle" maxlength="250" required placeholder="Enter song title">
@@ -748,9 +752,8 @@ function openSongEditor(song = null) {
   $("chartEditorTitle").textContent = song ? "Edit TOP 15 Song" : "Add Song to TOP 15";
 
   $("chartPosition").value = song ? String(song.position) : "1";
-  $("lastWeekPosition").value = song?.last_week_position == null
-    ? (song?.entry_type === "new_entry" ? "new_entry" : "")
-    : String(song.last_week_position);
+  $("entryType").value = song?.entry_type === "new_entry" ? "new_entry" : "returning";
+  $("lastWeekPosition").value = song?.last_week_position == null ? "" : String(song.last_week_position);
   $("songTitle").value = song?.song_title || "";
   $("artistName").value = song?.artist_name || "";
   $("youtubeUrl").value = song?.youtube_url || "";
@@ -836,9 +839,10 @@ $("chartForm").addEventListener("submit", async event => {
 
     const id = $("chartSongId").value;
 
+    const entryType = $("entryType").value;
+    const isNewEntry = entryType === "new_entry";
     const previousPositionValue = $("lastWeekPosition").value.trim();
-    const isNewEntry = previousPositionValue === "new_entry";
-    const previousPosition = previousPositionValue === "" || isNewEntry ? null : Number(previousPositionValue);
+    const previousPosition = isNewEntry || previousPositionValue === "" ? null : Number(previousPositionValue);
     if (previousPosition !== null && (!Number.isInteger(previousPosition) || previousPosition < 1 || previousPosition > 15)) {
       throw new Error("Last week's position must be between 1 and 15, or choose NEW ENTRY.");
     }
@@ -846,7 +850,7 @@ $("chartForm").addEventListener("submit", async event => {
     const song = {
       position: Number($("chartPosition").value),
       last_week_position: previousPosition,
-      entry_type: isNewEntry ? "new_entry" : "",
+      entry_type: isNewEntry ? "new_entry" : "returning",
       song_title: $("songTitle").value.trim(),
       artist_name: $("artistName").value.trim(),
       youtube_url: $("youtubeUrl").value.trim(),
