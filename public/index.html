@@ -4919,6 +4919,253 @@ body { padding-bottom: 0 !important; }
 .kcp-volume{display:flex;align-items:center;gap:9px;font-size:17px}.kcp-volume input{width:100%;accent-color:#e50909;cursor:pointer}.kcp-status{font-size:9px;font-weight:900;letter-spacing:1px;color:#e50909;white-space:nowrap}
 @media(max-width:720px){.kcp-controls{grid-template-columns:48px minmax(0,1fr) minmax(90px,130px);gap:10px;padding:12px;border-radius:16px}.kcp-play{width:44px;height:44px}.kcp-wave{display:none}.kcp-status{grid-column:2/4;text-align:center}}
 </style>
+
+<style id="kizazi-homepage-new-look">
+/* KIZAZI RADIO — dark cinematic / red-accent homepage visual refresh.
+   Visual layer only: existing content, API hooks, IDs and player scripts remain intact. */
+:root{
+  --bg:#08090b;
+  --surface:#111216;
+  --surface2:#17181d;
+  --red:#f10b2d;
+  --white:#f8f8fa;
+  --muted:#a7a8b0;
+  --line:#292b32;
+  --max:1320px;
+}
+body{background:#08090b}
+.header{
+  height:76px;
+  background:rgba(8,9,11,.97);
+  border-bottom:1px solid #22242a;
+}
+.header-inner{width:min(1380px,92%)}
+.brand-logo{width:176px;height:66px}
+.nav{gap:clamp(12px,2vw,28px)}
+.nav a{font-size:12px;letter-spacing:.35px;color:#e5e5e9}
+.nav a:hover{color:#fff}
+.header-live{
+  border:0;border-radius:999px;padding:14px 23px;
+  color:#fff;background:linear-gradient(135deg,#ff183b,#c90020);
+  font-size:10px;letter-spacing:.7px;
+  box-shadow:0 8px 25px #f10b2d30;
+}
+.header-live:hover{transform:translateY(-2px);background:#fff;color:#09090b}
+
+/* Hero */
+.homepage-refresh .hero{
+  width:100%;height:clamp(390px,34vw,510px);min-height:390px;
+  background:#08090b;border-bottom:1px solid #202127;
+}
+.homepage-refresh .hero-image{
+  object-position:center 38%;
+  transform:scale(1.015);
+}
+.homepage-refresh .hero-overlay{
+  background:
+    linear-gradient(90deg,rgba(7,8,10,.96) 0%,rgba(7,8,10,.82) 28%,rgba(7,8,10,.25) 61%,rgba(7,8,10,.22) 100%),
+    linear-gradient(0deg,rgba(7,8,10,.56),transparent 45%);
+}
+.homepage-refresh .hero-content{
+  width:min(650px,48%);margin-left:max(5%,calc((100% - 1320px)/2));
+  padding:48px 0;
+}
+.homepage-refresh .hero-content .eyebrow{
+  background:transparent;border:0;padding:0;transform:none;box-shadow:none;
+  color:#c9c9d0;font-size:9px;letter-spacing:2.2px;
+}
+.homepage-refresh .hero h1{
+  max-width:680px;font-size:clamp(55px,6.5vw,91px);
+  line-height:.91;letter-spacing:-.078em;text-shadow:none;
+}
+.homepage-refresh .hero h1 em{
+  color:#f10b2d;text-shadow:none;transform:none;
+}
+.homepage-refresh .hero-description{
+  max-width:410px;margin-top:20px;padding-left:0;border:0;
+  color:#c3c4ca;font-size:14px;line-height:1.7;
+}
+.homepage-refresh .hero-actions{gap:18px;margin-top:27px}
+.homepage-refresh .primary-button{
+  padding:16px 23px;border-radius:999px;border:0;box-shadow:none;
+  background:linear-gradient(135deg,#ff183b,#c90020);
+  font-size:10px;letter-spacing:.7px;
+}
+.homepage-refresh .primary-button:hover{
+  background:#fff;color:#09090b;box-shadow:0 8px 24px #f10b2d30;
+  transform:translateY(-2px)
+}
+.homepage-refresh .hero-secondary{
+  padding:14px 19px;border:1px solid #777780;border-radius:999px;
+  font-size:10px;letter-spacing:.7px
+}
+.homepage-refresh .hero-secondary:after{display:none}
+.hero-onair-card{
+  position:absolute;z-index:4;right:max(5%,calc((100% - 1320px)/2));top:50%;
+  transform:translateY(-50%);width:min(330px,27%);
+  min-height:190px;padding:22px 22px 18px;display:flex;flex-direction:column;
+  justify-content:center;gap:13px;overflow:hidden;
+  color:#fff;text-decoration:none;border:1px solid #a80b28;
+  border-radius:18px;background:linear-gradient(125deg,rgba(48,5,17,.94),rgba(10,11,14,.92));
+  box-shadow:0 20px 55px rgba(0,0,0,.42),inset 0 1px #ffffff12;
+  backdrop-filter:blur(12px);
+}
+.hero-onair-card:after{
+  content:"";position:absolute;width:155px;height:155px;right:-65px;top:20px;
+  border:1px solid #f10b2d55;border-radius:50%;
+  box-shadow:0 0 0 17px #f10b2d0c,0 0 0 34px #f10b2d08;
+}
+.hero-onair-label{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:950;letter-spacing:1px}
+.hero-onair-label i{width:9px;height:9px;border-radius:50%;background:#f10b2d;box-shadow:0 0 12px #f10b2d}
+.hero-onair-card strong{font-size:clamp(20px,2vw,27px);letter-spacing:-.8px}
+.hero-onair-subtitle{color:#bcbcc4;font-size:9px;letter-spacing:1.2px;font-weight:800}
+.hero-onair-action{position:relative;z-index:1;display:inline-flex;align-items:center;align-self:flex-start;padding:9px 13px;border-radius:999px;background:#f10b2d;font-size:9px;font-weight:950;letter-spacing:.8px}
+.hero-onair-wave{height:23px;display:flex;align-items:center;gap:4px}
+.hero-onair-wave i{display:block;width:4px;height:8px;border-radius:5px;background:#f10b2d}
+.hero-onair-wave i:nth-child(3n){height:19px}
+.hero-onair-wave i:nth-child(4n){height:14px}
+.hero-onair-wave i:nth-child(2n){height:11px}
+
+/* Compact live player bar */
+.homepage-player{
+  width:min(1320px,92%);min-height:104px;margin:18px auto 0;padding:14px 20px;
+  grid-template-columns:175px minmax(0,1fr);gap:18px;
+  border:1px solid #292b32;border-top:2px solid #f10b2d;border-radius:14px;
+  background:linear-gradient(110deg,#17181d,#0b0c0f);
+  box-shadow:0 15px 40px #0006;
+}
+.homepage-player-label strong{font-size:13px}
+.homepage-player-label small{font-size:8px;letter-spacing:1.1px}
+.kcp-controls{
+  min-height:68px;padding:9px 13px;border:1px solid #30323a;
+  border-radius:999px;background:#090a0d;
+}
+.kcp-play{background:#f10b2d;color:#fff}
+.kcp-play:hover{background:#fff;color:#09090b}
+
+/* Content grid: shows first, then chart and news in two columns */
+.homepage-refresh{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  column-gap:24px;row-gap:0;
+}
+.homepage-refresh>.hero,.homepage-refresh>.homepage-player{grid-column:1/-1}
+.home-discovery{display:contents}
+.home-shows{grid-column:1/-1;width:min(1320px,92%);margin:48px auto 28px}
+.home-chart{
+  grid-column:1;min-width:0;width:100%;margin:0 0 54px  max(4%,calc((100% - 1320px)/2));
+  padding:21px;border:1px solid #292b32;border-radius:15px;
+  background:linear-gradient(145deg,#17181d,#0c0d10);
+  box-shadow:0 15px 40px #0005;
+}
+.compact-section-heading{margin-bottom:18px}
+.compact-section-heading .eyebrow{font-size:9px;letter-spacing:1.7px}
+.compact-section-heading h2{font-size:clamp(28px,3vw,38px)}
+.home-show-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.home-show-card{
+  min-height:122px;padding:17px 42px 16px 18px;border:1px solid #30323a;
+  border-radius:12px;background:linear-gradient(135deg,#191a20,#101115);
+}
+.home-show-card:before{width:3px}
+.home-show-featured{
+  background:linear-gradient(130deg,#3b0b17,#171116 75%);
+  border-color:#6e182a;
+}
+.home-show-time{font-size:8px;letter-spacing:.8px}
+.home-show-title{font-size:clamp(17px,1.7vw,24px)}
+.home-show-host{font-size:8px}
+.home-show-arrow{width:29px;height:29px;right:12px;border-color:#555761;color:#f10b2d}
+.playlist-promo{
+  min-height:170px;margin-top:14px;padding:20px 24px;border-radius:12px;
+  background:radial-gradient(circle at 82% 48%,#f10b2d2b,transparent 34%),linear-gradient(115deg,#191a20,#0b0c0f 75%);
+}
+.playlist-promo-copy h3{font-size:clamp(28px,3vw,39px)}
+.playlist-promo-art{flex-basis:140px;height:140px}
+.promo-disc{width:125px;height:125px}
+
+/* Chart and news cards */
+.home-chart .compact-section-heading h2{font-size:clamp(25px,2.6vw,34px)}
+.home-chart .chart-week-label{border-radius:999px;padding:7px 10px}
+.home-chart .chart-card{border-bottom:1px solid #30323a}
+.home-chart .chart-position{border-radius:8px;background:#f10b2d;color:#fff}
+.home-chart .chart-artwork{border-radius:7px}
+.home-chart .chart-play-button{border-radius:50%}
+.homepage-refresh .news-section{
+  grid-column:2;grid-row:auto;width:100%;min-width:0;
+  padding:0 max(4%,calc((100% - 1320px)/2)) 54px 0;
+  border:0;
+}
+.homepage-refresh .news-section .wrap{width:100%;margin:0}
+.homepage-refresh .news-section .section-heading{margin-bottom:17px;align-items:flex-end}
+.homepage-refresh .news-section .section-number{margin-bottom:8px}
+.homepage-refresh .news-section .section-title{font-size:clamp(28px,3vw,38px)}
+.homepage-refresh .news-grid{grid-template-columns:1fr 1fr;gap:12px}
+.homepage-refresh .news-card{
+  min-height:185px;padding:17px;border:1px solid #292b32;border-radius:11px;
+  background:linear-gradient(145deg,#17181d,#0e0f12);
+}
+.homepage-refresh .news-card h3{font-size:16px;line-height:1.22;margin:13px 0 9px}
+.homepage-refresh .news-card p{font-size:10px}
+.homepage-refresh .news-placeholder{border-radius:10px}
+
+/* Footer */
+.footer{border-top:1px solid #292b32;background:#07080a}
+.footer-logo{width:155px}
+.footer-links a{font-size:10px}
+
+/* Tablet and mobile */
+@media(max-width:1000px){
+  .homepage-refresh .hero-content{width:56%}
+  .hero-onair-card{right:4%;width:30%}
+  .home-show-list{grid-template-columns:1fr 1fr}
+  .homepage-refresh .news-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .header{height:70px}
+  .brand-logo{width:132px;height:56px}
+  .header-live{padding:11px 13px;font-size:8px}
+  .homepage-refresh .hero{height:590px;min-height:590px;align-items:flex-start}
+  .homepage-refresh .hero-image{object-position:65% center}
+  .homepage-refresh .hero-overlay{
+    background:linear-gradient(90deg,rgba(7,8,10,.88),rgba(7,8,10,.38)),
+    linear-gradient(0deg,rgba(7,8,10,.86),transparent 75%);
+  }
+  .homepage-refresh .hero-content{width:88%;margin:0 6%;padding:75px 0 0}
+  .homepage-refresh .hero h1{font-size:clamp(46px,11vw,68px)}
+  .homepage-refresh .hero-description{font-size:12px;max-width:330px}
+  .hero-onair-card{
+    top:auto;bottom:18px;left:5%;right:5%;width:90%;min-height:125px;
+    padding:14px 17px;gap:8px;transform:none;border-radius:13px;
+  }
+  .hero-onair-card strong{font-size:20px}
+  .hero-onair-wave{position:absolute;right:20px;bottom:20px}
+  .hero-onair-action{position:absolute;right:17px;top:18px}
+  .homepage-player{width:92%;margin:14px auto 0;padding:12px;grid-template-columns:1fr;gap:10px}
+  .homepage-player-label{justify-content:flex-start}
+  .kcp-controls{grid-template-columns:46px minmax(0,1fr) minmax(75px,100px);gap:9px;padding:10px;border-radius:13px}
+  .kcp-play{width:42px;height:42px}
+  .kcp-wave{display:none}
+  .kcp-status{grid-column:2/4;text-align:left}
+  .home-shows{width:92%;margin:34px auto 24px}
+  .home-show-list{grid-template-columns:1fr;gap:9px}
+  .home-show-card{min-height:100px}
+  .playlist-promo{min-height:160px;padding:18px 15px}
+  .playlist-promo-art{flex-basis:100px;height:110px}
+  .promo-disc{width:94px;height:94px}
+  .home-chart{
+    grid-column:1/-1;width:92%;margin:0 auto 28px;padding:16px 13px;
+  }
+  .homepage-refresh .news-section{
+    grid-column:1/-1;width:92%;margin:0 auto;
+    padding:0 0 48px;
+  }
+  .homepage-refresh .news-grid{grid-template-columns:1fr}
+  .homepage-refresh .news-card{min-height:150px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-onair-wave i{animation:none}
+}
+</style>
+
 </head>
 
 <body>
@@ -4937,7 +5184,7 @@ body { padding-bottom: 0 !important; }
       <a href="/about/">About</a>
       <a href="/contact/">Contact Us</a>
     </nav>
-    <a class="header-live" href="/donate/"><span class="live-dot"></span> DONATE ↗</a>
+    <a class="header-live" href="#listen"><span class="live-dot"></span> ▶ LISTEN LIVE</a>
   </div>
 </header>
 
@@ -4958,6 +5205,13 @@ body { padding-bottom: 0 !important; }
         <a class="hero-secondary" href="/shows/">EXPLORE OUR SHOWS ↘</a>
       </div>
     </div>
+    <a class="hero-onair-card" href="#listen" aria-label="Listen live to KIZAZI RADIO">
+      <span class="hero-onair-label"><i></i> ON AIR NOW</span>
+      <strong>KIZAZI RADIO</strong>
+      <span class="hero-onair-subtitle">MUSIC • CULTURE • ENTERTAINMENT</span>
+      <span class="hero-onair-action">▶ LISTEN LIVE</span>
+      <span class="hero-onair-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    </a>
   </section>
 
   <section class="homepage-player" id="listen" aria-label="KIZAZI RADIO live player">
